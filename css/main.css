@@ -1,0 +1,206 @@
+.map-container{
+    display: grid; 
+    align-content: center;
+}
+
+.content{
+    margin: auto;
+    position: relative;
+}
+
+#mapa{
+    margin: auto;
+}
+
+#nivel1,#nivel2,#nivel3,#nivel4,#nivel5{
+    width: 21px;
+    position: absolute;
+    z-index: 999;
+    opacity: 0.5;
+}
+
+#nivel1{
+    top: 34%;
+    left: 45%;
+}
+
+#nivel2{
+    top: 48%;
+    left: 68%;
+}
+
+#nivel3{
+    top: 57%;
+    left: 56%;
+}
+
+#nivel4{
+    top: 67%;
+    left: 33%;
+}
+
+#nivel5{
+    top: 58%;
+    left: 29%;
+}
+
+
+
+  @media (min-width: 768px) and (max-width: 991px){
+    
+    #nivel1,#nivel2,#nivel3,#nivel4,#nivel5{
+        width: 25px;
+    }
+    
+    #nivel1{
+        top: 35%;
+        left: 45%;
+    }
+
+    #nivel2{
+        top: 49%;
+        left: 68%;
+    }
+
+    #nivel5{
+        top: 57%;
+        left: 28%;
+    }
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px){
+    
+    #nivel1,#nivel2,#nivel3,#nivel4,#nivel5{
+        width: 30px;
+    }
+    
+    #nivel1{
+        top: 35%;
+        left: 45%;
+    }
+
+    #nivel2{
+        top: 50%;
+        left: 68%;
+    }
+
+    #nivel5{
+        top: 57%;
+        left: 28%;
+    }
+
+    
+}
+
+  @media (min-width: 1200px) and (max-width: 1399px){
+    
+    #nivel1,#nivel2,#nivel3,#nivel4,#nivel5{
+        width: 35px;
+    }
+    
+    #nivel1{
+        top: 35%;
+        left: 45%;
+    }
+
+    #nivel2{
+        top: 49%;
+        left: 68%;
+    }
+
+    #nivel5{
+        top: 57%;
+        left: 28%;
+    }
+
+    
+  }
+
+  @media (min-width: 1399px){
+    
+    #nivel1,#nivel2,#nivel3,#nivel4,#nivel5{
+        width: 35px;
+    }
+    
+    #nivel1{
+        top: 36%;
+        left: 45.5%;
+    }
+
+    #nivel2{
+        top: 50%;
+        left: 68%;
+    }
+
+    #nivel5{
+        top: 57%;
+        left: 28%;
+    }
+    
+  }
+
+
+
+/* CSS linea */
+#nivel1,#nivel2,#nivel3,#nivel4,#nivel5 {
+  position: absolute;
+}
+#linea1,#linea2,#linea3,#linea4,#linea5 {
+  position: absolute;
+  height:2px;
+  background-color: #d63030;
+  transform-origin: left;
+  display: none;
+}
+
+/* CSS linea */
+
+
+html,body {
+    height:100%;
+    width:100%;
+    margin:0;
+}
+
+body , body {
+    display:flex;
+}
+
+form {
+    margin:auto;
+}
+
+.cerrar-sesion{
+    text-align: right;
+}
+
+.login-bar-section{
+    text-align: right;
+}
+
+.listado-usuarios-title{
+    text-align: center;
+}
+
+.banner-section{
+    text-align: center;
+}
+
+.header-section-intro{
+    margin: auto;
+}
+
+body .landing-page{
+    background-image: url('img/landing1.jpg');
+}
+
+.margin-center{
+    margin: auto;
+}
+
+.fa-actions{
+    text-align: right;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 3px;
+}

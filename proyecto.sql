@@ -9,6 +9,7 @@ id int auto_increment,
 uid int not null unique,
 user varchar(50),
 pass varchar(30),
+rol varchar(15),
 primary key(id)
 );
 
@@ -24,5 +25,8 @@ primary key(id),
 foreign key (uid) references usuarios(uid)
 );
 
-insert into usuarios values(1,1,"fran","prueba");
-insert into niveles values(1,1,true,true,true,false,false);
+insert into usuarios values(null,1,"fran","fran","admin");
+insert into usuarios values(null,2,"pepe","pepe","player");
+insert into usuarios values(null,3,"juan","juan","player");
+insert into niveles values(null,2,true,true,true,false,false);
+insert into niveles values(null,3,true,false,false,false,false);
