@@ -1,68 +1,105 @@
 <?php
+    session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "mysql";
-$conn = null;
+    $servername = "localhost";
+    $username = "root";
+    $password = "mysql";
+    $conn = null;
 
-try {
-  $conn = new PDO("mysql:host=$servername;dbname=juego", $username, $password);
-  // set the PDO error mode to exception
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  echo "Connected successfully";
-} catch(PDOException $e) {
-  echo "Connection failed: " . $e->getMessage();
+    try {
+    $conn = new PDO("mysql:host=$servername;dbname=proyecto", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
+    } catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+    }
+
+if(!isset($_SESSION['uid'])){
+    $user = $_POST['user'];
+    $pass = $_POST['pass'];
+
+    $sql = "SELECT uid FROM usuarios where user='".$user."' and pass='".$pass."'";
+    $selectAll = $conn->prepare($sql);
+    $selectAll->execute();
+
+    $result = $selectAll->fetch();
+
+    if(empty($result)){ ?>
+        <div class="alert alert-danger" role="alert">
+            <?php $_SESSION['error']="Usuario o password incorrectos"; ?>
+        </div>
+    <?php
+        header("Location: login.php");
+    }else{
+        $_SESSION['uid']=$result['uid'];
+    }
 }
 
-$sql = "SELECT * FROM prueba";
-$selectAll = $conn->prepare($sql);
-$selectAll->execute();
+if(isset($_SESSION['uid'])){
 
-$result = $selectAll->fetch();
+    $sql = "SELECT * FROM niveles where uid=".$_SESSION['uid'];
+    $selectAll = $conn->prepare($sql);
+    $selectAll->execute();
 
-//print_r($result);
+    $result = $selectAll->fetch();
 
-$url = "?";
 
-if($result['nivel1'] == 1){
-    $url = $url.'nivel1=completado';
+    $url = "?";
+    $append = false;
+
+    if($result['nivel1'] == 1){
+
+        if($append){
+            $url .= '&';
+        }
+
+        $url .= 'nivel1=completado';
+        $append = true;
+    }
+
+    if($result['nivel2'] == 1){
+
+        if($append){
+            $url .= '&';
+        }
+        
+        $url .= 'nivel2=completado';
+        $append = true;
+
+    }
+
+    if($result['nivel3'] == 1){
+
+        if($append){
+            $url .= '&';
+        }
+
+        $url .= 'nivel3=completado';
+        $append = true;
+    }
+
+    if($result['nivel4'] == 1){
+
+        if($append){
+            $url .= '&';
+        }
+
+        $url .= 'nivel4=completado';
+        $append = true;
+    }
+
+    if($result['nivel5'] == 1){
+
+        if($append){
+            $url .= '&';
+        }
+
+        $url .= 'nivel5=completado';
+        $append = true;
+    }
+
+    header("Location: index.php" .$url);
 }
-
-if($result['nivel2'] == 1){
-    $url = $url.'&nivel2=completado';
-}
-
-if($result['nivel3'] == 1){
-    $url = $url.'&nivel3=completado';
-}
-//die();
-
-//$conn->close();
-
-    /* $url = "?";
-
-    if(isset($_POST['nivel1'])){
-        $url = $url.'nivel1=completado';
-    }
-
-    if(isset($_POST['nivel2'])){
-        $url = $url.'&nivel2=completado';
-    }
-
-    if(isset($_POST['nivel3'])){
-        $url = $url.'&nivel3=completado';
-    }
-
-    if(isset($_POST['nivel4'])){
-        $url = $url.'&nivel4=completado';
-    }
-
-    if(isset($_POST['nivel5'])){
-        $url = $url.'&nivel5=completado';
-    }
-    //print_r($url);
-    //die(); */
-
-    header("Location: index.html" .$url);
 
 ?>

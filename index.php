@@ -8,8 +8,12 @@
     <script src="main.js"></script>
 </head>
 <body>
-
+    <?php session_start(); ?>
     <div class="container">
+        <div class="col-12 cerrar-sesion">
+            <a href="logout.php"><button type="button" class="btn btn-primary">Cerrar sesión</button></a>
+        </div>
+        
         <div class="content">
             <img src="mapa.png" class="img-fluid" id="mapa">       
             <img src="punto.png" id="nivel1" class="nivel" name="spain" data-status="noCompletado" data-jugable="false">

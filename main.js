@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded',function(){
                                 
 
                                 //setGamesLines(); 
-                                window.location.replace("spain/index.html");
+                                window.location.replace("spain/index.php");
 
 
                                 break;
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded',function(){
                                 //playCountry(niveles,lineas,1,jugable)
                                 
                                 //setGamesLines();
-                                window.location.replace("india/index.html");
+                                window.location.replace("india/index.php");
                                 
                                 
                                 break;
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded',function(){
                                 //playCountry(niveles,lineas,2,jugable)
                                 
                                 //setGamesLines();
-                                window.location.replace("kenia/index.html");
+                                window.location.replace("kenia/index.php");
                                 
                                 break;
                             case 'brasil1':
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded',function(){
                                 //playCountry(niveles,lineas,3,jugable)
                                 
                                 //setGamesLines();
-                                window.location.replace("brasil1/index.html");
+                                window.location.replace("brasil1/index.php");
                                 
                                 break;
                             case 'brasil2':
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded',function(){
                                 //playCountry(niveles,lineas,4,jugable)
                                 
                                 //setGamesLines();
-                                window.location.replace("brasil2/index.html");
+                                window.location.replace("brasil2/index.php");
                                 
                                 break;
                         }           
