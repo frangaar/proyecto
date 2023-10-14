@@ -1,4 +1,4 @@
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,12 +15,37 @@
         </div>
         
         <div class="content">
-            <img src="img/mapa.png" class="img-fluid" id="mapa">       
-            <img src="img/punto.png" id="nivel1" class="nivel" name="spain" data-status="noCompletado" data-jugable="false">
-            <img src="img/punto.png" id="nivel2" class="nivel" name="india" data-status="noCompletado" data-jugable="false">
-            <img src="img/punto.png" id="nivel3" class="nivel" name="kenia" data-status="noCompletado" data-jugable="false">
-            <img src="img/punto.png" id="nivel4" class="nivel" name="brasil1" data-status="noCompletado" data-jugable="false">
-            <img src="img/punto.png" id="nivel5" class="nivel" name="brasil1" data-status="noCompletado" data-jugable="false">  
+            <img src="img/mapa.png" class="img-fluid" id="mapa"> 
+            <div class="bocadillo-cuadrado" id="bocadillo-cuadrado1">
+                <button type="button" id="audio-close1" class="btn-close audio-close"></button>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Map</p>
+                <button type="button" class="audio" id="audio1" class="btn btn-primary">Escuchar</button>
+            </div>
+            <img src="img/punto.png" data-audio="audio/spain.mp3" id="nivel1" class="nivel" name="spain" data-status="noCompletado" data-jugable="true">
+            <div class="bocadillo-cuadrado" id="bocadillo-cuadrado2">
+                <button type="button" id="audio-close2" class="btn-close audio-close"></button>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Map</p>
+                <button type="button" class="audio" id="audio2" class="btn btn-primary">Escuchar</button>
+            </div>
+            <img src="img/punto.png" data-audio="audio/india.mp3" id="nivel2" class="nivel" name="india" data-status="noCompletado" data-jugable="false">
+            <div class="bocadillo-cuadrado" id="bocadillo-cuadrado3">
+                <button type="button" id="audio-close3" class="btn-close audio-close"></button>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Map</p>
+                <button type="button" class="audio" id="audio3" class="btn btn-primary">Escuchar</button>
+            </div>
+            <img src="img/punto.png" data-audio="audio/india.mp3" id="nivel3" class="nivel" name="kenia" data-status="noCompletado" data-jugable="false">
+            <div class="bocadillo-cuadrado" id="bocadillo-cuadrado4">
+                <button type="button" id="audio-close4" class="btn-close audio-close"></button>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Map</p>
+                <button type="button" class="audio" id="audio4" class="btn btn-primary">Escuchar</button>
+            </div>
+            <img src="img/punto.png" data-audio="audio/india.mp3" id="nivel4" class="nivel" name="brasil1" data-status="noCompletado" data-jugable="false">
+            <div class="bocadillo-cuadrado" id="bocadillo-cuadrado5">
+                <button type="button" id="audio-close5" class="btn-close audio-close"></button>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Map</p>
+                <button type="button" class="audio" id="audio5" class="btn btn-primary">Escuchar</button>
+            </div>
+            <img src="img/punto.png" data-audio="audio/india.mp3" id="nivel5" class="nivel" name="brasil1" data-status="noCompletado" data-jugable="false">  
             <div id="linea1" class="linea"></div>
             <div id="linea2" class="linea"></div>
             <div id="linea3" class="linea"></div>

@@ -15,8 +15,12 @@
 #nivel1,#nivel2,#nivel3,#nivel4,#nivel5{
     width: 21px;
     position: absolute;
-    z-index: 999;
     opacity: 0.5;
+    z-index: 999;
+}
+
+.nivel{
+    cursor: pointer;
 }
 
 #nivel1{
@@ -43,102 +47,6 @@
     top: 58%;
     left: 29%;
 }
-
-
-
-  @media (min-width: 768px) and (max-width: 991px){
-    
-    #nivel1,#nivel2,#nivel3,#nivel4,#nivel5{
-        width: 25px;
-    }
-    
-    #nivel1{
-        top: 35%;
-        left: 45%;
-    }
-
-    #nivel2{
-        top: 49%;
-        left: 68%;
-    }
-
-    #nivel5{
-        top: 57%;
-        left: 28%;
-    }
-  }
-
-  @media (min-width: 992px) and (max-width: 1199px){
-    
-    #nivel1,#nivel2,#nivel3,#nivel4,#nivel5{
-        width: 30px;
-    }
-    
-    #nivel1{
-        top: 35%;
-        left: 45%;
-    }
-
-    #nivel2{
-        top: 50%;
-        left: 68%;
-    }
-
-    #nivel5{
-        top: 57%;
-        left: 28%;
-    }
-
-    
-}
-
-  @media (min-width: 1200px) and (max-width: 1399px){
-    
-    #nivel1,#nivel2,#nivel3,#nivel4,#nivel5{
-        width: 35px;
-    }
-    
-    #nivel1{
-        top: 35%;
-        left: 45%;
-    }
-
-    #nivel2{
-        top: 49%;
-        left: 68%;
-    }
-
-    #nivel5{
-        top: 57%;
-        left: 28%;
-    }
-
-    
-  }
-
-  @media (min-width: 1399px){
-    
-    #nivel1,#nivel2,#nivel3,#nivel4,#nivel5{
-        width: 35px;
-    }
-    
-    #nivel1{
-        top: 36%;
-        left: 45.5%;
-    }
-
-    #nivel2{
-        top: 50%;
-        left: 68%;
-    }
-
-    #nivel5{
-        top: 57%;
-        left: 28%;
-    }
-    
-  }
-
 
 
 /* CSS linea */
@@ -191,7 +99,9 @@ form {
 }
 
 body .landing-page{
-    background-image: url('img/landing1.jpg');
+    height: fit-content;
+    background-image: url('../img/landing1.jpg');
+    background-size: contain;
 }
 
 .margin-center{
@@ -204,3 +114,268 @@ body .landing-page{
     padding: 5px;
     border-radius: 3px;
 }
+
+/* Bocadillo */
+.bocadillo-cuadrado {
+    position: absolute;
+    height: 160px;
+    width: 240px;
+    background: white;
+    box-shadow: 1px 12px 33px rgba(0, 0, 0, 0.5);
+    display: none;
+    
+}
+.bocadillo-cuadrado:before {
+    border: 15px solid white;
+    content: '';
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    position: absolute;
+    bottom: -26px;
+    left: calc(50% - 25px)
+}
+
+.bocadillo-cuadrado p{
+    font-size: 11px;
+    padding: 5px;
+    padding-top: 25px;
+}
+
+#bocadillo-cuadrado1{
+    top: 6%;
+    left: 36%;
+    z-index: 1000;
+}
+#bocadillo-cuadrado2{
+    top: 20%;
+    left: 59%;
+    z-index: 1000;
+}
+#bocadillo-cuadrado3{
+    top: 28%;
+    left: 47%;
+    z-index: 1000;
+}
+#bocadillo-cuadrado4{
+    top: 38%;
+    left: 24%;
+    z-index: 1000;
+}
+#bocadillo-cuadrado5{
+    top: 28%;
+    left: 19%;
+    z-index: 1000;
+}
+/* Bocadillo */
+
+button.audio{
+    width: 50px;
+    height: 17px;
+    padding: 0;
+    font-size: 11px;
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+}
+
+button.audio-close{
+    position: absolute;
+    right: 0;
+    font-size: 9px;
+}
+
+
+
+
+@media (min-width: 540px) and (max-width: 768px){
+    
+    #nivel1,#nivel2,#nivel3,#nivel4,#nivel5{
+        width: 25px;
+    }
+    
+    #nivel1{
+        top: 35%;
+        left: 45%;
+    }
+
+    #nivel2{
+        top: 49%;
+        left: 68%;
+    }
+
+    #nivel5{
+        top: 57%;
+        left: 28%;
+    }
+
+    #bocadillo-cuadrado1{
+        top: -28%;
+        left: 24%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado2{
+        top: -15%;
+        left: 47%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado3{
+        top: -5%;
+        left: 35%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado4{
+        top: 5%;
+        left: 12%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado5{
+        top: -4%;
+        left: 8%;
+        z-index: 1000;
+    }
+  }
+
+
+@media (min-width: 768px) and (max-width: 991px){
+    
+    #nivel1,#nivel2,#nivel3,#nivel4,#nivel5{
+        width: 25px;
+    }
+    
+    #nivel1{
+        top: 35%;
+        left: 45%;
+    }
+
+    #nivel2{
+        top: 49%;
+        left: 68%;
+    }
+
+    #nivel5{
+        top: 57%;
+        left: 28%;
+    }
+
+    #bocadillo-cuadrado1{
+        top: -12%;
+        left: 30%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado2{
+        top: 3%;
+        left: 53%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado3{
+        top: 10%;
+        left: 41%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado4{
+        top: 21%;
+        left: 18%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado5{
+        top: 11%;
+        left: 13%;
+        z-index: 1000;
+    }
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px){
+    
+    #nivel1,#nivel2,#nivel3,#nivel4,#nivel5{
+        width: 30px;
+    }
+    
+    #nivel1{
+        top: 35%;
+        left: 45%;
+    }
+
+    #nivel2{
+        top: 50%;
+        left: 68%;
+    }
+
+    #nivel5{
+        top: 57%;
+        left: 28%;
+    }
+
+    #bocadillo-cuadrado1{
+        top: 1%;
+        left: 34%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado2{
+        top: 16%;
+        left: 57%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado3{
+        top: 23%;
+        left: 45%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado4{
+        top: 33%;
+        left: 22%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado5{
+        top: 23%;
+        left: 17%;
+        z-index: 1000;
+    }
+}
+
+  @media (min-width: 1200px) and (max-width: 1399px){
+    
+    #nivel1,#nivel2,#nivel3,#nivel4,#nivel5{
+        width: 35px;
+    }
+    
+    #nivel1{
+        top: 35%;
+        left: 45%;
+    }
+
+    #nivel2{
+        top: 49%;
+        left: 68%;
+    }
+
+    #nivel5{
+        top: 57%;
+        left: 28%;
+    }
+
+    
+  }
+
+  @media (min-width: 1399px){
+    
+    #nivel1,#nivel2,#nivel3,#nivel4,#nivel5{
+        width: 35px;
+    }
+    
+    #nivel1{
+        top: 36%;
+        left: 45.5%;
+    }
+
+    #nivel2{
+        top: 50%;
+        left: 68%;
+    }
+
+    #nivel5{
+        top: 57%;
+        left: 28%;
+    }
+    
+  }

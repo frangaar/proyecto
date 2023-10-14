@@ -29,4 +29,4 @@ insert into usuarios values(null,1,"fran","fran","admin");
 insert into usuarios values(null,2,"pepe","pepe","player");
 insert into usuarios values(null,3,"juan","juan","player");
 insert into niveles values(null,2,true,true,true,false,false);
-insert into niveles values(null,3,true,false,false,false,false);
+insert into niveles values(null,3,false,false,false,false,false);

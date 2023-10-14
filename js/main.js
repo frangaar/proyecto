@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded',function(){
 
     let niveles = document.querySelectorAll('.nivel');
     let lineas = document.querySelectorAll('.linea');
+    let bocadillos = document.querySelectorAll('.bocadillo-cuadrado');
+    let audios = document.querySelectorAll('.audio');
+    let botonesCerrar = document.querySelectorAll('.audio-close');
 
 
     function repaintLines(){
@@ -64,19 +67,10 @@ document.addEventListener('DOMContentLoaded',function(){
         repaintLines();
     });
 
+    
+
 
     function setGamesLines(){
-
-        const juego1 = document.getElementById('nivel1');
-        const linea1 = document.getElementById('linea1');
-        const juego2 = document.getElementById('nivel2');
-        const linea2 = document.getElementById('linea2');
-        const juego3 = document.getElementById('nivel3');
-        const linea3 = document.getElementById('linea3');
-        const juego4 = document.getElementById('nivel4');
-        const linea4 = document.getElementById('linea4');
-        const juego5 = document.getElementById('nivel5');
-        const linea5 = document.getElementById('linea5');
 
         let jugable = "true";
         let detener = false;
@@ -94,6 +88,9 @@ document.addEventListener('DOMContentLoaded',function(){
 
                 let juego = niveles[index];
                 let linea = lineas[index];
+                let bocadillo = bocadillos[index];
+                let audio = audios[index];
+                let cerrar = botonesCerrar[index];
 
 
                 if(juego.getAttribute('data-status') == "completado"){
@@ -101,18 +98,41 @@ document.addEventListener('DOMContentLoaded',function(){
                     linea.style.display = "block";
                 }
 
+                let tmpFile = juego.getAttribute('data-audio')
+                let file = new Audio(tmpFile);
+                
+                audio.addEventListener('click',function(){
+
+                    file.play();
+                });
+
+                cerrar.addEventListener('click',function(){
+
+                    bocadillo.style.display="none";
+                });
+
                 juego.addEventListener('mouseover', function(){
             
-                    linea.style.display="block"
+                    linea.style.display="block";
+                    if(window.innerWidth > 540){
+                        bocadillo.style.display="block";
+                        juego.style.zIndex=1001;
+                    }
+                    
         
                     this.addEventListener('mouseout', function(){
                         
                         if(this.getAttribute('data-status') == "completado"){
-                            linea.style.display="block"
+                            linea.style.display="block";
                         }else{
-                            linea.style.display="none"
+                            linea.style.display="none";
+                            
                         }
-                        
+
+                        if(window.innerWidth > 540){
+                            //bocadillo.style.display="none";
+                            juego.style.zIndex=999;
+                        }
                         
                     });
 
@@ -126,31 +146,31 @@ document.addEventListener('DOMContentLoaded',function(){
                             case 'spain':
                                 detener = false;
 
-                                window.location.replace("spain/mapa.php");
+                                window.location.replace("spain/index.php");
 
                                 break;
                             case 'india':
                                 detener = false;
 
-                                window.location.replace("india/mapa.php");
+                                window.location.replace("india/index.php");
                                 
                                 break;
                             case 'kenia':
                                 detener = false;
                                 
-                                window.location.replace("kenia/mapa.php");
+                                window.location.replace("kenia/index.php");
                                 
                                 break;
                             case 'brasil1':
                                 detener = false;
                                 
-                                window.location.replace("brasil1/mapa.php");
+                                window.location.replace("brasil1/index.php");
                                 
                                 break;
                             case 'brasil2':
                                 detener = false;
                                 
-                                window.location.replace("brasil2/mapa.php");
+                                window.location.replace("brasil2/index.php");
                                 
                                 break;
                         }           
@@ -166,6 +186,10 @@ document.addEventListener('DOMContentLoaded',function(){
             index++;
         }
     }
+
+    function playAudio(){
+        
+    }
     
     function getParams(document){
 
@@ -176,10 +200,13 @@ document.addEventListener('DOMContentLoaded',function(){
         
         items=paramsTmp[1].split('&');
         
-        for (let index = 0; index < items.length; index++) {
-            paramsTmp=items[index].split('=');
-            params[paramsTmp[0]]=paramsTmp[1];
+        if(items[0] != ""){
+            for (let index = 0; index < items.length; index++) {
+                paramsTmp=items[index].split('=');
+                params[paramsTmp[0]]=paramsTmp[1];
+            }
         }
+        
         
         changeAttributes(params);
     }
@@ -197,6 +224,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
         
         let idx = 0;
+        
         for (const key in niveles) {
             if (Object.hasOwnProperty.call(niveles, key)) {
                 let nivelName = key;
@@ -208,6 +236,7 @@ document.addEventListener('DOMContentLoaded',function(){
             }
             idx++;
         }
+        
 
         if(idx < lastItem){
             levelsList[idx].setAttribute('data-jugable',"true");
@@ -215,44 +244,11 @@ document.addEventListener('DOMContentLoaded',function(){
         
     }
 
-    function playCountry(niveles,lineas,index,jugable){
-
-        let detener = false;
-
-        while(!detener){
-
-            niveles[index].setAttribute('data-jugable',jugable);
-            //niveles[index-1].setAttribute('data-status',"completado");
-            if(niveles[index].getAttribute('data-status') == "noCompletado"){
-
-                if(niveles[index].getAttribute('data-jugable') == "true"){
-                    niveles[index].style.opacity = 1;
-                }
-
-                let juego = niveles[index];
-                let linea = lineas[index];
-
-                juego.addEventListener('mouseover', function(){
-            
-                    linea.style.display="block"
-        
-                    this.addEventListener('mouseout', function(){
-                        
-                        linea.style.display="none"
-                        
-                    });                                            
-                    
-                });
-
-                jugable = true;
-                detener = true;
-                
-            }
-
-        }
+    function interactDOM(){
+        document.getElementById('bocadillo-cuadrado1').focus();
     }
 
     repaintLines();
     setGamesLines();    
-
+    interactDOM();
 });
