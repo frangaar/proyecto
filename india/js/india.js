@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     const player = document.getElementById("character");
     let colisionables = document.querySelectorAll('.colisionable');
-
+    let conQuienHablo = "";
     
     let abajo = false;
     let arriba = false;
@@ -60,6 +60,20 @@ document.addEventListener('DOMContentLoaded',function(){
                     tempDIV.setAttribute('class','colisionable character');
                     tempDIV.setAttribute('id','character'+nextIndex);
                     tempDIV.setAttribute('name',nombres[nextIndex]);
+
+                    tempDIV.addEventListener('click',function(){
+                        if(conQuienHablo == "Ghandi" && colision){
+                            alert("Hola soy " + conQuienHablo)
+                        }
+
+                        if(conQuienHablo == "Deepak" && colision){
+                            alert("Hola soy " + conQuienHablo)
+                        }
+                        
+                        if(conQuienHablo == "Arjun" && colision){
+                            alert("Hola soy " + conQuienHablo)
+                        }
+                    })
                 }else{
                     tempDIV.setAttribute('class','grid-container');
                 }
@@ -169,7 +183,9 @@ document.addEventListener('DOMContentLoaded',function(){
             }else if(despuesX || despuesY){
                 colision = false;
             }else{
-                colision = true;                     
+                colision = true; 
+                conQuienHablo = colisionables[index].getAttribute('name');
+                colisionables[index].focus();
             }
             index++;        
         };
@@ -246,7 +262,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 player.style.left = x + 'px';
             }
         }else if(derecha){
-            x = player.offsetLeft + VELOCIDAD;
+            x = player.offsetLeft + VELOCIDAD;            
             colision = checkColision(x,y);
 
             if(!colision){
@@ -261,36 +277,4 @@ document.addEventListener('DOMContentLoaded',function(){
         move();  
     }, 1000/24);
 
-    setContainerSize();
-
-    function setContainerSize(){
-
-        let escenario = document.getElementsByClassName('content')[0];
-
-        //escenario.style.width = window.innerWidth + 'px';
-        //escenario.style.height = window.innerHeight + 'px';
-    }
-
-
-    
-
-    /* let imagePath="img/murH";
-    //let numberOfImage=756;
-
-    for(let i=0;i<numberOfImage;i++){
-
-        if(x >= 1344){
-            x=0;
-            y+=32;
-        }
-
-        let tempDIV= document.createElement('div');
-        tempDIV.setAttribute('class','grid-container');
-        tempDIV.style.left=x + 'px';
-        tempDIV.style.top=y + 'px';
-        let innerHTML= `<img src='`+(imagePath)+`.png'></img>`
-        tempDIV.innerHTML=innerHTML;
-        parentDIV.appendChild(tempDIV);
-        x+=32;
-    } */
 });
