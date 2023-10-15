@@ -187,9 +187,6 @@ document.addEventListener('DOMContentLoaded',function(){
         }
     }
 
-    function playAudio(){
-        
-    }
     
     function getParams(document){
 
@@ -244,11 +241,6 @@ document.addEventListener('DOMContentLoaded',function(){
         
     }
 
-    function interactDOM(){
-        document.getElementById('bocadillo-cuadrado1').focus();
-    }
-
     repaintLines();
-    setGamesLines();    
-    interactDOM();
+    setGamesLines(); 
 });

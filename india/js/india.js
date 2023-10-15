@@ -1,18 +1,35 @@
 document.addEventListener('DOMContentLoaded',function(){
 
     const player = document.getElementById("character");
-    const pnj = document.getElementById("character2");
+    const personajes = document.querySelectorAll('.personajes');
 
     let abajo = false;
     let arriba = false;
     let izquierda = false;
     let derecha = false;
     let colision = false;
+    let posiciones = new Array();
+    const VELOCIDAD = 4;
+    
 
-    let colisiones = new Array();
+    charactersPosition();
 
-    //colisiones['uno'] = [300,600];
-    //colisiones['dos'] = [100,950];
+    function charactersPosition(){
+
+        let idx = 0;
+
+        posiciones['uno'] = [600,600];
+        posiciones['dos'] = [870,200];
+
+        for (const key in posiciones) {
+            if (Object.hasOwnProperty.call(posiciones, key)) {
+                
+                personajes[idx].style.left = posiciones[key][0] + 'px';
+                personajes[idx].style.top = posiciones[key][1] + 'px';
+            }
+            idx++;
+        }
+    }
 
 
     window.addEventListener("keydown", keyDown);
@@ -54,21 +71,28 @@ document.addEventListener('DOMContentLoaded',function(){
 
     function checkColision(x,y){
         
-    
-        antesX = ((x + player.offsetWidth) <= pnj.offsetLeft);
-        despuesX = (x >= (pnj.offsetLeft + pnj.offsetWidth));
-        antesY = ((y + player.offsetHeight) <= pnj.offsetTop);
-        despuesY = (y >= (pnj.offsetTop + pnj.offsetHeight));
-    
-    
-        if(antesX || antesY){
-            colision = false;
-        }else if(despuesX || despuesY){
-            colision = false;
-        }else{
-            colision = true;
-        }
+        let index = 0;
+        colision = false;
 
+        while(!colision && index < personajes.length){
+
+            antesX = ((x + player.offsetWidth) <= personajes[index].offsetLeft);
+            despuesX = (x >= (personajes[index].offsetLeft + personajes[index].offsetWidth));
+            antesY = ((y + player.offsetHeight) <= personajes[index].offsetTop);
+            despuesY = (y >= (personajes[index].offsetTop + personajes[index].offsetHeight));
+        
+        
+            if(antesX || antesY){
+                colision = false;
+            }else if(despuesX || despuesY){
+                colision = false;
+            }else{
+                colision = true;                
+            }
+            index++;        
+        };
+        
+        
         return colision;
     }
 
@@ -79,8 +103,8 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
         if(abajo && derecha){
-            x = player.offsetLeft + 2;
-            y = player.offsetTop + 2;
+            x = player.offsetLeft + VELOCIDAD;
+            y = player.offsetTop + VELOCIDAD;
             colision = checkColision(x,y);
 
             if(!colision){
@@ -89,8 +113,8 @@ document.addEventListener('DOMContentLoaded',function(){
             }
             
         }else if(abajo && izquierda){
-            x = player.offsetLeft - 2;
-            y = player.offsetTop + 2;
+            x = player.offsetLeft - VELOCIDAD;
+            y = player.offsetTop + VELOCIDAD;
             colision = checkColision(x,y);
 
             if(!colision){
@@ -99,8 +123,8 @@ document.addEventListener('DOMContentLoaded',function(){
             }
             
         }else if(arriba && derecha){
-            x = player.offsetLeft + 2;
-            y = player.offsetTop - 2;
+            x = player.offsetLeft + VELOCIDAD;
+            y = player.offsetTop - VELOCIDAD;
             colision = checkColision(x,y);
 
             if(!colision){
@@ -109,8 +133,8 @@ document.addEventListener('DOMContentLoaded',function(){
             }
             
         }else if(arriba && izquierda){
-            x = player.offsetLeft - 2;
-            y = player.offsetTop - 2;
+            x = player.offsetLeft - VELOCIDAD;
+            y = player.offsetTop - VELOCIDAD;
             colision = checkColision(x,y);
 
             if(!colision){
@@ -119,28 +143,28 @@ document.addEventListener('DOMContentLoaded',function(){
             }
 
         }else if(arriba){
-            y = player.offsetTop - 2;
+            y = player.offsetTop - VELOCIDAD;
             colision = checkColision(x,y);
 
             if(!colision){
                 player.style.top = y + 'px';
             }
         }else if(abajo){
-            y = player.offsetTop + 2;
+            y = player.offsetTop + VELOCIDAD;
             colision = checkColision(x,y);
 
             if(!colision){
                 player.style.top = y + 'px';
             }
         }else if(izquierda){
-            x = player.offsetLeft - 2;
+            x = player.offsetLeft - VELOCIDAD;
             colision = checkColision(x,y);
 
             if(!colision){
                 player.style.left = x + 'px';
             }
         }else if(derecha){
-            x = player.offsetLeft + 2;
+            x = player.offsetLeft + VELOCIDAD;
             colision = checkColision(x,y);
 
             if(!colision){
