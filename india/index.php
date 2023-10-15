@@ -16,12 +16,10 @@ session_start();
     <div class="container">
         <div class="content">
             <div id="character"></div>
-            <div class="personajes" id="character2"></div>
-            <div class="personajes" id="character3"></div>
+            <!-- <div class="colisionable character" id="character2"></div> -->
+            <!-- <div class="colisionable character" id="character3"></div> -->
         </div>
     </div>
-
-    <!-- <div class="grid-container grid-container-parent"></div> -->
 	
 </body>
 </html>

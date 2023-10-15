@@ -2,10 +2,9 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
     const player = document.getElementById("character");
-    const personajes = document.querySelectorAll('.personajes');
+    let colisionables = document.querySelectorAll('.colisionable');
 
     
-
     let abajo = false;
     let arriba = false;
     let izquierda = false;
@@ -14,21 +13,101 @@ document.addEventListener('DOMContentLoaded',function(){
     let posiciones = new Array();
     const VELOCIDAD = 4;
     
+    fillScenario();
+
+    function fillScenario(){
+
+        let muro="img/murH";
+        let suelo="img/murV";
+        
+
+        let x = 0;
+        let y = 0;
+
+        const mapa = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 1, 1, 1, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ];
+
+        let parentDIV = document.getElementsByClassName("content")[0];
+        let nextIndex = 0;
+
+        const nombres = ['Ghandi','Deepak','Arjun'];
+
+        for(let i=0;i<mapa.length;i++){
+            for(let j=0;j<mapa[i].length;j++){
+                let tempDIV= document.createElement('div');
+                if(mapa[i][j]==0){
+                    tempDIV.setAttribute('class','grid-container colisionable');    
+                }else if(mapa[i][j]==5){
+                    nextIndex = posiciones.length;
+                    tempDIV.setAttribute('class','colisionable character');
+                    tempDIV.setAttribute('id','character'+nextIndex);
+                    tempDIV.setAttribute('name',nombres[nextIndex]);
+                }else{
+                    tempDIV.setAttribute('class','grid-container');
+                }
+                
+                tempDIV.style.left=x + 'px';
+                tempDIV.style.top=y + 'px';
+
+                if(mapa[i][j]==0){
+                    let img1= `<img src='`+(muro)+`.png'></img>`
+                    tempDIV.innerHTML=img1;
+                    nextIndex = 'muro' + posiciones.length;
+                    posiciones[nextIndex] = [x,y];
+                }else if(mapa[i][j]==1){
+                    let img2= `<img src='`+(suelo)+`.png'></img>`
+                    tempDIV.innerHTML=img2;
+                }else{
+                    nextIndex = posiciones.length;
+                    posiciones[nextIndex] = [x,y];
+                }
+                
+                parentDIV.appendChild(tempDIV);
+                x+=32;
+            }
+            y+=32;
+            x=0;        
+        }
+
+        colisionables = document.querySelectorAll('.colisionable');
+    }
+
+    
 
     charactersPosition();
 
     function charactersPosition(){
 
-        let idx = 0;
+        personajes = document.querySelectorAll('.character');
 
-        posiciones['uno'] = [600,500];
-        posiciones['dos'] = [870,200];
+        let idx = 0;
 
         for (const key in posiciones) {
             if (Object.hasOwnProperty.call(posiciones, key)) {
                 
-                personajes[idx].style.left = posiciones[key][0] + 'px';
-                personajes[idx].style.top = posiciones[key][1] + 'px';
+                if(!key.includes("muro")){
+                    personajes[idx].style.left = posiciones[key][0] + 'px';
+                    personajes[idx].style.top = posiciones[key][1] + 'px';
+                }
+                
             }
             idx++;
         }
@@ -77,12 +156,12 @@ document.addEventListener('DOMContentLoaded',function(){
         let index = 0;
         colision = false;
 
-        while(!colision && index < personajes.length){
+        while(!colision && index < colisionables.length){
 
-            antesX = ((x + player.offsetWidth) <= personajes[index].offsetLeft);
-            despuesX = (x >= (personajes[index].offsetLeft + personajes[index].offsetWidth));
-            antesY = ((y + player.offsetHeight) <= personajes[index].offsetTop);
-            despuesY = (y >= (personajes[index].offsetTop + personajes[index].offsetHeight));
+            antesX = ((x + player.offsetWidth) <= colisionables[index].offsetLeft);
+            despuesX = (x >= (colisionables[index].offsetLeft + colisionables[index].offsetWidth));
+            antesY = ((y + player.offsetHeight) <= colisionables[index].offsetTop);
+            despuesY = (y >= (colisionables[index].offsetTop + colisionables[index].offsetHeight));
         
         
             if(antesX || antesY){
@@ -90,7 +169,7 @@ document.addEventListener('DOMContentLoaded',function(){
             }else if(despuesX || despuesY){
                 colision = false;
             }else{
-                colision = true;                
+                colision = true;                     
             }
             index++;        
         };
@@ -193,19 +272,25 @@ document.addEventListener('DOMContentLoaded',function(){
     }
 
 
-    let imagePath="img/murH";
-    let numberOfImage=2;
-    let x = 0;
+    
 
-    let parentDIV = document.getElementsByClassName("content")[0];
+    /* let imagePath="img/murH";
+    //let numberOfImage=756;
 
     for(let i=0;i<numberOfImage;i++){
+
+        if(x >= 1344){
+            x=0;
+            y+=32;
+        }
+
         let tempDIV= document.createElement('div');
         tempDIV.setAttribute('class','grid-container');
         tempDIV.style.left=x + 'px';
+        tempDIV.style.top=y + 'px';
         let innerHTML= `<img src='`+(imagePath)+`.png'></img>`
         tempDIV.innerHTML=innerHTML;
         parentDIV.appendChild(tempDIV);
         x+=32;
-    }
+    } */
 });
