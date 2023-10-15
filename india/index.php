@@ -14,10 +14,14 @@ session_start();
     <a href="../action_page.php">Volver</a>
 	
     <div class="container">
-        <div id="character"></div>
-        <div class="personajes" id="character2"></div>
-        <div class="personajes" id="character3"></div>
+        <div class="content">
+            <div id="character"></div>
+            <div class="personajes" id="character2"></div>
+            <div class="personajes" id="character3"></div>
+        </div>
     </div>
+
+    <!-- <div class="grid-container grid-container-parent"></div> -->
 	
 </body>
 </html>

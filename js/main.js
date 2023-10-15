@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded',function(){
     }
     
 
-    function resize(punto1,punto2,linea1){
+    function resize(){
         container.style.height = window.innerHeight + 'px';
     }
 

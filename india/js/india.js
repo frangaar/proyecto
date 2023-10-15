@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded',function(){
 
+
     const player = document.getElementById("character");
     const personajes = document.querySelectorAll('.personajes');
+
+    
 
     let abajo = false;
     let arriba = false;
@@ -18,7 +21,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
         let idx = 0;
 
-        posiciones['uno'] = [600,600];
+        posiciones['uno'] = [600,500];
         posiciones['dos'] = [870,200];
 
         for (const key in posiciones) {
@@ -178,4 +181,31 @@ document.addEventListener('DOMContentLoaded',function(){
     setInterval(function(){
         move();  
     }, 1000/24);
+
+    setContainerSize();
+
+    function setContainerSize(){
+
+        let escenario = document.getElementsByClassName('content')[0];
+
+        //escenario.style.width = window.innerWidth + 'px';
+        //escenario.style.height = window.innerHeight + 'px';
+    }
+
+
+    let imagePath="img/murH";
+    let numberOfImage=2;
+    let x = 0;
+
+    let parentDIV = document.getElementsByClassName("content")[0];
+
+    for(let i=0;i<numberOfImage;i++){
+        let tempDIV= document.createElement('div');
+        tempDIV.setAttribute('class','grid-container');
+        tempDIV.style.left=x + 'px';
+        let innerHTML= `<img src='`+(imagePath)+`.png'></img>`
+        tempDIV.innerHTML=innerHTML;
+        parentDIV.appendChild(tempDIV);
+        x+=32;
+    }
 });
