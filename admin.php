@@ -20,6 +20,21 @@ $listaUsuarios=obtenerUsuarios();
         <div class="col-12 cerrar-sesion">
             <a href="logout.php"><button type="button" class="btn btn-primary">Cerrar sesión</button></a>
         </div>
+        <?php if(isset($_SESSION['success']) == 1){ ?>
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <?php echo $_SESSION['success']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php
+            unset($_SESSION['success']);
+        }else  if(isset($_SESSION['error'])){ ?>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <?php echo $_SESSION['error']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php    
+        unset($_SESSION['error']); 
+        } ?>
         <div class="col-12 listado-usuarios-title">
             <h2>Listado de usuarios</h2>
         </div>
@@ -27,7 +42,7 @@ $listaUsuarios=obtenerUsuarios();
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">UID</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Usuario</th>
                         <th scope="col">Rol</th>
                         <th scope="col"></th>
@@ -36,16 +51,20 @@ $listaUsuarios=obtenerUsuarios();
                 <tbody>
                 <?php foreach ($listaUsuarios as $value) { ?>
                     <tr>
-                        <td><?php echo $value['uid'] ?></td>
+                        <td><?php echo $value['id'] ?></td>
                         <td><?php echo $value['user'] ?></td>
                         <td><?php echo $value['rol'] ?></td>
                         <td class="fa-actions">
-                            <button type="submit" class="btn btn-outline-primary" name="modificar">
-                                <i class="far fa-edit fa-text"></i>
-                            </button>
-                            <button type="submit" class="btn btn-outline-danger" name="borrar">
-                                <i class="far fa-trash-alt fa-text"></i>
-                            </button>
+                            
+                            <form action="./action_page.php" method="post">
+                                <input type="hidden" name="idDelete" value="<?php echo $value['id'] ?>"></input>
+                                <button type="submit" class="btn btn-outline-primary" name="modificar">
+                                    <i class="far fa-edit fa-text"></i>
+                                </button>
+                                <button type="submit" class="btn btn-outline-danger" name="borrar">
+                                    <i class="far fa-trash-alt fa-text"></i>
+                                </button>
+                            </form>
                         </td>
                     <?php } ?>
                     </tr>

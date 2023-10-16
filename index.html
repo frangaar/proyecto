@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/main.css">
     <title>Document</title>
 </head>
-<script>
+<!-- <script>
     function login() {
 
         let params = [
@@ -17,12 +17,22 @@
 
         window.open("login.php", "", params);
     }
-    </script>
+
+    function signup() {
+
+      let params = [
+          'width='+screen.width,
+          'height='+screen.height]       
+
+      window.open("signup.php", "", params);
+    }
+    </script> -->
 <body>
     
     <div class="container landing-page">
         <div class="login-bar-section">
-            <input type="button" onclick="login()" class="btn btn-primary" value="Login"></input>
+          <a href="login.php"><input type="button" class="btn btn-primary" value="Login"></input></a>
+          <a href="signup.php"><input type="button" class="btn btn-primary" value="Alta de usuario"></input></a>
         </div>
         <div class="banner-section">
             <img src="img/login.jpg" class="img-fluid" id="banner"> 

@@ -10,8 +10,8 @@
 <?php
     session_start();    
 ?>
-<body>    
-    
+<body>
+
     <div class="container text-center margin-center">
         <div class="text-end">
             <a href="index.html"><input type="button" class="btn btn-primary" value="Ir a inicio"></input></a>
@@ -37,7 +37,8 @@
                 } ?>
                 <form action="./action_page.php" method="post">
                     <div class="input-group mb-3">
-                        <img src="img/login.jpg">
+                        <!-- <img src="img/login.jpg"> -->
+                        <h1>Formulario de creación usuario</h1>
                     </div>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="user" placeholder="Username" aria-label="Username">
@@ -46,7 +47,7 @@
                         <input type="password" class="form-control" name="pass" placeholder="Password" aria-label="Passvord">
                     </div>
                     <div class="col-12">
-                        <button type="submit" name="login" class="btn btn-primary">Login</button>
+                        <button type="submit" name="signup" class="btn btn-primary">Crear</button>
                     </div>
                 </form>
             </div>

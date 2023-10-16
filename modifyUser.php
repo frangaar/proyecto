@@ -8,10 +8,12 @@
     <title>Document</title>
 </head>
 <?php
-    session_start();    
+    session_start(); 
+    include_once('db.php'); 
+    $data=modificarUsuario();
 ?>
-<body>    
-    
+<body>
+
     <div class="container text-center margin-center">
         <div class="text-end">
             <a href="index.html"><input type="button" class="btn btn-primary" value="Ir a inicio"></input></a>
@@ -37,16 +39,23 @@
                 } ?>
                 <form action="./action_page.php" method="post">
                     <div class="input-group mb-3">
-                        <img src="img/login.jpg">
+                        <!-- <img src="img/login.jpg"> -->
+                        <h1>Formulario de modificación de usuario</h1>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="user" placeholder="Username" aria-label="Username">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" id="nombre" class="form-control" name="user" placeholder="Username" aria-label="Username" value="<?php echo $data['user'] ?>">
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" name="pass" placeholder="Password" aria-label="Passvord">
+                        <label for="pass" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="pass" placeholder="Password" aria-label="Passvord" value="<?php echo $data['pass'] ?>">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label for="rol" class="form-label">Rol</label>
+                        <input type="text" class="form-control" name="rol" aria-label="Rol" value="<?php echo $data['rol'] ?>">
                     </div>
                     <div class="col-12">
-                        <button type="submit" name="login" class="btn btn-primary">Login</button>
+                        <button type="submit" name="signup" class="btn btn-primary">Crear</button>
                     </div>
                 </form>
             </div>

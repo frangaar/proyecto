@@ -390,5 +390,31 @@ button.audio-close{
         top: 57%;
         left: 28%;
     }
+
+    #bocadillo-cuadrado1{
+        top: 12%;
+        left: 39%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado2{
+        top: 26%;
+        left: 61%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado3{
+        top: 33%;
+        left: 49%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado4{
+        top: 43%;
+        left: 26%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado5{
+        top: 33%;
+        left: 21%;
+        z-index: 1000;
+    }
     
   }
