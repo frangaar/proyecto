@@ -139,13 +139,26 @@ body .landing-page{
 .bocadillo-cuadrado p{
     font-size: 11px;
     padding: 5px;
-    padding-top: 25px;
+    /* padding-top: 25px; */
+    display: -webkit-box;
+    max-width: 220px;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 0px;
+}
+
+div.text { 
+    /* height: 0px;  */
+    /* white-space: nowrap;  */
+    overflow: hidden;  
 }
 
 #bocadillo-cuadrado1{
     top: 6%;
     left: 36%;
     z-index: 1000;
+    display: none;
 }
 #bocadillo-cuadrado2{
     top: 20%;

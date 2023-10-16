@@ -20,6 +20,5 @@ session_start();
             <!-- <div class="colisionable character" id="character3"></div> -->
         </div>
     </div>
-	
 </body>
 </html>

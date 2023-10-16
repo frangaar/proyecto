@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded',function(){
     
 
     let container = document.getElementsByClassName('container')[0];
+    let textos = document.querySelectorAll('.text > p');
+    let id = null;
 
     resize();
 
@@ -27,6 +29,15 @@ document.addEventListener('DOMContentLoaded',function(){
 
     function resize(){
         container.style.height = window.innerHeight + 'px';
+
+        if(window.innerWidth < 540){
+            for (let index = 0; index < bocadillos.length; index++) {
+            
+                bocadillos[index].style.display="none";
+                textos[index].style.height = "0px";
+            }
+            
+        }        
     }
 
     function repaintLine(p1,p2,lin){
@@ -91,7 +102,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 let bocadillo = bocadillos[index];
                 let audio = audios[index];
                 let cerrar = botonesCerrar[index];
-
+                let texto = textos[index];
 
                 if(juego.getAttribute('data-status') == "completado"){
                     
@@ -109,6 +120,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 cerrar.addEventListener('click',function(){
 
                     bocadillo.style.display="none";
+                    texto.style.height = "0px";
                 });
 
                 juego.addEventListener('mouseover', function(){
@@ -118,6 +130,31 @@ document.addEventListener('DOMContentLoaded',function(){
                         bocadillo.style.display="block";
                         juego.style.zIndex=1001;
                     }
+
+                    displayStory();
+
+                    
+                    let character = 0;
+                    
+
+                    function displayStory(){
+                        
+                        clearInterval(id);
+                        id = setInterval(frame, 50);
+                    }
+
+                    
+                    function frame() {
+                        let textHeight = texto.offsetHeight;
+                        if (textHeight > 140) {
+                        clearInterval(id);
+                        } else {
+                            character++; 
+                            texto.style.height = character + 'px';
+                        }
+                    }
+                    
+                    
                     
         
                     this.addEventListener('mouseout', function(){
@@ -240,6 +277,7 @@ document.addEventListener('DOMContentLoaded',function(){
         }
         
     }
+
 
     repaintLines();
     setGamesLines(); 
