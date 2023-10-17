@@ -39,11 +39,17 @@
                     <div class="input-group mb-3">
                         <img src="img/login.jpg">
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="user" placeholder="Username" aria-label="Username">
+                    <div class="input-group mb-3">    
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <div class="col-sm-12">
+                            <input type="text" id="nombre" class="form-control" name="user" placeholder="Username" aria-label="Username">
+                        </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" name="pass" placeholder="Password" aria-label="Passvord">
+                        <label for="pass" class="form-label">Password</label>
+                        <div class="col-sm-12">
+                            <input type="password" class="form-control" name="pass" placeholder="Password" aria-label="Passvord">
+                        </div>    
                     </div>
                     <div class="col-12">
                         <button type="submit" name="login" class="btn btn-primary">Login</button>

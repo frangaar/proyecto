@@ -57,8 +57,8 @@ $listaUsuarios=obtenerUsuarios();
                         <td class="fa-actions">
                             
                             <form action="./action_page.php" method="post">
-                                <input type="hidden" name="idDelete" value="<?php echo $value['id'] ?>"></input>
-                                <button type="submit" class="btn btn-outline-primary" name="modificar">
+                                <input type="hidden" name="idUser" value="<?php echo $value['id'] ?>"></input>
+                                <button type="submit" class="btn btn-outline-primary" name="obtenerInfo">
                                     <i class="far fa-edit fa-text"></i>
                                 </button>
                                 <button type="submit" class="btn btn-outline-danger" name="borrar">

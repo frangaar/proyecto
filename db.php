@@ -240,28 +240,53 @@
         return $result;
     }
 
+    function obtenerInfoUsuario(){
+
+        $conn=openDB();
+
+        $id=$_SESSION['idUser'];
+
+
+        try {
+  
+            $sql = "SELECT * FROM usuarios where id=".$id;
+            
+            $selectAll = $conn->prepare($sql);
+            $selectAll->execute();
+
+            $result = $selectAll->fetch();
+
+        }catch (Exception $e) {
+        
+            $_SESSION['error'] =  $e->errorInfo[1] . ' - ' . $e->errorInfo[2];
+        }
+        
+
+        $conn=closeDB();
+
+        return $result;
+
+    }
+
     function modificarUsuario(){
 
         $conn=openDB();
 
-        $id=$_POST['idDelete'];
+        $id=$_POST['idUser'];
+        $user=$_POST['user'];
+        $pass=$_POST['pass'];
 
         try {
-  
-            $conn->beginTransaction();
 
-            $sql = "SELECT * FROM usuarios where id=".$id;
-            $selectAll = $conn->prepare($sql);
-            $selectAll->execute();
+            $updateSql = "UPDATE usuarios set user='".$user."',pass='".$pass."' where id=".$id;
+                                                
+            $update = $conn->prepare($updateSql);
+            $update->execute();
 
-            $result = $selectAll->fetchAll();
-
-            $conn->commit();
 
         }catch (Exception $e) {
         
-            $_SESSION['error'] =  "No se ha podido modificar el usuario";
-            $conn->rollBack();
+            $_SESSION['error'] =  $e->errorInfo[1] . ' - ' . $e->errorInfo[2];
         }
         
 
@@ -269,7 +294,7 @@
 
         if(!isset($_SESSION['error']) == 1){
             $_SESSION['success'] = "Usuario modificado correctamente";
-            header("Location: login.php");
+            header("Location: admin.php");
         }else{
             header("Location: admin.php");
         }
@@ -282,7 +307,7 @@
 
         $conn=openDB();
 
-        $id=$_POST['idDelete'];
+        $id=$_POST['idUser'];
 
 
         try {

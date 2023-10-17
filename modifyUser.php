@@ -8,15 +8,14 @@
     <title>Document</title>
 </head>
 <?php
-    session_start(); 
     include_once('db.php'); 
-    $data=modificarUsuario();
+    $data=obtenerInfoUsuario();
 ?>
 <body>
 
     <div class="container text-center margin-center">
         <div class="text-end">
-            <a href="index.html"><input type="button" class="btn btn-primary" value="Ir a inicio"></input></a>
+            <a href="admin.php"><input type="button" class="btn btn-primary" value="Volver a listado usuarios"></input></a>
         </div>
         
         <div class="row align-items-end">
@@ -42,20 +41,27 @@
                         <!-- <img src="img/login.jpg"> -->
                         <h1>Formulario de modificación de usuario</h1>
                     </div>
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-3">    
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" id="nombre" class="form-control" name="user" placeholder="Username" aria-label="Username" value="<?php echo $data['user'] ?>">
+                        <div class="col-sm-12">
+                            <input type="hidden" name="idUser" value="<?php echo $data['id'] ?>"></input>
+                            <input type="text" id="nombre" class="form-control" name="user" placeholder="Username" aria-label="Username" value="<?php echo $data['user'] ?>">
+                        </div>
                     </div>
                     <div class="input-group mb-3">
                         <label for="pass" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="pass" placeholder="Password" aria-label="Passvord" value="<?php echo $data['pass'] ?>">
+                        <div class="col-sm-12">
+                            <input type="password" class="form-control" name="pass" placeholder="Password" aria-label="Passvord" value="<?php echo $data['pass'] ?>">
+                        </div>    
                     </div>
                     <div class="input-group mb-3">
                         <label for="rol" class="form-label">Rol</label>
-                        <input type="text" class="form-control" name="rol" aria-label="Rol" value="<?php echo $data['rol'] ?>">
+                        <div class="col-sm-12">
+                            <input type="text" disabled class="form-control" name="rol" aria-label="Rol" value="<?php echo $data['rol'] ?>">
+                        </div>
                     </div>
                     <div class="col-12">
-                        <button type="submit" name="signup" class="btn btn-primary">Crear</button>
+                        <button type="submit" name="update" class="btn btn-primary">Actualizar</button>
                     </div>
                 </form>
             </div>
