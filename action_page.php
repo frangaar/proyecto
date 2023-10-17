@@ -16,6 +16,33 @@
 
         borrarUsuario();
 
+    }else if(isset($_POST['buscarRanking']) == 1){
+
+        if(isset($_SESSION['params']) == 1){
+            unset($_SESSION['params']);
+        }
+        
+
+        if(isset($_POST['fecha']) == 1){
+        
+            $fecha=$_POST['fecha'];
+
+            $_SESSION['params'] .= " and r.fecha='".$fecha."'";
+
+        }
+        
+        if(isset($_POST['nivel']) == 1){
+
+            $nivel=$_POST['nivel'];
+
+            $_SESSION['params'] .= " and r.nivel=".$nivel;
+            
+        }
+
+    
+        header("Location: ranking.php");   
+
+    // Validamos usuario si hacemos login o volvemos a una ventana anterior
     }else if(isset($_POST['update']) == 1){
 
         modificarUsuario();
@@ -26,5 +53,7 @@
         validarUsuario();
     
     }
+
+    
 
 ?>

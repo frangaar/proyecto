@@ -199,7 +199,10 @@ button.audio-close{
 }
 
 
-
+.landing-juegos > h2{
+    display: inline-block;
+    padding-right: 15px;
+}
 
 @media (min-width: 540px) and (max-width: 768px){
     

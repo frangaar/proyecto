@@ -38,7 +38,6 @@ $listaUsuarios=obtenerUsuarios();
         <div class="col-12 listado-usuarios-title">
             <h2>Listado de usuarios</h2>
         </div>
-        <form action="" method="post">
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -70,7 +69,6 @@ $listaUsuarios=obtenerUsuarios();
                     </tr>
                 </tbody>
             </table>
-        </form>
     </div>
     
 </body>

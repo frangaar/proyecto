@@ -60,7 +60,6 @@ document.addEventListener('DOMContentLoaded',function(){
                     tempDIV.setAttribute('class','colisionable character');
                     tempDIV.setAttribute('id','character'+nextIndex);
                     tempDIV.setAttribute('name',nombres[nextIndex]);
-                    myStyle.insertRule("#blanc { color: white }", 0);
 
                     tempDIV.addEventListener('click',function(){
                         if(conQuienHablo == "Ghandi" && colision){

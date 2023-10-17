@@ -24,8 +24,25 @@ primary key(id),
 foreign key (uid) references usuarios(id)
 );
 
-insert into usuarios values(null,"fran","fran","admin");
+create table ranking(
+uid int not null,
+fecha date not null,
+nivel int not null,
+CONSTRAINT CHK_nivel  CHECK (nivel > 0 and nivel < 6),
+puntuacion int,
+primary key(uid,fecha,nivel),
+foreign key (uid) references usuarios(id)
+);
+
+insert into usuarios values(null,"admin","admin","admin");
 insert into usuarios values(null,"pepe","pepe","player");
 insert into usuarios values(null,"juan","juan","player");
 insert into niveles values(null,2,true,true,true,false,false);
 insert into niveles values(null,3,false,false,false,false,false);
+
+insert into ranking values(2,'2023-10-17',1,1000);
+insert into ranking values(2,'2023-10-16',2,1100);
+insert into ranking values(2,'2023-10-15',3,1800);
+insert into ranking values(3,'2023-10-17',1,1000);
+insert into ranking values(3,'2023-10-16',2,1000);
+insert into ranking values(3,'2023-10-15',3,1000);
