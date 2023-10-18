@@ -21,66 +21,80 @@ function drop(ev) {
     //console.log(ev.target.firstChild.innerText); //saca el texto del primer hijo
     //console.log(ev.target.nextElementSibling.firstChild.textContent); //saca el texto del siguiente gemelo
 
-    let anterior = ev.target.previousElementSibling;
+    /* let anterior = ev.target.previousElementSibling;*/
     let actual = ev.target;
-    let siguiente = ev.target.nextElementSibling;
-
-    if(siguiente.firstChild !== null){
-        if(parseInt(actual.firstChild.innerText) > parseInt(siguiente.firstChild.textContent)){
-            tablero.appendChild(currentElement);
-        }else if(parseInt(actual.firstChild.innerText) < parseInt(siguiente.firstChild.textContent) - 1){
-            tablero.appendChild(currentElement);
-        }
-    }
-
-    if(anterior.firstChild !== null){
-        if(parseInt(actual.firstChild.innerText) < parseInt(anterior.firstChild.textContent)){
-            tablero.appendChild(currentElement);
-        }else if(parseInt(actual.firstChild.innerText) > parseInt(anterior.firstChild.textContent) + 1){
-            tablero.appendChild(currentElement);
-        }
+    console.log(actual.className);
+    /*let siguiente = ev.target.nextElementSibling;*/
+    //div.col.border.droppable
+    if(actual.className != "col border droppable"){
+        // Si ya contiene una pieza, no se permite poner otra en el mismo sitio
+        tablero.appendChild(currentElement);
     }
 }
 
 function setBloques(){
-    for(let i = 1;i < 15;i++){
-        let bloque = "<span id='" + "drag" + i + "' class='bloque' draggable='true' onDragStart='drag(event)'>" + i + "</span>";
-        $('#tablero').append(bloque)
+
+    for(let i = 0;i < 16;i++){
+        
+        let ficha= document.createElement('img');
+        ficha.setAttribute('id','drag' + i);
+        ficha.setAttribute('class','bloque'); 
+        ficha.setAttribute('draggable','true');
+        ficha.setAttribute('onDragStart','drag(event)');
+        ficha.setAttribute('src','img/ghandi/'+i+'.png');
+        
+
+        let tablero = document.getElementById('tablero')
+        tablero.appendChild(ficha)
     }
 }
 
-$(function(){
 
-    $(document).ready(function() {
+document.addEventListener('DOMContentLoaded',function(){
 
-        setBloques();
 
-        let borders = 4;
-        let rows = 8;
-        let columns = 16;
 
-        $('.row').height($(document).height()/rows);
-        $('.col').height($('.row').height());
-        $('.bloque').width(($('.row').width()/columns)-borders);
-        $('.bloque').height($('.row').height());
-    });
+    setBloques();
 
-    $(document).on('drop','.droppable',function(e){
-        //console.log(e.originalEvent.dataTransfer.getData("data"));
-        $(this).removeClass('hover');
-    });
+    /* let borders = 4;
+    let rows = 4;
+    let columns = 4;
 
-    $(document).on('dragenter','.droppable',function(e){
-        e.preventDefault();
-        $(this).addClass('hover');
-    });
+    let row = document.getElementsByClassName('row');
+    let col = document.getElementsByClassName('col');
+    let bloque = document.getElementsByClassName('bloque');
 
-    $(document).on('dragleave','.droppable',function(e){
-        $(this).removeClass('hover');
-    });
-
-    $(document).on('drag', '.bloque' ,function (e){
-        console.log(e.pageX + ", " + e.pageY);
-    });
-
+    let columnas = col/8;
+    console.log(window.innerHeight);
+    for (let x = 0; x < row.length; x++) {
+        row[x].style.height = (window.innerHeight/rows) + 'px';
+        let anchoPieza = row[x].offsetHeight;
+        let altoPieza = row[x].offsetHeight;
+        
+        for (let y = 0; y < columnas; y++) {
+        
+            col[y].style.height = row[x].offsetHeight + 'px';
+            bloque[y].style.width = (anchoPieza/columns)-borders + 'px';
+            bloque[y].style.height = altoPieza + 'px';
+        }
+        
+    } */
 });
+
+
+document.ondragenter = function(e){
+
+    e.preventDefault();
+    if ( e.target.className == "droppable" ) {
+    
+        e.classList.add("hover");
+    }
+};
+
+
+document.ondragleave = function(e){
+
+    if ( e.target.className == "droppable" ) {
+        e.classList.remove("hover");
+    }
+};
