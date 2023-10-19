@@ -83,10 +83,13 @@ span{
     height: 200px;
 }
 
-.modal .col .parrilla{
-
-}
 
 .modal .col .piezas{
     width: 200px;
+    height: 200px;
+}
+
+.modal .col .piezas .tablero{
+    width: 200px;
+    height: 200px;
 }

@@ -15,9 +15,9 @@
 session_start();
 ?>
 <body>
-    <a href="../action_page.php">Volver</a>
+    <a href="../action_page.php" class="volver">Volver</a>
 	
-    <div class="container game">
+    <div class="container" id="game">
         <div class="content">
             <div id="character"></div>
         </div>
@@ -26,6 +26,7 @@ session_start();
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
+            <h2 class="title">Coloca las piezas para formar la imagen de Ghandi</h2>
             <div class="container-fluid juego text-center ui-widget-content">
     
             <div class="container text-center">

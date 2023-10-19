@@ -273,6 +273,13 @@ document.addEventListener('DOMContentLoaded',function(){
         }
     }
 
+    let containerGame = document.getElementById('game');
+    let volver = document.getElementsByClassName('volver')[0];
+
+    //containerGame.style.height = (window.innerHeight - volver.offsetHeight - 3) + 'px';
+    containerGame.style.height = '579px';
+    containerGame.style.width = window.innerWidth + 'px';
+
 
     /// game loop
     setInterval(function(){

@@ -50,11 +50,20 @@
     z-index: 1000;
 }
 
-
+.container#game{
+    position: absolute;
+    top: 15%;
+    left: 15%;
+}
 
 
 #myModal{
     z-index: 5000;
+}
+
+.title{
+    text-align: center;
+    padding-bottom: 30px;
 }
 
 /* The Modal (background) */
@@ -78,7 +87,7 @@
     padding: 20px;
     border: 1px solid #888;
     width: 65%; /* Could be more or less, depending on screen size */
-    height: 290px;
+    height: 400px;
     position: relative;
   }
   
@@ -88,6 +97,7 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
+    text-align: right;
   }
   
   .close:hover,

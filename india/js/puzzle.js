@@ -52,9 +52,13 @@ function setBloques(){
 
 document.addEventListener('DOMContentLoaded',function(){
 
-
-
     setBloques();
+
+    let cerrar = document.getElementsByClassName('close')[0];
+    cerrar.addEventListener('click',function(){
+        let modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    });
 });
 
 
