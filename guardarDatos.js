@@ -19,6 +19,5 @@ document.addEventListener('DOMContentLoaded',function(){
         xmlhttp.open("POST","save.php?user="+user+"&pass="+pass+"&rol="+rol,true);
         xmlhttp.send();
     });
-
     
 });

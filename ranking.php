@@ -29,7 +29,7 @@ $ranking=obtenerRanking();
                 <div class="row align-items-start">
                     <div class="col">
                         <select class="form-select" name="fecha" aria-label="Default select example">
-                            <option selected disabled>Selecciona fecha</option>
+                            <option selected value="">Selecciona fecha</option>
                             <option value="2023-10-15">2023-10-15</option>
                             <option value="2023-10-16">2023-10-16</option>
                             <option value="2023-10-17">2023-10-17</option>
@@ -37,7 +37,7 @@ $ranking=obtenerRanking();
                     </div>
                     <div class="col">
                         <select class="form-select" name="nivel" aria-label="Default select example">
-                            <option selected disabled>Selecciona nivel</option>
+                            <option selected value="">Selecciona nivel</option>
                             <option value="1">Nivel 1</option>
                             <option value="2">Nivel 2</option>
                             <option value="3">Nivel 3</option>

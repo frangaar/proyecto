@@ -10,11 +10,12 @@ function drag(ev) {
 }
 
 function drop(ev) {
+
     ev.preventDefault();
     let tablero = document.getElementById('tablero')
     let data = ev.dataTransfer.getData("text");
-    let currentElement = document.getElementById(data);
-    ev.target.appendChild(currentElement);
+    let pieza = document.getElementById(data);
+    ev.target.appendChild(pieza);
 
     //console.log(ev.target); //saca elemento padre
     //console.log(ev.target.firstChild); //saca primer elemento hijo
@@ -22,13 +23,35 @@ function drop(ev) {
     //console.log(ev.target.nextElementSibling.firstChild.textContent); //saca el texto del siguiente gemelo
 
     /* let anterior = ev.target.previousElementSibling;*/
-    let actual = ev.target;
-    console.log(actual.className);
+    let casilla = ev.target;
+    //console.log(casilla.className);
     /*let siguiente = ev.target.nextElementSibling;*/
     //div.col.border.droppable
-    if(actual.className != "col border droppable"){
+    if(casilla.className != "col border droppable"){
         // Si ya contiene una pieza, no se permite poner otra en el mismo sitio
-        tablero.appendChild(currentElement);
+        tablero.appendChild(pieza);
+    }else{
+        // Si la pieza no va en ese lugar, no se permite colocarla
+        if(casilla.getAttribute('data-id') != pieza.getAttribute('data-id')){
+            tablero.appendChild(pieza);
+        }else{
+            let piezasColocadas = document.querySelectorAll('.col.border.droppable .bloque')
+            let cantidadPiezasColocadas = piezasColocadas.length;
+            sessionStorage.setItem("aciertos",cantidadPiezasColocadas + 1);
+        }
+
+        habilitaBotonGuardar();
+    }
+}
+
+function habilitaBotonGuardar(){
+
+    let acierto = sessionStorage.getItem('aciertos');
+    let total = sessionStorage.getItem('total');
+
+    if(acierto==total){
+        let btnGuardar = document.getElementById('ghandi');
+        btnGuardar.removeAttribute('disabled');
     }
 }
 
@@ -42,6 +65,7 @@ function setBloques(){
         ficha.setAttribute('draggable','true');
         ficha.setAttribute('onDragStart','drag(event)');
         ficha.setAttribute('src','img/ghandi/'+i+'.png');
+        ficha.setAttribute('data-id',i);
         
 
         let tablero = document.getElementById('tablero')
@@ -52,6 +76,9 @@ function setBloques(){
 
 document.addEventListener('DOMContentLoaded',function(){
 
+    sessionStorage.setItem('aciertos',0);
+    sessionStorage.setItem('total',16);
+
     setBloques();
 
     let cerrar = document.getElementsByClassName('close')[0];
@@ -59,6 +86,15 @@ document.addEventListener('DOMContentLoaded',function(){
         let modal = document.getElementById("myModal");
         modal.style.display = "none";
     });
+
+    let btnGuardar = document.getElementById('ghandi');
+
+    btnGuardar.onclick = function(){
+    
+        sessionStorage.setItem("ghandi",true)
+    };
+
+
 });
 
 
@@ -78,4 +114,3 @@ document.ondragleave = function(e){
         e.classList.remove("hover");
     }
 };
-

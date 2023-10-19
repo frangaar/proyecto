@@ -22,20 +22,30 @@
             unset($_SESSION['params']);
         }
         
+        var_dump($_POST['fecha']);
+        var_dump($_POST['nivel']);
+        var_dump(strcmp($_POST['fecha'],""));
+        die();
+        
 
-        if(isset($_POST['fecha']) == 1){
+        if(strcmp($_POST['fecha'],"") == 0){
         
             $fecha=$_POST['fecha'];
 
-            $_SESSION['params'] .= " and r.fecha='".$fecha."'";
+            if($fecha != ""){
+                $_SESSION['params'] .= " and r.fecha='".$fecha."'";
+            }           
 
         }
         
-        if(isset($_POST['nivel']) == 1){
+        if(strcmp($_POST['nivel'],"") == 0){
 
             $nivel=$_POST['nivel'];
 
-            $_SESSION['params'] .= " and r.nivel=".$nivel;
+            if($fecha != "Selecciona nivel"){
+                $_SESSION['params'] .= " and r.nivel=".$nivel;
+            }
+            
             
         }
 

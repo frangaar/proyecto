@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded',function(){
 
-
     const player = document.getElementById("character");
     let colisionables = document.querySelectorAll('.colisionable');
     let conQuienHablo = "";
@@ -188,6 +187,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 colision = true; 
                 conQuienHablo = colisionables[index].getAttribute('name');
                 colisionables[index].focus();
+                console.log('paro');
             }
             index++;        
         };

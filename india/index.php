@@ -39,28 +39,28 @@ session_start();
                     <div class="col">
                         <div class="parrilla">
                             <div class="row row-cols-4">
-                                <div class="col border droppable" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                <div class="col border droppable" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                <div class="col border droppable" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                <div class="col border droppable" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col border droppable" data-id="0" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col border droppable" data-id="4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col border droppable" data-id="8" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col border droppable" data-id="12" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                             </div>
                             <div class="row row-cols-4">
-                                <div class="col border droppable" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                <div class="col border droppable" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                <div class="col border droppable" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                <div class="col border droppable" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col border droppable" data-id="2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col border droppable" data-id="5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col border droppable" data-id="9" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col border droppable" data-id="13" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                             </div>
                             <div class="row row-cols-4">
-                                <div class="col border droppable" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                <div class="col border droppable" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                <div class="col border droppable" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                <div class="col border droppable" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col border droppable" data-id="1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col border droppable" data-id="6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col border droppable" data-id="10" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col border droppable" data-id="14" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                             </div>
                             <div class="row row-cols-4">
-                                <div class="col border droppable" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                <div class="col border droppable" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                <div class="col border droppable" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                <div class="col border droppable" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col border droppable" data-id="3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col border droppable" data-id="7" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col border droppable" data-id="11" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col border droppable" data-id="15" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                             </div>
                         </div>
                     </div>
@@ -70,6 +70,9 @@ session_start();
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="text-end">
+                    <button type="button" id="ghandi" disabled class="btn btn-primary" value="completado">Guardar</button>
                 </div>
             </div>
         </div>

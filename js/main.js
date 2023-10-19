@@ -281,4 +281,9 @@ document.addEventListener('DOMContentLoaded',function(){
 
     repaintLines();
     setGamesLines(); 
+
+    localStorage.setItem("user","Fran");
+
+    const user = localStorage.getItem("user");
+    console.log(user);
 });
