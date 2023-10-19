@@ -1,5 +1,6 @@
-.container.game{
+.container-fluid#game{
     position: absolute;
+    bottom: 0;
 }
 
 .content{
@@ -50,10 +51,26 @@
     z-index: 1000;
 }
 
-.container#game{
+#game .content{
+    height: 544px;
+    width: 1184px;
+    margin: auto;
+}
+
+
+#player-panel{
+    height: 82px;
+    position: relative;
+}
+
+#player-panel .content-items{
+    /* position: relative; */
+}
+
+#player-panel .imagen img{
     position: absolute;
-    top: 15%;
-    left: 15%;
+    bottom: 0;
+    width: 50px;
 }
 
 
@@ -106,3 +123,113 @@
     text-decoration: none;
     cursor: pointer;
   }  
+
+
+
+  /* Bocadillo */
+.bocadillo-cuadrado {
+    position: absolute;
+    height: 160px;
+    width: 240px;
+    background: white;
+    box-shadow: 1px 12px 33px rgba(0, 0, 0, 0.5);
+    /* display: none; */
+    
+}
+
+#bocadillo-cuadrado1:before {
+    border: 15px solid white;
+    content: '';
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    position: absolute;
+    bottom: 67px;
+    left: calc(0% - 30px);
+    transform: rotate(90deg);
+}
+
+#bocadillo-cuadrado2:before {
+    border: 15px solid white;
+    content: '';
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    position: absolute;
+    bottom: 17px;
+    left: calc(0% - 30px);
+    transform: rotate(90deg);
+}
+
+#bocadillo-cuadrado3:before {
+    border: 15px solid white;
+    content: '';
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    position: absolute;
+    bottom: -26px;
+    left: calc(0% - -67px);
+    transform: rotate(0deg);
+}
+
+.bocadillo-cuadrado p{
+    font-size: 11px;
+    padding: 5px;
+    /* padding-top: 25px; */
+    display: -webkit-box;
+    max-width: 220px;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 140px;
+}
+
+button.audio{
+    width: 50px;
+    height: 17px;
+    padding: 0;
+    font-size: 11px;
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+}
+
+button.audio-close{
+    position: absolute;
+    right: 0;
+    font-size: 9px;
+}
+
+#bocadillo-cuadrado1{
+    top: 6%;
+    left: 65%;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0s, opacity 0.5s linear; 
+}
+
+#bocadillo-cuadrado2{
+    top: 61%;
+    left: 31%;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0s, opacity 0.5s linear; 
+}
+
+#bocadillo-cuadrado3{
+    top: 47%;
+    left: 72%;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0s, opacity 0.5s linear; 
+}
+
+.visible{
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+  /* Bocadillo */

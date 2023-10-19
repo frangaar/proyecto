@@ -2,33 +2,28 @@
     include_once('db.php'); 
     
     
-    if(isset($_POST['signup']) == 1){
+    if(isset($_POST['signup'])){
     
         crearUsuario();
     
-    }else if(isset($_POST['obtenerInfo']) == 1){
+    }else if(isset($_POST['obtenerInfo'])){
 
         $_SESSION['idUser'] = $_POST['idUser'];
 
         header("Location: modifyUser.php");   
     
-    }else if(isset($_POST['borrar']) == 1){
+    }else if(isset($_POST['borrar'])){
 
         borrarUsuario();
 
-    }else if(isset($_POST['buscarRanking']) == 1){
+    }else if(isset($_POST['buscarRanking'])){
 
-        if(isset($_SESSION['params']) == 1){
+        if(isset($_SESSION['params'])){
             unset($_SESSION['params']);
         }
         
-        var_dump($_POST['fecha']);
-        var_dump($_POST['nivel']);
-        var_dump(strcmp($_POST['fecha'],""));
-        die();
-        
 
-        if(strcmp($_POST['fecha'],"") == 0){
+        if(strcmp($_POST['fecha'],"") !== 0){
         
             $fecha=$_POST['fecha'];
 
@@ -38,7 +33,7 @@
 
         }
         
-        if(strcmp($_POST['nivel'],"") == 0){
+        if(strcmp($_POST['nivel'],"") !== 0){
 
             $nivel=$_POST['nivel'];
 
@@ -53,12 +48,12 @@
         header("Location: ranking.php");   
 
     // Validamos usuario si hacemos login o volvemos a una ventana anterior
-    }else if(isset($_POST['update']) == 1){
+    }else if(isset($_POST['update'])){
 
         modificarUsuario();
 
     // Validamos usuario si hacemos login o volvemos a una ventana anterior
-    }else if((isset($_POST['login']) == 1) || (isset($_SESSION['id']) == 1)){
+    }else if((isset($_POST['login'])) || (isset($_SESSION['id']))){
     
         validarUsuario();
     

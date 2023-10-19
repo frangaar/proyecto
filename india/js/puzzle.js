@@ -37,7 +37,7 @@ function drop(ev) {
         }else{
             let piezasColocadas = document.querySelectorAll('.col.border.droppable .bloque')
             let cantidadPiezasColocadas = piezasColocadas.length;
-            sessionStorage.setItem("aciertos",cantidadPiezasColocadas + 1);
+            sessionStorage.setItem("aciertos",cantidadPiezasColocadas);
         }
 
         habilitaBotonGuardar();
@@ -91,7 +91,9 @@ document.addEventListener('DOMContentLoaded',function(){
 
     btnGuardar.onclick = function(){
     
-        sessionStorage.setItem("ghandi",true)
+        sessionStorage.setItem("ghandi",true);
+        let modal = document.getElementById("myModal");
+        modal.style.display = "none";
     };
 
 

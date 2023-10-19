@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     const player = document.getElementById("character");
     let colisionables = document.querySelectorAll('.colisionable');
+    let audios = document.querySelectorAll('.audio');
     let conQuienHablo = "";
     
     let abajo = false;
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded',function(){
     let colision = false;
     let posiciones = new Array();
     const VELOCIDAD = 4;
+
     
     fillScenario();
 
@@ -23,7 +25,7 @@ document.addEventListener('DOMContentLoaded',function(){
         let x = 0;
         let y = 0;
 
-        const mapa = [
+        /* const mapa = [
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
         [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
@@ -40,9 +42,30 @@ document.addEventListener('DOMContentLoaded',function(){
         [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
         [0, 1, 1, 1, 1, 1, 1, 1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 1, 1, 1, 1, 1, 0],
         [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+        //[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        ];
+        ]; */
+
+        const mapa = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            //[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            ];
 
         let parentDIV = document.getElementsByClassName("content")[0];
         let nextIndex = 0;
@@ -60,20 +83,30 @@ document.addEventListener('DOMContentLoaded',function(){
                     tempDIV.setAttribute('id','character'+nextIndex);
                     tempDIV.setAttribute('name',nombres[nextIndex]);
 
-                    tempDIV.addEventListener('click',function(){
-                        if(conQuienHablo == "Ghandi" && colision){
-                            //alert("Hola soy " + conQuienHablo)
-                            let modal = document.getElementById("myModal");
-                            modal.style.display = "block";
-                        }
+                    tempDIV.addEventListener('click',function(e){
+                        let nameCharacter = e.currentTarget.getAttribute('name');
 
-                        if(conQuienHablo == "Deepak" && colision){
-                            alert("Hola soy " + conQuienHablo)
-                        }
+                    if(nameCharacter == conQuienHablo){
+
+                        switch (conQuienHablo) {
+                            case "Ghandi":
+                                let modal = document.getElementById("myModal");
+                                modal.style.display = "block";
+                                break;
                         
-                        if(conQuienHablo == "Arjun" && colision){
-                            alert("Hola soy " + conQuienHablo)
+                            case "Deepak":
+                                alert("Hola soy " + conQuienHablo);
+                                break;
+
+                            case "Arjun":
+                                alert("Hola soy " + conQuienHablo);
+                            break;
+
+                            default:
+                                break;
                         }
+                    }
+                        
                     })
                 }else{
                     tempDIV.setAttribute('class','grid-container');
@@ -121,6 +154,17 @@ document.addEventListener('DOMContentLoaded',function(){
                 if(!key.includes("muro")){
                     personajes[idx].style.left = posiciones[key][0] + 'px';
                     personajes[idx].style.top = posiciones[key][1] + 'px';
+
+                    if(personajes[idx].classList.contains('colisionable')){
+                        
+                        let tmpFile = audios[idx].getAttribute('data-audio')
+                        let file = new Audio(tmpFile);
+
+                        audios[idx].addEventListener('click',function(){
+
+                            file.play();
+                        });
+                    }
                 }
                 
             }
@@ -170,6 +214,9 @@ document.addEventListener('DOMContentLoaded',function(){
         
         let index = 0;
         colision = false;
+        let dialogo1 = document.getElementById('bocadillo-cuadrado1');
+        let dialogo2 = document.getElementById('bocadillo-cuadrado2');
+        let dialogo3 = document.getElementById('bocadillo-cuadrado3');
 
         while(!colision && index < colisionables.length){
 
@@ -181,13 +228,26 @@ document.addEventListener('DOMContentLoaded',function(){
         
             if(antesX || antesY){
                 colision = false;
+                dialogo1.classList.remove('visible');
+                dialogo2.classList.remove('visible');
+                dialogo3.classList.remove('visible');
             }else if(despuesX || despuesY){
                 colision = false;
+                dialogo1.classList.remove('visible');
+                dialogo2.classList.remove('visible');
+                dialogo3.classList.remove('visible');
             }else{
                 colision = true; 
                 conQuienHablo = colisionables[index].getAttribute('name');
                 colisionables[index].focus();
-                console.log('paro');
+                
+                if(conQuienHablo == 'Ghandi'){
+                    dialogo1.classList.add('visible');
+                }else if(conQuienHablo == 'Deepak'){
+                    dialogo2.classList.add('visible');
+                }else{
+                    dialogo3.classList.add('visible');
+                }
             }
             index++;        
         };
@@ -277,8 +337,8 @@ document.addEventListener('DOMContentLoaded',function(){
     let volver = document.getElementsByClassName('volver')[0];
 
     //containerGame.style.height = (window.innerHeight - volver.offsetHeight - 3) + 'px';
-    containerGame.style.height = '579px';
-    containerGame.style.width = window.innerWidth + 'px';
+    //containerGame.style.height = '544px';
+    //containerGame.style.width = window.innerWidth + 'px';
 
 
     /// game loop

@@ -28,7 +28,7 @@
 
         $conn=openDB();
 
-        if(!isset($_SESSION['id']) == 1){
+        if(!isset($_SESSION['id'])){
 
             $user = $_POST['user'];
             $pass = $_POST['pass'];
@@ -62,7 +62,7 @@
         }
 
         
-        if(isset($_SESSION['id']) == 1){
+        if(isset($_SESSION['id'])){
         
             if (strcmp($_SESSION['rol'], "admin") == 0) {
         
@@ -90,7 +90,7 @@
                 $url = "?";
                 $append = false;
         
-                if($result['nivel1'] == 1){
+                if($result['nivel'] >= 1){
         
                     if($append){
                         $url .= '&';
@@ -100,7 +100,7 @@
                     $append = true;
                 }
         
-                if($result['nivel2'] == 1){
+                if($result['nivel'] > 2){
         
                     if($append){
                         $url .= '&';
@@ -111,7 +111,7 @@
         
                 }
         
-                if($result['nivel3'] == 1){
+                if($result['nivel'] > 3){
         
                     if($append){
                         $url .= '&';
@@ -121,7 +121,7 @@
                     $append = true;
                 }
         
-                if($result['nivel4'] == 1){
+                if($result['nivel'] > 4){
         
                     if($append){
                         $url .= '&';
@@ -131,7 +131,7 @@
                     $append = true;
                 }
         
-                if($result['nivel5'] == 1){
+                if($result['nivel'] > 5){
         
                     if($append){
                         $url .= '&';
@@ -202,7 +202,7 @@
         }
 
         $conn=closeDB();
-        if(!isset($_SESSION['error']) == 1){
+        if(!isset($_SESSION['error'])){
             $_SESSION['success'] = "Usuario creado correctamente";
             header("Location: login.php");
         }else{
@@ -292,7 +292,7 @@
 
         $conn=closeDB();
 
-        if(!isset($_SESSION['error']) == 1){
+        if(!isset($_SESSION['error'])){
             $_SESSION['success'] = "Usuario modificado correctamente";
             header("Location: admin.php");
         }else{
@@ -344,7 +344,7 @@
 
         $conn=closeDB();
 
-        if(!isset($_SESSION['error']) == 1){
+        if(!isset($_SESSION['error'])){
             $_SESSION['success'] = "Usuario borrado correctamente";
         }
         
@@ -358,19 +358,13 @@
 
         $conn=openDB();
 
-        
-
         try {
             
-            if($_SESSION['params'] != ""){
+            if(isset($_SESSION['params'])){
                 $sql = "select * from ranking r, usuarios u where r.uid=u.id ".$_SESSION['params']." order by r.fecha asc";
             }else{
-                $sql = "select r.fecha,r.uid,u.user,r.puntuacion from ranking r left join usuarios u on r.uid=u.id order by r.fecha asc";
+                $sql = "select r.fecha,r.uid,u.user,r.puntuacion, r.nivel from ranking r left join usuarios u on r.uid=u.id order by r.fecha asc";
             }
-
-            
-        
-            
             
             $selectAll = $conn->prepare($sql);
             $selectAll->execute();

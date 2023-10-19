@@ -83,13 +83,11 @@ span{
     height: 200px;
 }
 
-
-.modal .col .piezas{
+.modal .col .piezas #tablero{
     width: 200px;
     height: 200px;
 }
 
-.modal .col .piezas .tablero{
-    width: 200px;
-    height: 200px;
+.modal-guardar{
+    padding-top: 10px;
 }

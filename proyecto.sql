@@ -15,11 +15,7 @@ primary key(id)
 create table niveles(
 id int auto_increment,
 uid int not null unique,
-nivel1 boolean,
-nivel2 boolean,
-nivel3 boolean,
-nivel4 boolean,
-nivel5 boolean,
+nivel boolean,
 primary key(id),
 foreign key (uid) references usuarios(id)
 );
