@@ -55,30 +55,6 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
     setBloques();
-
-    /* let borders = 4;
-    let rows = 4;
-    let columns = 4;
-
-    let row = document.getElementsByClassName('row');
-    let col = document.getElementsByClassName('col');
-    let bloque = document.getElementsByClassName('bloque');
-
-    let columnas = col/8;
-    console.log(window.innerHeight);
-    for (let x = 0; x < row.length; x++) {
-        row[x].style.height = (window.innerHeight/rows) + 'px';
-        let anchoPieza = row[x].offsetHeight;
-        let altoPieza = row[x].offsetHeight;
-        
-        for (let y = 0; y < columnas; y++) {
-        
-            col[y].style.height = row[x].offsetHeight + 'px';
-            bloque[y].style.width = (anchoPieza/columns)-borders + 'px';
-            bloque[y].style.height = altoPieza + 'px';
-        }
-        
-    } */
 });
 
 
@@ -98,3 +74,4 @@ document.ondragleave = function(e){
         e.classList.remove("hover");
     }
 };
+

@@ -60,11 +60,12 @@ document.addEventListener('DOMContentLoaded',function(){
                     tempDIV.setAttribute('class','colisionable character');
                     tempDIV.setAttribute('id','character'+nextIndex);
                     tempDIV.setAttribute('name',nombres[nextIndex]);
-                    tempDIV.setAttribute('name',nombres[nextIndex]);
 
                     tempDIV.addEventListener('click',function(){
                         if(conQuienHablo == "Ghandi" && colision){
                             //alert("Hola soy " + conQuienHablo)
+                            let modal = document.getElementById("myModal");
+                            modal.style.display = "block";
                         }
 
                         if(conQuienHablo == "Deepak" && colision){

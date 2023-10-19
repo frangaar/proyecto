@@ -73,13 +73,20 @@ span{
     height: 50px
 }
 
-.juego{
-    width: 430px;
-    /* position: relative;
-    height: 650px; */
+
+.modal .col.imagen, .modal .col.grid, .modal .col.piezas{
+    position: absolute;
 }
 
-.imagen-muestra > img{
+.modal .col .imagen img{
     width: 200px;
     height: 200px;
+}
+
+.modal .col .parrilla{
+
+}
+
+.modal .col .piezas{
+    width: 200px;
 }
