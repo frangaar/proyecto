@@ -33,8 +33,8 @@ foreign key (uid) references usuarios(id)
 insert into usuarios values(null,"admin","admin","admin");
 insert into usuarios values(null,"pepe","pepe","player");
 insert into usuarios values(null,"juan","juan","player");
-insert into niveles values(null,2,true,true,true,false,false);
-insert into niveles values(null,3,false,false,false,false,false);
+insert into niveles values(null,2,3);
+insert into niveles values(null,3,0);
 
 insert into ranking values(2,'2023-10-17',1,1000);
 insert into ranking values(2,'2023-10-16',2,1100);

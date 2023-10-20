@@ -57,6 +57,11 @@
     margin: auto;
 }
 
+.grid-container.colisionable.arbol > img{
+    width: 32px;
+    height: 32px;
+}
+
 
 #player-panel{
     height: 82px;

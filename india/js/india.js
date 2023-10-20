@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
         const mapa = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded',function(){
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-            [0, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
@@ -117,24 +117,34 @@ document.addEventListener('DOMContentLoaded',function(){
                 tempDIV.style.top=y + 'px';
 
                 if(mapa[i][j]==0){
-                    let img1= `<img src='`+(muro)+`.png'></img>`
+                    let img1= `<img src='`+(muro)+`.png' name='muro'></img>`
                     tempDIV.innerHTML=img1;
                     nextIndex = 'muro' + posiciones.length;
                     posiciones[nextIndex] = [x,y];
-                }else if(mapa[i][j]==1){
-                    let img2= `<img src='`+(suelo)+`.png'></img>`
+                }else if(mapa[i][j]==1 || mapa[i][j]==3){
+                    let img2= `<img src='`+(suelo)+`.png' name='suelo'></img>`
                     tempDIV.innerHTML=img2;
-                }else if(mapa[i][j]==3){
-                    let img3= '<img src='+(imagenes[0])+'></img>'
-                    tempDIV.innerHTML=img3;
-                    nextIndex = 'arbol' + posiciones.length;
-                    posiciones[nextIndex] = [x,y];
                 }else{
                     nextIndex = posiciones.length;
                     posiciones[nextIndex] = [x,y];
                 }
                 
                 parentDIV.appendChild(tempDIV);
+
+                if(mapa[i][j]==3){
+                    let img3= '<img src='+(imagenes[0])+' name=arbol></img>'
+                    let arbol= document.createElement('div');
+                    arbol.setAttribute('class','grid-container colisionable arbol');
+
+                    arbol.style.left=x + 'px';
+                    arbol.style.top=y + 'px';
+                    
+                    arbol.innerHTML=img3;
+                    nextIndex = 'arbol' + posiciones.length;
+                    posiciones[nextIndex] = [x,y];
+                    parentDIV.appendChild(arbol);
+                }
+
                 x+=32;
             }
             y+=32;
