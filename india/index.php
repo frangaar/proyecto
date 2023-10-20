@@ -16,16 +16,16 @@ session_start();
 ?>
 <body>
     <a href="../action_page.php" class="volver">Volver</a>
-	<div class="container-fluid" id="player-panel">
+	<!-- <div class="container-fluid" id="player-panel">
         <div class="content-items">
             <div class="imagen">
                 <img src="img/ghandi.png">
             </div>
         </div>
-    </div> 
+    </div>  -->
     <div class="container-fluid" id="game">
-        <div class="content">
-            <div id="character"></div>
+        <div class="content" id="mapa">
+            <!-- Aqui hacemos append de todos los items del escenario -->
         </div>
         <div class="bocadillo-cuadrado" id="bocadillo-cuadrado1">
             <button type="button" id="audio-close1" class="btn-close audio-close"></button>

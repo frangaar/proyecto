@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded',function(){
 
-    const player = document.getElementById("character");
-    let colisionables = document.querySelectorAll('.colisionable');
-    let audios = document.querySelectorAll('.audio');
-    let conQuienHablo = "";
+    //const player = document.getElementById("character");
+    let colisionables = 0;
+    let audios = 0;
+    let conQuienHablo = 0
     
     let abajo = false;
     let arriba = false;
@@ -11,13 +11,51 @@ document.addEventListener('DOMContentLoaded',function(){
     let derecha = false;
     let colision = false;
     let posiciones = new Array();
-    const VELOCIDAD = 4;
+    let velocidad = 4;
+    
+    let dimension = 48;
 
     const imagenes = ['img/arbol.png','img/cesped.png'];
+    restartGame();
 
     fillScenario();
+    const player = document.getElementById("character");
+
+    function restartGame(){
+
+        colisionables = document.querySelectorAll('.colisionable');
+        audios = document.querySelectorAll('.audio');
+        conQuienHablo = "";
+        
+        abajo = false;
+        arriba = false;
+        izquierda = false;
+        derecha = false;
+        colision = false;
+        posiciones = new Array();
+        velocidad = 4;
+        
+        dimension = 48;
+
+        const imagenes = ['img/arbol.png','img/cesped.png'];
+
+        let content = document.getElementById('mapa');
+        content.innerHTML = "";
+        posiciones = [];
+        colisionables = [];
+        colision = false;
+    }
+
 
     function fillScenario(){
+
+        restartGame();
+
+        if(window.innerWidth > 1900){
+            dimension = 48;
+        }else{
+            dimension = 32;
+        }
 
         let muro="img/murH";
         let suelo="img/murV";
@@ -26,33 +64,14 @@ document.addEventListener('DOMContentLoaded',function(){
         let x = 0;
         let y = 0;
 
-        /* const mapa = [
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 1, 1, 1, 1, 1, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        //[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        ]; */
-
+        
+        //37
         const mapa = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 9, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 0],
@@ -64,7 +83,8 @@ document.addEventListener('DOMContentLoaded',function(){
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-            //[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             ];
 
@@ -80,7 +100,7 @@ document.addEventListener('DOMContentLoaded',function(){
                     tempDIV.setAttribute('class','grid-container colisionable');    
                 }else if(mapa[i][j]==2){
                     nextIndex = posiciones.length;
-                    tempDIV.setAttribute('class','colisionable character');
+                    tempDIV.setAttribute('class','colisionable character npc');
                     tempDIV.setAttribute('id','character'+nextIndex);
                     tempDIV.setAttribute('name',nombres[nextIndex]);
 
@@ -110,7 +130,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         
                     })
                 }else{
-                    tempDIV.setAttribute('class','grid-container');
+                    tempDIV.setAttribute('class','grid-container no-colisionable');
                 }
                 
                 tempDIV.style.left=x + 'px';
@@ -121,12 +141,14 @@ document.addEventListener('DOMContentLoaded',function(){
                     tempDIV.innerHTML=img1;
                     nextIndex = 'muro' + posiciones.length;
                     posiciones[nextIndex] = [x,y];
-                }else if(mapa[i][j]==1 || mapa[i][j]==3){
+                }else if(mapa[i][j]==1 || mapa[i][j]==3 || mapa[i][j]==9){
                     let img2= `<img src='`+(suelo)+`.png' name='suelo'></img>`
                     tempDIV.innerHTML=img2;
                 }else{
-                    nextIndex = posiciones.length;
-                    posiciones[nextIndex] = [x,y];
+                    if((mapa[i][j]!=9)){
+                        nextIndex = posiciones.length;
+                        posiciones[nextIndex] = [x,y];
+                    }
                 }
                 
                 parentDIV.appendChild(tempDIV);
@@ -145,13 +167,26 @@ document.addEventListener('DOMContentLoaded',function(){
                     parentDIV.appendChild(arbol);
                 }
 
-                x+=32;
+                if(mapa[i][j]==9){
+
+                    let player= document.createElement('div');
+                    player.setAttribute('id','character');    
+
+                    player.style.left=x + 'px';
+                    player.style.top=y + 'px';
+                    
+                    parentDIV.appendChild(player);
+                }
+
+                x+=dimension;
             }
-            y+=32;
+            y+=dimension;
             x=0;        
         }
 
+        nextIndex = 0;
         colisionables = document.querySelectorAll('.colisionable');
+        resizeItems();
     }
 
     
@@ -279,8 +314,8 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
         if(abajo && derecha){
-            x = player.offsetLeft + VELOCIDAD;
-            y = player.offsetTop + VELOCIDAD;
+            x = player.offsetLeft + velocidad;
+            y = player.offsetTop + velocidad;
             colision = checkColision(x,y);
 
             if(!colision){
@@ -289,8 +324,8 @@ document.addEventListener('DOMContentLoaded',function(){
             }
             
         }else if(abajo && izquierda){
-            x = player.offsetLeft - VELOCIDAD;
-            y = player.offsetTop + VELOCIDAD;
+            x = player.offsetLeft - velocidad;
+            y = player.offsetTop + velocidad;
             colision = checkColision(x,y);
 
             if(!colision){
@@ -299,8 +334,8 @@ document.addEventListener('DOMContentLoaded',function(){
             }
             
         }else if(arriba && derecha){
-            x = player.offsetLeft + VELOCIDAD;
-            y = player.offsetTop - VELOCIDAD;
+            x = player.offsetLeft + velocidad;
+            y = player.offsetTop - velocidad;
             colision = checkColision(x,y);
 
             if(!colision){
@@ -309,8 +344,8 @@ document.addEventListener('DOMContentLoaded',function(){
             }
             
         }else if(arriba && izquierda){
-            x = player.offsetLeft - VELOCIDAD;
-            y = player.offsetTop - VELOCIDAD;
+            x = player.offsetLeft - velocidad;
+            y = player.offsetTop - velocidad;
             colision = checkColision(x,y);
 
             if(!colision){
@@ -319,28 +354,28 @@ document.addEventListener('DOMContentLoaded',function(){
             }
 
         }else if(arriba){
-            y = player.offsetTop - VELOCIDAD;
+            y = player.offsetTop - velocidad;
             colision = checkColision(x,y);
 
             if(!colision){
                 player.style.top = y + 'px';
             }
         }else if(abajo){
-            y = player.offsetTop + VELOCIDAD;
+            y = player.offsetTop + velocidad;
             colision = checkColision(x,y);
 
             if(!colision){
                 player.style.top = y + 'px';
             }
         }else if(izquierda){
-            x = player.offsetLeft - VELOCIDAD;
+            x = player.offsetLeft - velocidad;
             colision = checkColision(x,y);
 
             if(!colision){
                 player.style.left = x + 'px';
             }
         }else if(derecha){
-            x = player.offsetLeft + VELOCIDAD;            
+            x = player.offsetLeft + velocidad;            
             colision = checkColision(x,y);
 
             if(!colision){
@@ -349,17 +384,46 @@ document.addEventListener('DOMContentLoaded',function(){
         }
     }
 
-    let containerGame = document.getElementById('game');
-    let volver = document.getElementsByClassName('volver')[0];
-
-    //containerGame.style.height = (window.innerHeight - volver.offsetHeight - 3) + 'px';
-    //containerGame.style.height = '544px';
-    //containerGame.style.width = window.innerWidth + 'px';
-
 
     /// game loop
     setInterval(function(){
         move();  
     }, 1000/24);
+
+    window.addEventListener('resize',fillScenario);
+
+    function resizeItems(){
+
+        let noColisionables = document.querySelectorAll('.grid-container.no-colisionable');
+        let noColisionablesImg = document.querySelectorAll('.grid-container.no-colisionable > img');
+        
+        let colisionables =  document.querySelectorAll('.grid-container.colisionable');
+        let colisionablesImg = document.querySelectorAll('.grid-container.colisionable > img');
+
+        let npc = document.querySelectorAll('.npc');
+
+
+        for (let x = 0; x < noColisionables.length; x++) {
+            
+            noColisionables[x].style.width = dimension + 'px';
+            noColisionables[x].style.height = dimension + 'px';
+            noColisionablesImg[x].style.width = dimension + 'px';
+            noColisionablesImg[x].style.height = dimension + 'px';
+        }
+
+        for (let y = 0; y < colisionables.length; y++) {
+            
+            colisionables[y].style.width = dimension + 'px';
+            colisionables[y].style.height = dimension + 'px';
+            colisionablesImg[y].style.width = dimension + 'px';
+            colisionablesImg[y].style.height = dimension + 'px';    
+        }
+
+        for (let y = 0; y < npc.length; y++) {
+            
+            npc[y].style.width = dimension + 'px';
+            npc[y].style.height = dimension + 'px'; 
+        }
+    }
 
 });

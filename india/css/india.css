@@ -1,7 +1,7 @@
-.container-fluid#game{
+/* .container-fluid#game{
     position: absolute;
     bottom: 0;
-}
+} */
 
 .content{
     position: relative;
@@ -23,44 +23,51 @@
     height: 32px;
     background: red;
     z-index: 1000;
-    top:100px;
-    left: 200px;
+    /* top:100px; */
+    /* left: 200px; */
 }
 
 #character0 {
     position: absolute;
-    width: 32px;
-    height: 32px;
+    /* width: 32px;
+    height: 32px; */
     background: blue;
     z-index: 1000;
 }
 
 #character1 {
     position: absolute;
-    width: 32px;
-    height: 32px;
+    /* width: 32px;
+    height: 32px; */
     background: green;
     z-index: 1000;
 }
 
 #character2 {
     position: absolute;
-    width: 32px;
-    height: 32px;
+    /* width: 32px;
+    height: 32px; */
     background: yellow;
     z-index: 1000;
 }
 
-#game .content{
+/* #game .content{
     height: 544px;
     width: 1184px;
     margin: auto;
-}
+} */
 
-.grid-container.colisionable.arbol > img{
-    width: 32px;
-    height: 32px;
-}
+/* .grid-container.no-colisionable > img,
+.grid-container.colisionable > img{
+
+    width: 48px !important;
+    height: 48px !important;
+} */
+
+/* .grid-container.colisionable.arbol > img{
+    width: 48px;
+    height: 48px;
+} */
 
 
 #player-panel{
