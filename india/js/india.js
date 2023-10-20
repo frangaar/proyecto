@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded',function(){
 
-    //const player = document.getElementById("character");
-    let colisionables = 0;
-    let audios = 0;
-    let conQuienHablo = 0
+    let colisionables = document.querySelectorAll('.colisionable');
+    let audios = document.querySelectorAll('.audio');
+    let conQuienHablo = "";
     
     let abajo = false;
     let arriba = false;
@@ -11,45 +10,33 @@ document.addEventListener('DOMContentLoaded',function(){
     let derecha = false;
     let colision = false;
     let posiciones = new Array();
-    let velocidad = 4;
+    const VELOCIDAD = 4;
     
-    let dimension = 48;
+    dimension = 48;
 
     const imagenes = ['img/arbol.png','img/cesped.png'];
-    restartGame();
 
+    
+    let player = '';
     fillScenario();
-    const player = document.getElementById("character");
+    
 
     function restartGame(){
 
-        colisionables = document.querySelectorAll('.colisionable');
-        audios = document.querySelectorAll('.audio');
-        conQuienHablo = "";
-        
-        abajo = false;
-        arriba = false;
-        izquierda = false;
-        derecha = false;
-        colision = false;
-        posiciones = new Array();
-        velocidad = 4;
-        
-        dimension = 48;
-
-        const imagenes = ['img/arbol.png','img/cesped.png'];
+        sessionStorage.setItem('x',player.offsetLeft);
+        sessionStorage.setItem('y',player.offsetTop);
 
         let content = document.getElementById('mapa');
         content.innerHTML = "";
         posiciones = [];
         colisionables = [];
         colision = false;
+
+        fillScenario();
     }
 
 
     function fillScenario(){
-
-        restartGame();
 
         if(window.innerWidth > 1900){
             dimension = 48;
@@ -84,12 +71,13 @@ document.addEventListener('DOMContentLoaded',function(){
             [0, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            //[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             ];
 
         let parentDIV = document.getElementsByClassName("content")[0];
         let nextIndex = 0;
+        
 
         const nombres = ['Ghandi','Deepak','Arjun'];
 
@@ -169,8 +157,8 @@ document.addEventListener('DOMContentLoaded',function(){
 
                 if(mapa[i][j]==9){
 
-                    let player= document.createElement('div');
-                    player.setAttribute('id','character');    
+                    player= document.createElement('div');
+                    player.setAttribute('id','character'); 
 
                     player.style.left=x + 'px';
                     player.style.top=y + 'px';
@@ -187,6 +175,14 @@ document.addEventListener('DOMContentLoaded',function(){
         nextIndex = 0;
         colisionables = document.querySelectorAll('.colisionable');
         resizeItems();
+
+        if(sessionStorage.getItem('x') != null){
+            player.style.left=sessionStorage.getItem('x') + 'px';       
+        }
+
+        if(sessionStorage.getItem('y') != null){
+            player.style.top=sessionStorage.getItem('y') + 'px';
+        }
     }
 
     
@@ -196,6 +192,8 @@ document.addEventListener('DOMContentLoaded',function(){
     function charactersPosition(){
 
         personajes = document.querySelectorAll('.character');
+        let btnClose = document.querySelectorAll('.audio-close');
+        let dialogos = document.querySelectorAll('.bocadillo-cuadrado');
 
         let idx = 0;
 
@@ -208,18 +206,26 @@ document.addEventListener('DOMContentLoaded',function(){
 
                     if(personajes[idx].classList.contains('colisionable')){
                         
-                        let tmpFile = audios[idx].getAttribute('data-audio')
+                        let tmpFile = audios[idx].getAttribute('data-audio');
                         let file = new Audio(tmpFile);
 
                         audios[idx].addEventListener('click',function(){
 
                             file.play();
                         });
+
+                        let dialogo = dialogos[idx];
+                        
+                        btnClose[idx].addEventListener('click',function(){
+
+                            dialogo.classList.remove('visible');
+                        });
+
                     }
+                    idx++;
                 }
-                
             }
-            idx++;
+            
         }
     }
 
@@ -314,8 +320,8 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
         if(abajo && derecha){
-            x = player.offsetLeft + velocidad;
-            y = player.offsetTop + velocidad;
+            x = player.offsetLeft + VELOCIDAD;
+            y = player.offsetTop + VELOCIDAD;
             colision = checkColision(x,y);
 
             if(!colision){
@@ -324,8 +330,8 @@ document.addEventListener('DOMContentLoaded',function(){
             }
             
         }else if(abajo && izquierda){
-            x = player.offsetLeft - velocidad;
-            y = player.offsetTop + velocidad;
+            x = player.offsetLeft - VELOCIDAD;
+            y = player.offsetTop + VELOCIDAD;
             colision = checkColision(x,y);
 
             if(!colision){
@@ -334,8 +340,8 @@ document.addEventListener('DOMContentLoaded',function(){
             }
             
         }else if(arriba && derecha){
-            x = player.offsetLeft + velocidad;
-            y = player.offsetTop - velocidad;
+            x = player.offsetLeft + VELOCIDAD;
+            y = player.offsetTop - VELOCIDAD;
             colision = checkColision(x,y);
 
             if(!colision){
@@ -344,8 +350,8 @@ document.addEventListener('DOMContentLoaded',function(){
             }
             
         }else if(arriba && izquierda){
-            x = player.offsetLeft - velocidad;
-            y = player.offsetTop - velocidad;
+            x = player.offsetLeft - VELOCIDAD;
+            y = player.offsetTop - VELOCIDAD;
             colision = checkColision(x,y);
 
             if(!colision){
@@ -354,28 +360,28 @@ document.addEventListener('DOMContentLoaded',function(){
             }
 
         }else if(arriba){
-            y = player.offsetTop - velocidad;
+            y = player.offsetTop - VELOCIDAD;
             colision = checkColision(x,y);
 
             if(!colision){
                 player.style.top = y + 'px';
             }
         }else if(abajo){
-            y = player.offsetTop + velocidad;
+            y = player.offsetTop + VELOCIDAD;
             colision = checkColision(x,y);
 
             if(!colision){
                 player.style.top = y + 'px';
             }
         }else if(izquierda){
-            x = player.offsetLeft - velocidad;
+            x = player.offsetLeft - VELOCIDAD;
             colision = checkColision(x,y);
 
             if(!colision){
                 player.style.left = x + 'px';
             }
         }else if(derecha){
-            x = player.offsetLeft + velocidad;            
+            x = player.offsetLeft + VELOCIDAD;            
             colision = checkColision(x,y);
 
             if(!colision){
@@ -390,7 +396,7 @@ document.addEventListener('DOMContentLoaded',function(){
         move();  
     }, 1000/24);
 
-    window.addEventListener('resize',fillScenario);
+    window.addEventListener('resize',restartGame);
 
     function resizeItems(){
 

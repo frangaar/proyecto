@@ -15,18 +15,15 @@
 session_start();
 ?>
 <body>
-    <a href="../action_page.php" class="volver">Volver</a>
-	<!-- <div class="container-fluid" id="player-panel">
-        <div class="content-items">
-            <div class="imagen">
-                <img src="img/ghandi.png">
-            </div>
-        </div>
-    </div>  -->
+    <div class="container-fluid btn-volver">
+        <a href="../action_page.php"><button type="button" class="btn btn-primary">Volver</button></a>
+    </div>
+    
     <div class="container-fluid" id="game">
         <div class="content" id="mapa">
             <!-- Aqui hacemos append de todos los items del escenario -->
         </div>
+         
         <div class="bocadillo-cuadrado" id="bocadillo-cuadrado1">
             <button type="button" id="audio-close1" class="btn-close audio-close"></button>
             <div class="text">
@@ -49,7 +46,40 @@ session_start();
             <button type="button" data-audio="audio/spain.mp3" class="audio btn btn-primary" id="audio1" class="btn btn-primary">Escuchar</button>
         </div>
     </div>  
-    
+    <div class="container-fluid" id="player-panel">
+        <div class="content-items">
+            <div class="imagen">
+                <img src="img/ghandi.png">
+            </div>
+            <div class="items-owned">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="item">
+                                    <img src="img/ghandi.png">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item">
+                                    <img src="img/ghandi.png">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item">
+                                    <img src="img/ghandi.png">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>

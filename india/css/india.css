@@ -71,18 +71,25 @@
 
 
 #player-panel{
-    height: 82px;
-    position: relative;
+    text-align: right;
 }
 
-#player-panel .content-items{
-    /* position: relative; */
+#player-panel .content-items .items-owned{
+    display: inline-block;
+    width: 157px;
+}
+
+#player-panel .content-items .items-owned .item img{
+    width: 55px;
+    padding-top: 50px;
+}
+
+#player-panel .content-items .items-owned table{
+    margin: auto;
 }
 
 #player-panel .imagen img{
-    position: absolute;
-    bottom: 0;
-    width: 50px;
+    width: 130px;
 }
 
 
@@ -136,7 +143,10 @@
     cursor: pointer;
   }  
 
-
+.btn-volver{
+    text-align: right;
+    padding: 5px 10px 10px 0px;
+}
 
   /* Bocadillo */
 .bocadillo-cuadrado {
