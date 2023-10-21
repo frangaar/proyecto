@@ -145,7 +145,7 @@ body .landing-page{
     -webkit-line-clamp: 8;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    height: 0px;
+    height: 140px;
 }
 
 div.text { 

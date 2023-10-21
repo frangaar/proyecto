@@ -80,7 +80,7 @@ session_start();
             </div>
         </div>
     </div>
-    <div id="myModal" class="modal">
+    <div id="juego1" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2 class="title">Coloca las piezas para formar la imagen de Ghandi</h2>
@@ -129,7 +129,7 @@ session_start();
                     </div>
                 </div>
                 <div class="modal-guardar text-end">
-                    <button type="button" id="ghandi" disabled class="btn btn-primary" value="completado">Guardar</button>
+                    <button type="button" id="guardarGhandi" disabled class="btn btn-primary" value="completado">Guardar</button>
                 </div>
             </div>
         </div>

@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 cerrar.addEventListener('click',function(){
 
                     bocadillo.style.display="none";
-                    texto.style.height = "0px";
+                    //texto.style.height = "0px";
                 });
 
                 juego.addEventListener('mouseover', function(){
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         juego.style.zIndex=1001;
                     }
 
-                    displayStory();
+                    /* displayStory();
 
                     
                     let character = 0;
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded',function(){
                             character++; 
                             texto.style.height = character + 'px';
                         }
-                    }
+                    } */
                     
                     
                     

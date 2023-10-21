@@ -50,7 +50,7 @@ function habilitaBotonGuardar(){
     let total = sessionStorage.getItem('total');
 
     if(acierto==total){
-        let btnGuardar = document.getElementById('ghandi');
+        let btnGuardar = document.getElementById('guardarGhandi');
         btnGuardar.removeAttribute('disabled');
     }
 }
@@ -83,16 +83,16 @@ document.addEventListener('DOMContentLoaded',function(){
 
     let cerrar = document.getElementsByClassName('close')[0];
     cerrar.addEventListener('click',function(){
-        let modal = document.getElementById("myModal");
+        let modal = document.getElementById("juego1");
         modal.style.display = "none";
     });
 
-    let btnGuardar = document.getElementById('ghandi');
+    let btnGuardar = document.getElementById('guardarGhandi');
 
     btnGuardar.onclick = function(){
     
         sessionStorage.setItem("ghandi",true);
-        let modal = document.getElementById("myModal");
+        let modal = document.getElementById("juego1");
         modal.style.display = "none";
     };
 

@@ -1,3 +1,9 @@
+body{
+    background-image: url(../img/fondo2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 /* .container-fluid#game{
     position: absolute;
     bottom: 0;
@@ -35,26 +41,20 @@
 
 #character0 {
     position: absolute;
-    /* width: 32px;
-    height: 32px; */
     background: blue;
-    z-index: 1000;
+    z-index: 5000;
 }
 
 #character1 {
     position: absolute;
-    /* width: 32px;
-    height: 32px; */
     background: green;
-    z-index: 1000;
+    z-index: 5000;
 }
 
 #character2 {
     position: absolute;
-    /* width: 32px;
-    height: 32px; */
     background: yellow;
-    z-index: 1000;
+    z-index: 5000;
 }
 
 .grid-container.colisionable.arbol{
@@ -69,15 +69,39 @@
 }
 
 
+.grid-container.colisionable.ghandi{
+    /* width: 72px !important;
+    height: 72px !important; */
+    z-index: 5000;
+}
+
+.grid-container.colisionable.taj_mahal{
+    width: 72px !important;
+    height: 72px !important;
+    z-index: 5000;
+}
+
+.grid-container.colisionable.rajesh{
+    width: 72px !important;
+    height: 72px !important;
+    z-index: 5000;
+}
+
+.grid-container.colisionable.figura > #taj-mahal{
+    width: 72px !important;
+    height: 72px !important;
+}
+
+
 #player-panel{
     text-align: right;
 }
 
-#player-panel .content-items{
+/* #player-panel .content-items{
     background-image: url(../img/bandera.png);
     background-size: contain;
     background-repeat: no-repeat;
-}
+} */
 
 #player-panel .content-items .items-owned{
     display: inline-block;
@@ -98,8 +122,8 @@
 }
 
 
-#myModal{
-    z-index: 5000;
+#juego1{
+    /* z-index: 5000; */
 }
 
 .title{
@@ -109,9 +133,9 @@
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 40000; /* Sit on top */
     left: 0;
     top: -10%;
     width: 100%; /* Full width */
