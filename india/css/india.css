@@ -87,7 +87,7 @@ body{
     z-index: 5000;
 }
 
-.grid-container.colisionable.figura > #taj-mahal{
+.grid-container.colisionable.figura > #taj_mahal{
     width: 72px !important;
     height: 72px !important;
 }

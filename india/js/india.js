@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         break;
                     case 6:
                         nextIndex = 'figura' + Object.keys(posiciones).length;
-                        let imgTaj= '<img src='+(imagenes[4])+' id=taj_mahal name=taj_mahal></img>'
+                        let imgTaj= '<img src='+(imagenes[4])+' id=taj_mahal name=Taj_Mahal></img>'
                         let figuraTaj= document.createElement('div');
                         figuraTaj.setAttribute('class','grid-container colisionable figura taj_mahal');
                         figuraTaj.setAttribute('name','Taj_Mahal');
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         break;
                     case 7:
                         nextIndex = 'figura' + Object.keys(posiciones).length;
-                        let imgRajesh= '<img src='+(imagenes[4])+' id=rajesh name=rajesh></img>'
+                        let imgRajesh= '<img src='+(imagenes[4])+' id=rajesh name=Rajesh></img>'
                         let figuraRajesh= document.createElement('div');
                         figuraRajesh.setAttribute('class','grid-container colisionable figura rajesh');
                         figuraRajesh.setAttribute('name','Rajesh');
@@ -287,7 +287,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     function charactersPosition(){
 
-        personajes = document.querySelectorAll('.character');
+        personajes = document.querySelectorAll('.figura');
         let btnClose = document.querySelectorAll('.audio-close');
         let dialogos = document.querySelectorAll('.bocadillo-cuadrado');
 
@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded',function(){
         for (const key in posiciones) {
             if (Object.hasOwnProperty.call(posiciones, key)) {
                 
-                if(!key.includes("muro") && !key.includes("arbol") && !key.includes("figura")){
+                if(!key.includes("muro") && !key.includes("arbol")){
                     personajes[idx].style.left = posiciones[key][0] + 'px';
                     personajes[idx].style.top = posiciones[key][1] + 'px';
 
@@ -542,25 +542,22 @@ document.addEventListener('DOMContentLoaded',function(){
 
     function abreJuego(nameCharacter){
 
-        if(nameCharacter == quienSoy){
+        switch (quienSoy) {
+            case "Ghandi":
+                let modal = document.getElementById("juego1");
+                modal.style.display = "block";
+                break;
         
-            switch (quienSoy) {
-                case "Ghandi":
-                    let modal = document.getElementById("juego1");
-                    modal.style.display = "block";
-                    break;
-            
-                case "Deepak":
-                    alert("Hola soy " + quienSoy);
-                    break;
-
-                case "Arjun":
-                    alert("Hola soy " + quienSoy);
+            case "Taj_Mahal":
+                alert("Hola soy " + quienSoy);
                 break;
 
-                default:
-                    break;
-            }
+            case "Rajesh":
+                alert("Hola soy " + quienSoy);
+            break;
+
+            default:
+                break;
         }
     }
 
