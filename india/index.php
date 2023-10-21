@@ -49,7 +49,7 @@ session_start();
     <div class="container-fluid" id="player-panel">
         <div class="content-items">
             <div class="imagen">
-                <img src="img/ghandi.png">
+                <img src="img/laia.png">
             </div>
             <div class="items-owned">
                 <table>

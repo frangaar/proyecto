@@ -10,6 +10,7 @@
 .grid-container{
     display: inline-block;
     position: absolute;
+    z-index: 4000;
 }
 
 #player{
@@ -20,11 +21,16 @@
 #character {
     position: absolute;
     width: 32px;
-    height: 32px;
-    background: red;
-    z-index: 1000;
+    height: 60px;
+    /* background: red; */
+    z-index: 4100;
     /* top:100px; */
     /* left: 200px; */
+}
+
+#character > img{
+    width: 32px;
+    height: 60px;
 }
 
 #character0 {
@@ -51,27 +57,26 @@
     z-index: 1000;
 }
 
-/* #game .content{
-    height: 544px;
-    width: 1184px;
-    margin: auto;
-} */
+.grid-container.colisionable.arbol{
+    width: 72px !important;
+    height: 102px !important;
+    z-index: 5000;
+}
 
-/* .grid-container.no-colisionable > img,
-.grid-container.colisionable > img{
-
-    width: 48px !important;
-    height: 48px !important;
-} */
-
-/* .grid-container.colisionable.arbol > img{
-    width: 48px;
-    height: 48px;
-} */
+.grid-container.colisionable.arbol > img{
+    width: 72px !important;
+    height: 102px !important;
+}
 
 
 #player-panel{
     text-align: right;
+}
+
+#player-panel .content-items{
+    background-image: url(../img/bandera.png);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 #player-panel .content-items .items-owned{
@@ -81,7 +86,7 @@
 
 #player-panel .content-items .items-owned .item img{
     width: 55px;
-    padding-top: 50px;
+    padding-top: 62px;
 }
 
 #player-panel .content-items .items-owned table{
@@ -89,7 +94,7 @@
 }
 
 #player-panel .imagen img{
-    width: 130px;
+    width: 113px;
 }
 
 
@@ -155,6 +160,7 @@
     width: 240px;
     background: white;
     box-shadow: 1px 12px 33px rgba(0, 0, 0, 0.5);
+    z-index: 5100;
     /* display: none; */
     
 }
@@ -224,27 +230,27 @@ button.audio-close{
 }
 
 #bocadillo-cuadrado1{
-    top: 6%;
-    left: 65%;
-    z-index: 1000;
+    /* top: 6%;
+    left: 65%; */
+    /* z-index: 1000; */
     opacity: 0;
     visibility: hidden;
     transition: visibility 0s, opacity 0.5s linear; 
 }
 
 #bocadillo-cuadrado2{
-    top: 61%;
-    left: 31%;
-    z-index: 1000;
+    /* top: 61%;
+    left: 31%; */
+    /* z-index: 1000; */
     opacity: 0;
     visibility: hidden;
     transition: visibility 0s, opacity 0.5s linear; 
 }
 
 #bocadillo-cuadrado3{
-    top: 47%;
-    left: 72%;
-    z-index: 1000;
+    /* top: 47%;
+    left: 72%; */
+    /* z-index: 1000; */
     opacity: 0;
     visibility: hidden;
     transition: visibility 0s, opacity 0.5s linear; 
