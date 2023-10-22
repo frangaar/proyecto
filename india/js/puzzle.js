@@ -81,11 +81,17 @@ document.addEventListener('DOMContentLoaded',function(){
 
     setBloques();
 
-    let cerrar = document.getElementsByClassName('close')[0];
-    cerrar.addEventListener('click',function(){
-        let modal = document.getElementById("juego1");
-        modal.style.display = "none";
+    let cerrar1 = document.getElementsByClassName('close')[0];
+    cerrar1.addEventListener('click',function(){
+        let juego1 = document.getElementById("juego1");
+        juego1.style.display = "none";
     });
+
+    /* let cerrar3 = document.getElementsByClassName('close')[1];
+    cerrar3.addEventListener('click',function(){
+        let juego3 = document.getElementById("juego3");
+        juego3.style.display = "none";
+    }); */
 
     let btnGuardar = document.getElementById('guardarGhandi');
 

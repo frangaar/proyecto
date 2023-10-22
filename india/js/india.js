@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded',function(){
     
     dimension = 48;
 
-    const imagenes = ['img/arbol.png','img/hierba.gif','img/warrior_right_parado.png','','img/taj_mahal.png',''];
+    const imagenes = ['img/arbol.png','img/hierba.gif','img/warrior_right_parado.png','img/mahatma_gandhi.png','img/taj_mahal.png',''];
 
     
     let player = '';
@@ -61,11 +61,11 @@ document.addEventListener('DOMContentLoaded',function(){
             [0, 1, 9, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 3, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 3, 4, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 3, 4, 4, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 3, 4, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 3, 4, 4, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
             [0, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
@@ -81,47 +81,14 @@ document.addEventListener('DOMContentLoaded',function(){
         let nextIndex = 0;
         
 
-        const nombres = ['Ghandi','Taj Mahal','Rajesh'];
+        const nombres = ['Gandhi','Taj Mahal','Rajesh'];
 
         for(let i=0;i<mapa.length;i++){
             for(let j=0;j<mapa[i].length;j++){
                 let tempDIV= document.createElement('div');
                 if((mapa[i][j]==0 || mapa[i][j]==3)){
                     tempDIV.setAttribute('class','grid-container colisionable');    
-                }
-                /* else if(mapa[i][j]==2){
-                    nextIndex = posiciones.length;
-                    tempDIV.setAttribute('class','colisionable character npc');
-                    tempDIV.setAttribute('id','character'+nextIndex);
-                    tempDIV.setAttribute('name',nombres[nextIndex]);
-
-                    tempDIV.addEventListener('click',function(e){
-                        let nameCharacter = e.currentTarget.getAttribute('name');
-
-                    if(nameCharacter == conQuienHablo){
-
-                        switch (conQuienHablo) {
-                            case "Ghandi":
-                                let modal = document.getElementById("myModal");
-                                modal.style.display = "block";
-                                break;
-                        
-                            case "Deepak":
-                                alert("Hola soy " + conQuienHablo);
-                                break;
-
-                            case "Arjun":
-                                alert("Hola soy " + conQuienHablo);
-                            break;
-
-                            default:
-                                break;
-                        }
-                    }
-                        
-                    })
-                } */
-                else{
+                }else{
                     tempDIV.setAttribute('class','grid-container no-colisionable');
                 }
                 
@@ -176,22 +143,22 @@ document.addEventListener('DOMContentLoaded',function(){
                         break;
                     case 5:
                         nextIndex = 'figura' + Object.keys(posiciones).length;
-                        let imgGhandi= '<img src='+(imagenes[4])+' id=ghandi name=Ghandi></img>'
-                        let figuraGhandi= document.createElement('div');
-                        figuraGhandi.setAttribute('class','grid-container colisionable figura ghandi');
-                        figuraGhandi.setAttribute('name','Ghandi');
+                        let imgGandhi= '<img src='+(imagenes[3])+' id=gandhi name=Gandhi></img>'
+                        let figuraGandhi= document.createElement('div');
+                        figuraGandhi.setAttribute('class','grid-container colisionable figura gandhi');
+                        figuraGandhi.setAttribute('name','Gandhi');
 
-                        figuraGhandi.style.left=x + 'px';
-                        figuraGhandi.style.top=y + 'px';
+                        figuraGandhi.style.left=x + 'px';
+                        figuraGandhi.style.top=y + 'px';
                         
-                        figuraGhandi.innerHTML=imgGhandi;
+                        figuraGandhi.innerHTML=imgGandhi;
 
                         posiciones[nextIndex] = [x,y];
-                        parentDIV.appendChild(figuraGhandi);
+                        parentDIV.appendChild(figuraGandhi);
 
-                        const ghandi = document.getElementById('ghandi');
+                        const gandhi = document.getElementById('gandhi');
 
-                        ghandi.addEventListener('click',function(e){
+                        gandhi.addEventListener('click',function(e){
                             let nameCharacter = e.currentTarget.getAttribute('name');
     
                             abreJuego(nameCharacter);
@@ -394,10 +361,10 @@ document.addEventListener('DOMContentLoaded',function(){
                 quienSoy = colisionables[index].getAttribute('name');
                 colisionables[index].focus();
                 
-                if(quienSoy == 'Ghandi'){
+                if(quienSoy == 'Gandhi'){
                     let left = colisionables[index].offsetLeft;
                     let top = colisionables[index].offsetTop;
-                    dialogo1.style.left = left + 70 + 'px'
+                    dialogo1.style.left = left + 100 + 'px'
                     dialogo1.style.top = top - 8 + 'px'
                     dialogo1.classList.add('visible');
                 }else if(quienSoy == 'Taj_Mahal'){
@@ -542,23 +509,31 @@ document.addEventListener('DOMContentLoaded',function(){
 
     function abreJuego(nameCharacter){
 
-        switch (quienSoy) {
-            case "Ghandi":
-                let modal = document.getElementById("juego1");
-                modal.style.display = "block";
-                break;
-        
-            case "Taj_Mahal":
-                alert("Hola soy " + quienSoy);
-                break;
+        if(nameCharacter == quienSoy){
 
-            case "Rajesh":
-                alert("Hola soy " + quienSoy);
-            break;
-
-            default:
+            switch (nameCharacter) {
+                case "Gandhi":
+                    let juego1 = document.getElementById("juego1");
+                    juego1.style.display = "block";
+                    break;
+            
+                case "Taj_Mahal":
+                    let juego2 = document.getElementById("juego2");
+                    juego2.style.display = "block";
+                    break;
+    
+                case "Rajesh":
+                    alert("Hola soy " + quienSoy);
                 break;
-        }
+    
+                default:
+                    break;
+            }
+        }        
+    }
+
+    function changeImagePlayer(){
+        //TODO
     }
 
 });

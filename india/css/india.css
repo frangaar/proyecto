@@ -26,8 +26,8 @@ body{
 
 #character {
     position: absolute;
-    width: 32px;
-    height: 60px;
+    width: 26px;
+    height: 43px;
     /* background: red; */
     z-index: 4100;
     /* top:100px; */
@@ -35,8 +35,8 @@ body{
 }
 
 #character > img{
-    width: 32px;
-    height: 60px;
+    width: 26px;
+    height: 43px;
 }
 
 #character0 {
@@ -69,9 +69,9 @@ body{
 }
 
 
-.grid-container.colisionable.ghandi{
-    /* width: 72px !important;
-    height: 72px !important; */
+.grid-container.colisionable.gandhi{
+    width: 72px !important;
+    height: 72px !important;
     z-index: 5000;
 }
 
@@ -92,6 +92,10 @@ body{
     height: 72px !important;
 }
 
+.grid-container.colisionable.figura > #gandhi{
+    width: 72px !important;
+    height: 72px !important;
+}
 
 #player-panel{
     text-align: right;
@@ -122,10 +126,6 @@ body{
 }
 
 
-#juego1{
-    /* z-index: 5000; */
-}
-
 .title{
     text-align: center;
     padding-bottom: 30px;
@@ -148,12 +148,19 @@ body{
   /* Modal Content/Box */
   .modal-content {
     background-color: #fefefe;
-    margin: 10% auto; /* 15% from the top and centered */
+    margin: 9% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 65%; /* Could be more or less, depending on screen size */
     height: 400px;
     position: relative;
+  }
+
+  #juego2 .modal-content{
+    width: 90%;
+    height: 450px;
+    position: relative;
+    margin-bottom: 70px;
   }
   
   /* The Close Button */
