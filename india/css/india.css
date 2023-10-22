@@ -80,6 +80,20 @@ body{
     height: 82px !important;
 }
 
+.grid-container.colisionable.cole{
+    width: 125px !important;
+    height: 102px !important;
+    z-index: 5000;
+}
+
+.grid-container.colisionable.cole > img{
+    width: 125px !important;
+    height: 102px !important;
+    filter: brightness(0%);
+}
+
+
+
 .grid-container.colisionable.gandhi{
     width: 72px !important;
     height: 72px !important;
