@@ -53,6 +53,7 @@ btnGuardar.onclick = function(){
         }
     }else{
         alert('Vaya, algunas de tus respuestas son incorrectas!. Por favor, vuelve a revisarlas.');
+        btnGuardar.innerHTML = "Comprobar";
     }
     
 };
@@ -69,6 +70,9 @@ function comprobarRespuestas(){
 
         if(respuesta == preguntasJuego1[index][1]){
             aciertos++;
+            respuestas[index].classList.remove('class','is-invalid');
+        }else{
+            respuestas[index].classList.add('class','is-invalid');
         }
     }
 

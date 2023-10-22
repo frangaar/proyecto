@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded',function(){
             }            
         }else{
             alert('Vaya, algunas de tus respuestas son incorrectas!. Por favor, vuelve a revisarlas.');
+            btnGuardar.innerHTML = "Comprobar";
         }
         
     };
@@ -60,11 +61,12 @@ document.addEventListener('DOMContentLoaded',function(){
         let aciertos = 0;
     
         for (let index = 0; index < respuestas.length; index++) {
-            
-            
     
             if(respuestas[index].checked == preguntasJuego2[index][1]){
                 aciertos++;
+                respuestas[index].classList.remove('class','is-invalid');
+            }else{
+                respuestas[index].classList.add('class','is-invalid');
             }
         }
     

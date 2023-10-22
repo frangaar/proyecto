@@ -88,11 +88,6 @@ document.addEventListener('DOMContentLoaded',function(){
         juego1.style.display = "none";
     });
 
-    /* let cerrar3 = document.getElementsByClassName('close')[1];
-    cerrar3.addEventListener('click',function(){
-        let juego3 = document.getElementById("juego3");
-        juego3.style.display = "none";
-    }); */
 
     let btnGuardar = document.getElementById('guardarGhandi');
 

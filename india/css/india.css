@@ -69,6 +69,17 @@ body{
 }
 
 
+.grid-container.colisionable.casa{
+    width: 95px !important;
+    height: 82px !important;
+    z-index: 5000;
+}
+
+.grid-container.colisionable.casa > img{
+    width: 95px !important;
+    height: 82px !important;
+}
+
 .grid-container.colisionable.gandhi{
     width: 72px !important;
     height: 72px !important;
@@ -90,17 +101,21 @@ body{
 .grid-container.colisionable.figura > #vaca{
     width: 72px !important;
     height: 72px !important;
+    cursor: pointer;
 }
 
 .grid-container.colisionable.figura > #taj_mahal{
     width: 72px !important;
     height: 72px !important;
+    cursor: pointer;
 }
 
 .grid-container.colisionable.figura > #gandhi{
     width: 72px !important;
     height: 72px !important;
+    cursor: pointer;
 }
+
 
 #player-panel{
     text-align: right;

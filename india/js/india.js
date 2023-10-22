@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded',function(){
     
     dimension = 48;
 
-    const imagenes = ['img/arbol.png','img/hierba.gif','img/warrior_right_parado.png','img/mahatma_gandhi.png','img/taj_mahal.png','img/vaca.gif'];
+    const imagenes = ['img/arbol.png','img/hierba.gif','img/warrior_right_parado.png','img/mahatma_gandhi.png','img/taj_mahal.png','img/vaca.gif','img/casa.png','img/agua.png'];
 
     
     let player = '';
@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded',function(){
             dimension = 32;
         }
 
-        let muro="img/murH";
-        let suelo="img/murV";
+        let muro="img/pared";
+        let suelo="img/terra";
         
 
         let x = 0;
@@ -57,19 +57,19 @@ document.addEventListener('DOMContentLoaded',function(){
         //37
         const mapa = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 3, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-            [0, 1, 9, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 3, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 3, 4, 4, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 3, 4, 4, 4, 1, 1, 1, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 9, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 2, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 1, 8, 1, 2, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 8, 1, 1, 5, 1, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 3, 4, 4, 1, 1, 8, 8, 8, 8, 8, 1, 1, 1, 1, 1, 1, 1, 8, 1, 1, 4, 3, 4, 4, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 3, 4, 4, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
-            [0, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
-            [0, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+            [0, 8, 8, 8, 8, 8, 8, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 4, 3, 4, 4, 0],
+            [0, 1, 2, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
+            [0, 1, 1, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
+            [0, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 8, 8, 8, 8, 0],
+            [0, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 4, 4, 4, 4, 4, 1, 1, 6, 1, 1, 1, 1, 1, 1, 1, 4, 3, 4, 4, 4, 3, 4, 4, 1, 1, 1, 1, 1, 1, 7, 1, 1, 1, 1, 1, 0],
             [0, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
             [0, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded',function(){
                     nextIndex = 'muro' + Object.keys(posiciones).length;
                     posiciones[nextIndex] = [x,y];
                 // Si hay un personaje, un arbol o el jugador, se coloca suelo y encima los objetos    
-                }else if(mapa[i][j]==1 || mapa[i][j]==3 || mapa[i][j]==4 || mapa[i][j]==5 || mapa[i][j]==6 || mapa[i][j]==7 || mapa[i][j]==9){
+                }else if(mapa[i][j]==1 || mapa[i][j]==2 || mapa[i][j]==3 || mapa[i][j]==4 || mapa[i][j]==5 || mapa[i][j]==6 || mapa[i][j]==7 || mapa[i][j]==8 || mapa[i][j]==9){
                     let img2= `<img src='`+(suelo)+`.png' name='suelo'></img>`
                     tempDIV.innerHTML=img2;
                 }else{
@@ -114,6 +114,20 @@ document.addEventListener('DOMContentLoaded',function(){
                 parentDIV.appendChild(tempDIV);
 
                 switch(mapa[i][j]){
+
+                    case 2:
+                        let img2= '<img src='+(imagenes[6])+' name=casa></img>'
+                        let casa= document.createElement('div');
+                        casa.setAttribute('class','grid-container colisionable casa');
+    
+                        casa.style.left=x + 'px';
+                        casa.style.top=y + 'px';
+                        
+                        casa.innerHTML=img2;
+                        nextIndex = 'casa' + Object.keys(posiciones).length;
+                        posiciones[nextIndex] = [x,y];
+                        parentDIV.appendChild(casa);
+                        break;
 
                     case 3:
                         let img3= '<img src='+(imagenes[0])+' name=arbol></img>'
@@ -216,6 +230,20 @@ document.addEventListener('DOMContentLoaded',function(){
                         })
                 
                         break;
+                    
+                    case 8:
+                            let img8= '<img src='+(imagenes[7])+' name=agua></img>'
+                            let agua= document.createElement('div');
+                            agua.setAttribute('class','grid-container colisionable agua');
+        
+                            agua.style.left=x + 'px';
+                            agua.style.top=y + 'px';
+                            
+                            agua.innerHTML=img8;
+                            nextIndex = 'agua' + Object.keys(posiciones).length;
+                            posiciones[nextIndex] = [x,y];
+                            parentDIV.appendChild(agua);
+                            break;
                     case 9:
                         player= document.createElement('div');
                         player.setAttribute('id','character'); 
@@ -263,7 +291,7 @@ document.addEventListener('DOMContentLoaded',function(){
         for (const key in posiciones) {
             if (Object.hasOwnProperty.call(posiciones, key)) {
                 
-                if(!key.includes("muro") && !key.includes("arbol")){
+                if(!key.includes("muro") && !key.includes("arbol") && !key.includes("casa") && !key.includes("agua")){
                     personajes[idx].style.left = posiciones[key][0] + 'px';
                     personajes[idx].style.top = posiciones[key][1] + 'px';
 
