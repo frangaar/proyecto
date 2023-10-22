@@ -8,9 +8,11 @@
 	<link rel="stylesheet" href="css/india.css">
 	<link rel="stylesheet" href="css/puzzle.css">
 	<link rel="stylesheet" href="css/calculos.css">
+	<link rel="stylesheet" href="css/preguntas.css">
     <script src="js/india.js"></script>
     <script src="js/puzzle.js"></script>
     <script src="js/calculos.js"></script>
+    <script src="js/preguntas.js"></script>
     <title>India</title>
 </head>
 <?php
@@ -18,7 +20,7 @@ session_start();
 ?>
 <body>
     <div class="container-fluid btn-volver">
-        <a href="../action_page.php"><button type="button" class="btn btn-primary">Volver</button></a>
+        <a><button type="button" id="volver" class="btn btn-primary">Volver</button></a>
     </div>
     
     <div class="container-fluid" id="game">
@@ -58,21 +60,21 @@ session_start();
                     <tbody>
                         <tr>
                             <td>
-                                <div class="item">
+                                <div class="item" id="item1">
                                     <img src="img/ghandi.png">
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <div class="item">
+                                <div class="item" id="item2">
                                     <img src="img/ghandi.png">
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <div class="item">
+                                <div class="item" id="item2">
                                     <img src="img/ghandi.png">
                                 </div>
                             </td>
@@ -144,11 +146,28 @@ session_start();
             <span class="close">&times;</span>
             <h3 class="title">Resuelve los siguientes problemas de matemáticas</h3>
             <div class="container-fluid juego ui-widget-content">
-                <div id="ejercicios">
-                <div class="container" id="contenido">
+                <div id="ejercicios1">
+                    <div class="container" id="contenido">
+                    </div>
                 </div>
                 <div class="modal-guardar text-end">
                     <button type="button" id="guardarTaj" class="btn btn-primary">Comprobar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="juego3" class="modal">
+    <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 class="title">Resuelve los siguientes problemas de matemáticas</h3>
+            <div class="container-fluid juego ui-widget-content">
+                <div id="ejercicios2">
+                    <div class="container" id="contenido">
+                    </div>
+                </div>
+                <div class="modal-guardar text-end">
+                    <button type="button" id="guardarVaca" class="btn btn-primary">Comprobar</button>
                 </div>
             </div>
         </div>

@@ -27,11 +27,16 @@
     function validarUsuario(){
 
         $conn=openDB();
+        
 
         if(!isset($_SESSION['id'])){
 
             $user = $_POST['user'];
             $pass = $_POST['pass'];
+        }else{
+            $user = $_SESSION['user'];
+            $pass = $_SESSION['pass'];
+        }
 
             try{
                 $sql = "SELECT * FROM usuarios where user='".$user."' and pass='".$pass."'";
@@ -59,7 +64,7 @@
                 $_SESSION['user']=$result['user'];
                 $_SESSION['pass']=$result['pass'];
             }
-        }
+        //}
 
         
         if(isset($_SESSION['id'])){
@@ -72,6 +77,7 @@
                 $conn=openDB();
 
                 try{
+                    
 
                     $sql = "SELECT * FROM niveles where uid=".$_SESSION['id'];
 
@@ -89,8 +95,10 @@
         
                 $url = "?";
                 $append = false;
+
+                
         
-                if($result['nivel'] >= 1){
+                if($result['nivel'] > 0){
         
                     if($append){
                         $url .= '&';
@@ -100,7 +108,7 @@
                     $append = true;
                 }
         
-                if($result['nivel'] > 2){
+                if($result['nivel'] >= 2){
         
                     if($append){
                         $url .= '&';
@@ -111,7 +119,7 @@
         
                 }
         
-                if($result['nivel'] > 3){
+                if($result['nivel'] >= 3){
         
                     if($append){
                         $url .= '&';
@@ -121,7 +129,7 @@
                     $append = true;
                 }
         
-                if($result['nivel'] > 4){
+                if($result['nivel'] >= 4){
         
                     if($append){
                         $url .= '&';
@@ -131,7 +139,7 @@
                     $append = true;
                 }
         
-                if($result['nivel'] > 5){
+                if($result['nivel'] >= 5){
         
                     if($append){
                         $url .= '&';
@@ -174,23 +182,15 @@
             $last_id = $conn->lastInsertId();
 
 
-            $nivel1=0;
-            $nivel2=0;
-            $nivel3=0;
-            $nivel4=0;
-            $nivel5=0;
+            $nivel=0;
 
-            $insertSql = "INSERT INTO niveles VALUES (:id,:uid,:nivel1,:nivel2,:nivel3,:nivel4,:nivel5)";
+            $insertSql = "INSERT INTO niveles VALUES (:id,:uid,:nivel)";
   
             $insert = $conn->prepare($insertSql);
             $null = null;
             $insert->bindParam(':id',$null);
             $insert->bindParam(':uid',$last_id);
-            $insert->bindParam(':nivel1',$nivel1);
-            $insert->bindParam(':nivel2',$nivel2);
-            $insert->bindParam(':nivel3',$nivel3);
-            $insert->bindParam(':nivel4',$nivel4);
-            $insert->bindParam(':nivel5',$nivel5);
+            $insert->bindParam(':nivel',$nivel);
             $insert->execute();
 
             $conn->commit();

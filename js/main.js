@@ -285,5 +285,4 @@ document.addEventListener('DOMContentLoaded',function(){
     localStorage.setItem("user","Fran");
 
     const user = localStorage.getItem("user");
-    console.log(user);
 });

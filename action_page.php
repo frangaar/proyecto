@@ -1,7 +1,6 @@
 <?php
     include_once('db.php'); 
     
-    
     if(isset($_POST['signup'])){
     
         crearUsuario();
@@ -54,7 +53,7 @@
 
     // Validamos usuario si hacemos login o volvemos a una ventana anterior
     }else if((isset($_POST['login'])) || (isset($_SESSION['id']))){
-    
+        
         validarUsuario();
     
     }

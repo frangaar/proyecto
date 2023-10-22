@@ -50,6 +50,7 @@ function habilitaBotonGuardar(){
     let total = sessionStorage.getItem('total');
 
     if(acierto==total){
+        alert('Felicidades!. Has completado el puzzle.');
         let btnGuardar = document.getElementById('guardarGhandi');
         btnGuardar.removeAttribute('disabled');
     }

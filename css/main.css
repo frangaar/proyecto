@@ -204,6 +204,13 @@ button.audio-close{
     padding-right: 15px;
 }
 
+.custom-alert{
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+
+
 @media (min-width: 540px) and (max-width: 768px){
     
     #nivel1,#nivel2,#nivel3,#nivel4,#nivel5{

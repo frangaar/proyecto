@@ -59,13 +59,13 @@ body{
 
 .grid-container.colisionable.arbol{
     width: 72px !important;
-    height: 102px !important;
+    height: 72px !important;
     z-index: 5000;
 }
 
 .grid-container.colisionable.arbol > img{
     width: 72px !important;
-    height: 102px !important;
+    height: 72px !important;
 }
 
 
@@ -81,10 +81,15 @@ body{
     z-index: 5000;
 }
 
-.grid-container.colisionable.rajesh{
+.grid-container.colisionable.vaca{
     width: 72px !important;
     height: 72px !important;
     z-index: 5000;
+}
+
+.grid-container.colisionable.figura > #vaca{
+    width: 72px !important;
+    height: 72px !important;
 }
 
 .grid-container.colisionable.figura > #taj_mahal{
@@ -157,6 +162,13 @@ body{
   }
 
   #juego2 .modal-content{
+    width: 90%;
+    height: 450px;
+    position: relative;
+    margin-bottom: 70px;
+  }
+
+  #juego3 .modal-content{
     width: 90%;
     height: 450px;
     position: relative;

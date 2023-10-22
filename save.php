@@ -6,20 +6,26 @@ try {
 
     $conn=openDB();
 
-    $user=$_REQUEST['user'];
-    $pass=$_REQUEST['pass'];
-    $rol=$_REQUEST['rol'];
+    $userID=$_SESSION['id'];
+    $nivel=$_REQUEST['nivel'];
 
+    // Obtener id nueva carta creada
+    $selectSql = "select * from niveles where uid=".$userID;
+    $selectAll = $conn->prepare($selectSql);
+    $selectAll->execute();
 
-    $insertSql = "INSERT INTO usuarios VALUES (:id,:user,:pass,:rol)";
+    $result = $selectAll->fetch();
 
-    $insert = $conn->prepare($insertSql);
-    $null = null;
-    $insert->bindParam(':id',$null);
-    $insert->bindParam(':user',$user);
-    $insert->bindParam(':pass',$pass);
-    $insert->bindParam(':rol',$rol);
-    $insert->execute();
+    if($result['nivel'] == $nivel-1){
+        $updateSql = "UPDATE NIVELES set nivel=".$nivel. " where uid=".$userID;
+
+        $update = $conn->prepare($updateSql);
+        $update->execute();
+
+        $_SESSION['success'] = "Partida guardada correctamente.";
+    }else{
+        $_SESSION['level'] = "Tienes que haber superado el nivel 1 para guardar la partida.";
+    }   
 
 
 }catch (Exception $e) {

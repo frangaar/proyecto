@@ -8,7 +8,25 @@
     <script src="js/main.js"></script>
 </head>
 <body>
-    <?php session_start(); ?>
+    <?php 
+    session_start(); 
+
+    if(isset($_SESSION['success']) == 1){ ?>
+        <div class="alert alert-success alert-dismissible custom-alert" role="alert">
+            <?php echo $_SESSION['success']; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+        unset($_SESSION['success']);
+    }else if(isset($_SESSION['level']) == 1){ ?>
+        <div class="alert alert-danger alert-dismissible custom-alert" role="alert">
+            <?php echo $_SESSION['level']; ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+        unset($_SESSION['level']);
+    }
+    ?>
     <div class="container map-container">
         <div class="col-12 cerrar-sesion">
             <a href="logout.php"><button type="button" class="btn btn-primary">Cerrar sesión</button></a>
