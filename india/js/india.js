@@ -351,11 +351,13 @@ document.addEventListener('DOMContentLoaded',function(){
                 dialogo1.classList.remove('visible');
                 dialogo2.classList.remove('visible');
                 dialogo3.classList.remove('visible');
+                quienSoy = "";
             }else if(despuesX || despuesY){
                 colision = false;
                 dialogo1.classList.remove('visible');
                 dialogo2.classList.remove('visible');
                 dialogo3.classList.remove('visible');
+                quienSoy = "";
             }else{
                 colision = true; 
                 quienSoy = colisionables[index].getAttribute('name');
