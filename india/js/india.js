@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded',function(){
     let derecha = false;
     let colision = false;
     let posiciones = new Array();
-    const VELOCIDAD = 4;
+    const VELOCIDAD = 3;
     
     dimension = 48;
 
@@ -341,15 +341,31 @@ document.addEventListener('DOMContentLoaded',function(){
         
         if(e.code == "ArrowDown"){
             abajo = true;
+            if(!player.classList.contains('abajo')){
+                player.classList.add('abajo');
+                changeImagePlayer('abajo')
+            }            
         }
         if(e.code == "ArrowUp"){
             arriba = true;
+            if(!player.classList.contains('arriba')){
+                player.classList.add('arriba');
+                changeImagePlayer('arriba')
+            }
         }
         if(e.code == "ArrowLeft"){
             izquierda = true;
+            if(!player.classList.contains('izquierda')){
+                player.classList.add('izquierda');
+                changeImagePlayer('izquierda')
+            }
         }
         if(e.code == "ArrowRight"){
             derecha = true;
+            if(!player.classList.contains('derecha')){
+                player.classList.add('derecha');
+                changeImagePlayer('derecha')               
+            }
         }
         
         move();
@@ -359,15 +375,23 @@ document.addEventListener('DOMContentLoaded',function(){
         
         if(e.code == "ArrowDown"){
             abajo = false;
+            player.classList.remove('abajo');
+            changeImagePlayer('abajo')
         }
         if(e.code == "ArrowUp"){
             arriba = false;
+            player.classList.remove('arriba');
+            changeImagePlayer('arriba')
         }
         if(e.code == "ArrowLeft"){
             izquierda = false;
+            player.classList.remove('izquierda');
+            changeImagePlayer('izquierda')
         }
         if(e.code == "ArrowRight"){
             derecha = false;
+            player.classList.remove('derecha');
+            changeImagePlayer('derecha')
         }
     }
 
@@ -577,8 +601,42 @@ document.addEventListener('DOMContentLoaded',function(){
         }        
     }
 
-    function changeImagePlayer(){
-        //TODO
+    function changeImagePlayer(direccion){
+        
+        let figura = document.querySelector('#character > img');
+
+        
+            if(direccion == "abajo"){
+                figura.src = "img/warrior_down_movimiento.gif";
+            }else if(direccion == "arriba"){
+                figura.src = "img/warrior_up_movimiento.gif";
+            }else if(direccion == "izquierda"){
+                figura.src = "img/warrior_left_movimiento.gif";
+            }else{
+                figura.src = "img/warrior_right_movimiento.gif";
+            }
+        
+
+        if(!player.classList.contains('arriba') && !player.classList.contains('abajo') 
+        && !player.classList.contains('izquierda') && !player.classList.contains('derecha')){
+            
+            if(direccion == "abajo"){
+                figura.src = "img/warrior_down_parado.png";
+            }else if(direccion == "arriba"){
+                figura.src = "img/warrior_up_parado.png";
+            }else if(direccion == "izquierda"){
+                figura.src = "img/warrior_left_parado.png";
+            }else{
+                figura.src = "img/warrior_right_parado.png";
+            }
+        
+        }
+        /* else{
+
+            
+        } */
+
+        
     }
 
     let volver = document.getElementById('volver');
