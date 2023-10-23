@@ -3,7 +3,7 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
-    // asigna el valor del div mediante la clase y lo guarda en datatransfer co el nombre text
+    // asigna el valor del div mediante la clase y lo guarda en datatransfer con el nombre text
     ev.dataTransfer.setData("text", ev.target.id);
 
     //console.log(ev.target.innerText); //saca el texto
@@ -24,9 +24,9 @@ function drop(ev) {
 
     /* let anterior = ev.target.previousElementSibling;*/
     let casilla = ev.target;
-    //console.log(casilla.className);
+    
     /*let siguiente = ev.target.nextElementSibling;*/
-    //div.col.border.droppable
+    
     if(casilla.className != "col border droppable"){
         // Si ya contiene una pieza, no se permite poner otra en el mismo sitio
         tablero.appendChild(pieza);

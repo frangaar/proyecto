@@ -24,10 +24,6 @@ for (let index = 0; index < preguntasJuego1.length; index++) {
     container.appendChild(tmpDiv);
 }
 
-//id=pregunta'+index+'
-
-
-
 
 let cerrar2 = document.getElementsByClassName('close')[1];
 cerrar2.addEventListener('click',function(){

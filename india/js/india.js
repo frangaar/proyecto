@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded',function(){
     let posiciones = new Array();
     const VELOCIDAD = 3;
     
-    dimension = 48;
+    dimension = 32;
 
     const imagenes = ['img/arbol.png','img/hierba.gif','img/warrior_right_parado.png','img/mahatma_gandhi.png','img/taj_mahal.png','img/vaca.gif','img/casa.png','img/agua.png','img/cole.png'];
     const piezas = ['placa_solar.png','generador.png','turbina.png'];
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded',function(){
     fillScenario();
     
 
-    function restartGame(){
+    /* function restartGame(){
 
         sessionStorage.setItem('x',player.offsetLeft);
         sessionStorage.setItem('y',player.offsetTop);
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded',function(){
         colision = false;
 
         fillScenario();
-    }
+    } */
 
 
     function fillScenario(){
@@ -47,15 +47,12 @@ document.addEventListener('DOMContentLoaded',function(){
             dimension = 32;
         }
 
-        let muro="img/pared";
+        let pared="img/pared";
         let suelo="img/terra";
         
-
         let x = 0;
         let y = 0;
 
-        
-        //37
         const mapa = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 3, 4, 4, 4, 1, 1, 1, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 0],
@@ -79,198 +76,140 @@ document.addEventListener('DOMContentLoaded',function(){
 
         let parentDIV = document.getElementsByClassName("content")[0];
         let nextIndex = 0;
-        
-
-        const nombres = ['Gandhi','Taj Mahal','Vaca'];
+        let img = "";
 
         for(let i=0;i<mapa.length;i++){
             for(let j=0;j<mapa[i].length;j++){
                 let tempDIV= document.createElement('div');
-                if((mapa[i][j]==0 || mapa[i][j]==3)){
-                    tempDIV.setAttribute('class','grid-container colisionable');    
-                }else{
-                    tempDIV.setAttribute('class','grid-container no-colisionable droppable');
-                    tempDIV.setAttribute('ondrop','dropScenario(event)');
-                    tempDIV.setAttribute('ondragover','allowDropScenario(event)');
-                }
                 
                 tempDIV.style.left=x + 'px';
                 tempDIV.style.top=y + 'px';
 
-                if(mapa[i][j]==0){
-                    let img1= `<img src='`+(muro)+`.png' name='muro'></img>`
-                    tempDIV.innerHTML=img1;
-                    nextIndex = 'muro' + Object.keys(posiciones).length;
-                    posiciones[nextIndex] = [x,y];
-                // Si hay un personaje, un arbol o el jugador, se coloca suelo y encima los objetos    
-                }else if(mapa[i][j]==1 || mapa[i][j]==2 || mapa[i][j]==3 || mapa[i][j]==4 || mapa[i][j]==5 || mapa[i][j]==6 || mapa[i][j]==7 || mapa[i][j]==8 || mapa[i][j]==9 || mapa[i][j]==10){
-                    let img2= `<img src='`+(suelo)+`.png' name='suelo'></img>`
-                    tempDIV.innerHTML=img2;
-                }else{
-                    if((mapa[i][j]!=9)){
-                        nextIndex = Object.keys(posiciones).length;
-                        posiciones[nextIndex] = [x,y];
-                    }
+                
+                // Si hay un personaje, un arbol o el jugador, se coloca suelo y encima los objetos 
+                if(mapa[i][j]==1 || mapa[i][j]==2 || mapa[i][j]==3 || mapa[i][j]==4 || 
+                    mapa[i][j]==5 || mapa[i][j]==6 || mapa[i][j]==7 || mapa[i][j]==8 || 
+                    mapa[i][j]==9 || mapa[i][j]==10){
+                        img= `<img src='`+(suelo)+`.png' name='suelo'></img>`
+                        tempDIV.innerHTML=img;
+                        tempDIV.setAttribute('class','grid-container no-colisionable droppable');
+                        tempDIV.setAttribute('ondrop','dropScenario(event)');
+                        tempDIV.setAttribute('ondragover','allowDropScenario(event)');
                 }
                 
                 parentDIV.appendChild(tempDIV);
 
                 switch(mapa[i][j]){
 
-                    case 2:
-                        let img2= '<img src='+(imagenes[6])+' name=casa></img>'
-                        let casa= document.createElement('div');
-                        casa.setAttribute('class','grid-container colisionable casa');
-    
-                        casa.style.left=x + 'px';
-                        casa.style.top=y + 'px';
+                    case 0:
+                        nextIndex = 'muro' + Object.keys(posiciones).length;
+
+                        img= `<img src='`+(pared)+`.png' name='muro'></img>`
+                        let muro = "";
                         
-                        casa.innerHTML=img2;
+                        muro = setNoInteractiveItem('muro',img,x,y,nextIndex);
+                        
+                        parentDIV.appendChild(muro);
+                        
+                        break;
+
+                    case 2:
                         nextIndex = 'casa' + Object.keys(posiciones).length;
-                        posiciones[nextIndex] = [x,y];
+                        
+                        img = '<img src='+(imagenes[6])+' name=casa></img>'
+                        let casa = "";
+                        casa = setNoInteractiveItem('casa',img,x,y,nextIndex);
+                        
                         parentDIV.appendChild(casa);
+
                         break;
 
                     case 3:
-                        let img3= '<img src='+(imagenes[0])+' name=arbol></img>'
-                        let arbol= document.createElement('div');
-                        arbol.setAttribute('class','grid-container colisionable arbol');
-    
-                        arbol.style.left=x + 'px';
-                        arbol.style.top=y + 'px';
-                        
-                        arbol.innerHTML=img3;
                         nextIndex = 'arbol' + Object.keys(posiciones).length;
-                        posiciones[nextIndex] = [x,y];
+
+                        img = '<img src='+(imagenes[0])+' name=arbol></img>'
+                        let arbol= document.createElement('div');
+                        arbol = setNoInteractiveItem('arbol',img,x,y,nextIndex);
+                        
                         parentDIV.appendChild(arbol);
                         break;
                     case 4:
-                        let img4= '<img src='+(imagenes[1])+' name=hierba></img>';
-                        let hierba= document.createElement('div');
-                        hierba.innerHTML=img4;
                         
-                        hierba.setAttribute('class','grid-container no-colisionable hierba');
-    
-                        hierba.style.left=x + 'px';
-                        hierba.style.top=y + 'px';
-                        
-                        hierba.innerHTML=img4;
+                        img = '<img src='+(imagenes[1])+' name=hierba></img>';
+                        let hierba = "";
+                        hierba = setNoInteractiveItem('hierba',img,x,y,"");
+                    
                         parentDIV.appendChild(hierba);
                         break;
                     case 5:
                         nextIndex = 'figura' + Object.keys(posiciones).length;
-                        let imgGandhi= '<img src='+(imagenes[3])+' id=gandhi name=Gandhi></img>'
-                        let figuraGandhi= document.createElement('div');
-                        figuraGandhi.setAttribute('class','grid-container colisionable figura gandhi');
-                        figuraGandhi.setAttribute('name','Gandhi');
-
-                        figuraGandhi.style.left=x + 'px';
-                        figuraGandhi.style.top=y + 'px';
                         
-                        figuraGandhi.innerHTML=imgGandhi;
-
-                        posiciones[nextIndex] = [x,y];
+                        img = '<img src='+(imagenes[3])+' id=gandhi name=gandhi></img>'
+                        let figuraGandhi= setInteractiveItem('gandhi',img,x,y,nextIndex);
+                        
                         parentDIV.appendChild(figuraGandhi);
 
                         const gandhi = document.getElementById('gandhi');
 
-                        gandhi.addEventListener('click',function(e){
-                            let nameCharacter = e.currentTarget.getAttribute('name');
-    
-                            abreJuego(nameCharacter);
-                            
-                        })                       
+                        setEventClickFigura(gandhi);                      
 
                         break;
                     case 6:
                         nextIndex = 'figura' + Object.keys(posiciones).length;
-                        let imgTaj= '<img src='+(imagenes[4])+' id=taj_mahal name=Taj_Mahal></img>'
-                        let figuraTaj= document.createElement('div');
-                        figuraTaj.setAttribute('class','grid-container colisionable figura taj_mahal');
-                        figuraTaj.setAttribute('name','Taj_Mahal');
-
-                        figuraTaj.style.left=x + 'px';
-                        figuraTaj.style.top=y + 'px';
                         
-                        figuraTaj.innerHTML=imgTaj;
+                        img = '<img src='+(imagenes[4])+' id=taj_mahal name=taj_mahal></img>'
+                        let figuraTaj= setInteractiveItem('taj_mahal',img,x,y,nextIndex);
                         
-                        posiciones[nextIndex] = [x,y];
                         parentDIV.appendChild(figuraTaj);
 
                         const taj_mahal = document.getElementById('taj_mahal');
 
-                        taj_mahal.addEventListener('click',function(e){
-                            let nameCharacter = e.currentTarget.getAttribute('name');
-    
-                            abreJuego(nameCharacter);
-                            
-                        })
+                        setEventClickFigura(taj_mahal);
 
                         break;
                     case 7:
                         nextIndex = 'figura' + Object.keys(posiciones).length;
-                        let imgVaca= '<img src='+(imagenes[5])+' id=vaca name=Vaca></img>'
-                        let figuraVaca= document.createElement('div');
-                        figuraVaca.setAttribute('class','grid-container colisionable figura vaca');
-                        figuraVaca.setAttribute('name','Vaca');
-
-                        figuraVaca.style.left=x + 'px';
-                        figuraVaca.style.top=y + 'px';
                         
-                        figuraVaca.innerHTML=imgVaca;
+                        img = '<img src='+(imagenes[5])+' id=vaca name=vaca></img>'
+                        let figuraVaca = setInteractiveItem('vaca',img,x,y,nextIndex);
 
-                        posiciones[nextIndex] = [x,y];
                         parentDIV.appendChild(figuraVaca);
 
                         const vaca = document.getElementById('vaca');
 
-                        vaca.addEventListener('click',function(e){
-                            let nameCharacter = e.currentTarget.getAttribute('name');
-    
-                            abreJuego(nameCharacter);
-                            
-                        })
+                        setEventClickFigura(vaca);
                 
                         break;
-                    
                     case 8:
-                            let img8= '<img src='+(imagenes[7])+' name=agua></img>'
-                            let agua= document.createElement('div');
-                            agua.setAttribute('class','grid-container colisionable agua');
-        
-                            agua.style.left=x + 'px';
-                            agua.style.top=y + 'px';
-                            
-                            agua.innerHTML=img8;
-                            nextIndex = 'agua' + Object.keys(posiciones).length;
-                            posiciones[nextIndex] = [x,y];
-                            parentDIV.appendChild(agua);
-                            break;
+                        nextIndex = 'agua' + Object.keys(posiciones).length;
+                        
+                        img = '<img src='+(imagenes[7])+' name=agua></img>'
+                        let agua = "";
+                        agua = setNoInteractiveItem('agua',img,x,y,nextIndex);
+                        
+                        parentDIV.appendChild(agua);
+                        
+                        break;
                     case 9:
-                        player= document.createElement('div');
-                        player.setAttribute('id','character'); 
-                        let imgPlayer = '<img src='+(imagenes[2])+' name=player></img>';
-                        player.innerHTML=imgPlayer;
-
-                        player.style.left=x + 'px';
-                        player.style.top=y + 'px';
+                        nextIndex = 'player' + Object.keys(posiciones).length;
+                        
+                        
+                        img = '<img src='+(imagenes[2])+' name=player></img>';
+                        player = setPlayer(img,x,y,nextIndex);
                         
                         parentDIV.appendChild(player);
-                        break;
-                    
-                    case 10:
-                        let img10= '<img src='+(imagenes[8])+' name=cole></img>'
-                        let cole= document.createElement('div');
-                        cole.setAttribute('class','grid-container colisionable figura cole');
-                        cole.setAttribute('name','Cole');
-    
-                        cole.style.left=x + 'px';
-                        cole.style.top=y + 'px';
+
                         
-                        cole.innerHTML=img10;
+                        
+                        break;
+                    case 10:
                         nextIndex = 'cole' + Object.keys(posiciones).length;
-                        posiciones[nextIndex] = [x,y];
+
+                        img = '<img src='+(imagenes[8])+' name=cole></img>'
+                        let cole = setInteractiveItem('cole',img,x,y,nextIndex);
+
                         parentDIV.appendChild(cole);
+                        
                         break;
                 }
 
@@ -282,6 +221,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
         nextIndex = 0;
         colisionables = document.querySelectorAll('.colisionable');
+        // Hago resize para adaptarlo al tamaño de la pantalla y rellenarla
         resizeItems();
 
         if(sessionStorage.getItem('x') != null){
@@ -293,6 +233,65 @@ document.addEventListener('DOMContentLoaded',function(){
         }
     }
 
+    function setPlayer(img,x,y,index){
+
+        let item = document.createElement('div');
+        item.setAttribute('id','character'); 
+        
+        item.innerHTML=img;
+
+        item.style.left=x + 'px';
+        item.style.top=y + 'px';
+
+        posiciones[index] = [x,y];
+
+        return item;
+    }
+
+    function setInteractiveItem(tipo,img,x,y,index){
+
+        let item= document.createElement('div');
+        item.setAttribute('class','grid-container colisionable figura ' + tipo);
+        item.setAttribute('name',tipo);
+
+        item.innerHTML=img;
+
+        item.style.left=x + 'px';
+        item.style.top=y + 'px'; 
+
+        posiciones[index] = [x,y];
+
+        return item;
+    }
+
+    function setEventClickFigura(figura){
+
+        figura.addEventListener('click',function(e){
+            let nameCharacter = e.currentTarget.getAttribute('name');
+
+            abreJuego(nameCharacter);
+            
+        })
+    }
+
+    function setNoInteractiveItem(tipo,img,x,y,index){
+
+        let item= document.createElement('div');
+
+        item.style.left=x + 'px';
+        item.style.top=y + 'px';
+        
+        if(tipo == "hierba"){
+            item.setAttribute('class','grid-container no-colisionable ' + tipo);
+        }else{
+            item.setAttribute('class','grid-container colisionable ' + tipo);
+            posiciones[index] = [x,y];
+        }               
+        
+        item.innerHTML=img;
+
+        return item;
+    }
     
 
     charactersPosition();
@@ -308,7 +307,8 @@ document.addEventListener('DOMContentLoaded',function(){
         for (const key in posiciones) {
             if (Object.hasOwnProperty.call(posiciones, key)) {
                 
-                if(!key.includes("muro") && !key.includes("arbol") && !key.includes("casa") && !key.includes("agua")){
+                if(!key.includes("muro") && !key.includes("arbol") 
+                && !key.includes("casa") && !key.includes("agua") && !key.includes("player")){
                     personajes[idx].style.left = posiciones[key][0] + 'px';
                     personajes[idx].style.top = posiciones[key][1] + 'px';
 
@@ -375,14 +375,12 @@ document.addEventListener('DOMContentLoaded',function(){
                 changeImagePlayer('derecha')               
             }
         }
-        
-        //move();
     }
 
     function keyUp(e) {
 
         let direccion = "";
-        console.log(e.code);
+
         if(e.code == "ArrowDown"){
             abajo = false;
             direccion = player.getAttribute('class');
@@ -418,6 +416,10 @@ document.addEventListener('DOMContentLoaded',function(){
         let dialogo2 = document.getElementById('bocadillo-cuadrado2');
         let dialogo3 = document.getElementById('bocadillo-cuadrado3');
         let dialogo4 = document.getElementById('bocadillo-cuadrado4');
+        let left = 0
+        let top = 0
+        let leftX = 0;
+        let topY = 0;
 
         while(!colision && index < colisionables.length){
 
@@ -446,30 +448,33 @@ document.addEventListener('DOMContentLoaded',function(){
                 quienSoy = colisionables[index].getAttribute('name');
                 colisionables[index].focus();
                 
-                if(quienSoy == 'Gandhi'){
-                    let left = colisionables[index].offsetLeft;
-                    let top = colisionables[index].offsetTop;
-                    dialogo1.style.left = left + 100 + 'px'
-                    dialogo1.style.top = top - 8 + 'px'
-                    dialogo1.classList.add('visible');
-                }else if(quienSoy == 'Taj_Mahal'){
-                    let left = colisionables[index].offsetLeft;
-                    let top = colisionables[index].offsetTop;
-                    dialogo2.style.left = left + 110 + 'px'
-                    dialogo2.style.top = top - 30 + 'px'
-                    dialogo2.classList.add('visible');
-                }else if(quienSoy == 'Vaca'){
-                    let left = colisionables[index].offsetLeft; 
-                    let top = colisionables[index].offsetTop; 
-                    dialogo3.style.left = left - 50 + 'px'
-                    dialogo3.style.top = top - 130 +  'px'
-                    dialogo3.classList.add('visible');
-                }else if(quienSoy == 'Cole'){
-                    let left = colisionables[index].offsetLeft; 
-                    let top = colisionables[index].offsetTop; 
-                    dialogo4.style.left = left - 10 + 'px'
-                    dialogo4.style.top = top - 70 +  'px'
-                    dialogo4.classList.add('visible');
+                if(quienSoy == 'gandhi'){
+                    left = colisionables[index].offsetLeft;
+                    top = colisionables[index].offsetTop;
+                    leftX = 100;
+                    topY = -8;
+                    showDialogue(dialogo1,left,leftX,top,topY);
+                    
+                }else if(quienSoy == 'taj_mahal'){
+                    left = colisionables[index].offsetLeft;
+                    top = colisionables[index].offsetTop;
+                    leftX = 110;
+                    topY = -30;
+                    showDialogue(dialogo2,left,leftX,top,topY);
+                    
+                }else if(quienSoy == 'vaca'){
+                    left = colisionables[index].offsetLeft;
+                    top = colisionables[index].offsetTop;
+                    leftX = -50;
+                    topY = -130;
+                    showDialogue(dialogo3,left,leftX,top,topY);
+                    
+                }else if(quienSoy == 'cole'){
+                    left = colisionables[index].offsetLeft;
+                    top = colisionables[index].offsetTop;
+                    leftX = -10;
+                    topY = -70;
+                    showDialogue(dialogo4,left,leftX,top,topY);
                 }
             }
             index++;        
@@ -477,6 +482,13 @@ document.addEventListener('DOMContentLoaded',function(){
         
         
         return colision;
+    }
+
+    function showDialogue(dialogo,left,x,top,y){
+
+        dialogo.style.left = left + x + 'px'
+        dialogo.style.top = top + y + 'px'
+        dialogo.classList.add('visible');
     }
 
     function move(){
@@ -565,7 +577,7 @@ document.addEventListener('DOMContentLoaded',function(){
     animar();
 
 
-    window.addEventListener('resize',restartGame);
+    //window.addEventListener('resize',restartGame);
 
     function resizeItems(){
 
@@ -574,8 +586,6 @@ document.addEventListener('DOMContentLoaded',function(){
         
         let colisionables =  document.querySelectorAll('.grid-container.colisionable');
         let colisionablesImg = document.querySelectorAll('.grid-container.colisionable > img');
-
-        let npc = document.querySelectorAll('.npc');
 
 
         for (let x = 0; x < noColisionables.length; x++) {
@@ -594,11 +604,7 @@ document.addEventListener('DOMContentLoaded',function(){
             colisionablesImg[y].style.height = dimension + 'px';    
         }
 
-        for (let y = 0; y < npc.length; y++) {
-            
-            npc[y].style.width = dimension + 'px';
-            npc[y].style.height = dimension + 'px'; 
-        }
+        
     }
 
     function abreJuego(nameCharacter){
@@ -606,17 +612,17 @@ document.addEventListener('DOMContentLoaded',function(){
         if(nameCharacter == quienSoy){
 
             switch (nameCharacter) {
-                case "Gandhi":
+                case "gandhi":
                     let juego1 = document.getElementById("juego1");
                     juego1.style.display = "block";
                     break;
             
-                case "Taj_Mahal":
+                case "taj_mahal":
                     let juego2 = document.getElementById("juego2");
                     juego2.style.display = "block";
                     break;
     
-                case "Vaca":
+                case "vaca":
                     let juego3 = document.getElementById("juego3");
                     juego3.style.display = "block";
                     break;
@@ -657,7 +663,6 @@ document.addEventListener('DOMContentLoaded',function(){
             }
         }
     }
-
 
 
     let volver = document.getElementById('volver');
@@ -757,7 +762,6 @@ function lightOn(){
 
     let countPendingItems = document.querySelectorAll('.item > img')
     let escuela = document.getElementsByName('cole')[0];
-
 
     if(countPendingItems.length == 0){
         escuela.style.filter = "brightness(100%)";
