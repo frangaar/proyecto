@@ -342,9 +342,10 @@ document.addEventListener('DOMContentLoaded',function(){
     window.addEventListener("keyup", keyUp);
 
     function keyDown(e) {
-        
+
         if(e.code == "ArrowDown"){
             abajo = true;
+            arriba = false;
             if(!player.classList.contains('abajo')){
                 player.classList.add('abajo');
                 changeImagePlayer('abajo')
@@ -352,6 +353,7 @@ document.addEventListener('DOMContentLoaded',function(){
         }
         if(e.code == "ArrowUp"){
             arriba = true;
+            abajo = false;
             if(!player.classList.contains('arriba')){
                 player.classList.add('arriba');
                 changeImagePlayer('arriba')
@@ -359,6 +361,7 @@ document.addEventListener('DOMContentLoaded',function(){
         }
         if(e.code == "ArrowLeft"){
             izquierda = true;
+            derecha = false;
             if(!player.classList.contains('izquierda')){
                 player.classList.add('izquierda');
                 changeImagePlayer('izquierda')
@@ -366,6 +369,7 @@ document.addEventListener('DOMContentLoaded',function(){
         }
         if(e.code == "ArrowRight"){
             derecha = true;
+            izquierda = false;
             if(!player.classList.contains('derecha')){
                 player.classList.add('derecha');
                 changeImagePlayer('derecha')               
@@ -376,26 +380,33 @@ document.addEventListener('DOMContentLoaded',function(){
     }
 
     function keyUp(e) {
-        
+
+        let direccion = "";
+        console.log(e.code);
         if(e.code == "ArrowDown"){
             abajo = false;
+            direccion = player.getAttribute('class');
             player.classList.remove('abajo');
-            changeImagePlayer('abajo')
+            changeImagePlayer(direccion);
         }
         if(e.code == "ArrowUp"){
             arriba = false;
+            direccion = player.getAttribute('class');
             player.classList.remove('arriba');
-            changeImagePlayer('arriba')
+            
+            changeImagePlayer(direccion);
         }
         if(e.code == "ArrowLeft"){
             izquierda = false;
+            direccion = player.getAttribute('class');
             player.classList.remove('izquierda');
-            changeImagePlayer('izquierda')
+            changeImagePlayer(direccion);
         }
         if(e.code == "ArrowRight"){
             derecha = false;
+            direccion = player.getAttribute('class');
             player.classList.remove('derecha');
-            changeImagePlayer('derecha')
+            changeImagePlayer(direccion);
         }
     }
 
@@ -545,6 +556,7 @@ document.addEventListener('DOMContentLoaded',function(){
         }
     }
 
+
     function animar(){
         move();
         requestAnimationFrame(animar)
@@ -552,10 +564,6 @@ document.addEventListener('DOMContentLoaded',function(){
 
     animar();
 
-    /// game loop
-    /* setInterval(function(){
-        move();  
-    }, 1000/24); */
 
     window.addEventListener('resize',restartGame);
 
@@ -624,20 +632,19 @@ document.addEventListener('DOMContentLoaded',function(){
         
         let figura = document.querySelector('#character > img');
 
-        
+        let tienesClases = player.getAttribute('class');
+
+        if(tienesClases != ""){
             if(direccion == "abajo"){
                 figura.src = "img/warrior_down_movimiento.gif";
             }else if(direccion == "arriba"){
                 figura.src = "img/warrior_up_movimiento.gif";
             }else if(direccion == "izquierda"){
                 figura.src = "img/warrior_left_movimiento.gif";
-            }else{
+            }else if(direccion == "derecha"){
                 figura.src = "img/warrior_right_movimiento.gif";
             }
-        
-
-        if(!player.classList.contains('arriba') && !player.classList.contains('abajo') 
-        && !player.classList.contains('izquierda') && !player.classList.contains('derecha')){
+        }else{
             
             if(direccion == "abajo"){
                 figura.src = "img/warrior_down_parado.png";
@@ -645,11 +652,10 @@ document.addEventListener('DOMContentLoaded',function(){
                 figura.src = "img/warrior_up_parado.png";
             }else if(direccion == "izquierda"){
                 figura.src = "img/warrior_left_parado.png";
-            }else{
+            }else if(direccion == "derecha"){
                 figura.src = "img/warrior_right_parado.png";
             }
-        
-        }        
+        }
     }
 
 
