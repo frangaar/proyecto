@@ -372,7 +372,7 @@ document.addEventListener('DOMContentLoaded',function(){
             }
         }
         
-        move();
+        //move();
     }
 
     function keyUp(e) {
@@ -545,11 +545,17 @@ document.addEventListener('DOMContentLoaded',function(){
         }
     }
 
+    function animar(){
+        move();
+        requestAnimationFrame(animar)
+    }
+
+    animar();
 
     /// game loop
-    setInterval(function(){
+    /* setInterval(function(){
         move();  
-    }, 1000/24);
+    }, 1000/24); */
 
     window.addEventListener('resize',restartGame);
 
@@ -714,32 +720,11 @@ function dragScenario(ev) {
 function dropScenario(ev) {
 
     ev.preventDefault();
-    //let tablero = document.getElementById('tablero')
+
     let data = ev.dataTransfer.getData("text");
     let pieza = document.getElementById(data);
     
-    //ev.target.appendChild(pieza);
-    //ev.currentTarget.appendChild(pieza);
     ev.currentTarget.insertBefore(pieza, ev.currentTarget.firstChild);
-
-    
-    let casilla = ev.target;
-    
-    /* if(casilla.className != "droppable"){
-        // Si ya contiene una pieza, no se permite poner otra en el mismo sitio
-        tablero.appendChild(pieza);
-    }else{
-        // Si la pieza no va en ese lugar, no se permite colocarla
-        if(casilla.getAttribute('data-id') != pieza.getAttribute('data-id')){
-            tablero.appendChild(pieza);
-        }else{
-            let piezasColocadas = document.querySelectorAll('.col.border.droppable .bloque')
-            let cantidadPiezasColocadas = piezasColocadas.length;
-            sessionStorage.setItem("aciertos",cantidadPiezasColocadas);
-        }
-
-        //habilitaBotonGuardar();
-    } */
 
     lightOn();
 }

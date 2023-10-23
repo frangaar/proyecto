@@ -107,14 +107,14 @@ body{
 }
 
 .grid-container.colisionable.vaca{
-    width: 72px !important;
-    height: 72px !important;
+    width: 86px !important;
+    height: 53px !important;
     z-index: 5000;
 }
 
 .grid-container.colisionable.figura > #vaca{
-    width: 72px !important;
-    height: 72px !important;
+    width: 86px !important;
+    height: 53px !important;
     cursor: pointer;
 }
 
