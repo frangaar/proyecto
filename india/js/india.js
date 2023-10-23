@@ -702,7 +702,7 @@ document.addEventListener('DOMContentLoaded',function(){
             let ficha= document.createElement('img');
             ficha.setAttribute('id','dragPieza' + index);
             ficha.setAttribute('class','bloque'); 
-            ficha.setAttribute('draggable','true');
+            ficha.setAttribute('draggable','false');
             ficha.setAttribute('onDragStart','dragScenario(event)');
             ficha.setAttribute('src','img/piezas/'+piezas[index]);
             ficha.setAttribute('data-id',index);
@@ -761,7 +761,7 @@ document.ondragleave = function(e){
 function lightOn(){
 
     let countPendingItems = document.querySelectorAll('.item > img')
-    let escuela = document.getElementsByName('cole')[0];
+    let escuela = document.querySelector('.cole > img');
 
     if(countPendingItems.length == 0){
         escuela.style.filter = "brightness(100%)";

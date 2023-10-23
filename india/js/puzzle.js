@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
         let item1 = document.querySelector('#item1 > img');
 
+        item1.setAttribute('draggable','true');
         item1.classList.add('item-visible');
     };
 

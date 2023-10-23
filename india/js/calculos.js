@@ -45,7 +45,8 @@ btnGuardar.onclick = function(){
             juego2.style.display = "none";
             
             let item2 = document.querySelector('#item2 > img');
-
+            
+            item2.setAttribute('draggable','true');
             item2.classList.add('item-visible');
         }else{
             alert('Felicidades!. Todas tus respuestas son correctas.');

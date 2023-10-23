@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 
                 let item3 = document.querySelector('#item3 > img');
 
+                item3.setAttribute('draggable','true');
                 item3.classList.add('item-visible');
 
             }else{

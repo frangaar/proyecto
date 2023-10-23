@@ -81,14 +81,14 @@ body{
 }
 
 .grid-container.colisionable.cole{
-    width: 125px !important;
-    height: 102px !important;
+    width: 155px !important;
+    height: 112px !important;
     z-index: 5000;
 }
 
 .grid-container.colisionable.cole > img{
-    width: 125px !important;
-    height: 102px !important;
+    width: 155px !important;
+    height: 112px !important;
     filter: brightness(0%);
 }
 
@@ -159,7 +159,7 @@ body{
 
 #player-panel .content-items .items-owned .item img{
     width: 50px;
-    height: 60px;
+    height: 50px;
     background-color: white;
     visibility: hidden;
 }
