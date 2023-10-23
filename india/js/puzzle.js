@@ -96,6 +96,10 @@ document.addEventListener('DOMContentLoaded',function(){
         sessionStorage.setItem("ghandi",true);
         let modal = document.getElementById("juego1");
         modal.style.display = "none";
+
+        let item1 = document.querySelector('#item1 > img');
+
+        item1.classList.add('item-visible');
     };
 
 

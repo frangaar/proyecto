@@ -23,7 +23,7 @@ try {
         $update->execute();
 
         $_SESSION['success'] = "Partida guardada correctamente.";
-    }else{
+    }else if($result['nivel'] < $nivel-1){{
         $_SESSION['level'] = "Tienes que haber superado el nivel 1 para guardar la partida.";
     }   
 

@@ -57,7 +57,11 @@ span{
 
 .droppable:hover,
 .droppable.hover{
-    border: 1px solid black !important;
+    /* border: 1px solid black !important; */
+}
+
+#dragPieza0,#dragPieza1,#dragPieza2{
+    background-color: white;
 }
 
 .row.row-cols-4{

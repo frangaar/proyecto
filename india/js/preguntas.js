@@ -44,6 +44,11 @@ document.addEventListener('DOMContentLoaded',function(){
                 sessionStorage.setItem("vaca",true);
                 let juego3 = document.getElementById("juego3");
                 juego3.style.display = "none";
+                
+                let item3 = document.querySelector('#item3 > img');
+
+                item3.classList.add('item-visible');
+
             }else{
                 alert('Felicidades!. Todas tus respuestas son correctas.');
                 btnGuardar.innerHTML = "Guardar";

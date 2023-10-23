@@ -17,9 +17,10 @@ document.addEventListener('DOMContentLoaded',function(){
     dimension = 48;
 
     const imagenes = ['img/arbol.png','img/hierba.gif','img/warrior_right_parado.png','img/mahatma_gandhi.png','img/taj_mahal.png','img/vaca.gif','img/casa.png','img/agua.png','img/cole.png'];
-
+    const piezas = ['placa_solar.png','generador.png','turbina.png'];
     
     let player = '';
+
     fillScenario();
     
 
@@ -88,7 +89,9 @@ document.addEventListener('DOMContentLoaded',function(){
                 if((mapa[i][j]==0 || mapa[i][j]==3)){
                     tempDIV.setAttribute('class','grid-container colisionable');    
                 }else{
-                    tempDIV.setAttribute('class','grid-container no-colisionable');
+                    tempDIV.setAttribute('class','grid-container no-colisionable droppable');
+                    tempDIV.setAttribute('ondrop','dropScenario(event)');
+                    tempDIV.setAttribute('ondragover','allowDropScenario(event)');
                 }
                 
                 tempDIV.style.left=x + 'px';
@@ -258,7 +261,8 @@ document.addEventListener('DOMContentLoaded',function(){
                     case 10:
                         let img10= '<img src='+(imagenes[8])+' name=cole></img>'
                         let cole= document.createElement('div');
-                        cole.setAttribute('class','grid-container colisionable cole');
+                        cole.setAttribute('class','grid-container colisionable figura cole');
+                        cole.setAttribute('name','Cole');
     
                         cole.style.left=x + 'px';
                         cole.style.top=y + 'px';
@@ -304,7 +308,7 @@ document.addEventListener('DOMContentLoaded',function(){
         for (const key in posiciones) {
             if (Object.hasOwnProperty.call(posiciones, key)) {
                 
-                if(!key.includes("muro") && !key.includes("arbol") && !key.includes("casa") && !key.includes("agua") && !key.includes("cole")){
+                if(!key.includes("muro") && !key.includes("arbol") && !key.includes("casa") && !key.includes("agua")){
                     personajes[idx].style.left = posiciones[key][0] + 'px';
                     personajes[idx].style.top = posiciones[key][1] + 'px';
 
@@ -402,6 +406,7 @@ document.addEventListener('DOMContentLoaded',function(){
         let dialogo1 = document.getElementById('bocadillo-cuadrado1');
         let dialogo2 = document.getElementById('bocadillo-cuadrado2');
         let dialogo3 = document.getElementById('bocadillo-cuadrado3');
+        let dialogo4 = document.getElementById('bocadillo-cuadrado4');
 
         while(!colision && index < colisionables.length){
 
@@ -416,12 +421,14 @@ document.addEventListener('DOMContentLoaded',function(){
                 dialogo1.classList.remove('visible');
                 dialogo2.classList.remove('visible');
                 dialogo3.classList.remove('visible');
+                dialogo4.classList.remove('visible');
                 quienSoy = "";
             }else if(despuesX || despuesY){
                 colision = false;
                 dialogo1.classList.remove('visible');
                 dialogo2.classList.remove('visible');
                 dialogo3.classList.remove('visible');
+                dialogo4.classList.remove('visible');
                 quienSoy = "";
             }else{
                 colision = true; 
@@ -446,6 +453,12 @@ document.addEventListener('DOMContentLoaded',function(){
                     dialogo3.style.left = left - 50 + 'px'
                     dialogo3.style.top = top - 130 +  'px'
                     dialogo3.classList.add('visible');
+                }else if(quienSoy == 'Cole'){
+                    let left = colisionables[index].offsetLeft; 
+                    let top = colisionables[index].offsetTop; 
+                    dialogo4.style.left = left - 10 + 'px'
+                    dialogo4.style.top = top - 70 +  'px'
+                    dialogo4.classList.add('visible');
                 }
             }
             index++;        
@@ -630,14 +643,10 @@ document.addEventListener('DOMContentLoaded',function(){
                 figura.src = "img/warrior_right_parado.png";
             }
         
-        }
-        /* else{
-
-            
-        } */
-
-        
+        }        
     }
+
+
 
     let volver = document.getElementById('volver');
 
@@ -664,4 +673,104 @@ document.addEventListener('DOMContentLoaded',function(){
         
     })
 
+    setEnergyItems();
+    
+    function setEnergyItems(){
+
+        let itemsList = document.getElementsByClassName('item');
+        let idx = 0;
+
+        for (let index = 0; index < itemsList.length; index++) {
+            
+            let ficha= document.createElement('img');
+            ficha.setAttribute('id','dragPieza' + index);
+            ficha.setAttribute('class','bloque'); 
+            ficha.setAttribute('draggable','true');
+            ficha.setAttribute('onDragStart','dragScenario(event)');
+            ficha.setAttribute('src','img/piezas/'+piezas[index]);
+            ficha.setAttribute('data-id',index);
+            idx++;
+
+            let itemBlock = document.getElementById('item'+idx);
+            itemBlock.appendChild(ficha)
+        }
+        
+    }
+
 });
+
+
+function allowDropScenario(ev) {
+    ev.preventDefault();
+}
+
+function dragScenario(ev) {
+    // asigna el valor del div mediante la clase y lo guarda en datatransfer co el nombre text
+    ev.dataTransfer.setData("text", ev.target.id);
+
+    //console.log(ev.target.innerText); //saca el texto
+}
+
+function dropScenario(ev) {
+
+    ev.preventDefault();
+    //let tablero = document.getElementById('tablero')
+    let data = ev.dataTransfer.getData("text");
+    let pieza = document.getElementById(data);
+    
+    //ev.target.appendChild(pieza);
+    //ev.currentTarget.appendChild(pieza);
+    ev.currentTarget.insertBefore(pieza, ev.currentTarget.firstChild);
+
+    
+    let casilla = ev.target;
+    
+    /* if(casilla.className != "droppable"){
+        // Si ya contiene una pieza, no se permite poner otra en el mismo sitio
+        tablero.appendChild(pieza);
+    }else{
+        // Si la pieza no va en ese lugar, no se permite colocarla
+        if(casilla.getAttribute('data-id') != pieza.getAttribute('data-id')){
+            tablero.appendChild(pieza);
+        }else{
+            let piezasColocadas = document.querySelectorAll('.col.border.droppable .bloque')
+            let cantidadPiezasColocadas = piezasColocadas.length;
+            sessionStorage.setItem("aciertos",cantidadPiezasColocadas);
+        }
+
+        //habilitaBotonGuardar();
+    } */
+
+    lightOn();
+}
+
+document.ondragenter = function(e){
+
+    e.preventDefault();
+    if ( e.target.className == "droppable" ) {
+    
+        e.classList.add("hover");
+    }
+};
+
+
+document.ondragleave = function(e){
+
+    if ( e.target.className == "droppable" ) {
+        e.classList.remove("hover");
+    }
+};
+
+
+function lightOn(){
+
+    let countPendingItems = document.querySelectorAll('.item > img')
+    let escuela = document.getElementsByName('cole')[0];
+
+
+    if(countPendingItems.length == 0){
+        escuela.style.filter = "brightness(100%)";
+    }else{
+        escuela.style.filter = "brightness(0%)";
+    }
+}

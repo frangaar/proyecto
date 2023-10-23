@@ -146,9 +146,22 @@ body{
     width: 157px;
 }
 
+#player-panel .content-items .items-owned .item{
+    margin-top: 62px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+}
+
+.item-visible{
+    visibility: visible !important;
+}
+
 #player-panel .content-items .items-owned .item img{
-    width: 55px;
-    padding-top: 62px;
+    width: 50px;
+    height: 60px;
+    background-color: white;
+    visibility: hidden;
 }
 
 #player-panel .content-items .items-owned table{
@@ -273,6 +286,18 @@ body{
     transform: rotate(0deg);
 }
 
+#bocadillo-cuadrado4:before {
+    border: 15px solid white;
+    content: '';
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    position: absolute;
+    bottom: -26px;
+    left: calc(0% - -67px);
+    transform: rotate(0deg);
+}
+
 .bocadillo-cuadrado p{
     font-size: 11px;
     padding: 5px;
@@ -323,6 +348,16 @@ button.audio-close{
     /* top: 47%;
     left: 72%; */
     /* z-index: 1000; */
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0s, opacity 0.5s linear; 
+}
+
+#bocadillo-cuadrado4{
+    /* top: 47%;
+    left: 72%; */
+    /* z-index: 1000; */
+    height: 100px !important;
     opacity: 0;
     visibility: hidden;
     transition: visibility 0s, opacity 0.5s linear; 

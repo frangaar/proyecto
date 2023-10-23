@@ -49,6 +49,13 @@ session_start();
             </div>
             <button type="button" data-audio="audio/spain.mp3" class="audio btn btn-primary" id="audio1" class="btn btn-primary">Escuchar</button>
         </div>
+        <div class="bocadillo-cuadrado" id="bocadillo-cuadrado4">
+            <button type="button" id="audio-close4" class="btn-close audio-close"></button>
+            <div class="text">
+                <p>Vaya!!, parece que la escuela necesita luz para poder continuar las clases. Debo conseguir todas las piezas para poder iluminar la escuela utilizando energias renovables</p>
+            </div>
+            <button type="button" data-audio="audio/spain.mp3" class="audio btn btn-primary" id="audio1" class="btn btn-primary">Escuchar</button>
+        </div>
     </div>  
     <div class="container-fluid" id="player-panel">
         <div class="content-items">
@@ -60,22 +67,19 @@ session_start();
                     <tbody>
                         <tr>
                             <td>
-                                <div class="item" id="item1">
-                                    <img src="img/ghandi.png">
+                                <div class="item" id="item1" ondrop="dropScenario(event)" ondragover="allowDropScenario(event)">
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <div class="item" id="item2">
-                                    <img src="img/ghandi.png">
+                                <div class="item" id="item2" ondrop="dropScenario(event)" ondragover="allowDropScenario(event)">
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <div class="item" id="item2">
-                                    <img src="img/ghandi.png">
+                                <div class="item" id="item3" ondrop="dropScenario(event)" ondragover="allowDropScenario(event)">
                                 </div>
                             </td>
                         </tr>

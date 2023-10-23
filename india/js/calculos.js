@@ -47,6 +47,10 @@ btnGuardar.onclick = function(){
             sessionStorage.setItem("taj",true);
             let juego2 = document.getElementById("juego2");
             juego2.style.display = "none";
+            
+            let item2 = document.querySelector('#item2 > img');
+
+            item2.classList.add('item-visible');
         }else{
             alert('Felicidades!. Todas tus respuestas son correctas.');
             btnGuardar.innerHTML = "Guardar";
