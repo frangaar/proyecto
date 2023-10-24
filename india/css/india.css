@@ -70,14 +70,14 @@ body{
 
 
 .grid-container.colisionable.casa{
-    width: 95px !important;
-    height: 82px !important;
+    width: 105px !important;
+    height: 72px !important;
     z-index: 5000;
 }
 
 .grid-container.colisionable.casa > img{
-    width: 95px !important;
-    height: 82px !important;
+    width: 105px !important;
+    height: 72px !important;
 }
 
 .grid-container.colisionable.cole{
@@ -95,39 +95,81 @@ body{
 
 
 .grid-container.colisionable.gandhi{
-    width: 72px !important;
-    height: 72px !important;
+    width: 42px !important;
+    height: 102px !important;
     z-index: 5000;
 }
 
 .grid-container.colisionable.taj_mahal{
-    width: 72px !important;
-    height: 72px !important;
+    width: 122px !important;
+    height: 92px !important;
     z-index: 5000;
 }
 
 .grid-container.colisionable.vaca{
-    width: 86px !important;
-    height: 53px !important;
+    width: 116px !important;
+    height: 93px !important;
     z-index: 5000;
 }
 
 .grid-container.colisionable.figura > #vaca{
-    width: 86px !important;
-    height: 53px !important;
+    width: 116px !important;
+    height: 93px !important;
     cursor: pointer;
 }
 
 .grid-container.colisionable.figura > #taj_mahal{
-    width: 72px !important;
-    height: 72px !important;
+    width: 122px !important;
+    height: 92px !important;
     cursor: pointer;
 }
 
 .grid-container.colisionable.figura > #gandhi{
-    width: 72px !important;
-    height: 72px !important;
+    width: 42px !important;
+    height: 102px !important;
     cursor: pointer;
+}
+
+.grid-container.colisionable.muroLeft{
+    left: 29px !important;
+    width: 28px !important;
+    height: 48px;
+    z-index: 6000;
+}
+
+img[name="muroLeft"] {
+    transform: scaleX(-0.2);
+}
+
+.grid-container.colisionable.muroRight{
+    left: 1700px !important;
+    width: 28px !important;
+    height: 48px;
+    z-index: 6000;
+}
+
+img[name="muroRight"] {
+    transform: scaleX(-0.2);
+}
+
+.grid-container.colisionable.muroUp{
+    top: 17px !important;
+    height: 34px !important;
+    z-index: 6000;
+}
+
+img[name="muroUp"] {
+    transform: scaleY(-0.3);
+}
+
+.grid-container.colisionable.muroDown{
+    top: 775px !important;
+    height: 39px;
+    z-index: 6000;
+}
+
+img[name="muroDown"] {
+    transform: scaleY(-0.7);
 }
 
 

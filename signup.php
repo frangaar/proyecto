@@ -43,13 +43,13 @@
                     <div class="input-group mb-3">    
                         <label for="nombre" class="form-label">Nombre</label>
                         <div class="col-sm-12">
-                            <input type="text" id="nombre" class="form-control" name="user" placeholder="Username" aria-label="Username">
+                            <input type="text" id="nombre" class="form-control" name="user" placeholder="Escribe aquí tu usuario" aria-label="Username">
                         </div>
                     </div>
                     <div class="input-group mb-3">
                         <label for="pass" class="form-label">Password</label>
                         <div class="col-sm-12">
-                            <input type="password" class="form-control" name="pass" placeholder="Password" aria-label="Passvord">
+                            <input type="password" class="form-control" name="pass" placeholder="Escribe aquí tu password" aria-label="Passvord">
                         </div>    
                     </div>
                     <div class="col-12">

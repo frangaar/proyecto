@@ -16,8 +16,9 @@ document.addEventListener('DOMContentLoaded',function(){
     
     dimension = 32;
 
-    const imagenes = ['img/arbol.png','img/hierba.gif','img/warrior_right_parado.png','img/mahatma_gandhi.png','img/taj_mahal.png','img/vaca.gif','img/casa.png','img/agua.png','img/cole.png'];
+    const imagenes = ['img/arbol.png','img/hierba.gif','img/warrior_right_parado.png','img/gandhi.png','img/taj_mahal.png','img/vaca.png','img/casa.png','img/agua.png','img/cole.png'];
     const piezas = ['placa_solar.png','generador.png','turbina.png'];
+    const casas = ['img/house1.png','img/house2.png','img/house3.png','img/house4.png']
     
     let player = '';
 
@@ -47,36 +48,37 @@ document.addEventListener('DOMContentLoaded',function(){
             dimension = 32;
         }
 
-        let pared="img/pared";
+        let pared="img/zanja";
         let suelo="img/terra";
         
         let x = 0;
         let y = 0;
 
         const mapa = [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 3, 4, 4, 4, 1, 1, 1, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 0],
-            [0, 1, 9, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 2, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 1, 8, 1, 2, 1, 1, 1, 1, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 8, 1, 1, 5, 1, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 3, 4, 4, 1, 1, 8, 8, 8, 8, 8, 1, 1, 1, 1, 1, 1, 1, 8, 1, 1, 4, 3, 4, 4, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 10, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
-            [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
-            [0, 8, 8, 8, 8, 8, 8, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 3, 4, 4, 0],
-            [0, 1, 2, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
-            [0, 1, 1, 1, 1, 1, 8, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 0],
-            [0, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 8, 8, 8, 8, 0],
-            [0, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-            [0, 4, 4, 4, 4, 4, 1, 1, 6, 1, 1, 1, 1, 1, 1, 1, 4, 3, 4, 4, 4, 3, 4, 4, 1, 1, 1, 1, 1, 1, 7, 1, 1, 1, 1, 1, 0],
-            [0, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-            [0, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-            ];
+            [99, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 99, 20, 20, 20, 20, 20, 20, 20, 99, 20, 20, 20, 20, 20, 99],
+            [30, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 13, 14, 14, 14, 11, 11, 11, 11, 11, 11, 18, 11, 11, 11, 11, 11, 11, 11, 18, 11, 11, 11, 11, 11, 40],
+            [30, 11, 11, 19, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 11, 11, 12, 11, 11, 11, 18, 11, 11, 11, 11, 11, 11, 11, 18, 11, 12, 11, 11, 11, 40],
+            [30, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 18, 11, 11, 11, 11, 11, 11, 11, 18, 11, 11, 11, 11, 11, 40],
+            [30, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 18, 11, 11, 15, 11, 11, 11, 11, 18, 11, 11, 11, 11, 11, 40],
+            [30, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 13, 14, 14, 11, 11, 18, 18, 18, 18, 18, 11, 11, 11, 11, 11, 11, 11, 18, 11, 11, 14, 13, 14, 40],
+            [30, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 40],
+            [30, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 11, 11, 10, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 40],
+            [30, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 40],
+            [99, 18, 18, 18, 18, 18, 18, 18, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 13, 14, 40],
+            [30, 11, 11, 12, 11, 11, 11, 18, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 40],
+            [30, 11, 11, 11, 11, 11, 11, 18, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 40],
+            [30, 11, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 18, 18, 18, 99],
+            [30, 11, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 12, 11, 11, 14, 14, 14, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 40],
+            [30, 11, 14, 14, 14, 14, 14, 11, 11, 16, 11, 11, 11, 11, 11, 11, 11, 14, 13, 14, 14, 14, 13, 14, 14, 11, 11, 11, 11, 11, 11, 17, 11, 11, 11, 11, 40],
+            [30, 11, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 40],
+            [30, 11, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 40],
+            [99, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 99]
+        ]
 
         let parentDIV = document.getElementsByClassName("content")[0];
         let nextIndex = 0;
         let img = "";
+        let indiceCasa = 0;
 
         for(let i=0;i<mapa.length;i++){
             for(let j=0;j<mapa[i].length;j++){
@@ -87,9 +89,9 @@ document.addEventListener('DOMContentLoaded',function(){
 
                 
                 // Si hay un personaje, un arbol o el jugador, se coloca suelo y encima los objetos 
-                if(mapa[i][j]==1 || mapa[i][j]==2 || mapa[i][j]==3 || mapa[i][j]==4 || 
-                    mapa[i][j]==5 || mapa[i][j]==6 || mapa[i][j]==7 || mapa[i][j]==8 || 
-                    mapa[i][j]==9 || mapa[i][j]==10){
+                if(mapa[i][j]==11 || mapa[i][j]==12 || mapa[i][j]==13 || mapa[i][j]==14 || 
+                    mapa[i][j]==15 || mapa[i][j]==16 || mapa[i][j]==17 || mapa[i][j]==18 || 
+                    mapa[i][j]==19 || mapa[i][j]==10){
                         img= `<img src='`+(suelo)+`.png' name='suelo'></img>`
                         tempDIV.innerHTML=img;
                         tempDIV.setAttribute('class','grid-container no-colisionable droppable');
@@ -101,22 +103,75 @@ document.addEventListener('DOMContentLoaded',function(){
 
                 switch(mapa[i][j]){
 
-                    case 0:
+                    case 20:
                         nextIndex = 'muro' + Object.keys(posiciones).length;
 
-                        img= `<img src='`+(pared)+`.png' name='muro'></img>`
-                        let muro = "";
+                        img= `<img src='`+(pared)+`.png' name='muroUp'></img>`
+                        let muro1 = "";
                         
-                        muro = setNoInteractiveItem('muro',img,x,y,nextIndex);
+                        muro1 = setNoInteractiveItem('muroUp',img,x,y,nextIndex);
                         
-                        parentDIV.appendChild(muro);
+                        parentDIV.appendChild(muro1);
                         
                         break;
 
-                    case 2:
+                    case 30:
+                        nextIndex = 'muro' + Object.keys(posiciones).length;
+
+                        img= `<img src='`+(pared)+`.png' name='muroLeft'></img>`
+                        let muro2 = "";
+                        
+                        muro2 = setNoInteractiveItem('muroLeft',img,x,y,nextIndex);
+                        
+                        parentDIV.appendChild(muro2);
+                        
+                        break;
+
+                    case 40:
+                        nextIndex = 'muro' + Object.keys(posiciones).length;
+
+                        img= `<img src='`+(pared)+`.png' name='muroRight'></img>`
+                        let muro3 = "";
+                        
+                        muro3 = setNoInteractiveItem('muroRight',img,x,y,nextIndex);
+                        
+                        parentDIV.appendChild(muro3);
+                        
+                        break;
+
+                    case 50:
+                        nextIndex = 'muro' + Object.keys(posiciones).length;
+
+                        img= `<img src='`+(pared)+`.png' name='muroDown'></img>`
+                        let muro4 = "";
+                        
+                        muro4 = setNoInteractiveItem('muroDown',img,x,y,nextIndex);
+                        
+                        parentDIV.appendChild(muro4);
+                        
+                        break;
+
+                    case 12:
                         nextIndex = 'casa' + Object.keys(posiciones).length;
                         
-                        img = '<img src='+(imagenes[6])+' name=casa></img>'
+                        switch(indiceCasa){
+                            case 0:
+                                img = '<img src='+(casas[indiceCasa])+' name=casa></img>'
+                                break;
+                            case 1:
+                                img = '<img src='+(casas[indiceCasa])+' name=casa></img>'
+                                break;
+                            case 2:
+                                img = '<img src='+(casas[indiceCasa])+' name=casa></img>'
+                                break;
+                            case 3:
+                                img = '<img src='+(casas[indiceCasa])+' name=casa></img>'
+                                break;
+                        }
+                        
+                        indiceCasa++;
+                        
+                        
                         let casa = "";
                         casa = setNoInteractiveItem('casa',img,x,y,nextIndex);
                         
@@ -124,7 +179,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
                         break;
 
-                    case 3:
+                    case 13:
                         nextIndex = 'arbol' + Object.keys(posiciones).length;
 
                         img = '<img src='+(imagenes[0])+' name=arbol></img>'
@@ -133,7 +188,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         
                         parentDIV.appendChild(arbol);
                         break;
-                    case 4:
+                    case 14:
                         
                         img = '<img src='+(imagenes[1])+' name=hierba></img>';
                         let hierba = "";
@@ -141,7 +196,7 @@ document.addEventListener('DOMContentLoaded',function(){
                     
                         parentDIV.appendChild(hierba);
                         break;
-                    case 5:
+                    case 15:
                         nextIndex = 'figura' + Object.keys(posiciones).length;
                         
                         img = '<img src='+(imagenes[3])+' id=gandhi name=gandhi></img>'
@@ -154,7 +209,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         setEventClickFigura(gandhi);                      
 
                         break;
-                    case 6:
+                    case 16:
                         nextIndex = 'figura' + Object.keys(posiciones).length;
                         
                         img = '<img src='+(imagenes[4])+' id=taj_mahal name=taj_mahal></img>'
@@ -167,7 +222,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         setEventClickFigura(taj_mahal);
 
                         break;
-                    case 7:
+                    case 17:
                         nextIndex = 'figura' + Object.keys(posiciones).length;
                         
                         img = '<img src='+(imagenes[5])+' id=vaca name=vaca></img>'
@@ -180,7 +235,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         setEventClickFigura(vaca);
                 
                         break;
-                    case 8:
+                    case 18:
                         nextIndex = 'agua' + Object.keys(posiciones).length;
                         
                         img = '<img src='+(imagenes[7])+' name=agua></img>'
@@ -190,7 +245,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         parentDIV.appendChild(agua);
                         
                         break;
-                    case 9:
+                    case 19:
                         nextIndex = 'player' + Object.keys(posiciones).length;
                         
                         
@@ -199,8 +254,6 @@ document.addEventListener('DOMContentLoaded',function(){
                         
                         parentDIV.appendChild(player);
 
-                        
-                        
                         break;
                     case 10:
                         nextIndex = 'cole' + Object.keys(posiciones).length;
@@ -451,22 +504,22 @@ document.addEventListener('DOMContentLoaded',function(){
                 if(quienSoy == 'gandhi'){
                     left = colisionables[index].offsetLeft;
                     top = colisionables[index].offsetTop;
-                    leftX = 100;
+                    leftX = 70;
                     topY = -8;
                     showDialogue(dialogo1,left,leftX,top,topY);
                     
                 }else if(quienSoy == 'taj_mahal'){
                     left = colisionables[index].offsetLeft;
                     top = colisionables[index].offsetTop;
-                    leftX = 110;
+                    leftX = 150;
                     topY = -30;
                     showDialogue(dialogo2,left,leftX,top,topY);
                     
                 }else if(quienSoy == 'vaca'){
                     left = colisionables[index].offsetLeft;
                     top = colisionables[index].offsetTop;
-                    leftX = -50;
-                    topY = -130;
+                    leftX = -30;
+                    topY = -110;
                     showDialogue(dialogo3,left,leftX,top,topY);
                     
                 }else if(quienSoy == 'cole'){

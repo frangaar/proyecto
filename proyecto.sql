@@ -32,7 +32,7 @@ foreign key (uid) references usuarios(id)
 
 insert into usuarios values(null,"admin","admin","admin");
 insert into usuarios values(null,"pepe","pepe","player");
-insert into usuarios values(null,"juan","juan","player");
+insert into usuarios values(null,"luis","luis","player");
 insert into niveles values(null,2,1);
 insert into niveles values(null,3,0);
 
