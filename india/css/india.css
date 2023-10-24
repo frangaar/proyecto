@@ -16,7 +16,7 @@ body{
 .grid-container{
     display: inline-block;
     position: absolute;
-    z-index: 4000;
+    /* z-index: 4000; */
 }
 
 #player{
@@ -81,22 +81,22 @@ body{
 }
 
 .grid-container.colisionable.cole{
-    width: 155px !important;
-    height: 112px !important;
+    width: 165px !important;
+    height: 152px !important;
     z-index: 5000;
 }
 
 .grid-container.colisionable.cole > img{
-    width: 155px !important;
-    height: 112px !important;
+    width: 165px !important;
+    height: 152px !important;
     filter: brightness(0%);
 }
 
 
 
 .grid-container.colisionable.gandhi{
-    width: 42px !important;
-    height: 102px !important;
+    width: 50px !important;
+    height: 55px !important;
     z-index: 5000;
 }
 
@@ -125,8 +125,8 @@ body{
 }
 
 .grid-container.colisionable.figura > #gandhi{
-    width: 42px !important;
-    height: 102px !important;
+    width: 50px !important;
+    height: 55px !important;
     cursor: pointer;
 }
 
@@ -143,7 +143,7 @@ img[name="muroLeft"] {
 
 .grid-container.colisionable.muroRight{
     left: 1700px !important;
-    width: 28px !important;
+    width: 10px !important;
     height: 48px;
     z-index: 6000;
 }
@@ -202,8 +202,18 @@ img[name="muroDown"] {
 #player-panel .content-items .items-owned .item img{
     width: 50px;
     height: 50px;
-    background-color: white;
     visibility: hidden;
+}
+
+.grid-container.droppable > #dragPieza0,
+.grid-container.droppable > #dragPieza1,
+.grid-container.droppable > #dragPieza2{
+    width: 140px;
+    height: 140px;
+    z-index: 8000;
+    position: absolute;
+    border: none;
+    box-shadow: none;
 }
 
 #player-panel .content-items .items-owned table{
@@ -246,14 +256,14 @@ img[name="muroDown"] {
   }
 
   #juego2 .modal-content{
-    width: 90%;
-    height: 450px;
+    width: 60%;
+    height: 480px;
     position: relative;
     margin-bottom: 70px;
   }
 
   #juego3 .modal-content{
-    width: 90%;
+    width: 53%;
     height: 450px;
     position: relative;
     margin-bottom: 70px;

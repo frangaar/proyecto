@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded',function(){
     
     dimension = 32;
 
-    const imagenes = ['img/arbol.png','img/hierba.gif','img/warrior_right_parado.png','img/gandhi.png','img/taj_mahal.png','img/vaca.png','img/casa.png','img/agua.png','img/cole.png'];
+    const imagenes = ['img/arbol.png','img/hierba.png','img/warrior_right_parado.png','img/gandhi2.png','img/taj_mahal.png','img/vaca.png','img/casa.png','img/agua.png','img/cole.png'];
     const piezas = ['placa_solar.png','generador.png','turbina.png'];
     const casas = ['img/house1.png','img/house2.png','img/house3.png','img/house4.png']
     

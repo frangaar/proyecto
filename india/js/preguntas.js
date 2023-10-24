@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded',function(){
     for (let index = 0; index < preguntasJuego2.length; index++) {
         let tmpDiv = document.createElement('div');
         tmpDiv.setAttribute('class','row');
-        let html = '<div class="col-10">';
+        let html = '<div class="col-9">';
         html += '<p>'+preguntasJuego2[index][0]+'</p>';
         html += '</div>';
-        html += '<div class="col-2">';
+        html += '<div class="col-3">';
         html += '<div class="form-switch padding-cero"><label class="form-check-label custom-width">Falso</label><input class="form-check-input respuestasVaca" type="checkbox" role="switch"><label class="form-check-label custom-padding">Verdadero</label></div>';
         html += '</div>';
         html += '</div>';
