@@ -179,6 +179,8 @@ img[name="muroDown"] {
 #tiempo{
     color: white;
     padding-right: 25px;
+    font-family: 'VT323', monospace;
+    font-size: 22px;
 }
 
 #player-panel{
@@ -264,6 +266,7 @@ img[name="muroDown"] {
     width: 65%; /* Could be more or less, depending on screen size */
     height: 400px;
     position: relative;
+    background-size: cover;
   }
 
   .juego #contenido1, .juego #contenido2{
@@ -280,7 +283,7 @@ img[name="muroDown"] {
   #juego2 .modal-content{
     background-image: url('../img/fondo_form2.png');
     width: 60%;
-    height: 650px;
+    height: 560px;
     position: relative;
     margin-bottom: 70px;
   }

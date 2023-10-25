@@ -174,7 +174,7 @@ session_start();
     <div id="juego3" class="modal">
     <div class="modal-content">
             <span class="close">&times;</span>
-            <h3 class="title">Resuelve los siguientes problemas de matemáticas</h3>
+            <h3 class="title">Responde a las siguientes preguntas sobre las vacas en India</h3>
             <div class="container-fluid juego ui-widget-content">
                 <div id="ejercicios2">
                     <div class="container" id="contenido2">
