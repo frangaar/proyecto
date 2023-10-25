@@ -1,7 +1,10 @@
 body{
-    background-image: url(../img/fondo2.png);
+    background-image: url(../img/taj1.png);
     background-size: cover;
     background-repeat: no-repeat;
+}
+h3,p{
+    font-family: 'VT323', monospace;
 }
 
 /* .container-fluid#game{
@@ -173,6 +176,11 @@ img[name="muroDown"] {
 }
 
 
+#tiempo{
+    color: white;
+    padding-right: 25px;
+}
+
 #player-panel{
     text-align: right;
     margin-top: 28px;
@@ -190,6 +198,7 @@ img[name="muroDown"] {
     height: 100px;
     border: 1px solid black;
     border-radius: 20px;
+    margin-right: 5px;
 }
 
 .item-visible{
@@ -220,7 +229,7 @@ img[name="muroDown"] {
 
 #player-panel .imagen{
     padding-right: 25px;
-    padding-top: 65px;
+    padding-top: 30px;
 }
 
 #player-panel .imagen img{
@@ -248,25 +257,38 @@ img[name="muroDown"] {
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: #fefefe;
+    background-image: url('../img/fondo_form.png');
     margin: 9% auto; /* 15% from the top and centered */
-    padding: 20px;
+    padding: 20px;  
     border: 1px solid #888;
     width: 65%; /* Could be more or less, depending on screen size */
     height: 400px;
     position: relative;
   }
 
+  .juego #contenido1, .juego #contenido2{
+    font-size: 22px;
+    font-weight: 700;
+    /* color: white; */
+  }
+
+  #juego1 .title, #juego2 .title{
+    /* color: white; */
+    text-decoration: underline;
+  }
+
   #juego2 .modal-content{
+    background-image: url('../img/fondo_form2.png');
     width: 60%;
-    height: 480px;
+    height: 650px;
     position: relative;
     margin-bottom: 70px;
   }
 
   #juego3 .modal-content{
+    background-image: url('../img/fondo_form3.png');
     width: 53%;
-    height: 450px;
+    height: 650px;
     position: relative;
     margin-bottom: 70px;
   }
@@ -278,6 +300,7 @@ img[name="muroDown"] {
     font-size: 28px;
     font-weight: bold;
     text-align: right;
+    color: black;
   }
   
   .close:hover,
@@ -353,12 +376,12 @@ img[name="muroDown"] {
 }
 
 .bocadillo-cuadrado p{
-    font-size: 11px;
+    font-size: 13px;
     padding: 5px;
     /* padding-top: 25px; */
     display: -webkit-box;
     max-width: 220px;
-    -webkit-line-clamp: 8;
+    -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
     overflow: hidden;
     height: 140px;
@@ -422,3 +445,7 @@ button.audio-close{
     opacity: 1 !important;
 }
   /* Bocadillo */
+
+.parrilla .col.border.droppable{
+    border: 1px solid black !important;
+}

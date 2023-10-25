@@ -48,9 +48,11 @@ function habilitaBotonGuardar(){
 
     let acierto = sessionStorage.getItem('aciertos');
     let total = sessionStorage.getItem('total');
+    let imagen = document.querySelector('#juego1 .imagen img');
 
     if(acierto==total){
         alert('Felicidades!. Has completado el puzzle.');
+        imagen.classList.remove('borroso');
         let btnGuardar = document.getElementById('guardarGhandi');
         btnGuardar.removeAttribute('disabled');
     }

@@ -9,7 +9,7 @@ preguntasJuego1 = [
     ];
 
 
-let container = document.querySelector('#ejercicios1 #contenido');
+let container = document.querySelector('#ejercicios1 #contenido1');
 for (let index = 0; index < preguntasJuego1.length; index++) {
     let tmpDiv = document.createElement('div');
     tmpDiv.setAttribute('class','row');
