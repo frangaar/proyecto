@@ -25,7 +25,7 @@ uid int not null,
 fecha date not null,
 nivel int not null,
 CONSTRAINT CHK_nivel  CHECK (nivel > 0 and nivel < 6),
-puntuacion int,
+puntuacion decimal(13,2),
 primary key(uid,fecha,nivel),
 foreign key (uid) references usuarios(id)
 );

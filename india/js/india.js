@@ -726,7 +726,7 @@ document.addEventListener('DOMContentLoaded',function(){
         let item2 = sessionStorage.getItem('taj');
         let item3 = sessionStorage.getItem('vaca');
 
-        if(item1 == "true" && item2 == "true" && item3 == "true"){
+        //if(item1 == "true" && item2 == "true" && item3 == "true"){
 
             let xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -735,9 +735,9 @@ document.addEventListener('DOMContentLoaded',function(){
                 }
             };
 
-            xmlhttp.open("POST","../save.php?nivel=2",true);
+            xmlhttp.open("POST","../save.php?nivel=2+&tiempo="+reloj,true);
             xmlhttp.send();
-        }
+        //}
 
         window.location.href="../action_page.php";
         
@@ -755,7 +755,7 @@ document.addEventListener('DOMContentLoaded',function(){
             let ficha= document.createElement('img');
             ficha.setAttribute('id','dragPieza' + index);
             ficha.setAttribute('class','bloque'); 
-            ficha.setAttribute('draggable','false');
+            ficha.setAttribute('draggable','true');
             ficha.setAttribute('onDragStart','dragScenario(event)');
             ficha.setAttribute('src','img/piezas/'+piezas[index]);
             ficha.setAttribute('data-id',index);
@@ -769,13 +769,14 @@ document.addEventListener('DOMContentLoaded',function(){
 
     let reloj = 0;
     let labelTiempo = document.querySelector('#timer > span');
+    
 
     function incrementar(){
         reloj++;
         labelTiempo.innerHTML = reloj;
     }
 
-    setInterval(incrementar,1000);
+    intervalID = setInterval(incrementar,1000);
 
 });
 
@@ -828,6 +829,7 @@ function lightOn(){
 
     if(countPendingItems.length == 0){
         escuela.style.filter = "brightness(100%)";
+        clearInterval(intervalID);
     }else{
         escuela.style.filter = "brightness(0%)";
     }

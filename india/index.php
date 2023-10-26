@@ -101,7 +101,7 @@ session_start();
     <div id="juego1" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2 class="title">Coloca las piezas para formar la imagen de Ghandi</h2>
+            <h3 class="title">Coloca las piezas para formar la imagen de Ghandi</h3>
             <div class="container-fluid juego text-center ui-widget-content">
     
                 <div class="container text-center">

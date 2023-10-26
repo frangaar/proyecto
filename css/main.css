@@ -149,6 +149,11 @@ body .landing-page{
     font-family: 'VT323', monospace;
 }
 
+.header-section-intro > p{
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+}
+
 div.text { 
     /* height: 0px;  */
     /* white-space: nowrap;  */
