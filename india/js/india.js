@@ -685,7 +685,7 @@ document.addEventListener('DOMContentLoaded',function(){
                     let juego3 = document.getElementById("juego3");
                     juego3.style.display = "block";
                     break;
-                break;
+                
     
                 default:
                     break;
@@ -732,7 +732,7 @@ document.addEventListener('DOMContentLoaded',function(){
         let item2 = sessionStorage.getItem('taj');
         let item3 = sessionStorage.getItem('vaca');
 
-        //if(item1 == "true" && item2 == "true" && item3 == "true"){
+        if(item1 == "true" && item2 == "true" && item3 == "true"){
 
             let xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -743,7 +743,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
             xmlhttp.open("POST","../save.php?nivel=2+&tiempo="+reloj,true);
             xmlhttp.send();
-        //}
+        }
 
         window.location.href="../action_page.php";
         
