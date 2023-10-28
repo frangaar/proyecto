@@ -42,21 +42,28 @@ session_start();
             <div class="text">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. Mapmet, consectetur adipiscing elit. Map</p>
             </div>
-            <button type="button" data-audio="audio/spain.mp3" class="audio btn btn-primary" id="audio1" class="btn btn-primary">Escuchar</button>
+            <button type="button" data-audio="audio/spain.mp3" class="audio btn btn-primary" id="audio2" class="btn btn-primary">Escuchar</button>
         </div>
         <div class="bocadillo-cuadrado" id="bocadillo-cuadrado3">
             <button type="button" id="audio-close3" class="btn-close audio-close"></button>
             <div class="text">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. Mapmet, consectetur adipiscing elit. Map</p>
             </div>
-            <button type="button" data-audio="audio/spain.mp3" class="audio btn btn-primary" id="audio1" class="btn btn-primary">Escuchar</button>
+            <button type="button" data-audio="audio/spain.mp3" class="audio btn btn-primary" id="audio3" class="btn btn-primary">Escuchar</button>
         </div>
         <div class="bocadillo-cuadrado" id="bocadillo-cuadrado4">
             <button type="button" id="audio-close4" class="btn-close audio-close"></button>
             <div class="text">
                 <p>Vaya!!, parece que la escuela necesita luz para poder continuar las clases. Debo conseguir todas las piezas para poder iluminar la escuela utilizando energias renovables</p>
             </div>
-            <button type="button" data-audio="audio/spain.mp3" class="audio btn btn-primary" id="audio1" class="btn btn-primary">Escuchar</button>
+            <button type="button" data-audio="audio/spain.mp3" class="audio btn btn-primary" id="audio4" class="btn btn-primary">Escuchar</button>
+        </div>
+        <div class="bocadillo-cuadrado" id="bocadillo-cuadrado5">
+            <button type="button" id="audio-close5" class="btn-close audio-close"></button>
+            <div class="text">
+                <p>Ohh!!, esta debe ser la casa de Alisha y su familia.</p>
+            </div>
+            <button type="button" data-audio="audio/spain.mp3" class="audio btn btn-primary" id="audio5" class="btn btn-primary">Escuchar</button>
         </div>
     </div>  
     <div class="container-fluid" id="player-panel">
@@ -160,7 +167,6 @@ session_start();
             <h3 class="title">Resuelve los siguientes problemas de matemáticas</h3>
             <div class="container-fluid juego ui-widget-content">
                 <div id="ejercicios1">
-                    
                     <div class="container" id="contenido1">
                     </div>
                 </div>
@@ -183,6 +189,26 @@ session_start();
                 <div class="modal-guardar text-end">
                     <button type="button" id="guardarVaca" class="btn btn-primary">Comprobar</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="jugar" class="modal">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>¡Hola, superhéroes eco-friendly de 5º de primaria! Imaginad un desafío increíble en "Luz Sostenible". 
+                    Vuestra misión: iluminar nuestro colegio con energía renovable. Pero esperad, ¡hay tres piezas por 
+                    descubrir! Preparaos para enfrentaros a desafíos matemáticos, resolver rompecabezas y 
+                    hasta descifrar preguntas sobre las vacas en la India. 
+                    ¿Listos para ser los héroes que traen la luz sostenible a nuestro colegio? 
+                    ¡Que la aventura comience en "Luz Sostenible"!. 
+                    <span>¡Importante!: El riempo empieza a contar cuando este mensaje desaparezca. Cuanto menos tiempo
+                    necesites, mayor puntos tendrás. Pulsa el botón para empezar.
+                    </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="iniciarJuego" class="btn btn-primary">A jugar!!</button>
+                <button type="button" id="acabarJuego" class="btn btn-primary">Aceptar!!</button>
             </div>
         </div>
     </div>

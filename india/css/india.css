@@ -3,8 +3,12 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
 }
-h3,h2,p{
-    font-family: 'VT323', monospace;
+h3,h2,p,button{
+    font-family: 'VT323', monospace !important;
+}
+
+#jugar p{
+    font-size: 33px;
 }
 
 /* .container-fluid#game{
@@ -29,8 +33,10 @@ h3,h2,p{
 
 #character {
     position: absolute;
-    width: 26px;
-    height: 43px;
+    /* width: 26px; */
+    width: 46px;
+    /* height: 43px; */
+    height: 73px;
     /* background: red; */
     z-index: 4100;
     /* top:100px; */
@@ -38,8 +44,10 @@ h3,h2,p{
 }
 
 #character > img{
-    width: 26px;
-    height: 43px;
+    /* width: 26px; */
+    width: 46px;
+    /* height: 43px; */
+    height: 73px;
 }
 
 #character0 {
@@ -83,6 +91,17 @@ h3,h2,p{
     height: 72px !important;
 }
 
+.grid-container.colisionable.alisha{
+    width: 105px !important;
+    height: 72px !important;
+    z-index: 5000;
+}
+
+.grid-container.colisionable.alisha > img{
+    width: 105px !important;
+    height: 72px !important;
+}
+
 .grid-container.colisionable.cole{
     width: 165px !important;
     height: 152px !important;
@@ -93,9 +112,8 @@ h3,h2,p{
     width: 165px !important;
     height: 152px !important;
     filter: brightness(0%);
+    transition: filter 1.5s ease-in-out;
 }
-
-
 
 .grid-container.colisionable.gandhi{
     width: 50px !important;
@@ -259,7 +277,7 @@ img[name="muroDown"] {
   
   /* Modal Content/Box */
   .modal-content {
-    background-image: url('../img/fondo_form.png');
+    /* background-image: url('../img/fondo_form.png'); */
     margin: 9% auto; /* 15% from the top and centered */
     padding: 20px;  
     border: 1px solid #888;
@@ -276,15 +294,45 @@ img[name="muroDown"] {
   }
 
   #juego1 .title, #juego2 .title{
-    /* color: white; */
     text-decoration: underline;
+  }
+
+  #jugar .modal-content{
+    height: 510px;
+  }
+
+  #jugar .modal-content span{
+    color: red;
+  }
+
+  #acabarJuego{
+    display: none;
+  }
+
+  .resize-modal{
+    height: 265px !important;
+    margin-top: 185px !important;
+  }
+
+  .bgColor{
+    background-color: rgba(0,0,0,0);
+  }
+
+  #jugar .modal-content button{
+    width: 150px;
+    font-size: 25px;
+    margin: auto;
+    font-size: 32px;
+  }
+
+  #juego1 .modal-content{
+    background-image: url('../img/fondo_form.png');
   }
 
   #juego2 .modal-content{
     background-image: url('../img/fondo_form2.png');
     width: 60%;
     height: 560px;
-    position: relative;
     margin-bottom: 70px;
   }
 
@@ -292,7 +340,6 @@ img[name="muroDown"] {
     background-image: url('../img/fondo_form3.png');
     width: 53%;
     height: 650px;
-    position: relative;
     margin-bottom: 70px;
   }
   
@@ -378,6 +425,18 @@ img[name="muroDown"] {
     transform: rotate(0deg);
 }
 
+#bocadillo-cuadrado5:before {
+    border: 15px solid white;
+    content: '';
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    position: absolute;
+    bottom: -26px;
+    left: calc(0% - -67px);
+    transform: rotate(0deg);
+}
+
 .bocadillo-cuadrado p{
     font-size: 13px;
     padding: 5px;
@@ -434,6 +493,16 @@ button.audio-close{
 }
 
 #bocadillo-cuadrado4{
+    /* top: 47%;
+    left: 72%; */
+    /* z-index: 1000; */
+    height: 100px !important;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0s, opacity 0.5s linear; 
+}
+
+#bocadillo-cuadrado5{
     /* top: 47%;
     left: 72%; */
     /* z-index: 1000; */

@@ -57,12 +57,12 @@ try {
         $update = $conn->prepare($updateSql);
         $update->execute();
 
-        $_SESSION['success'] = "Partida guardada correctamente.";
+        $_SESSION['success'] = "Juego guardado correctamente.";
 
     }else if($result['nivel'] < $nivel-1){
-        $_SESSION['level'] = "Tienes que haber superado el nivel 1 para guardar la partida.";
+        $_SESSION['level'] = "Tienes que haber superado el nivel 1 para guardar el juego.";
     }else{
-        $_SESSION['success'] = "Partida actualizada correctamente.";
+        $_SESSION['success'] = "Juego actualizada correctamente.";
     }   
 
     $conn->commit();

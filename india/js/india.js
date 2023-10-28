@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     sessionStorage.clear();
 
+    let inicioJuego = document.getElementById('jugar');
     let colisionables = document.querySelectorAll('.colisionable');
     let audios = document.querySelectorAll('.audio');
     let quienSoy = "";
@@ -16,11 +17,15 @@ document.addEventListener('DOMContentLoaded',function(){
     
     dimension = 32;
 
-    const imagenes = ['img/arbol.png','img/hierba.png','img/warrior_right_parado.png','img/gandhi2.png','img/taj_mahal.png','img/vaca.png','img/casa.png','img/agua.png','img/cole.png'];
+    //const imagenes = ['img/arbol.png','img/hierba.png','img/warrior_right_parado.png','img/gandhi2.png','img/taj_mahal.png','img/vaca.png','img/casa.png','img/agua.png','img/cole.png'];
+    const imagenes = ['img/arbol.png','img/hierba.png','img/laiaDerechaParada.png','img/gandhi2.png','img/taj_mahal.png','img/vaca.png','img/casaAlisha.png','img/agua.png','img/cole.png'];
     const piezas = ['placa_solar.png','generador.png','turbina.png'];
-    const casas = ['img/house1.png','img/house2.png','img/house5.png','img/house4.png','img/house3.png','img/house5.png']
+    const casas = ['img/house1.png','img/house2.png','img/house3.png','img/house4.png',]
     
     let player = '';
+
+    // Mostrar pantalla inicio
+    inicioJuego.style.display = 'block';
 
     fillScenario();
     
@@ -61,7 +66,7 @@ document.addEventListener('DOMContentLoaded',function(){
             [30, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 18, 14, 11, 11, 11, 11, 14, 18, 18, 11, 11, 11, 11, 11, 40],
             [30, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 18, 14, 11, 15, 11, 11, 14, 18, 18, 11, 11, 11, 11, 11, 40],
             [30, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 13, 14, 14, 11, 11, 18, 18, 18, 18, 18, 14, 11, 11, 11, 11, 14, 18, 18, 11, 11, 14, 13, 14, 40],
-            [30, 12, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 11, 11, 14, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 14, 14, 11, 11, 14, 14, 14, 40],
+            [30, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 11, 11, 14, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 14, 14, 11, 11, 14, 14, 14, 40],
             [30, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 11, 11, 10, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 40],
             [30, 14, 14, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 40],
             [99, 18, 18, 18, 18, 18, 18, 18, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 13, 14, 40],
@@ -69,7 +74,7 @@ document.addEventListener('DOMContentLoaded',function(){
             [30, 11, 11, 11, 11, 11, 11, 18, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 40],
             [30, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 18, 18, 18, 99],
             [30, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 12, 11, 11, 14, 14, 14, 11, 11, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 40],
-            [30, 14, 14, 14, 14, 11, 11, 11, 11, 16, 11, 11, 11, 11, 11, 11, 11, 14, 13, 14, 11, 11, 13, 14, 14, 11, 11, 12, 11, 11, 11, 17, 11, 11, 11, 11, 40],
+            [30, 14, 14, 14, 14, 11, 11, 11, 11, 16, 11, 11, 11, 11, 11, 11, 11, 14, 13, 14, 11, 11, 13, 14, 14, 11, 11, 60, 11, 11, 11, 17, 11, 11, 11, 11, 40],
             [30, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 11, 11, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 40],
             [30, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 11, 11, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 40],
             [99, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 99]
@@ -91,7 +96,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 // Si hay un personaje, un arbol o el jugador, se coloca suelo y encima los objetos 
                 if(mapa[i][j]==11 || mapa[i][j]==12 || mapa[i][j]==13 || mapa[i][j]==14 || 
                     mapa[i][j]==15 || mapa[i][j]==16 || mapa[i][j]==17 || mapa[i][j]==18 || 
-                    mapa[i][j]==19 || mapa[i][j]==10){
+                    mapa[i][j]==19 || mapa[i][j]==60 || mapa[i][j]==10){
                         img= `<img src='`+(suelo)+`.png' name='suelo'></img>`
                         tempDIV.innerHTML=img;
                         tempDIV.setAttribute('class','grid-container no-colisionable droppable');
@@ -170,18 +175,15 @@ document.addEventListener('DOMContentLoaded',function(){
                             case 4:
                                 img = '<img src='+(casas[indiceCasa])+' name=casa></img>'
                                 break;
-                            case 5:
-                                img = '<img src='+(casas[indiceCasa])+' name=casa></img>'
-                                break;
                         }
                         
-                        indiceCasa++;
-                        
-                        
                         let casa = "";
-                        casa = setNoInteractiveItem('casa',img,x,y,nextIndex);
+
+                        casa = setNoInteractiveItem('casa',img,x,y,nextIndex,indiceCasa);
                         
                         parentDIV.appendChild(casa);
+
+                        indiceCasa++;
 
                         break;
 
@@ -261,6 +263,19 @@ document.addEventListener('DOMContentLoaded',function(){
                         parentDIV.appendChild(player);
 
                         break;
+
+                    case 60:
+                        nextIndex = 'alisha' + Object.keys(posiciones).length;
+                        
+                        
+                        img = '<img src='+(imagenes[6])+' name=alisha></img>';
+                        let figuraAlisha = "";
+                        figuraAlisha = setInteractiveItem('alisha',img,x,y,nextIndex);
+                        
+                        parentDIV.appendChild(figuraAlisha);
+                        
+                        break;
+
                     case 10:
                         nextIndex = 'cole' + Object.keys(posiciones).length;
 
@@ -341,9 +356,10 @@ document.addEventListener('DOMContentLoaded',function(){
         item.style.top=y + 'px';
         
         if(tipo == "hierba"){
-            item.setAttribute('class','grid-container no-colisionable ' + tipo);
+            item.setAttribute('class','grid-container no-colisionable ' + tipo);            
         }else{
             item.setAttribute('class','grid-container colisionable ' + tipo);
+            
             posiciones[index] = [x,y];
         }               
         
@@ -475,6 +491,7 @@ document.addEventListener('DOMContentLoaded',function(){
         let dialogo2 = document.getElementById('bocadillo-cuadrado2');
         let dialogo3 = document.getElementById('bocadillo-cuadrado3');
         let dialogo4 = document.getElementById('bocadillo-cuadrado4');
+        let dialogo5 = document.getElementById('bocadillo-cuadrado5');
         let left = 0
         let top = 0
         let leftX = 0;
@@ -494,6 +511,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 dialogo2.classList.remove('visible');
                 dialogo3.classList.remove('visible');
                 dialogo4.classList.remove('visible');
+                dialogo5.classList.remove('visible');
                 quienSoy = "";
             }else if(despuesX || despuesY){
                 colision = false;
@@ -501,6 +519,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 dialogo2.classList.remove('visible');
                 dialogo3.classList.remove('visible');
                 dialogo4.classList.remove('visible');
+                dialogo5.classList.remove('visible');
                 quienSoy = "";
             }else{
                 colision = true; 
@@ -534,6 +553,12 @@ document.addEventListener('DOMContentLoaded',function(){
                     leftX = -10;
                     topY = -70;
                     showDialogue(dialogo4,left,leftX,top,topY);
+                }else if(quienSoy == 'alisha'){
+                    left = colisionables[index].offsetLeft;
+                    top = colisionables[index].offsetTop;
+                    leftX = -20;
+                    topY = -70;
+                    showDialogue(dialogo5,left,leftX,top,topY);
                 }
             }
             index++;        
@@ -685,7 +710,6 @@ document.addEventListener('DOMContentLoaded',function(){
                     let juego3 = document.getElementById("juego3");
                     juego3.style.display = "block";
                     break;
-                
     
                 default:
                     break;
@@ -701,24 +725,24 @@ document.addEventListener('DOMContentLoaded',function(){
 
         if(tienesClases != ""){
             if(direccion == "abajo"){
-                figura.src = "img/warrior_down_movimiento.gif";
+                figura.src = "img/laiaDerechaCaminando.gif";
             }else if(direccion == "arriba"){
-                figura.src = "img/warrior_up_movimiento.gif";
+                figura.src = "img/laiaDerechaCaminando.gif";
             }else if(direccion == "izquierda"){
-                figura.src = "img/warrior_left_movimiento.gif";
+                figura.src = "img/laiaIzquierdaCaminando.gif";
             }else if(direccion == "derecha"){
-                figura.src = "img/warrior_right_movimiento.gif";
+                figura.src = "img/laiaDerechaCaminando.gif";
             }
         }else{
             
             if(direccion == "abajo"){
-                figura.src = "img/warrior_down_parado.png";
+                figura.src = "img/laiaDerechaParada.png";
             }else if(direccion == "arriba"){
-                figura.src = "img/warrior_up_parado.png";
+                figura.src = "img/laiaDerechaParada.png";
             }else if(direccion == "izquierda"){
-                figura.src = "img/warrior_left_parado.png";
+                figura.src = "img/laiaIzquierdaParada.png";
             }else if(direccion == "derecha"){
-                figura.src = "img/warrior_right_parado.png";
+                figura.src = "img/laiaDerechaParada.png";
             }
         }
     }
@@ -782,7 +806,20 @@ document.addEventListener('DOMContentLoaded',function(){
         labelTiempo.innerHTML = reloj;
     }
 
-    intervalID = setInterval(incrementar,1000);
+    let btnJugar = document.getElementById('iniciarJuego')
+    let btnfinalJuego = document.getElementById('acabarJuego')
+    
+
+    btnJugar.addEventListener('click',iniciarJuego);
+
+    function iniciarJuego(){
+        inicioJuego.style.display = "none";
+        intervalID = setInterval(incrementar,1000);
+    }    
+
+    btnfinalJuego.addEventListener('click',function(){
+        inicioJuego.style.display = "none";
+    })
 
 });
 
@@ -836,6 +873,20 @@ function lightOn(){
     if(countPendingItems.length == 0){
         escuela.style.filter = "brightness(100%)";
         clearInterval(intervalID);
+        
+        let finalJuego = document.getElementById('jugar');
+        let btnIniciarJuego = document.getElementById('iniciarJuego');
+        let btnFinJuego = document.getElementById('acabarJuego');
+        let alturaModal = document.querySelector('#jugar .modal-content');
+        let mensaje = document.querySelector('#jugar .modal-content p');
+        mensaje.innerHTML = "Enhorabuena!!, has completado el juego y el colegio ya tiene luz. Puedes pasar al siguiente nivel";
+
+        btnIniciarJuego.style.display = "none";
+        btnFinJuego.style.display = "block";
+
+        finalJuego.classList.add('bgColor');
+        alturaModal.classList.add('resize-modal');
+        finalJuego.style.display = "block";
     }else{
         escuela.style.filter = "brightness(0%)";
     }
