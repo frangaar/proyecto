@@ -13,7 +13,7 @@
 }
 
 #nivel1,#nivel2,#nivel3,#nivel4,#nivel5{
-    width: 21px;
+    width: 25px;
     position: absolute;
     opacity: 0.5;
     z-index: 999;
@@ -24,28 +24,48 @@
 }
 
 #nivel1{
-    top: 34%;
+    top: 27%;
     left: 45%;
 }
 
 #nivel2{
-    top: 48%;
-    left: 68%;
+    top: 40%;
+    left: 67%;
 }
 
 #nivel3{
-    top: 57%;
-    left: 56%;
+    top: 50%;
+    left: 55%;
 }
 
 #nivel4{
-    top: 67%;
-    left: 33%;
+    top: 62%;
+    left: 32%;
 }
 
 #nivel5{
-    top: 58%;
-    left: 29%;
+    top: 53%;
+    left: 28%;
+}
+
+#laia{
+    top: 38px;
+    left: 195px;
+}
+
+#alisha{
+    top: 62px;
+    left: 370px;
+}
+
+#cauan{
+    top: 125px;
+    left: 107px;
+}
+
+#malik{
+    top: 123px;
+    left: 250px;
 }
 
 
@@ -161,29 +181,29 @@ div.text {
 }
 
 #bocadillo-cuadrado1{
-    top: 6%;
-    left: 36%;
+    top: -34%;
+    left: 27%;
     z-index: 1000;
     display: none;
 }
 #bocadillo-cuadrado2{
-    top: 20%;
-    left: 59%;
+    top: -22%;
+    left: 49%;
     z-index: 1000;
 }
 #bocadillo-cuadrado3{
-    top: 28%;
-    left: 47%;
+    top: -11%;
+    left: 37%;
     z-index: 1000;
 }
 #bocadillo-cuadrado4{
-    top: 38%;
-    left: 24%;
+    top: 0%;
+    left: 14%;
     z-index: 1000;
 }
 #bocadillo-cuadrado5{
-    top: 28%;
-    left: 19%;
+    top: -8%;
+    left: 10%;
     z-index: 1000;
 }
 /* Bocadillo */
@@ -216,55 +236,10 @@ button.audio-close{
     z-index: 1000;
 }
 
-
-@media (min-width: 540px) and (max-width: 768px){
-    
-    #nivel1,#nivel2,#nivel3,#nivel4,#nivel5{
-        width: 25px;
-    }
-    
-    #nivel1{
-        top: 35%;
-        left: 45%;
-    }
-
-    #nivel2{
-        top: 49%;
-        left: 68%;
-    }
-
-    #nivel5{
-        top: 57%;
-        left: 28%;
-    }
-
-    #bocadillo-cuadrado1{
-        top: -28%;
-        left: 24%;
-        z-index: 1000;
-    }
-    #bocadillo-cuadrado2{
-        top: -15%;
-        left: 47%;
-        z-index: 1000;
-    }
-    #bocadillo-cuadrado3{
-        top: -5%;
-        left: 35%;
-        z-index: 1000;
-    }
-    #bocadillo-cuadrado4{
-        top: 5%;
-        left: 12%;
-        z-index: 1000;
-    }
-    #bocadillo-cuadrado5{
-        top: -4%;
-        left: 8%;
-        z-index: 1000;
-    }
-  }
-
+.personaje{
+    position: absolute;
+    width: 31px;
+}
 
 @media (min-width: 768px) and (max-width: 991px){
     
@@ -273,45 +248,81 @@ button.audio-close{
     }
     
     #nivel1{
-        top: 35%;
+        top: 28%;
         left: 45%;
     }
 
     #nivel2{
-        top: 49%;
+        top: 41%;
         left: 68%;
     }
 
+    #nivel3{
+        top: 51%;
+        left: 56%;
+    }
+
+    #nivel4{
+        top: 62%;
+        left: 33%;
+    }
+
     #nivel5{
-        top: 57%;
+        top: 54%;
         left: 28%;
     }
 
     #bocadillo-cuadrado1{
         top: -12%;
-        left: 30%;
+        left: 31%;
         z-index: 1000;
     }
     #bocadillo-cuadrado2{
-        top: 3%;
-        left: 53%;
+        top: -5%;
+        left: 54%;
         z-index: 1000;
     }
     #bocadillo-cuadrado3{
-        top: 10%;
-        left: 41%;
+        top: 5%;
+        left: 42%;
         z-index: 1000;
     }
     #bocadillo-cuadrado4{
-        top: 21%;
-        left: 18%;
+        top: 16%;
+        left: 19%;
         z-index: 1000;
     }
     #bocadillo-cuadrado5{
-        top: 11%;
-        left: 13%;
+        top: 8%;
+        left: 14%;
         z-index: 1000;
     }
+
+    .personaje{
+        position: absolute;
+        width: 31px;
+    }
+
+    #laia{
+        top: 66px;
+        left: 270px;
+    }
+    
+    #alisha{
+        top: 125px;
+        left: 500px;
+    }
+    
+    #cauan{
+        top: 195px;
+        left: 157px;
+    }
+    
+    #malik{
+        top: 163px;
+        left: 350px;
+    }
+
   }
 
   @media (min-width: 992px) and (max-width: 1199px){
@@ -321,45 +332,80 @@ button.audio-close{
     }
     
     #nivel1{
-        top: 35%;
+        top: 29%;
         left: 45%;
     }
 
     #nivel2{
-        top: 50%;
+        top: 41%;
         left: 68%;
     }
 
+    #nivel3{
+        top: 51%;
+        left: 56%;
+    }
+
+    #nivel4{
+        top: 62%;
+        left: 33%;
+    }
+
     #nivel5{
-        top: 57%;
+        top: 53%;
         left: 28%;
     }
 
     #bocadillo-cuadrado1{
-        top: 1%;
-        left: 34%;
+        top: -5%;
+        left: 35%;
         z-index: 1000;
     }
     #bocadillo-cuadrado2{
-        top: 16%;
-        left: 57%;
+        top: 7%;
+        left: 58%;
         z-index: 1000;
     }
     #bocadillo-cuadrado3{
-        top: 23%;
-        left: 45%;
+        top: 17%;
+        left: 46%;
         z-index: 1000;
     }
     #bocadillo-cuadrado4{
-        top: 33%;
-        left: 22%;
+        top: 28%;
+        left: 23%;
         z-index: 1000;
     }
     #bocadillo-cuadrado5{
-        top: 23%;
-        left: 17%;
+        top: 19%;
+        left: 18%;
         z-index: 1000;
     }
+
+    .personaje{
+        width: 40px;
+    }
+
+    #laia{
+        top: 100px;
+        left: 375px;
+    }
+
+    #alisha{
+        top: 172px;
+        left: 665px;
+    }
+    
+    #cauan{
+        top: 265px;
+        left: 210px;
+    }
+    
+    #malik{
+        top: 233px;
+        left: 475px;
+    }
+
 }
 
   @media (min-width: 1200px) and (max-width: 1399px){
@@ -369,21 +415,80 @@ button.audio-close{
     }
     
     #nivel1{
-        top: 35%;
+        top: 29%;
         left: 45%;
     }
 
     #nivel2{
-        top: 49%;
+        top: 41%;
         left: 68%;
     }
 
+    #nivel3{
+        top: 51%;
+        left: 56%;
+    }
+
+    #nivel4{
+        top: 62%;
+        left: 33%;
+    }
+
     #nivel5{
-        top: 57%;
+        top: 53%;
         left: 28%;
     }
 
+    #bocadillo-cuadrado1{
+        top: 0%;
+        left: 37%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado2{
+        top: 12%;
+        left: 60%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado3{
+        top: 22%;
+        left: 48%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado4{
+        top: 33%;
+        left: 25%;
+        z-index: 1000;
+    }
+    #bocadillo-cuadrado5{
+        top: 24%;
+        left: 20%;
+        z-index: 1000;
+    }
+
+    .personaje{
+        width: 46px;
+    }
+
+    #laia{
+        top: 118px;
+        left: 445px;
+    }
+
+    #alisha{
+        top: 212px;
+        left: 790px;
+    }
     
+    #cauan{
+        top: 315px;
+        left: 260px;
+    }
+    
+    #malik{
+        top: 283px;
+        left: 575px;
+    }
+
   }
 
   @media (min-width: 1399px){
@@ -393,44 +498,78 @@ button.audio-close{
     }
     
     #nivel1{
-        top: 36%;
-        left: 45.5%;
+        top: 29%;
+        left: 45%;
     }
 
     #nivel2{
-        top: 50%;
+        top: 41%;
         left: 68%;
     }
 
+    #nivel3{
+        top: 51%;
+        left: 56%;
+    }
+
+    #nivel4{
+        top: 62%;
+        left: 33%;
+    }
+
     #nivel5{
-        top: 57%;
+        top: 53%;
         left: 28%;
     }
 
     #bocadillo-cuadrado1{
-        top: 12%;
-        left: 39%;
+        top: 4%;
+        left: 38%;
         z-index: 1000;
     }
     #bocadillo-cuadrado2{
-        top: 26%;
+        top: 16%;
         left: 61%;
         z-index: 1000;
     }
     #bocadillo-cuadrado3{
-        top: 33%;
+        top: 26%;
         left: 49%;
         z-index: 1000;
     }
     #bocadillo-cuadrado4{
-        top: 43%;
+        top: 37%;
         left: 26%;
         z-index: 1000;
     }
     #bocadillo-cuadrado5{
-        top: 33%;
+        top: 28%;
         left: 21%;
         z-index: 1000;
+    }
+
+    .personaje{
+        width: 46px;
+    }
+
+    #laia{
+        top: 140px;
+        left: 525px;
+    }
+
+    #alisha{
+        top: 252px;
+        left: 900px;
+    }
+    
+    #cauan{
+        top: 365px;
+        left: 310px;
+    }
+    
+    #malik{
+        top: 333px;
+        left: 670px;
     }
     
   }

@@ -42,6 +42,7 @@
                 <button type="button" class="audio btn btn-primary" id="audio1" class="btn btn-primary">Escuchar</button>
             </div>
             <img src="img/punto.png" data-audio="audio/spain.mp3" id="nivel1" class="nivel" name="spain" data-status="noCompletado" data-jugable="true">
+            <img src="img/personajes/laia.png" id="laia" class="personaje" name="laia">
             <div class="bocadillo-cuadrado" id="bocadillo-cuadrado2">
                 <button type="button" id="audio-close2" class="btn-close audio-close"></button>
                 <div class="text">
@@ -50,6 +51,7 @@
                 <button type="button" class="audio btn btn-primary" id="audio2" class="btn btn-primary">Escuchar</button>
             </div>
             <img src="img/punto.png" data-audio="audio/india.mp3" id="nivel2" class="nivel" name="india" data-status="noCompletado" data-jugable="false">
+            <img src="img/personajes/alisha.png" id="alisha" class="personaje" name="alisha">
             <div class="bocadillo-cuadrado" id="bocadillo-cuadrado3">
                 <button type="button" id="audio-close3" class="btn-close audio-close"></button>
                 <div class="text">
@@ -58,6 +60,7 @@
                 <button type="button" class="audio btn btn-primary" id="audio3" class="btn btn-primary">Escuchar</button>
             </div>
             <img src="img/punto.png" data-audio="audio/india.mp3" id="nivel3" class="nivel" name="kenia" data-status="noCompletado" data-jugable="false">
+            <img src="img/personajes/malik.png" id="malik" class="personaje" name="malik">
             <div class="bocadillo-cuadrado" id="bocadillo-cuadrado4">
                 <button type="button" id="audio-close4" class="btn-close audio-close"></button>
                 <div class="text">
@@ -66,6 +69,7 @@
                 <button type="button" class="audio btn btn-primary" id="audio4" class="btn btn-primary">Escuchar</button>
             </div>
             <img src="img/punto.png" data-audio="audio/india.mp3" id="nivel4" class="nivel" name="brasil1" data-status="noCompletado" data-jugable="false">
+            <img src="img/personajes/cauan.png" id="cauan" class="personaje" name="cauan">
             <div class="bocadillo-cuadrado" id="bocadillo-cuadrado5">
                 <button type="button" id="audio-close5" class="btn-close audio-close"></button>
                 <div class="text">
