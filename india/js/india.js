@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded',function(){
     sessionStorage.clear();
 
     let inicioJuego = document.getElementById('jugar');
+    let musica = document.getElementById('musica');
     let colisionables = document.querySelectorAll('.colisionable');
     let audios = document.querySelectorAll('.audio');
     let quienSoy = "";
@@ -17,7 +18,6 @@ document.addEventListener('DOMContentLoaded',function(){
     
     dimension = 32;
 
-    //const imagenes = ['img/arbol.png','img/hierba.png','img/warrior_right_parado.png','img/gandhi2.png','img/taj_mahal.png','img/vaca.png','img/casa.png','img/agua.png','img/cole.png'];
     const imagenes = ['img/arbol.png','img/hierba.png','img/laiaDerechaParada.png','img/gandhi2.png','img/taj_mahal.png','img/vaca.png','img/casaAlisha.png','img/agua.png','img/cole.png'];
     const piezas = ['placa_solar.png','generador.png','turbina.png'];
     const casas = ['img/house1.png','img/house2.png','img/house3.png','img/house4.png',]
@@ -29,22 +29,6 @@ document.addEventListener('DOMContentLoaded',function(){
 
     fillScenario();
     
-
-    /* function restartGame(){
-
-        sessionStorage.setItem('x',player.offsetLeft);
-        sessionStorage.setItem('y',player.offsetTop);
-
-        let content = document.getElementById('mapa');
-        content.innerHTML = "";
-        posiciones = [];
-        colisionables = [];
-        colision = false;
-
-        fillScenario();
-    } */
-
-
     function fillScenario(){
 
         if(window.innerWidth > 1900){
@@ -661,8 +645,6 @@ document.addEventListener('DOMContentLoaded',function(){
     animar();
 
 
-    //window.addEventListener('resize',restartGame);
-
     function resizeItems(){
 
         let noColisionables = document.querySelectorAll('.grid-container.no-colisionable');
@@ -815,10 +797,41 @@ document.addEventListener('DOMContentLoaded',function(){
     function iniciarJuego(){
         inicioJuego.style.display = "none";
         intervalID = setInterval(incrementar,1000);
+        iniciarMusica();
     }    
 
     btnfinalJuego.addEventListener('click',function(){
         inicioJuego.style.display = "none";
+    })
+
+
+
+    
+    function iniciarMusica(){
+
+        let tmpFile = "audio/hindu.mp3"
+        musicaIndia = new Audio(tmpFile);
+        musicaIndia.play();
+    }
+
+    function pararMusica(){
+
+        let tmpFile = "audio/hindu.mp3"
+        musicaIndia = new Audio(tmpFile);
+        musicaIndia.play();
+    }
+
+    musica.addEventListener('click',function(){
+
+        if(musica.classList.contains('play')){
+            musica.classList.add('pausa');
+            musica.classList.remove('play');
+            musicaIndia.play();
+        }else{
+            musica.classList.add('play');
+            musica.classList.remove('pausa');            
+            musicaIndia.pause();
+        }
     })
 
 });

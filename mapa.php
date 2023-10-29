@@ -31,7 +31,9 @@
         <div class="col-12 cerrar-sesion">
             <a href="logout.php"><button type="button" class="btn btn-primary">Cerrar sesión</button></a>
         </div>
-        
+        <!-- <img src="img/escenarios/india.png" id="india" class="escenario">
+        <img src="img/escenarios/kenia.png" id="kenia" class="escenario">
+        <img src="img/escenarios/brasil.png" id="brasil" class="escenario"> -->
         <div class="content">
             <img src="img/mapa.png" class="img-fluid" id="mapa"> 
             <div class="bocadillo-cuadrado" id="bocadillo-cuadrado1">

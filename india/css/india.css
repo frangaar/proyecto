@@ -20,6 +20,34 @@ h3,h2,p,button{
     position: relative;
 }
 
+.botones-juego{
+    margin-top: 15px;
+    padding-right: 45px;
+    padding-left: 25px;
+}
+
+.play{
+    background-image: url(../img/musica/iconos.png);
+    width: 50px;
+    height: 50px;
+    background-size: 100px;
+    background-position-x: 100px;
+    border-radius: 25px;
+}
+
+.pausa{
+    background-image: url(../img/musica/iconos.png);
+    width: 50px;
+    height: 50px;
+    background-size: 100px;
+    background-position-x: 50px;
+    border-radius: 25px;
+}
+
+.play:hover,.pausa:hover{
+    cursor: pointer;
+}
+
 .grid-container{
     display: inline-block;
     position: absolute;

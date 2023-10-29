@@ -21,15 +21,22 @@
 session_start();
 ?>
 <body>
-    <div class="container-fluid btn-volver">
-        <a><button type="button" id="volver" class="btn btn-primary">Volver</button></a>
+    <div class="container-fluid botones-juego">
+        <div class="row">
+            <div class="col text-start">
+                <img id="musica" class="pausa">
+                <!-- <a><button type="button" id="pausar" class="btn btn-primary">Pausar música</button></a> -->
+            </div>
+            <div class="col text-end">
+                <a><button type="button" id="volver" class="btn btn-primary">Volver</button></a>
+            </div>
+        </div>
     </div>
     
     <div class="container-fluid" id="game">
         <div class="content" id="mapa">
             <!-- Aqui hacemos append de todos los items del escenario -->
         </div>
-         
         <div class="bocadillo-cuadrado" id="bocadillo-cuadrado1">
             <button type="button" id="audio-close1" class="btn-close audio-close"></button>
             <div class="text">

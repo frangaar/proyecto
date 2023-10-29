@@ -3,6 +3,32 @@
     align-content: center;
 }
 
+.map-container .content{
+    border: 1px solid black;
+    border-radius: 31px;
+    margin-top: 35px;
+    box-shadow: 1px 1px 4px 0px #000000;
+    background-color: #74ccf4;
+}
+
+.map-container .escenario{
+    position: absolute;
+    width: 250px;
+}
+
+.map-container #india.escenario{
+    top: 0px;
+}
+
+.map-container #kenia.escenario{
+    bottom: 0px;
+}
+
+.map-container #brasil.escenario{
+    bottom: 420px;
+    right: 50px;
+}
+
 .content{
     margin: auto;
     position: relative;
