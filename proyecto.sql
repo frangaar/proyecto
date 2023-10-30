@@ -7,16 +7,16 @@ use proyecto;
 
 create table roles(
 id int auto_increment,
-rol varchar(20),
+rol varchar(20) not null,
 primary key(id)
 );
 
 create table usuarios(
 id int auto_increment,
-user varchar(50),
-pass varchar(30),
-rol int,
-nivel boolean,
+user varchar(50) not null unique,
+pass varchar(30) not null,
+rol int not null,
+nivel boolean not null,
 primary key(id),
 foreign key (rol) references roles(id)
 );
@@ -45,8 +45,3 @@ insert into ranking values(2,'2023-10-15',3,1800);
 insert into ranking values(3,'2023-10-17',1,1000);
 insert into ranking values(3,'2023-10-16',2,1000);
 insert into ranking values(3,'2023-10-15',3,1000);
-
-
--- usuarios(id,user,pass,rol,nivel)
--- roles(id,rol)
--- ranking(uid,fecha,nivel,puntuacion,userId)
