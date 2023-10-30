@@ -79,7 +79,7 @@
                 try{
                     
 
-                    $sql = "SELECT * FROM niveles where uid=".$_SESSION['id'];
+                    $sql = "SELECT * FROM usuarios where uid=".$_SESSION['id'];
 
                     $selectAll = $conn->prepare($sql);
                     $selectAll->execute();
