@@ -45,3 +45,8 @@ insert into ranking values(2,'2023-10-15',3,1800);
 insert into ranking values(3,'2023-10-17',1,1000);
 insert into ranking values(3,'2023-10-16',2,1000);
 insert into ranking values(3,'2023-10-15',3,1000);
+
+
+-- usuarios(id,user,pass,rol,nivel)
+-- roles(id,rol)
+-- ranking(uid,fecha,nivel,puntuacion,userId)
