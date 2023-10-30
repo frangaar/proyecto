@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     let container = document.getElementsByClassName('container')[0];
     let textos = document.querySelectorAll('.text > p');
-    let id = null;
+    //let id = null;
 
     resize();
 
@@ -276,6 +276,16 @@ document.addEventListener('DOMContentLoaded',function(){
             levelsList[idx].setAttribute('data-jugable',"true");
         }
         
+    }
+
+    let btnCierreSesion = document.getElementById('cierraSesion');
+
+    btnCierreSesion.addEventListener('click', cierreSesion);
+
+    function cierreSesion(){
+
+        localStorage.clear();
+        window.location.href="logout.php";
     }
 
 
