@@ -4,21 +4,23 @@ create database proyecto;
 
 use proyecto;
 
-create table usuarios(
+
+create table roles(
 id int auto_increment,
-user varchar(50),
-pass varchar(30),
-rol varchar(15),
+rol varchar(20) not null,
 primary key(id)
 );
 
-create table niveles(
+create table usuarios(
 id int auto_increment,
-uid int not null unique,
-nivel boolean,
+user varchar(50) not null unique,
+pass varchar(30) not null,
+rol int not null,
+nivel boolean not null,
 primary key(id),
-foreign key (uid) references usuarios(id)
+foreign key (rol) references roles(id)
 );
+
 
 create table ranking(
 uid int not null,
@@ -30,11 +32,12 @@ primary key(uid,fecha,nivel),
 foreign key (uid) references usuarios(id)
 );
 
-insert into usuarios values(null,"admin","admin","admin");
-insert into usuarios values(null,"pepe","pepe","player");
-insert into usuarios values(null,"luis","luis","player");
-insert into niveles values(null,2,1);
-insert into niveles values(null,3,0);
+insert into roles values(null,"admin");
+insert into roles values(null,"player");
+
+insert into usuarios values(null,"admin","admin",1,0);
+insert into usuarios values(null,"pepe","pepe",2,2);
+insert into usuarios values(null,"luis","luis",2,3);
 
 insert into ranking values(2,'2023-10-17',1,1000);
 insert into ranking values(2,'2023-10-16',2,1100);

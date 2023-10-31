@@ -39,7 +39,8 @@
         }
 
             try{
-                $sql = "SELECT * FROM usuarios where user='".$user."' and pass='".$pass."'";
+                $sql = "SELECT * FROM usuarios,roles where user='".$user."' and pass='".$pass."' and usuarios.rol=roles.id";
+
             
                 $selectAll = $conn->prepare($sql);
                 $selectAll->execute();
@@ -63,6 +64,7 @@
                 $_SESSION['rol']=$result['rol'];
                 $_SESSION['user']=$result['user'];
                 $_SESSION['pass']=$result['pass'];
+                $_SESSION['nivel']=$result['nivel'];
             }
         //}
 
@@ -73,32 +75,14 @@
         
                 header("Location: admin.php");
             }else{
-        
-                $conn=openDB();
-
-                try{
-                    
-
-                    $sql = "SELECT * FROM niveles where uid=".$_SESSION['id'];
-
-                    $selectAll = $conn->prepare($sql);
-                    $selectAll->execute();
-            
-                    $result = $selectAll->fetch();
-
-                }catch(PDOException $e){
-                    $_SESSION['error'] =  $e->errorInfo[1] . ' - ' . $e->errorInfo[2];
-                }
-                
-        
-                $conn=closeDB();
+                     
         
                 $url = "?";
                 $append = false;
 
                 
         
-                if($result['nivel'] > 0){
+                if($_SESSION['nivel'] > 0){
         
                     if($append){
                         $url .= '&';
@@ -108,7 +92,7 @@
                     $append = true;
                 }
         
-                if($result['nivel'] >= 2){
+                if($_SESSION['nivel'] >= 2){
         
                     if($append){
                         $url .= '&';
@@ -119,7 +103,7 @@
         
                 }
         
-                if($result['nivel'] >= 3){
+                if($_SESSION['nivel'] >= 3){
         
                     if($append){
                         $url .= '&';
@@ -129,7 +113,7 @@
                     $append = true;
                 }
         
-                if($result['nivel'] >= 4){
+                if($_SESSION['nivel'] >= 4){
         
                     if($append){
                         $url .= '&';
@@ -139,7 +123,7 @@
                     $append = true;
                 }
         
-                if($result['nivel'] >= 5){
+                if($_SESSION['nivel'] >= 5){
         
                     if($append){
                         $url .= '&';
