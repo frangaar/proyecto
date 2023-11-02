@@ -43,7 +43,7 @@ try {
     
 
     // Comprobar si existe usuario con nivel
-    $selectSql = "select * from niveles where uid=".$userID;
+    $selectSql = "select * from usuarios where id=".$userID;
     $selectAll = $conn->prepare($selectSql);
     $selectAll->execute();
 
@@ -52,7 +52,7 @@ try {
     
 
     if($result['nivel'] == $nivel-1){
-        $updateSql = "UPDATE NIVELES set nivel=".$nivel. " where uid=".$userID;
+        $updateSql = "UPDATE usuarios set nivel=".$nivel. " where id=".$userID;
 
         $update = $conn->prepare($updateSql);
         $update->execute();

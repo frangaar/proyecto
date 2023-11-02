@@ -32,7 +32,44 @@ session_start();
             </div>
         </div>
     </div>
-    
+    <div class="container-fluid" id="player-panel">
+        <div class="content-items">
+            <div id="tiempo">
+                    <span>Tiempo de juego</span>
+                    <div id="timer">
+                        <span>0</span>
+                    </div>    
+                    </span>
+                </div>
+            <div class="imagen">
+                <img src="img/laia.png">
+            </div>
+            <div class="items-owned">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="item" id="item1" ondrop="dropScenario(event)" ondragover="allowDropScenario(event)">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item" id="item2" ondrop="dropScenario(event)" ondragover="allowDropScenario(event)">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item" id="item3" ondrop="dropScenario(event)" ondragover="allowDropScenario(event)">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
     <div class="container-fluid" id="game">
         <div class="content" id="mapa">
             <!-- Aqui hacemos append de todos los items del escenario -->
@@ -73,44 +110,7 @@ session_start();
             <button type="button" data-audio="audio/spain.mp3" class="audio btn btn-primary" id="audio5" class="btn btn-primary">Escuchar</button>
         </div>
     </div>  
-    <div class="container-fluid" id="player-panel">
-        <div class="content-items">
-            <div id="tiempo">
-                    <span>Tiempo de juego</span>
-                    <div id="timer">
-                        <span>0</span>
-                    </div>    
-                    </span>
-                </div>
-            <div class="imagen">
-                <img src="img/laia.png">
-            </div>
-            <div class="items-owned">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="item" id="item1" ondrop="dropScenario(event)" ondragover="allowDropScenario(event)">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="item" id="item2" ondrop="dropScenario(event)" ondragover="allowDropScenario(event)">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="item" id="item3" ondrop="dropScenario(event)" ondragover="allowDropScenario(event)">
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+    
 
     <div id="juego1" class="modal">
         <div class="modal-content">
@@ -209,7 +209,7 @@ session_start();
                     hasta descifrar preguntas sobre las vacas en la India. 
                     ¿Listos para ser los héroes que traen la luz sostenible a nuestro colegio? 
                     ¡Que la aventura comience en "Luz Sostenible"!. 
-                    <span>¡Importante!: El riempo empieza a contar cuando este mensaje desaparezca. Cuanto menos tiempo
+                    <span>¡Importante!: El tiempo empieza a contar cuando este mensaje desaparezca. Cuanto menos tiempo
                     necesites, mayor puntos tendrás. Pulsa el botón para empezar.
                     </p>
             </div>
