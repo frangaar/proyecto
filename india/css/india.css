@@ -11,10 +11,10 @@ h3,h2,p,button{
     font-size: 33px;
 }
 
-/* .container-fluid#game{
+.container-fluid#game{
     position: absolute;
-    bottom: 0;
-} */
+    top: 135px;
+}
 
 .content{
     position: relative;
@@ -191,7 +191,7 @@ img[name="muroLeft"] {
 }
 
 .grid-container.colisionable.muroRight{
-    left: 1700px !important;
+    left: 1800px !important;
     width: 10px !important;
     height: 48px;
     z-index: 6000;
@@ -224,29 +224,40 @@ img[name="muroDown"] {
 
 #tiempo{
     color: white;
-    padding-right: 25px;
+    /* padding-right: 25px; */
     font-family: 'VT323', monospace;
     font-size: 22px;
+    width: 180px;
+    float: left;
 }
 
 #player-panel{
-    text-align: right;
-    margin-top: 28px;
-    height: 793px;
+    /* text-align: right; */
+    /* margin-top: 28px; */
+    /* height: 793px; */
+    background-color: black;
+    height: 85px;
+    margin-top: 10px;
+}
+
+#player-panel .content-items{
+    width: 640px;
+    margin: auto;
 }
 
 #player-panel .content-items .items-owned{
     display: inline-block;
-    width: 157px;
+    width: 315px;
 }
 
 #player-panel .content-items .items-owned .item{
-    margin-top: 60px;
-    width: 100px;
-    height: 100px;
+    /* margin-top: 60px; */
+    width: 84px;
+    height: 84px;
     border: 1px solid black;
     border-radius: 20px;
-    margin-right: 5px;
+    margin-right: 100px;
+    border-color: white;
 }
 
 .item-visible{
@@ -254,8 +265,8 @@ img[name="muroDown"] {
 }
 
 #player-panel .content-items .items-owned .item img{
-    width: 100px;
-    height: 100px;
+    width: 83px;
+    height: 83px;
     border-radius: 20px;
     visibility: hidden;
 }
@@ -276,17 +287,37 @@ img[name="muroDown"] {
 }
 
 #player-panel .imagen{
-    padding-right: 25px;
-    padding-top: 30px;
+    /* padding-right: 25px; */
+    /* padding-top: 30px; */
+    width: 140px;
+    float: left;
 }
 
 #player-panel .imagen img{
     border-radius: 20px;
+    width: 52px;
 }
 
 .title{
     text-align: center;
     padding-bottom: 30px;
+}
+
+#superado{
+    position: absolute;
+    width: 740px;
+    height: 380px;
+    top: 25%;
+    left: 33%;
+    z-index: 50000;
+    background-color: white;
+    font-size: 33px;
+    border-radius: 21px;
+    box-shadow: 0px 0px 0px 1px;
+}
+
+#superado .modal-content{
+    height: 240px;
 }
 
 /* The Modal (background) */

@@ -51,7 +51,13 @@ document.addEventListener('DOMContentLoaded',function(){
                 item3.classList.add('item-visible');
 
             }else{
-                alert('Felicidades!. Todas tus respuestas son correctas.');
+                // alert('Felicidades!. Todas tus respuestas son correctas.');
+                let superado = document.getElementById('superado');                
+                let mensaje = document.querySelector('#superado .modal-content p');
+                mensaje.innerHTML = "Enhorabuena!!, has respondido correctamente a las preguntas";
+                
+                superado.style.display = "block";
+
                 btnGuardar.innerHTML = "Guardar";
             }            
         }else{

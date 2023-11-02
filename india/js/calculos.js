@@ -50,6 +50,8 @@ btnGuardar.onclick = function(){
             item2.classList.add('item-visible');
         }else{
             alert('Felicidades!. Todas tus respuestas son correctas.');
+            
+            
             btnGuardar.innerHTML = "Guardar";
         }
     }else{
