@@ -8,7 +8,7 @@ h3,h2,p,button{
 }
 
 #jugar p{
-    font-size: 33px;
+    font-size: 22px;
 }
 
 .container-fluid#game{
@@ -351,7 +351,7 @@ img[name="muroDown"] {
     margin: 9% auto; /* 15% from the top and centered */
     padding: 20px;  
     border: 1px solid #888;
-    width: 65%; /* Could be more or less, depending on screen size */
+    width: 45%; /* Could be more or less, depending on screen size */
     height: 400px;
     position: relative;
     background-size: cover;
@@ -368,7 +368,7 @@ img[name="muroDown"] {
   }
 
   #jugar .modal-content{
-    height: 555px;
+    height: 404px;
   }
 
   #jugar .modal-content span{
@@ -389,10 +389,10 @@ img[name="muroDown"] {
   }
 
   #jugar .modal-content button{
-    width: 150px;
+    width: 108px;
     font-size: 25px;
     margin: auto;
-    font-size: 32px;
+    font-size: 20px;
   }
 
   #juego1 .modal-content{
