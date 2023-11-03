@@ -143,6 +143,15 @@ h3,h2,p,button{
     transition: filter 1.5s ease-in-out;
 }
 
+#rayos{
+    position: absolute;
+    filter: brightness(100%);
+    left: 50px;
+    width: 60px !important;
+    height: 100px !important;
+    top: 35px;
+}
+
 .grid-container.colisionable.gandhi{
     width: 50px !important;
     height: 55px !important;
@@ -219,6 +228,8 @@ img[name="muroUp"] {
 
 img[name="muroDown"] {
     transform: scaleY(-0.7);
+    width: 48px;
+    height: 48px;
 }
 
 

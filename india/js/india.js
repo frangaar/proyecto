@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded',function(){
     
     dimension = 32;
 
-    const imagenes = ['img/arbol.png','img/hierba.png','img/laiaDerechaParada.png','img/gandhi2.png','img/taj_mahal.png','img/vaca.png','img/casaAlisha.png','img/agua.png','img/cole.png'];
+    const imagenes = ['img/arbol.png','img/hierba.png','img/laiaDerechaParada.png','img/gandhi2.png','img/taj_mahal.png','img/vaca.png','img/casaAlisha.png','img/agua.png','img/cole.png','img/electricidad.gif'];
     const piezas = ['placa_solar.png','generador.png','turbina.png'];
     const casas = ['img/house1.png','img/house2.png','img/house3.png','img/house4.png',]
     
@@ -263,11 +263,12 @@ document.addEventListener('DOMContentLoaded',function(){
                     case 10:
                         nextIndex = 'cole' + Object.keys(posiciones).length;
 
-                        img = '<img src='+(imagenes[8])+' name=cole></img>'
+                        img = '<img src='+(imagenes[8])+' name=cole></img>';
+                        img += '<img src='+(imagenes[9])+' id=rayos name=rayo></img>';
                         let cole = setInteractiveItem('cole',img,x,y,nextIndex);
 
                         parentDIV.appendChild(cole);
-                        
+
                         break;
                 }
 
