@@ -134,6 +134,10 @@ form {
     text-align: right;
 }
 
+#login button[name="login"],#registro button[name="registro"]{
+    margin: auto;
+}
+
 .listado-usuarios-title{
     text-align: center;
 }
