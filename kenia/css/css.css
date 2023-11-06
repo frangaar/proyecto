@@ -28,6 +28,10 @@ p {
 .kong{
     position: absolute;
 }
+.barrel{
+    position: absolute;
+    border: 1px solid white;
+}
 .character{
     position: absolute;
    /* border: 1px solid white; */

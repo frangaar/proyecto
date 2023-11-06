@@ -3,12 +3,14 @@
 const BLOCK_SIZE = 36
 const PLAYER_WIDTH = 25
 const PLAYER_HEIGHT = 20
-const PLAYER_VELOCITYJUMP = 9
+const PLAYER_VELOCITYJUMP = 10
 let character = document.getElementById('character')
 let app = document.getElementById('app')
 let container = document.getElementById('character-Container')
 let enemy = document.getElementById('donkeyKongCharacter')
 let enemyContainer = document.getElementById('kongContainer')
+let barrel = document.getElementById('barrelIcon')
+let barrelContainer = document.getElementById('barrel')
 let velocityX = 0
 let velocityY = 5
 const gravity = 0.5
@@ -33,10 +35,17 @@ app.style.width = BLOCK_SIZE * PLAYER_WIDTH + 'px'
 app.style.height = (BLOCK_SIZE * PLAYER_HEIGHT) + 'px'
 app.style.backgroundImage = 'url(../img/bk.gif)'
 app.style.backgroundSize = 'cover'
-// Create enemy size
+// Create enemy and barrel size
 enemy.style.width = '160px'
 enemyContainer.style.left = '65px'
 enemyContainer.style.top = '18px'
+barrel.style.width = '40px'
+barrelContainer.style.left = '0px'
+barrelContainer.style.top = '0px'
+let barrelPositionX = 295
+let barrelPositionY = 50
+let barrelVelocityX = 0
+let barrelVelocityY = 0
 // let div = document.createElement('div')
 const colisionables = []
 
@@ -192,20 +201,56 @@ let positionY = 500
 function draw () {
     container.style.left = positionX + 'px'
     container.style.top = positionY + 'px'
+    barrelContainer.style.left = barrelPositionX + 'px'
+    barrelContainer.style.top = barrelPositionY + 'px'
     //app.style.backgroundColor = '#000'
     
 }
+let barrilChocadoParedDerecha = false
+let barrilChocadoParedIzquierda = false
 
 function update (){
     draw()
     positionY += velocityY
     positionX += velocityX
-
+    barrelPositionX += barrelVelocityX
+    barrelPositionY += barrelVelocityY
+        // console.log(barrilChocadoParedDerecha);
+        // console.log(barrilChocadoParedIzquierda);
     // Condicional de que si la Y del objeto más su altura y la velocidad de la Y no superan la altura del canvas, tiene efecto la gravedad, de lo contrario significa que ha llegado al límite del canvas o ha tocado el suelo, en ese caso restablece la velocidad a 0 para que deje de caer.
     if (positionY + container.offsetWidth + velocityY <= app.offsetHeight) {
         velocityY += gravity
     } else {velocityY = 0;  } 
+    /** BARREL CONDITION */
+    if (barrelPositionY + container.offsetWidth + barrelVelocityY <= app.offsetHeight) {
+        barrelVelocityY += gravity
+    } else barrelVelocityY = 0
 
+        if (!barrilChocadoParedDerecha) {
+            if (barrelPositionX + barrelContainer.offsetWidth + barrelVelocityX < app.offsetWidth) {
+                barrelVelocityX = 5
+            } else {barrelVelocityX = 0 ; barrilChocadoParedDerecha = true;}
+        } 
+        if (barrilChocadoParedDerecha) {
+             if (barrelPositionX > 0) {
+                    barrelVelocityX = -5
+             } else {barrelVelocityX = 0; barrilChocadoParedDerecha = false;}
+        } else 
+    // if (barrelVelocityY > 0) {
+    //     if (barrelPositionX + barrelContainer.offsetWidth + barrelVelocityX <= app.offsetWidth) {
+    //         barrelVelocityX = 5
+    //     } else barrelVelocityX = 0 ;  
+    // } else if (barrelVelocityY <= 0) {
+    //     barrelVelocityX = -5
+    // }
+        
+
+        // if (barrelPositionX > 0) {
+        //     barrilChocadoParedIzquierda = false
+        //     if (!barrilChocadoParedIzquierda) {
+        //         barrelPositionX = -5
+        //     } else barrelVelocityX = 5   
+        // } else barrilChocadoParedIzquierda = true; barrilChocadoParedDerecha = false;
     //Condicional para pared derecha y  pared izquierda
     if (keyLeftPressed) {
         if (imgLeft === 1) {
@@ -295,11 +340,7 @@ addEventListener('keyup', (event) =>{
     //Colision detected
     let index = 0
     while (index < colisionables.length) {
-   
-        // if ((positionY + container.offsetHeight) <= colisionables[index].offsetTop) {
-        //     //console.log('chocado');
-        // }
-        
+        /** CONDICION PERSONAJE */
         if (
         (positionY + character.offsetHeight) <= (colisionables[index].offsetTop)
         && (positionY + character.offsetHeight + velocityY) >= (colisionables[index].offsetTop)
@@ -310,19 +351,12 @@ addEventListener('keyup', (event) =>{
             // Personaje colisionado 
             velocityY = 0
             if (keyUpPressed) {
-                personajeTocandoElSueloFoto = 0 
-                velocityY -= PLAYER_VELOCITYJUMP
-                // if (imgUp === 1) {
-                //     character.setAttribute('src', 'img/mario_jump.png')
-                //     imgUp = 0
-                // }
-                // imgLeft = 0
-                // imgRight = 0
-                // imgStand = 0
-                // imgCrouch = 0
-                if ((positionY + container.offsetHeight) <= app.offsetTop) {
-                    velocityY += (PLAYER_VELOCITYJUMP/2)
-                }
+                    personajeTocandoElSueloFoto = 0 
+                    velocityY -= PLAYER_VELOCITYJUMP
+                    if ((positionY + container.offsetHeight) <= app.offsetTop) {
+                        velocityY += (PLAYER_VELOCITYJUMP/2)
+                    }
+                    console.log(PLAYER_VELOCITYJUMP);
                 // if (colisionCabezaSueloPlataform) {
                 //     velocityY += 12
                 // }
@@ -351,7 +385,6 @@ addEventListener('keyup', (event) =>{
                 velocityX = 0
             } 
         }
-        index++
         // while (indexFila1 < colisionables.length) {
         //     if (positionY + character.offsetHeight > colisionables[indexFila1].offsetTop 
         //         && (positionY + character.offsetHeight + velocityY) < colisionables[indexFila1].offsetTop + colisionables[indexFila1].offsetHeight + (colisionables[indexFila1].offsetWidth)
@@ -364,6 +397,17 @@ addEventListener('keyup', (event) =>{
         //     indexFila1++
         // }
        // checkColisionBetweenCharacterHeadAndBlockBottom(indexFila1, indexFila2)
+       if (
+        (barrelPositionY + barrel.offsetHeight) <= (colisionables[index].offsetTop)
+        && (barrelPositionY + barrel.offsetHeight + barrelVelocityY) >= (colisionables[index].offsetTop)
+        && (barrelPositionX + barrelContainer.offsetWidth) >= (colisionables[index].offsetLeft) 
+        && (barrelPositionX) <= (colisionables[index].offsetLeft + colisionables[index].offsetWidth)  
+        ) {
+            // Personaje colisionado 
+            barrelVelocityY = 0
+        }
+        index++
+ 
     }  
 }
 
