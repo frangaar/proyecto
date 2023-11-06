@@ -42,7 +42,7 @@ try {
     }
     
 
-    // Comprobar si existe usuario con nivel
+    // Comprobar si existe usuario
     $selectSql = "select * from usuarios where id=".$userID;
     $selectAll = $conn->prepare($selectSql);
     $selectAll->execute();
