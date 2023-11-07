@@ -22,7 +22,7 @@ $ranking=obtenerRanking();
         
         
         <div class="col-12 cerrar-sesion">
-            <a href="index.html"><button type="button" class="btn btn-primary">Ir a inicio</button></a>
+            <a href="index.php"><button type="button" class="btn btn-primary">Ir a inicio</button></a>
         </div>
         
             <form action="./action_page.php" method="post">

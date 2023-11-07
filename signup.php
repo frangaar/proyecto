@@ -14,7 +14,7 @@
 
     <div class="container text-center margin-center">
         <div class="text-end">
-            <a href="index.html"><input type="button" class="btn btn-primary" value="Ir a inicio"></input></a>
+            <a href="index.php"><input type="button" class="btn btn-primary" value="Ir a inicio"></input></a>
         </div>
         
         <div class="row align-items-end">
@@ -60,6 +60,6 @@
             <div class="col"></div>
             
         </div>
-      </div>
+    </div>
 </body>
 </html>
