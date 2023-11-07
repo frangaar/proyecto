@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <title>Document</title>
 </head>
@@ -35,12 +36,8 @@
     
     <div class="container landing-page">
         <div class="login-bar-section">
-        <!-- <a href="login.php"> -->
             <input type="button" class="btn btn-primary" value="Login" data-bs-toggle="modal" data-bs-target="#login"></input>
-        <!-- </a> -->
-        <!-- <a href="signup.php"> -->
-            <input type="button" class="btn btn-primary" value="Alta de usuario" data-bs-toggle="modal" data-bs-target="#registro"></input>
-        <!-- </a> -->
+            <input type="button" class="btn btn-primary" value="Registro" data-bs-toggle="modal" data-bs-target="#registro"></input>
         </div>
         <div class="banner-section">
             <img src="img/login.jpg" class="img-fluid" id="banner"> 
@@ -56,7 +53,6 @@
             <div class="col-12 mb-3 landing-juegos">
                 <h2 >Juegos</h2><a href="ranking.php"><input type="button" class="btn btn-primary" value="Ranking"></input></a>
             </div>
-                <!-- <iframe width="560" height="330" src="index.php" title="" frameborder="0"></iframe> -->
                 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                     <div class="col">
                       <div class="card h-100">
@@ -129,9 +125,6 @@
             <div class="modal-body">
             
                 <div class="container text-center margin-center">
-                    <div class="text-end">
-                        <a href="index.php"><input type="button" class="btn btn-primary" value="Ir a inicio"></input></a>
-                    </div>
                     
                     <div class="row align-items-end">
                         <div class="col">
@@ -151,8 +144,8 @@
                             unset($_SESSION['error']); 
                             } ?>
                             <form action="./action_page.php" method="post">
-                                <div class="input-group mb-3">
-                                    <img src="img/login.jpg">
+                                <div class="input-group mb-3 logo">
+                                    <img src="img/logo.jpg">
                                 </div>
                                 <div class="input-group mb-3">    
                                     <label for="nombre" class="form-label">Nombre</label>
@@ -191,9 +184,6 @@
             <div class="modal-body">
             
                 <div class="container text-center margin-center">
-                    <div class="text-end">
-                        <a href="index.php"><input type="button" class="btn btn-primary" value="Ir a inicio"></input></a>
-                    </div>
                     
                     <div class="row align-items-end">
                         <div class="col">
@@ -214,7 +204,7 @@
                             } ?>
                             <form action="./action_page.php" method="post">
                                 <div class="input-group mb-3">
-                                    <h1>Formulario de creación usuario</h1>
+                                    <h1>Formulario de creación de usuario</h1>
                                 </div>
                                 <div class="input-group mb-3">    
                                     <label for="nombre" class="form-label">Nombre</label>
@@ -228,10 +218,6 @@
                                         <input type="password" class="form-control" name="pass" placeholder="Escribe aquí tu password" aria-label="Passvord">
                                     </div>    
                                 </div>
-                                <div class="col-12">
-                                    <button type="submit" name="signup" class="btn btn-primary">Crear</button>
-                                </div>
-                            <!-- </form> -->
                         </div>                        
                     </div>
                 </div>

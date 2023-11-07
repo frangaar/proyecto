@@ -4,7 +4,7 @@ body{
     background-repeat: no-repeat;
 }
 h3,h2,p,button{
-    font-family: 'VT323', monospace !important;
+    font-family: 'Pixelify Sans', sans-serif !important;
 }
 
 #jugar p{
@@ -236,7 +236,7 @@ img[name="muroDown"] {
 #tiempo{
     color: white;
     /* padding-right: 25px; */
-    font-family: 'VT323', monospace;
+    font-family: 'Pixelify Sans', sans-serif;
     font-size: 22px;
     width: 180px;
     float: left;
