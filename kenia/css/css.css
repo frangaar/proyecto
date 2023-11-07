@@ -9,11 +9,10 @@
     place-content: center;
     background-image: url(../img/background.jpg);
     background-size: cover;
-    
 }
 p {
     color: greenyellow;
-    font-family: pixel;
+    font-family: 'Pixelify Sans', sans-serif;
 }
 .app {
     margin: 0;
@@ -21,6 +20,7 @@ p {
     top: 20%;
     left: 25%;
     position: fixed;
+    /* display: none; */
 }
 .bloques {
     position: absolute;
@@ -30,7 +30,7 @@ p {
 }
 .barrel{
     position: absolute;
-    border: 1px solid white;
+    /* border: 1px solid white; */
 }
 .character{
     position: absolute;
@@ -44,9 +44,9 @@ p {
     height: 70px; */
 }
 .fila1 {
-    position: absolute;
-    /* right: 40px;
-    top: 40px;    
-    transform: rotate(-5deg); */
+    position: relative;
+    right: 19px;
+    top: 32px;    
+    transform: rotate(-2deg); 
     
 }
