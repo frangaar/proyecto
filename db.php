@@ -144,36 +144,36 @@
 
         $conn=openDB();
 
+        if(strcmp($_POST['user'],"") !== 0){
+            $user=$_POST['user'];
+        }else{
+            $user = null;
+        }
+
+
+        if(strcmp($_POST['pass'],"") !== 0){
+            $pass=$_POST['pass'];
+        }else{
+            $pass = null;
+        }   
         
-        $user=$_POST['user'];
-        $pass=$_POST['pass'];
-        $rol="player";
+        
+        $rol=2;
 
         try {
   
             $conn->beginTransaction();
 
-            $insertSql = "INSERT INTO usuarios VALUES (:id,:user,:pass,:rol)";
+            $insertSql = "INSERT INTO usuarios VALUES (:id,:user,:pass,:rol,:nivel)";
   
+            $nivel=0;
+
             $insert = $conn->prepare($insertSql);
             $null = null;
             $insert->bindParam(':id',$null);
             $insert->bindParam(':user',$user);
             $insert->bindParam(':pass',$pass);
             $insert->bindParam(':rol',$rol);
-            $insert->execute();
-
-            $last_id = $conn->lastInsertId();
-
-
-            $nivel=0;
-
-            $insertSql = "INSERT INTO niveles VALUES (:id,:uid,:nivel)";
-  
-            $insert = $conn->prepare($insertSql);
-            $null = null;
-            $insert->bindParam(':id',$null);
-            $insert->bindParam(':uid',$last_id);
             $insert->bindParam(':nivel',$nivel);
             $insert->execute();
 
@@ -193,7 +193,6 @@
             header("Location: signup.php");
         }
 
-        
     }
 
     function obtenerUsuarios(){
