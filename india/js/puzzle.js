@@ -51,7 +51,15 @@ function habilitaBotonGuardar(){
     let imagen = document.querySelector('#juego1 .imagen img');
 
     if(acierto==total){
-        alert('Felicidades!. Has completado el puzzle.');
+        //alert('Felicidades!. Has completado el puzzle.');
+
+        let superado = document.getElementById('superado');                
+        let mensaje = document.querySelector('#superado .modal-content p');
+        mensaje.innerHTML = "Enhorabuena!!, has completado el puzzle";
+        
+        superado.style.display = "block";
+        superado.classList.add('success');
+
         imagen.classList.remove('borroso');
         let btnGuardar = document.getElementById('guardarGhandi');
         btnGuardar.removeAttribute('disabled');
