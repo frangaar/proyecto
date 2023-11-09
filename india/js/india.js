@@ -835,6 +835,28 @@ document.addEventListener('DOMContentLoaded',function(){
         }
     })
 
+    let btnConseguido = document.querySelector('#superado #aceptar');
+    let btnAspa = document.querySelector('#superado #error-close');
+    let modalSuperado = document.getElementById('superado');
+
+    btnConseguido.addEventListener('click',function (){
+
+        let imgError = document.querySelector('#superado .modal-footer #img_notis');
+
+        modalSuperado.style.display = "none";
+        imgError.classList.remove('error');
+        modalSuperado.classList.remove('success');
+    });
+
+    btnAspa.addEventListener('click',function (){
+
+        let imgError = document.querySelector('#superado .modal-footer #img_notis');
+
+        modalSuperado.style.display = "none";
+        imgError.classList.remove('error');
+        modalSuperado.classList.remove('success');
+    });
+
 });
 
 
@@ -893,15 +915,18 @@ function lightOn(){
         let btnFinJuego = document.getElementById('acabarJuego');
         let alturaModal = document.querySelector('#jugar .modal-content');
         let mensaje = document.querySelector('#jugar .modal-content p');
+        let rayos = document.getElementById('rayos');
         mensaje.innerHTML = "Enhorabuena!!, has completado el juego y el colegio ya tiene luz. Puedes pasar al siguiente nivel";
 
         btnIniciarJuego.style.display = "none";
         btnFinJuego.style.display = "block";
+        rayos.style.display = "none";
 
         finalJuego.classList.add('bgColor');
         alturaModal.classList.add('resize-modal');
         finalJuego.style.display = "block";
     }else{
         escuela.style.filter = "brightness(0%)";
+        rayos.style.display = "block";
     }
 }

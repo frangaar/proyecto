@@ -7,6 +7,11 @@ h3,h2,p,button{
     font-family: 'Pixelify Sans', sans-serif !important;
 }
 
+i{
+    font-family: cursive;
+    font-size: 20px;
+}
+
 #jugar p{
     font-size: 22px;
 }
@@ -27,21 +32,33 @@ h3,h2,p,button{
 }
 
 .play{
-    background-image: url(../img/musica/iconos.png);
-    width: 50px;
+    /* background-image: url(../img/musica/iconos.png); */
+    background-image: url(../img/musica/play.png);
+    /* width: 50px;
     height: 50px;
     background-size: 100px;
     background-position-x: 100px;
-    border-radius: 25px;
+    border-radius: 25px; */
+    width: 92px;
+    height: 38px;
+    background-size: 189px;
+    background-position-x: 3px;
+    border-radius: 7px;
 }
 
 .pausa{
-    background-image: url(../img/musica/iconos.png);
-    width: 50px;
+    /* background-image: url(../img/musica/iconos.png); */
+    /* width: 50px;
     height: 50px;
     background-size: 100px;
     background-position-x: 50px;
-    border-radius: 25px;
+    border-radius: 25px; */
+    background-image: url(../img/musica/play.png);
+    width: 103px;
+    height: 38px;
+    background-size: 189px;
+    background-position-x: 102px;
+    border-radius: 7px;
 }
 
 .play:hover,.pausa:hover{
@@ -318,17 +335,68 @@ img[name="muroDown"] {
     position: absolute;
     width: 740px;
     height: 380px;
-    top: 25%;
+    top: 20%;
     left: 33%;
     z-index: 50000;
     background-color: white;
     font-size: 33px;
     border-radius: 21px;
     box-shadow: 0px 0px 0px 1px;
+    
 }
 
 #superado .modal-content{
-    height: 240px;
+    height: 230px;
+    width: 90%;
+    margin: 10% auto;
+    background-color: transparent;
+    border: none;
+}
+
+#superado .modal-body{
+    padding-top: 26px;
+    color: purple;
+}
+
+#superado .modal-footer {
+    display: block;
+    border-top: none;
+    padding: 0;
+}
+
+#superado #error-close{
+    position: absolute;
+    right: 41px;
+    top: 29px;
+    background-size: 43px;
+    background-image: none;
+    --bs-btn-close-focus-shadow: none;
+}
+
+#superado .modal-footer img{
+    width: 100px;
+}
+
+#superado .modal-footer button{
+    float: right;
+}
+
+.success{
+    background-image: url('../img/estrellas.gif');
+}
+
+#superado .modal-footer #img_notis{
+    display: none;
+}
+
+.error{
+    background-image: url('../img/error.png');
+    display: block;
+    background-size: 797px;
+    background-position-x: -28px;
+    background-position-y: center;
+    background-color: transparent !important;
+    box-shadow: none !important;
 }
 
 /* The Modal (background) */
@@ -368,7 +436,7 @@ img[name="muroDown"] {
   }
 
   #jugar .modal-content{
-    height: 404px;
+    height: 475px;
   }
 
   #jugar .modal-content span{
@@ -389,7 +457,7 @@ img[name="muroDown"] {
   }
 
   #jugar .modal-content button{
-    width: 108px;
+    width: 125px;
     font-size: 25px;
     margin: auto;
     font-size: 20px;
@@ -402,7 +470,7 @@ img[name="muroDown"] {
   #juego2 .modal-content{
     background-image: url('../img/fondo_form2.png');
     width: 60%;
-    height: 560px;
+    height: 640px;
     margin-bottom: 70px;
   }
 

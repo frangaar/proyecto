@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded',function(){
 
+    let superado = document.getElementById('superado'); 
+    superado.classList.remove('success');
+    superado.classList.remove('error');
+
     preguntasJuego2 = [
         ['Las vacas en India no simbolizan a la madre tierra, la naturaleza, la fertilidad y la abundancia',false],
         ['Las vacas de la de India están en libertad y las podemos observar paseando a gusto, tanto en los pueblos como en las grandes ciudades',true],
@@ -52,16 +56,32 @@ document.addEventListener('DOMContentLoaded',function(){
 
             }else{
                 // alert('Felicidades!. Todas tus respuestas son correctas.');
-                let superado = document.getElementById('superado');                
+                superado = document.getElementById('superado');                
                 let mensaje = document.querySelector('#superado .modal-content p');
-                mensaje.innerHTML = "Enhorabuena!!, has respondido correctamente a las preguntas";
+                let btnReintentar = document.querySelector('#superado #aceptar');  
+
+                mensaje.innerHTML = "Enhorabuena!!. Has respondido correctamente a las preguntas";
                 
                 superado.style.display = "block";
+                superado.classList.remove('error');
+                superado.classList.add('success');
+                btnReintentar.innerHTML = 'Aceptar!!';
 
                 btnGuardar.innerHTML = "Guardar";
             }            
         }else{
-            alert('Vaya, algunas de tus respuestas son incorrectas!. Por favor, vuelve a revisarlas.');
+            //alert('Vaya, algunas de tus respuestas son incorrectas!. Por favor, vuelve a revisarlas.');
+            superado = document.getElementById('superado');                
+            let mensaje = document.querySelector('#superado .modal-content p');           
+            let btnReintentar = document.querySelector('#superado #aceptar');  
+
+            mensaje.innerHTML = "Vaya, algunas de tus respuestas son incorrectas!. Por favor, vuelve a revisarlas.";
+            btnReintentar.innerHTML = 'Reintentar!!';
+            
+            superado.style.display = "block";
+            superado.classList.remove('success');
+            superado.classList.add('error');
+
             btnGuardar.innerHTML = "Comprobar";
         }
         
