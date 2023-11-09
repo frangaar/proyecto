@@ -1,6 +1,35 @@
+#deathMenu {
+    display: none;
+    margin: 0;
+    padding: 0;
+    top: 20%;
+    left: 25%;
+    position: fixed;
+    width: 900px;
+    height: 720px;
+    /* display: grid; */
+    place-content: center;
+}
 #showMessage{
     /* border: 1px solid white; */
     height: 100px;
+}
+.titleMenu {
+    color: green;
+    position: absolute;
+    left: 40%;
+    top: 30px;
+    font-family: 'Pixelify Sans', sans-serif;
+}
+.showLaia{
+    /* border: 1px solid white; */
+    width: 120px;
+    position: absolute;
+    height: 120px;
+    left: 45%;
+    top: 20%;
+    background-image: url(../img/laia.png);
+    background-size: cover;  
 }
 ul {
     bottom: 50%;

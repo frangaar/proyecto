@@ -37,6 +37,9 @@ p {
     position: absolute;
     /* border: 1px solid white; */
 }
+.barrel2 {
+    position: absolute;
+}
 .character{
     position: absolute;
    /* border: 1px solid white; */

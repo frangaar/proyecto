@@ -1,7 +1,7 @@
+var botonAceptar = document.getElementById('buttonAceptar')
+var divButton = document.getElementById('buttonContinue')
 function buttonAccept() {
-    let botonAceptar = document.getElementById('buttonAceptar')
-    let divButton = document.getElementById('buttonContinue')
-    let app = document.getElementById('app')
+    var app = document.getElementById('app')
     let backgroundTheme = document.getElementById('backgroundTheme')
     let fileBackgroundTheme = backgroundTheme.getAttribute('src')                 
     let audioBackground = new Audio(fileBackgroundTheme)
@@ -13,3 +13,6 @@ function buttonAccept() {
     pause = false
     app.style.filter = 'blur(0px)'
 }   
+function buttonDeath() {
+    window.location.href = '../index.html'
+}

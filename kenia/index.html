@@ -29,16 +29,28 @@
         <div class="kong" id="kongContainer">
             <img src="img/donkeyKong.gif" alt="" id="donkeyKongCharacter">
         </div>
-        <div class="barrel" id="barrel">
-            <img src="img/barrel.gif" alt="" id="barrelIcon">
-        </div>
+        <div class="barriles">
+            <!-- <div class="barrel" id="barrelDiv">
+                <img src="img/barrel.gif" alt="" id="barrelIcon">
+            </div> -->
+            <!-- Aqui crea los demás -->
+        </div>    
     </div>
     <div id="buttonContinue">
-        <div id="showMessage"></div>
+        <h1 class="titleMenu" id="title">Laia En Kenia</h1>
+        <div class="showLaia"></div>
         <ul id="buttonAceptar">
             <li id="playButton"><span onclick="buttonAccept()">Jugar</span></li>
             <li id="creditButton"><span>Creditos</span></li>
             <li id="exitButton"><span>Salir</span></li>
+          </ul>
+    </div>
+    <div id="deathMenu">
+        <h1 class="titleMenu">Has Muerto</h1>
+        <div class="showLaia"></div>
+        <ul id="buttonAceptar_Death">
+            <li id="playButton_Death"><span onclick="buttonDeath()">Volver a Jugar</span></li>
+            <li id="exitButton_Death"><span>Salir</span></li>
           </ul>
     </div>
     <audio src="sound/character_Death.mp3" id="audioMarioFallin"></audio> 
@@ -46,8 +58,8 @@
     <audio src="sound/mario_jump.wav" id="marioJump"></audio>
     <audio src="sound/mario-bros-woo-hoo.mp3" id="marioJumpSound"></audio>  
     <audio src="sound/music_Background2.mp3" id="backgroundTheme"></audio>
-    <script src="js/characterMovement.js"></script>
     <script src="js/cinematics.js"></script>
+    <script src="js/characterMovement.js"></script>
     <script src="js/audio.js"></script> 
 </body>
 </html>   

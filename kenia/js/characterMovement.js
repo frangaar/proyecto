@@ -1,21 +1,30 @@
-// Inizializar el canvas
 // document.write('<script src="js/audio.js"></script>');
 // import {audioFall, audioJump, jumpSound, audioBackground, audioPause} from 'audio.js'
+
 const BLOCK_SIZE = 36
 const PLAYER_WIDTH = 25
 const PLAYER_HEIGHT = 20
 const PLAYER_VELOCITYJUMP = 12
+let player_life = 3
+let final_del_mapa
+let colisionado = false
+let play = false
+let index_counting_barrels = 0
 
-let botonAceptar = document.getElementById('buttonAceptar')
-let divButton = document.getElementById('buttonContinue')
+/** Inizializar los botones del menu y el div*/
+// let botonAceptar = document.getElementById('buttonAceptar')
+// let divButton = document.getElementById('buttonContinue')
+/** Inizializar los botones del menu de cuando mueres y el div*/
+let button_Death = document.getElementById('buttonAceptar_Death')
+let menu_death = document.getElementById('deathMenu')
+let title = document.getElementById('title')
 let character = document.getElementById('character')
-let app = document.getElementById('app')
+var app = document.getElementById('app')
 let container = document.getElementById('character-Container')
 let enemy = document.getElementById('donkeyKongCharacter')
 let enemyContainer = document.getElementById('kongContainer')
-let barrel = document.getElementById('barrelIcon')
-let barrelContainer = document.getElementById('barrel')
-let showMessage = document.getElementById('showMessage')
+// let barrel = document.getElementById('barrelIcon')
+// let barrelContainer = document.getElementById('barrelDiv')
 
 
 let focusPlayButton = document.getElementById('playButton')
@@ -48,15 +57,13 @@ app.style.backgroundSize = 'cover'
 enemy.style.width = '160px'
 enemyContainer.style.left = '65px'
 enemyContainer.style.top = '18px'
-barrel.style.width = '40px'
-barrelContainer.style.left = '0px'
-barrelContainer.style.top = '0px'
-let barrelPositionX = 295
-let barrelPositionY = 50
-let barrelVelocityX = 0
-let barrelVelocityY = 0
+// barrel.style.width = '40px'
+// barrelContainer.style.left = '0px'
+// barrelContainer.style.top = '0px'
 const colisionables = []
 const colisionablesFila1 = []
+const barriles = []
+const barrilesContainerArray = []
 // audioBackground.muted = true
 // audioBackground.play()
 // Mostrar mapeado en pantalla con doble for.
@@ -66,12 +73,22 @@ drawMap()
 // Variables de la posicion del personaje.
 let positionX = 0
 let positionY = 500   
+let barrelPositionX = 295
+let barrelPositionY = 50
+let barrelVelocityX = 0
+let barrelVelocityY = 0
+let barrelPositionXArray = 0
+let barrelPositionYArray = 0
 
 function draw () {
     container.style.left = positionX + 'px'
     container.style.top = positionY + 'px'
-    barrelContainer.style.left = barrelPositionX + 'px'
-    barrelContainer.style.top = barrelPositionY + 'px'
+    // barrelContainer.style.left = barrelPositionX + 'px'
+    // barrelContainer.style.top = barrelPositionY + 'px'
+    for (let index = 0; index < barrilesContainerArray.length; index++) {
+        barrilesContainerArray[index].style.left = barrelPositionX + 'px'
+        barrilesContainerArray[index].style.top = barrelPositionY + 'px'
+    }
     //app.style.backgroundColor = '#000'
     // audioBackground.play()
 }
@@ -80,36 +97,66 @@ let barrilChocadoParedIzquierda = false
 // Loop de update para la gravedad y todo el movimiento.
 function update (){
     if (!pause) {
+        // play = true
         draw()
         positionY += velocityY
         positionX += velocityX
+        // barrelPositionX += barrelVelocityX
+        // barrelPositionY += barrelVelocityY
+
         barrelPositionX += barrelVelocityX
         barrelPositionY += barrelVelocityY
+        // console.log(barrelPositionXArray);
             /** BARREL CONDITION */
-            if (barrelPositionY + container.offsetWidth + barrelVelocityY <= app.offsetHeight) {
-                barrelVelocityY += gravity
-        } else barrelVelocityY = 0
+            // barriles[index_counting_barrels]
+            for (let index = 0; index < barrilesContainerArray.length; index++) {
+                if (barrelPositionY + barrilesContainerArray[index].offsetWidth + barrelVelocityY <= app.offsetHeight) {
+                    barrelVelocityY += gravity
+                } else barrelVelocityY = 0
+                if (!barrilChocadoParedDerecha) {
+                    if (barrelPositionX + barrilesContainerArray[index].offsetWidth + barrelVelocityX < app.offsetWidth) {
+                        barrelVelocityX = 3
+                    } else {barrelVelocityX = 0 ; barrilChocadoParedDerecha = true;}
+                } 
+                // if (barrilChocadoParedDerecha) {
+                //     if (barrelPositionXArray > 0) {
+                //             barrelVelocityX = -3
+                //     } else {barrelVelocityX = 0; barrilChocadoParedDerecha = false;}
+                // }
+                // console.log(barrilesContainerArray[index].offsetLeft); 
+            }
+            //     if (barrelPositionY + container.offsetWidth + barrelVelocityY <= app.offsetHeight) {
+            //         barrelVelocityY += gravity
+            // } else barrelVelocityY = 0
+        
+            //     if (!barrilChocadoParedDerecha) {
+            //         if (barrelPositionX + barrelContainer.offsetWidth + barrelVelocityX < app.offsetWidth) {
+            //             barrelVelocityX = 3
+            //         } else {barrelVelocityX = 0 ; barrilChocadoParedDerecha = true;}
+            //     } 
+            //     if (barrilChocadoParedDerecha) {
+            //         if (barrelPositionX > 0) {
+            //                 barrelVelocityX = -3
+            //         } else {barrelVelocityX = 0; barrilChocadoParedDerecha = false;}
+            //     } 
+        //     if (barrelPositionY + container.offsetWidth + barrelVelocityY <= app.offsetHeight) {
+        //         barrelVelocityY += gravity
+        // } else barrelVelocityY = 0
     
-            if (!barrilChocadoParedDerecha) {
-                if (barrelPositionX + barrelContainer.offsetWidth + barrelVelocityX < app.offsetWidth) {
-                    barrelVelocityX = 3
-                } else {barrelVelocityX = 0 ; barrilChocadoParedDerecha = true;}
-            } 
-            if (barrilChocadoParedDerecha) {
-                if (barrelPositionX > 0) {
-                        barrelVelocityX = -3
-                } else {barrelVelocityX = 0; barrilChocadoParedDerecha = false;}
-            } 
-        if (!muerto) {
+        //     if (!barrilChocadoParedDerecha) {
+        //         if (barrelPositionX + barrelContainer.offsetWidth + barrelVelocityX < app.offsetWidth) {
+        //             barrelVelocityX = 3
+        //         } else {barrelVelocityX = 0 ; barrilChocadoParedDerecha = true;}
+        //     } 
+        //     if (barrilChocadoParedDerecha) {
+        //         if (barrelPositionX > 0) {
+        //                 barrelVelocityX = -3
+        //         } else {barrelVelocityX = 0; barrilChocadoParedDerecha = false;}
+        //     } 
+        if (!muerto && !colisionado) {
             // Condicional de que si la Y del objeto más su altura y la velocidad de la Y no superan la altura del canvas, tiene efecto la gravedad, de lo contrario significa que ha llegado al límite del canvas o ha tocado el suelo, en ese caso restablece la velocidad a 0 para que deje de caer.
             if (positionY + container.offsetWidth + velocityY <= app.offsetHeight) {
                 velocityY += gravity
-                // playVideo() {
-                //     const media = this.videoplayer.nativeElement;
-                //     media.muted = true; // without this line it's not working although I have "muted" in HTML
-                //     media.play();
-                // }
-                // audioBackground.play()
             } else {velocityY = 0;  } 
             // if (barrelVelocityY > 0) {
             //     if (barrelPositionX + barrelContainer.offsetWidth + barrelVelocityX <= app.offsetWidth) {
@@ -118,8 +165,6 @@ function update (){
             // } else if (barrelVelocityY <= 0) {
             //     barrelVelocityX = -5
             // }
-                
-    
                 // if (barrelPositionX > 0) {
                 //     barrilChocadoParedIzquierda = false
                 //     if (!barrilChocadoParedIzquierda) {
@@ -159,7 +204,6 @@ function update (){
                 velocityX = 0 
                 if (imgCrouch === 1 ) {
                     character.setAttribute('src', 'img/mario_stand.png') 
-                // character.setAttribute('src', 'img/mario_quieto.gif') 
                 }
                 imgLeft = 1
                 imgRight = 1
@@ -176,39 +220,53 @@ function update (){
                 if (velocityY <= -5) {
                     muertSalto = true
                     return
-                } else if (velocityY <= 0) {
-                    botonAceptar.style.display = 'block'
-                    divButton.style.display = 'grid'
-                    divButton.style.backgroundColor = 'transparent'
-                    if (focusPlayButton.focus) {
-                        window.location.href = '../index.html'
-                    }
-                }
+                } 
                 velocityY -= 5
             }
             velocityY += gravity
-            showMessage.innerHTML = 'MUERTO'
-            showMessage.style.color = 'white'
-
+            button_Death.style.display = 'block'
+            menu_death.style.display = 'grid'
+            menu_death.style.backgroundColor = 'transparent'
+            app.style.filter = 'blur(2px)'
         }
         checkBarrelColision()
-    }
+    } 
+
 }
 function animate (){
-    // setTimeout(animate, 10)
-    // if (!muerto) {
-        requestAnimationFrame(animate)
-        update()
-    // }
+    requestAnimationFrame(animate)
+    update()
 }
 animate()
+window.setInterval(function(){
+    if (!pause) {
+        if (index_counting_barrels <= 4) {
+                let barrilContainer = document.createElement('div');
+                document.querySelector('.barriles').appendChild(barrilContainer);
+                let nombreClasse = generarNombreConNumero('barril', index_counting_barrels)
+                barrilContainer.classList.add(nombreClasse);
+                barrilContainer.style.position = 'absolute'
+                let barrilIcono = document.createElement('img');
+                barrilContainer.appendChild(barrilIcono);  
+                barrilIcono.classList.add('barrilLanzadoIcono');
+                barrilIcono.setAttribute('src', 'img/barrel.gif');
+                barrilIcono.style.width = '40px'
+                barrilContainer.style.left = '0px'
+                barrilContainer.style.top = '0px'
+                barriles.push(barrilIcono)
+                barrilesContainerArray.push(barrilContainer)
+        }
+        index_counting_barrels++
+    }
+  },5000);
+  function generarNombreConNumero(prefijo, numero) {
+    return `${prefijo}${numero}`;
+  }
 /** Hacer el keyEvent del keydown y el keyup para que el personaje se mueva solo cuando tiene la tecla presionada*/
 addEventListener('keydown', (event) => {
     switch (event.key) {
         case 'ArrowUp':
-            if (pause) {
-                focusPlayButton.focus()
-            } else keyUpPressed = true
+            keyUpPressed = true
             break
         case 'ArrowDown':
             keyDownPressed = true
@@ -221,12 +279,17 @@ addEventListener('keydown', (event) => {
             break
         case 'p':
             if (!pause) {
+                play = false
                 botonAceptar.style.display = 'block'
                 divButton.style.display = 'grid'
                 divButton.style.backgroundColor = 'transparent'
                 app.style.filter = 'blur(2px)'
+                title.innerHTML = 'Pause Mode'
                 pause = true
-            } else pause = false
+            } else {
+                buttonAccept() 
+                play = true
+            }
             // app.style.display = 'none'
             break
     }
@@ -295,28 +358,28 @@ function drawMap()
 //     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 //     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 // ]
-    const map  = [
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 6],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    ]
+const map  = [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 6],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9]
+]
     // DIBUJAR MAPA
     for (let fila = 0; fila < map.length; fila++) {
         for (let columna = 0; columna < map[fila].length; columna++) {
@@ -339,7 +402,6 @@ function drawMap()
                 const mapBlock1 = document.createElement('div')
 
                 document.querySelector('.fila1').appendChild(mapBlock1)
-                //mapBlock1.classList.add('fila1')
                 mapBlock1.style.backgroundImage = 'url(../img/bloque.png)'
                 mapBlock1.style.backgroundSize = 'cover'
                 mapBlock1.style.top = fila * BLOCK_SIZE + 'px'
@@ -347,7 +409,6 @@ function drawMap()
                 mapBlock1.style.width =  BLOCK_SIZE + 'px'
                 mapBlock1.style.height = BLOCK_SIZE + 'px'
                 mapBlock1.style.position = 'absolute'
-                // mapBlock1.style.transform = 'rotate(-6deg)'
                 colisionablesFila1.push(mapBlock1)
 
             } else if (map[fila][columna] === 3) {
@@ -406,6 +467,21 @@ function drawMap()
                 mapBlock5.style.position = 'absolute'
                 colisionables.push(mapBlock5)  
             }
+            else if ( map[fila][columna] === 9) {
+                const mapBlock9 = document.createElement('div')
+
+                document.querySelector('.bloquesPadre').appendChild(mapBlock9)
+                mapBlock9.classList.add('filaPadre')
+                // mapBlock5.style.backgroundImage = 'url(../img/block2.png)'
+                mapBlock9.style.backgroundColor = 'red'
+                mapBlock9.style.backgroundSize = 'cover'
+                mapBlock9.style.top = fila * BLOCK_SIZE + 'px'
+                mapBlock9.style.left = (columna * BLOCK_SIZE) + 'px'
+                mapBlock9.style.width =  BLOCK_SIZE + 'px'
+                mapBlock9.style.height = BLOCK_SIZE + 'px'
+                mapBlock9.style.position = 'absolute'
+                final_del_mapa = mapBlock9
+            }
         }
     }
 }
@@ -430,13 +506,11 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                     if ((positionY + container.offsetHeight) <= app.offsetTop) {
                         velocityY += (PLAYER_VELOCITYJUMP/2)
                     }
-                    console.log(PLAYER_VELOCITYJUMP);
                 // if (colisionCabezaSueloPlataform) {
                 //     velocityY += 12
                 // }
                 // if (positionY + character.offsetHeight >= colisionables[i].offsetTop + colisionables[i].offsetHeight
                 //     && (positionY + character.offsetHeight + velocityY) <= colisionables[i].offsetTop + colisionables[i].offsetHeight) {
-                //         console.log('choque');
                 //        velocityY += 12
                 // }
                 // if (positionY + character.offsetHeight >= colisionablefila1[i].offsetTop
@@ -478,48 +552,72 @@ function checkBarrelColision()
 {
     let indexBarrel = 0
     while (indexBarrel < colisionables.length) {
-        if (
-            (barrelPositionY + barrel.offsetHeight) <= (colisionables[indexBarrel].offsetTop)
-            && (barrelPositionY + barrel.offsetHeight + barrelVelocityY) >= (colisionables[indexBarrel].offsetTop)
-            && (barrelPositionX + barrelContainer.offsetWidth) >= (colisionables[indexBarrel].offsetLeft) 
-            && (barrelPositionX) <= (colisionables[indexBarrel].offsetLeft + colisionables[indexBarrel].offsetWidth)  
-            ) {
-                // Barril colisionado 
-                barrelVelocityY = 0
-            }
-        if (
-            (barrelPositionY + barrel.offsetHeight) <= (positionY + character.offsetHeight)
-            && (barrelPositionY + barrel.offsetHeight + barrelVelocityY) >= (positionY + character.offsetHeight + velocityY)
-            && (barrelPositionX + barrelContainer.offsetWidth) >= (positionX + container.offsetWidth) 
-            && (barrelPositionX) <= (positionX + container.offsetWidth)  
-            ) {
-                // Barril colisionado 
-                barrelVelocityY = 0
-                // positionY = 500
-                // positionX = 0
-                character.setAttribute('src', 'img/mario_diyng.png')
-                muerto = true
-                if (muerto) {
-
-                    audioFall.play() 
-                    audioBackground.pause()   
-                    // audioDeath.play()
-                    // audioBackground.pause()
-                    // audioBackground.removeAttribute('autoplay')
-                    // audioBackground.removeAttribute('loop')
-                    // audioBackground.stop()
-                    // audioBackground.paused()
-                    return
+        for (let index = 0; index < barrilesContainerArray.length; index++) {
+            if (
+                // (barrelPositionY + barrel.offsetHeight) <= (colisionables[indexBarrel].offsetTop)
+                // && (barrelPositionY + barrel.offsetHeight + barrelVelocityY) >= (colisionables[indexBarrel].offsetTop)
+                // && (barrelPositionX + barrelContainer.offsetWidth) >= (colisionables[indexBarrel].offsetLeft) 
+                // && (barrelPositionX) <= (colisionables[indexBarrel].offsetLeft + colisionables[indexBarrel].offsetWidth)  
+                (barrelPositionY + barrilesContainerArray[index].offsetHeight) <= (colisionables[indexBarrel].offsetTop)
+                && (barrelPositionY + barrilesContainerArray[index].offsetHeight + barrelVelocityY) >= (colisionables[indexBarrel].offsetTop)
+                && (barrelPositionX + barrilesContainerArray[index].offsetWidth) >= (colisionables[indexBarrel].offsetLeft) 
+                && (barrelPositionX) <= (colisionables[indexBarrel].offsetLeft + colisionables[indexBarrel].offsetWidth)
+                ) {
+                    // Barril colisionado 
+                    barrelVelocityY = 0
+                } 
+        }
+       
+            // if ((barrelPositionY + barrel.offsetHeight) <= (final_del_mapa.offsetTop)
+            // && (barrelPositionY + barrel.offsetHeight + barrelVelocityY) >= (final_del_mapa.offsetTop)
+            // && (barrelPositionX + barrelContainer.offsetWidth) >= (final_del_mapa.offsetLeft) 
+            // && (barrelPositionX) <= (final_del_mapa.offsetLeft + final_del_mapa.offsetWidth)  
+            //     ){
+            //         barrelPositionX = 295
+            //         barrelPositionY = 50
                     
-                } else 
-                imgLeft = 0
-                imgRight = 0
-                imgStand = 0
-                imgUp = 0
-                imgCrouch = 0
-            }
+            //     }
+        // if (
+        //     (barrelPositionY + barrel.offsetHeight) <= (positionY + character.offsetHeight)
+        //     && (barrelPositionY + barrel.offsetHeight + barrelVelocityY) >= (positionY + character.offsetHeight + velocityY)
+        //     && (barrelPositionX + barrelContainer.offsetWidth) >= (positionX + container.offsetWidth) 
+        //     && (barrelPositionX) <= (positionX + container.offsetWidth)  
+        //     ) {
+        //         // Barril colisionado 
+        //         barrelVelocityY = 0
+        //         if (player_life > 0) {
+                    
+        //             player_life -= 1
+        //             colisionEfect_betweenCharacter_and_barrel()
+        //             velocityY -= 5
+        //             barrelPositionX = 295
+        //             barrelPositionY = 50
+        //             barrilChocadoParedDerecha = false
+        //         } 
+        //         if (player_life <= 0) {
+        //             muerto = true
+        //             character.setAttribute('src', 'img/mario_diyng.png')
+        //         }
+        //         if (muerto) {
+        //             audioFall.play() 
+        //             audioBackground.pause()   
+        //             // return
+        //         } 
+        //     }
         indexBarrel++  
     }
+}
+function colisionEfect_betweenCharacter_and_barrel() {
+    if (velocityY <= -5) {
+        colisionado = true
+        character.setAttribute('src', 'img/mario_diyng.png')
+        imgLeft = 0
+        imgRight = 0
+        imgStand = 0
+        imgUp = 0
+        imgCrouch = 0
+        return
+    } 
 }
 function checkCloisionBetweenCharacterAndFile1()
 {
