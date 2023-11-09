@@ -1,13 +1,8 @@
 // Inizializar el canvas
-// document.write('<script src="js/audio.js"></script>');
-// import {audioFall, audioJump, jumpSound, audioBackground, audioPause} from 'audio.js'
 const BLOCK_SIZE = 36
 const PLAYER_WIDTH = 25
 const PLAYER_HEIGHT = 20
 const PLAYER_VELOCITYJUMP = 12
-
-let botonAceptar = document.getElementById('buttonAceptar')
-let divButton = document.getElementById('buttonContinue')
 let character = document.getElementById('character')
 let app = document.getElementById('app')
 let container = document.getElementById('character-Container')
@@ -15,12 +10,21 @@ let enemy = document.getElementById('donkeyKongCharacter')
 let enemyContainer = document.getElementById('kongContainer')
 let barrel = document.getElementById('barrelIcon')
 let barrelContainer = document.getElementById('barrel')
-let showMessage = document.getElementById('showMessage')
+let audioMarioFallin = document.getElementById('audioMarioFallin')
+let fileMarioFalling = audioMarioFallin.getAttribute('src');
+let audioFall = new Audio(fileMarioFalling);   
 
+let audioMarioDiying = document.getElementById('audioMarioDiying')
+let fileMarioDeath = audioMarioDiying.getAttribute('src');
+let audioDeath = new Audio(fileMarioDeath);
 
-let focusPlayButton = document.getElementById('playButton')
+let audioMarioJumping = document.getElementById('marioJump')
+let fileMarioJumping = audioMarioJumping.getAttribute('src')                 
+let audioJump = new Audio(fileMarioJumping);
 
-var pause = true
+let backgroundTheme = document.getElementById('backgroundTheme')
+let fileBackgroundTheme = backgroundTheme.getAttribute('src')                 
+let audioBackground = new Audio(fileBackgroundTheme)
 // let file
 let velocityX = 0
 let velocityY = 5
@@ -58,10 +62,10 @@ let barrelVelocityY = 0
 const colisionables = []
 const colisionablesFila1 = []
 // audioBackground.muted = true
-// audioBackground.play()
+audioBackground.play()
 // Mostrar mapeado en pantalla con doble for.
-drawMap()
 
+drawMap()
 
 // Variables de la posicion del personaje.
 let positionX = 0
@@ -79,120 +83,108 @@ let barrilChocadoParedDerecha = false
 let barrilChocadoParedIzquierda = false
 // Loop de update para la gravedad y todo el movimiento.
 function update (){
-    if (!pause) {
-        draw()
-        positionY += velocityY
-        positionX += velocityX
-        barrelPositionX += barrelVelocityX
-        barrelPositionY += barrelVelocityY
-            /** BARREL CONDITION */
-            if (barrelPositionY + container.offsetWidth + barrelVelocityY <= app.offsetHeight) {
-                barrelVelocityY += gravity
-        } else barrelVelocityY = 0
-    
-            if (!barrilChocadoParedDerecha) {
-                if (barrelPositionX + barrelContainer.offsetWidth + barrelVelocityX < app.offsetWidth) {
-                    barrelVelocityX = 3
-                } else {barrelVelocityX = 0 ; barrilChocadoParedDerecha = true;}
-            } 
-            if (barrilChocadoParedDerecha) {
-                if (barrelPositionX > 0) {
-                        barrelVelocityX = -3
-                } else {barrelVelocityX = 0; barrilChocadoParedDerecha = false;}
-            } 
-        if (!muerto) {
-            // Condicional de que si la Y del objeto más su altura y la velocidad de la Y no superan la altura del canvas, tiene efecto la gravedad, de lo contrario significa que ha llegado al límite del canvas o ha tocado el suelo, en ese caso restablece la velocidad a 0 para que deje de caer.
-            if (positionY + container.offsetWidth + velocityY <= app.offsetHeight) {
-                velocityY += gravity
-                // playVideo() {
-                //     const media = this.videoplayer.nativeElement;
-                //     media.muted = true; // without this line it's not working although I have "muted" in HTML
-                //     media.play();
-                // }
-                // audioBackground.play()
-            } else {velocityY = 0;  } 
-            // if (barrelVelocityY > 0) {
-            //     if (barrelPositionX + barrelContainer.offsetWidth + barrelVelocityX <= app.offsetWidth) {
-            //         barrelVelocityX = 5
-            //     } else barrelVelocityX = 0 ;  
-            // } else if (barrelVelocityY <= 0) {
-            //     barrelVelocityX = -5
-            // }
-                
-    
-                // if (barrelPositionX > 0) {
-                //     barrilChocadoParedIzquierda = false
-                //     if (!barrilChocadoParedIzquierda) {
-                //         barrelPositionX = -5
-                //     } else barrelVelocityX = 5   
-                // } else barrilChocadoParedIzquierda = true; barrilChocadoParedDerecha = false;
-            //Condicional para pared derecha y  pared izquierda
-            if (keyLeftPressed) {
-                if (imgLeft === 1) {
-                    character.setAttribute('src', 'img/mario_running.gif')
-                    imgLeft = 0
-                }
-                imgRight = 1
-                imgStand = 1
-                imgUp = 1
-                imgCrouch = 1
-    
-                if (positionX > 0) {
-                    velocityX = -5
-                    character.style.transform = 'scaleX(-1)'
-                } else velocityX = 0
-            } else if (keyRightPressed){
-                if (imgRight === 1) {
-                    character.setAttribute('src', 'img/mario_running.gif')
-                    imgRight = 0
-                }
-                imgLeft = 1
-                imgStand = 1
-                imgUp = 1
-                imgCrouch = 1
-    
-                if (positionX + container.offsetWidth + velocityX < app.offsetWidth) {
-                    velocityX = 5
-                    character.style.transform = 'scaleX(1)'
-                } else velocityX = 0
-            } else {
-                velocityX = 0 
-                if (imgCrouch === 1 ) {
-                    character.setAttribute('src', 'img/mario_stand.png') 
-                // character.setAttribute('src', 'img/mario_quieto.gif') 
-                }
-                imgLeft = 1
-                imgRight = 1
-                imgStand = 1
-                imgUp = 1
-                imgCrouch = 1
-            }
-        
-            // Condicional para que solo puedas saltar cuando hayas tocado el suelo
-            checkColisionBetweenCharacterHeadAndBlockBottom()
-            checkCloisionBetweenCharacterAndFile1() 
-        } else {
-            if (!muertSalto) {
-                if (velocityY <= -5) {
-                    muertSalto = true
-                    return
-                } else if (velocityY <= 0) {
-                    botonAceptar.style.display = 'block'
-                    divButton.style.display = 'grid'
-                    divButton.style.backgroundColor = 'transparent'
-                    if (focusPlayButton.focus) {
-                        window.location.href = '../index.html'
-                    }
-                }
-                velocityY -= 5
-            }
-            velocityY += gravity
-            showMessage.innerHTML = 'MUERTO'
-            showMessage.style.color = 'white'
+    draw()
+    positionY += velocityY
+    positionX += velocityX
+    barrelPositionX += barrelVelocityX
+    barrelPositionY += barrelVelocityY
+        /** BARREL CONDITION */
+        if (barrelPositionY + container.offsetWidth + barrelVelocityY <= app.offsetHeight) {
+            barrelVelocityY += gravity
+    } else barrelVelocityY = 0
 
+        if (!barrilChocadoParedDerecha) {
+            if (barrelPositionX + barrelContainer.offsetWidth + barrelVelocityX < app.offsetWidth) {
+                barrelVelocityX = 3
+            } else {barrelVelocityX = 0 ; barrilChocadoParedDerecha = true;}
+        } 
+        if (barrilChocadoParedDerecha) {
+            if (barrelPositionX > 0) {
+                    barrelVelocityX = -3
+            } else {barrelVelocityX = 0; barrilChocadoParedDerecha = false;}
+        } 
+    if (!muerto) {
+        // Condicional de que si la Y del objeto más su altura y la velocidad de la Y no superan la altura del canvas, tiene efecto la gravedad, de lo contrario significa que ha llegado al límite del canvas o ha tocado el suelo, en ese caso restablece la velocidad a 0 para que deje de caer.
+        if (positionY + container.offsetWidth + velocityY <= app.offsetHeight) {
+            velocityY += gravity
+            // playVideo() {
+            //     const media = this.videoplayer.nativeElement;
+            //     media.muted = true; // without this line it's not working although I have "muted" in HTML
+            //     media.play();
+            // }
+            // audioBackground.play()
+        } else {velocityY = 0;  } 
+        // if (barrelVelocityY > 0) {
+        //     if (barrelPositionX + barrelContainer.offsetWidth + barrelVelocityX <= app.offsetWidth) {
+        //         barrelVelocityX = 5
+        //     } else barrelVelocityX = 0 ;  
+        // } else if (barrelVelocityY <= 0) {
+        //     barrelVelocityX = -5
+        // }
+            
+
+            // if (barrelPositionX > 0) {
+            //     barrilChocadoParedIzquierda = false
+            //     if (!barrilChocadoParedIzquierda) {
+            //         barrelPositionX = -5
+            //     } else barrelVelocityX = 5   
+            // } else barrilChocadoParedIzquierda = true; barrilChocadoParedDerecha = false;
+        //Condicional para pared derecha y  pared izquierda
+        if (keyLeftPressed) {
+            if (imgLeft === 1) {
+                character.setAttribute('src', 'img/mario_running.gif')
+                imgLeft = 0
+            }
+            imgRight = 1
+            imgStand = 1
+            imgUp = 1
+            imgCrouch = 1
+
+            if (positionX > 0) {
+                velocityX = -5
+                character.style.transform = 'scaleX(-1)'
+            } else velocityX = 0
+        } else if (keyRightPressed){
+            if (imgRight === 1) {
+                character.setAttribute('src', 'img/mario_running.gif')
+                imgRight = 0
+            }
+            imgLeft = 1
+            imgStand = 1
+            imgUp = 1
+            imgCrouch = 1
+
+            if (positionX + container.offsetWidth + velocityX < app.offsetWidth) {
+                velocityX = 5
+                character.style.transform = 'scaleX(1)'
+            } else velocityX = 0
+        } else {
+            velocityX = 0 
+            if (imgCrouch === 1 ) {
+                character.setAttribute('src', 'img/mario_stand.png') 
+            // character.setAttribute('src', 'img/mario_quieto.gif') 
+            }
+            imgLeft = 1
+            imgRight = 1
+            imgStand = 1
+            imgUp = 1
+            imgCrouch = 1
         }
-        checkBarrelColision()
+    
+        // Condicional para que solo puedas saltar cuando hayas tocado el suelo
+        checkColisionBetweenCharacterHeadAndBlockBottom()
+        checkCloisionBetweenCharacterAndFile1() 
+    } else {
+        if (!muertSalto) {
+            if (velocityY <= -5) {
+                muertSalto = true
+                return
+            }
+            velocityY -= 5
+        }
+        velocityY += gravity
     }
+    checkBarrelColision()
 }
 function animate (){
     // setTimeout(animate, 10)
@@ -203,12 +195,10 @@ function animate (){
 }
 animate()
 /** Hacer el keyEvent del keydown y el keyup para que el personaje se mueva solo cuando tiene la tecla presionada*/
-addEventListener('keydown', (event) => {
+addEventListener('keydown', (event) =>{
     switch (event.key) {
         case 'ArrowUp':
-            if (pause) {
-                focusPlayButton.focus()
-            } else keyUpPressed = true
+            keyUpPressed = true
             break
         case 'ArrowDown':
             keyDownPressed = true
@@ -219,18 +209,7 @@ addEventListener('keydown', (event) => {
         case 'ArrowLeft':
             keyLeftPressed = true
             break
-        case 'p':
-            if (!pause) {
-                botonAceptar.style.display = 'block'
-                divButton.style.display = 'grid'
-                divButton.style.backgroundColor = 'transparent'
-                app.style.filter = 'blur(2px)'
-                pause = true
-            } else pause = false
-            // app.style.display = 'none'
-            break
     }
-    
 })
 addEventListener('keyup', (event) =>{
     switch (event.key) {
@@ -426,7 +405,6 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                     personajeTocandoElSueloFoto = 0 
                     velocityY -= PLAYER_VELOCITYJUMP
                     audioJump.play()
-                    jumpSound.play()
                     if ((positionY + container.offsetHeight) <= app.offsetTop) {
                         velocityY += (PLAYER_VELOCITYJUMP/2)
                     }
@@ -501,17 +479,15 @@ function checkBarrelColision()
                 muerto = true
                 if (muerto) {
 
-                    audioFall.play() 
-                    audioBackground.pause()   
-                    // audioDeath.play()
-                    // audioBackground.pause()
+                    audioFall.play()    
+                    audioDeath.play()
+                    audioBackground.pause()
                     // audioBackground.removeAttribute('autoplay')
                     // audioBackground.removeAttribute('loop')
                     // audioBackground.stop()
                     // audioBackground.paused()
                     return
-                    
-                } else 
+                }
                 imgLeft = 0
                 imgRight = 0
                 imgStand = 0

@@ -8,13 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=VT323&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/css.css">
-    <link rel="stylesheet" href="css/menu_css.css">
 </head>
 <body id="body">
     <p>KENIA VIDEO GAME</p>
-    <!-- <div class="continuarButton" id="buttonContinue">
-        <button id="buttonAceptar" onclick="buttonAccept()">Aceptar</button>
-    </div> -->
     <div class="app" id="app">
         <div class="character" id="character-Container" >
             <img src="" alt=""  id="character">
@@ -32,22 +28,11 @@
         <div class="barrel" id="barrel">
             <img src="img/barrel.gif" alt="" id="barrelIcon">
         </div>
-    </div>
-    <div id="buttonContinue">
-        <div id="showMessage"></div>
-        <ul id="buttonAceptar">
-            <li id="playButton"><span onclick="buttonAccept()">Jugar</span></li>
-            <li id="creditButton"><span>Creditos</span></li>
-            <li id="exitButton"><span>Salir</span></li>
-          </ul>
-    </div>
-    <audio src="sound/character_Death.mp3" id="audioMarioFallin"></audio> 
-    <audio src="sound/" id="audioMarioDiying"></audio>
-    <audio src="sound/mario_jump.wav" id="marioJump"></audio>
-    <audio src="sound/mario-bros-woo-hoo.mp3" id="marioJumpSound"></audio>  
-    <audio src="sound/music_Background2.mp3" id="backgroundTheme"></audio>
+    </div> 
+    <audio src="sound/mario_falling.wav" id="audioMarioFallin"></audio> 
+    <audio src="sound/mario_death_sound.mp3" id="audioMarioDiying"></audio>
+    <audio src="sound/mario_jump.wav" id="marioJump"></audio> 
+    <audio src="sound/background_Music.mp3" id="backgroundTheme" autoplay muted></audio> 
     <script src="js/characterMovement.js"></script>
-    <script src="js/cinematics.js"></script>
-    <script src="js/audio.js"></script> 
 </body>
 </html>   

@@ -2,11 +2,6 @@
     font-family: pixel;
     src: url(../img/DS-TERM.TTF);
 }
-html {
-    /* cursor:  url(../img/cursorMano.png), auto; */
-    cursor: grab;
-
-}
 #body{
     margin: 0;
     padding: 0;
@@ -25,7 +20,7 @@ p {
     top: 20%;
     left: 25%;
     position: fixed;
-    display: none;
+    /* display: none; */
 }
 .bloques {
     position: absolute;
