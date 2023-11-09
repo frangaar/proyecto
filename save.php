@@ -71,6 +71,8 @@ try {
     $conn->rollback();
 }
 
+header("Location: action_page.php");   
+
 $conn=closeDB();
     
     ?>

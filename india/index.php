@@ -25,10 +25,10 @@ session_start();
         <div class="row">
             <div class="col text-start">
                 <img id="musica" class="pausa">
-                <!-- <a><button type="button" id="pausar" class="btn btn-primary">Pausar música</button></a> -->
             </div>
             <div class="col text-end">
-                <a><button type="button" id="volver" class="btn btn-primary">Volver</button></a>
+                <img src="img/volver.png" class="volver"></img>
+                <button type="button" id="volver" class="btn btn-primary">Volver</button>
             </div>
         </div>
     </div>
@@ -223,10 +223,35 @@ session_start();
                 <p></p>
             </div>
             <div class="modal-footer">
-                <!-- <img src="img/error.png" id="img_notis"></img> -->
                 <button type="button" id="aceptar" class="btn btn-primary">Aceptar!!</button>
             </div>
         </div>
     </div>
+
+    <!-- Salir del juego -->
+    <div id="salirJuego" class="modal">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Aun no has completado todos los juegos. Si sales de la partida tendrás que volver a empezar. Quieres salir?</p>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="col-si">
+                            <img src="img/salirSi.png" data-respuesta="si">
+                            <button type="button" id="si" class="btn btn-primary">Sí</button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="col-no">
+                            <img src="img/salirNo.png" data-respuesta="no">
+                            <button type="button" id="no" class="btn btn-primary">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
