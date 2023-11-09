@@ -59,6 +59,7 @@ function habilitaBotonGuardar(){
         
         superado.style.display = "block";
         superado.classList.add('success');
+        superado.classList.remove('error');
 
         imagen.classList.remove('borroso');
         let btnGuardar = document.getElementById('guardarGhandi');

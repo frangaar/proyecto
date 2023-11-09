@@ -9,7 +9,7 @@ p,h1,h2,h3,h4,h5,span,label,input,button,.alert{
 }
 
 .map-container .content{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 31px;
     margin-top: 35px;
     box-shadow: 1px 1px 4px 0px #000000;

@@ -536,7 +536,7 @@ document.addEventListener('DOMContentLoaded',function(){
                     left = colisionables[index].offsetLeft;
                     top = colisionables[index].offsetTop;
                     leftX = -10;
-                    topY = -120;
+                    topY = -160;
                     showDialogue(dialogo4,left,leftX,top,topY);
                 }else if(quienSoy == 'alisha'){
                     left = colisionables[index].offsetLeft;
@@ -732,6 +732,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
     let volver = document.getElementById('volver');
+    let salirJuego = document.getElementById('salirJuego');
 
     volver.addEventListener('click',function(){
 
@@ -739,22 +740,30 @@ document.addEventListener('DOMContentLoaded',function(){
         let item2 = sessionStorage.getItem('taj');
         let item3 = sessionStorage.getItem('vaca');
 
+        // Si consigue todos los objetos
         if(item1 == "true" && item2 == "true" && item3 == "true"){
 
-            let xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    console.log("Guardando datos")
-                }
-            };
+            window.location.href='../save.php?nivel=2+&tiempo='+reloj;            
+        }else{
+            salirJuego.style.display = 'block';
 
-            xmlhttp.open("POST","../save.php?nivel=2+&tiempo="+reloj,true);
-            xmlhttp.send();
+            let salirSi = document.querySelector('#salirJuego #si');
+            let salirNo = document.querySelector('#salirJuego #no');
+
+            salirSi.addEventListener('click',function(){
+
+                window.location.href='../action_page.php';  
+            });
+
+            salirNo.addEventListener('click',function(){
+
+                salirJuego.style.display = 'none';
+            });
+
         }
-
-        window.location.href="../action_page.php";
-        
-    })
+    
+    });
+    
 
     setEnergyItems();
     

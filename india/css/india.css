@@ -31,14 +31,34 @@ i{
     padding-left: 25px;
 }
 
+.botones-juego .col.text-end{
+    position: relative;
+}
+
+.botones-juego .volver{
+    width: 96px;
+    height: 45px;
+    float: right;
+}
+
+.botones-juego .volver.pulsado{
+    background-position-x: 95px;
+}
+
+.botones-juego #volver{
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 10px;
+    top: 2px;
+}
+
+#game .bocadillo-cuadrado .audio-close{
+    opacity: 1;
+}
+
 .play{
-    /* background-image: url(../img/musica/iconos.png); */
     background-image: url(../img/musica/play.png);
-    /* width: 50px;
-    height: 50px;
-    background-size: 100px;
-    background-position-x: 100px;
-    border-radius: 25px; */
     width: 92px;
     height: 38px;
     background-size: 189px;
@@ -47,12 +67,6 @@ i{
 }
 
 .pausa{
-    /* background-image: url(../img/musica/iconos.png); */
-    /* width: 50px;
-    height: 50px;
-    background-size: 100px;
-    background-position-x: 50px;
-    border-radius: 25px; */
     background-image: url(../img/musica/play.png);
     width: 103px;
     height: 38px;
@@ -68,7 +82,6 @@ i{
 .grid-container{
     display: inline-block;
     position: absolute;
-    /* z-index: 4000; */
 }
 
 #player{
@@ -78,20 +91,13 @@ i{
 
 #character {
     position: absolute;
-    /* width: 26px; */
     width: 46px;
-    /* height: 43px; */
     height: 73px;
-    /* background: red; */
     z-index: 4100;
-    /* top:100px; */
-    /* left: 200px; */
 }
 
 #character > img{
-    /* width: 26px; */
     width: 46px;
-    /* height: 43px; */
     height: 73px;
 }
 
@@ -170,8 +176,8 @@ i{
 }
 
 .grid-container.colisionable.gandhi{
-    width: 50px !important;
-    height: 55px !important;
+    width: 70px !important;
+    height: 75px !important;
     z-index: 5000;
 }
 
@@ -182,27 +188,30 @@ i{
 }
 
 .grid-container.colisionable.vaca{
-    width: 116px !important;
-    height: 93px !important;
+    width: 96px !important;
+    height: 63px !important;
     z-index: 5000;
 }
 
 .grid-container.colisionable.figura > #vaca{
-    width: 116px !important;
-    height: 93px !important;
+    width: 96px !important;
+    height: 63px !important;
     cursor: pointer;
+    animation: zoom-in-zoom-out 1.5s ease infinite;
 }
 
 .grid-container.colisionable.figura > #taj_mahal{
     width: 122px !important;
     height: 92px !important;
     cursor: pointer;
+    animation: zoom-in-zoom-out 1.5s ease infinite;
 }
 
 .grid-container.colisionable.figura > #gandhi{
-    width: 50px !important;
-    height: 55px !important;
+    width: 70px !important;
+    height: 75px !important;
     cursor: pointer;
+    animation: zoom-in-zoom-out 1.5s ease infinite;
 }
 
 .grid-container.colisionable.muroLeft{
@@ -252,7 +261,6 @@ img[name="muroDown"] {
 
 #tiempo{
     color: white;
-    /* padding-right: 25px; */
     font-family: 'Pixelify Sans', sans-serif;
     font-size: 22px;
     width: 180px;
@@ -260,9 +268,6 @@ img[name="muroDown"] {
 }
 
 #player-panel{
-    /* text-align: right; */
-    /* margin-top: 28px; */
-    /* height: 793px; */
     background-color: black;
     height: 85px;
     margin-top: 10px;
@@ -279,13 +284,11 @@ img[name="muroDown"] {
 }
 
 #player-panel .content-items .items-owned .item{
-    /* margin-top: 60px; */
     width: 84px;
     height: 84px;
-    border: 1px solid black;
-    border-radius: 20px;
+    border: 1px solid white;
     margin-right: 100px;
-    border-color: white;
+    border-radius: 10px;
 }
 
 .item-visible{
@@ -295,7 +298,8 @@ img[name="muroDown"] {
 #player-panel .content-items .items-owned .item img{
     width: 83px;
     height: 83px;
-    border-radius: 20px;
+    border: 1px solid white;
+    border-radius: 7px;
     visibility: hidden;
 }
 
@@ -315,8 +319,6 @@ img[name="muroDown"] {
 }
 
 #player-panel .imagen{
-    /* padding-right: 25px; */
-    /* padding-top: 30px; */
     width: 140px;
     float: left;
 }
@@ -399,26 +401,24 @@ img[name="muroDown"] {
     box-shadow: none !important;
 }
 
-/* The Modal (background) */
+
 .modal {
     display: none;
-    position: fixed; /* Stay in place */
-    z-index: 40000; /* Sit on top */
+    position: fixed;
+    z-index: 40000;
     left: 0;
     top: -10%;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
   
   /* Modal Content/Box */
   .modal-content {
-    /* background-image: url('../img/fondo_form.png'); */
     margin: 9% auto; /* 15% from the top and centered */
     padding: 20px;  
-    border: 1px solid #888;
     width: 45%; /* Could be more or less, depending on screen size */
     height: 400px;
     position: relative;
@@ -428,7 +428,6 @@ img[name="muroDown"] {
   .juego #contenido1, .juego #contenido2{
     font-size: 22px;
     font-weight: 700;
-    /* color: white; */
   }
 
   #juego1 .title, #juego2 .title{
@@ -510,13 +509,11 @@ img[name="muroDown"] {
     width: 240px;
     background: white;
     box-shadow: 1px 12px 33px rgba(0, 0, 0, 0.5);
-    z-index: 5100;
-    /* display: none; */
-    
+    z-index: 5100;    
 }
 
 #bocadillo-cuadrado1:before {
-    border: 15px solid white;
+    border: 15px solid #ad5eed;
     content: '';
     border-left-color: transparent;
     border-bottom-color: transparent;
@@ -528,7 +525,7 @@ img[name="muroDown"] {
 }
 
 #bocadillo-cuadrado2:before {
-    border: 15px solid white;
+    border: 15px solid #ee5627;
     content: '';
     border-left-color: transparent;
     border-bottom-color: transparent;
@@ -540,7 +537,7 @@ img[name="muroDown"] {
 }
 
 #bocadillo-cuadrado3:before {
-    border: 15px solid white;
+    border: 15px solid #2f93ea;
     content: '';
     border-left-color: transparent;
     border-bottom-color: transparent;
@@ -552,7 +549,7 @@ img[name="muroDown"] {
 }
 
 #bocadillo-cuadrado4:before {
-    border: 15px solid white;
+    border: 15px solid #c4973c;
     content: '';
     border-left-color: transparent;
     border-bottom-color: transparent;
@@ -564,7 +561,7 @@ img[name="muroDown"] {
 }
 
 #bocadillo-cuadrado5:before {
-    border: 15px solid white;
+    border: 15px solid #ed160f;
     content: '';
     border-left-color: transparent;
     border-bottom-color: transparent;
@@ -578,17 +575,17 @@ img[name="muroDown"] {
 .bocadillo-cuadrado p{
     font-size: 13px;
     padding: 5px;
-    /* padding-top: 25px; */
     display: -webkit-box;
     max-width: 220px;
     -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
     overflow: hidden;
     height: 140px;
+    color: white;
 }
 
 button.audio{
-    width: 50px;
+    width: 55px;
     height: 17px;
     padding: 0;
     font-size: 11px;
@@ -604,50 +601,40 @@ button.audio-close{
 }
 
 #bocadillo-cuadrado1{
-    /* top: 6%;
-    left: 65%; */
-    /* z-index: 1000; */
     opacity: 0;
     visibility: hidden;
     transition: visibility 0s, opacity 0.5s linear; 
+    background-color: #ad5eed
 }
 
 #bocadillo-cuadrado2{
-    /* top: 61%;
-    left: 31%; */
-    /* z-index: 1000; */
     opacity: 0;
     visibility: hidden;
     transition: visibility 0s, opacity 0.5s linear; 
+    background-color: #ee5627;
 }
 
 #bocadillo-cuadrado3{
-    /* top: 47%;
-    left: 72%; */
-    /* z-index: 1000; */
     opacity: 0;
     visibility: hidden;
     transition: visibility 0s, opacity 0.5s linear; 
+    background-color: #2f93ea;
 }
 
 #bocadillo-cuadrado4{
-    /* top: 47%;
-    left: 72%; */
-    /* z-index: 1000; */
-    height: 100px !important;
+    height: 140px !important;
     opacity: 0;
     visibility: hidden;
     transition: visibility 0s, opacity 0.5s linear; 
+    background-color: #c4973c;
 }
 
 #bocadillo-cuadrado5{
-    /* top: 47%;
-    left: 72%; */
-    /* z-index: 1000; */
     height: 100px !important;
     opacity: 0;
     visibility: hidden;
     transition: visibility 0s, opacity 0.5s linear; 
+    background-color: #ed160f;
 }
 
 .visible{
@@ -659,3 +646,59 @@ button.audio-close{
 .parrilla .col.border.droppable{
     border: 1px solid black !important;
 }
+
+#salirJuego .modal-content{
+    margin-top: 335px;
+}
+
+#salirJuego .modal-body p{
+    font-size: 42px;
+}
+
+#salirJuego .modal-footer{
+    display: block;
+}
+
+#salirJuego .modal-footer .col-si,#salirJuego .modal-footer .col-no{
+    position: relative;
+    text-align: center;
+}
+
+#salirJuego .modal-footer #si,#salirJuego .modal-footer #no{
+    position: absolute;
+    top: 0px;
+    left: 131px;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    width: 108px;
+    height: 65px;
+    padding: 0;
+}
+
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
+  @keyframes zoom-in-zoom-out {
+    0% {
+      transform: scale(1, 1);
+    }
+    50% {
+      transform: scale(1.05, 1.05);
+    }
+    100% {
+      transform: scale(1, 1);
+    }
+  }
