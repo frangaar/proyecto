@@ -27,8 +27,8 @@ session_start();
                 <img id="musica" class="pausa">
             </div>
             <div class="col text-end">
-                <img src="img/volver.png" class="volver"></img>
-                <button type="button" id="volver" class="btn btn-primary">Volver</button>
+                <img src="img/volver.png" class="volver" id="volver"></img>
+                <!-- <button type="button" id="volver" class="btn btn-primary">Volver</button> -->
             </div>
         </div>
     </div>
@@ -238,14 +238,14 @@ session_start();
                 <div class="row">
                     <div class="col-6">
                         <div class="col-si">
-                            <img src="img/salirSi.png" data-respuesta="si">
-                            <button type="button" id="si" class="btn btn-primary">Sí</button>
+                            <img src="img/salirSi.png" data-respuesta="si" id="si">
+                            <!-- <button type="button" id="si" class="btn btn-primary">Sí</button> -->
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="col-no">
-                            <img src="img/salirNo.png" data-respuesta="no">
-                            <button type="button" id="no" class="btn btn-primary">No</button>
+                            <img src="img/salirNo.png" data-respuesta="no" id="no">
+                            <!-- <button type="button" id="no" class="btn btn-primary">No</button> -->
                         </div>
                     </div>
                 </div>
