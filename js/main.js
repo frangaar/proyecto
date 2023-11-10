@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded',function(){
             for (let index = 0; index < bocadillos.length; index++) {
             
                 bocadillos[index].style.display="none";
-                textos[index].style.height = "0px";
+                // textos[index].style.height = "0px";
             }
             
         }        

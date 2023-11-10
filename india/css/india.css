@@ -31,14 +31,15 @@ i{
     padding-left: 25px;
 }
 
-.botones-juego .col.text-end{
-    position: relative;
-}
-
-.botones-juego .volver{
+.botones-juego #volver{
     width: 96px;
     height: 45px;
     float: right;
+    cursor: pointer;
+}
+
+.botones-juego #volver:hover{
+    filter: brightness(130%);
 }
 
 .botones-juego .volver.pulsado{
@@ -48,7 +49,6 @@ i{
 .botones-juego #volver{
     background-color: transparent;
     border: none;
-    position: absolute;
     right: 10px;
     top: 2px;
 }
@@ -306,8 +306,8 @@ img[name="muroDown"] {
 .grid-container.droppable > #dragPieza0,
 .grid-container.droppable > #dragPieza1,
 .grid-container.droppable > #dragPieza2{
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
     z-index: 8000;
     position: absolute;
     border: none;
@@ -660,12 +660,12 @@ button.audio-close{
 }
 
 #salirJuego .modal-footer .col-si,#salirJuego .modal-footer .col-no{
-    position: relative;
+    /* position: relative; */
     text-align: center;
 }
 
 #salirJuego .modal-footer #si,#salirJuego .modal-footer #no{
-    position: absolute;
+    /* position: absolute; */
     top: 0px;
     left: 131px;
     font-size: 20px;
@@ -674,6 +674,16 @@ button.audio-close{
     width: 108px;
     height: 65px;
     padding: 0;
+}
+
+
+#salirJuego .modal-footer img:hover,#salirJuego .modal-footer img:hover{
+    filter: brightness(80%);
+}
+
+#salirJuego .modal-footer img:hover,#salirJuego .modal-footer img:hover{
+    filter: brightness(130%);
+    cursor: pointer;
 }
 
 

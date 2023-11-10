@@ -24,6 +24,24 @@ document.addEventListener('DOMContentLoaded',function(){
     
     let player = '';
 
+    const PLAYER = 19;
+    const SCHOOL = 10; 
+    const TIERRA = 11;
+    const CHOZAS = 12;
+    const TRONCO = 13;
+    const HIERBA = 14;
+    const GANDHI = 15;
+    const TAJMAH = 16;
+    const TOMASA = 17; // es la vaca
+    const CHARCO = 18;
+    const VALLAU = 20;
+    const VALLAL = 30;
+    const VALLAR = 40;
+    const VALLAD = 50;
+    const ALISHA = 60;
+    const VACIOS = 99;
+    
+
     // Mostrar pantalla inicio
     inicioJuego.style.display = 'block';
 
@@ -44,24 +62,24 @@ document.addEventListener('DOMContentLoaded',function(){
         let y = 0;
 
         const mapa = [
-            [99, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 99, 20, 20, 20, 20, 20, 20, 99, 99, 20, 20, 20, 20, 20, 20, 20, 99],
-            [30, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 14, 13, 14, 14, 14, 11, 11, 11, 11, 11, 14, 18, 14, 11, 11, 11, 11, 14, 18, 18, 11, 11, 11, 11, 11, 11, 11, 40],
-            [30, 14, 14, 19, 14, 14, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 11, 11, 12, 11, 11, 14, 18, 14, 11, 11, 11, 11, 14, 18, 18, 11, 12, 11, 11, 11, 11, 11, 40],
-            [30, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 18, 14, 11, 11, 11, 11, 14, 18, 18, 11, 11, 11, 11, 11, 11, 11, 40],
-            [30, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 18, 14, 11, 15, 11, 11, 14, 18, 18, 11, 11, 11, 11, 11, 11, 11, 40],
-            [30, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 13, 14, 14, 11, 11, 18, 18, 18, 18, 18, 14, 11, 11, 11, 11, 14, 18, 18, 11, 11, 14, 13, 14, 14, 14, 40],
-            [30, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 11, 11, 14, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 14, 14, 11, 11, 14, 14, 14, 14, 14, 40],
-            [30, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 11, 11, 10, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 40],
-            [30, 14, 14, 14, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 40],
-            [99, 18, 18, 18, 18, 18, 18, 18, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 13, 14, 14, 14, 40],
-            [30, 11, 11, 12, 11, 11, 11, 18, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 14, 40],
-            [30, 11, 11, 11, 11, 11, 11, 18, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 14, 40],
-            [30, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 18, 18, 18, 18, 18, 99],
-            [30, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 12, 11, 11, 14, 14, 14, 11, 11, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 40],
-            [30, 14, 14, 14, 14, 11, 11, 11, 11, 16, 11, 11, 11, 11, 11, 11, 11, 14, 13, 14, 11, 11, 13, 14, 14, 11, 11, 60, 11, 11, 11, 17, 11, 11, 11, 11, 11, 11, 40],
-            [30, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 11, 11, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 40],
-            [30, 14, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 14, 14, 14, 11, 11, 14, 14, 14, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 40],
-            [99, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 99]
+            [VACIOS, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VACIOS, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VACIOS, VACIOS, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VALLAU, VACIOS],
+            [VALLAL, HIERBA, HIERBA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, TRONCO, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, CHARCO, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, CHARCO, CHARCO, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, VALLAR],
+            [VALLAL, HIERBA, HIERBA, PLAYER, HIERBA, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, HIERBA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, CHOZAS, TIERRA, TIERRA, HIERBA, CHARCO, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, CHARCO, CHARCO, TIERRA, CHOZAS, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, VALLAR],
+            [VALLAL, HIERBA, HIERBA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, CHARCO, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, CHARCO, CHARCO, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, VALLAR],
+            [VALLAL, HIERBA, HIERBA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, HIERBA, HIERBA, HIERBA, CHARCO, HIERBA, TIERRA, GANDHI, TIERRA, TIERRA, HIERBA, CHARCO, CHARCO, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, VALLAR],
+            [VALLAL, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, HIERBA, TRONCO, HIERBA, HIERBA, TIERRA, TIERRA, CHARCO, CHARCO, CHARCO, CHARCO, CHARCO, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, CHARCO, CHARCO, TIERRA, TIERRA, HIERBA, TRONCO, HIERBA, HIERBA, HIERBA, VALLAR],
+            [VALLAL, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, HIERBA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, HIERBA, HIERBA, HIERBA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, HIERBA, TIERRA, TIERRA, HIERBA, HIERBA, HIERBA, HIERBA, HIERBA, VALLAR],
+            [VALLAL, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, HIERBA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, SCHOOL, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, HIERBA, HIERBA, HIERBA, HIERBA, VALLAR],
+            [VALLAL, HIERBA, HIERBA, HIERBA, HIERBA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, VALLAR],
+            [VACIOS, CHARCO, CHARCO, CHARCO, CHARCO, CHARCO, CHARCO, CHARCO, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, HIERBA, TRONCO, HIERBA, HIERBA, HIERBA, VALLAR],
+            [VALLAL, TIERRA, TIERRA, CHOZAS, TIERRA, TIERRA, TIERRA, CHARCO, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, HIERBA, HIERBA, HIERBA, HIERBA, HIERBA, VALLAR],
+            [VALLAL, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, CHARCO, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, HIERBA, HIERBA, HIERBA, HIERBA, HIERBA, VALLAR],
+            [VALLAL, HIERBA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, CHARCO, CHARCO, CHARCO, CHARCO, CHARCO, VACIOS],
+            [VALLAL, HIERBA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, CHOZAS, TIERRA, TIERRA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, VALLAR],
+            [VALLAL, HIERBA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, TAJMAH, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, TRONCO, HIERBA, TIERRA, TIERRA, TRONCO, HIERBA, HIERBA, TIERRA, TIERRA, ALISHA, TIERRA, TIERRA, TIERRA, TOMASA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, VALLAR],
+            [VALLAL, HIERBA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, VALLAR],
+            [VALLAL, HIERBA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, HIERBA, HIERBA, HIERBA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, TIERRA, VALLAR],
+            [VACIOS, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VALLAD, VACIOS]
         ]
 
         let parentDIV = document.getElementsByClassName("content")[0];
@@ -78,9 +96,9 @@ document.addEventListener('DOMContentLoaded',function(){
 
                 
                 // Si hay un personaje, un arbol o el jugador, se coloca suelo y encima los objetos 
-                if(mapa[i][j]==11 || mapa[i][j]==12 || mapa[i][j]==13 || mapa[i][j]==14 || 
-                    mapa[i][j]==15 || mapa[i][j]==16 || mapa[i][j]==17 || mapa[i][j]==18 || 
-                    mapa[i][j]==19 || mapa[i][j]==60 || mapa[i][j]==10){
+                if(mapa[i][j]==TIERRA || mapa[i][j]==CHOZAS || mapa[i][j]==TRONCO || mapa[i][j]==HIERBA || 
+                    mapa[i][j]==GANDHI || mapa[i][j]==TAJMAH || mapa[i][j]==TOMASA || mapa[i][j]==CHARCO || 
+                    mapa[i][j]==PLAYER || mapa[i][j]==ALISHA || mapa[i][j]==SCHOOL){
                         img= `<img src='`+(suelo)+`.png' name='suelo'></img>`
                         tempDIV.innerHTML=img;
                         tempDIV.setAttribute('class','grid-container no-colisionable droppable');
@@ -92,7 +110,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
                 switch(mapa[i][j]){
 
-                    case 20:
+                    case VALLAR:
                         nextIndex = 'muro' + Object.keys(posiciones).length;
 
                         img= `<img src='`+(pared)+`.png' name='muroUp'></img>`
@@ -104,7 +122,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         
                         break;
 
-                    case 30:
+                    case VALLAL:
                         nextIndex = 'muro' + Object.keys(posiciones).length;
 
                         img= `<img src='`+(pared)+`.png' name='muroLeft'></img>`
@@ -116,7 +134,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         
                         break;
 
-                    case 40:
+                    case VALLAR:
                         nextIndex = 'muro' + Object.keys(posiciones).length;
 
                         img= `<img src='`+(pared)+`.png' name='muroRight'></img>`
@@ -128,7 +146,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         
                         break;
 
-                    case 50:
+                    case VALLAD:
                         nextIndex = 'muro' + Object.keys(posiciones).length;
 
                         img= `<img src='`+(pared)+`.png' name='muroDown'></img>`
@@ -140,7 +158,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         
                         break;
 
-                    case 12:
+                    case CHOZAS:
                         nextIndex = 'casa' + Object.keys(posiciones).length;
                         
                         switch(indiceCasa){
@@ -171,7 +189,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
                         break;
 
-                    case 13:
+                    case TRONCO:
                         nextIndex = 'arbol' + Object.keys(posiciones).length;
 
                         img = '<img src='+(imagenes[0])+' name=arbol></img>'
@@ -180,7 +198,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         
                         parentDIV.appendChild(arbol);
                         break;
-                    case 14:
+                    case HIERBA:
                         
                         img = '<img src='+(imagenes[1])+' name=hierba></img>';
                         let hierba = "";
@@ -188,7 +206,7 @@ document.addEventListener('DOMContentLoaded',function(){
                     
                         parentDIV.appendChild(hierba);
                         break;
-                    case 15:
+                    case GANDHI:
                         nextIndex = 'figura' + Object.keys(posiciones).length;
                         
                         img = '<img src='+(imagenes[3])+' id=gandhi name=gandhi></img>'
@@ -201,7 +219,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         setEventClickFigura(gandhi);                      
 
                         break;
-                    case 16:
+                    case TAJMAH:
                         nextIndex = 'figura' + Object.keys(posiciones).length;
                         
                         img = '<img src='+(imagenes[4])+' id=taj_mahal name=taj_mahal></img>'
@@ -214,7 +232,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         setEventClickFigura(taj_mahal);
 
                         break;
-                    case 17:
+                    case TOMASA:
                         nextIndex = 'figura' + Object.keys(posiciones).length;
                         
                         img = '<img src='+(imagenes[5])+' id=vaca name=vaca></img>'
@@ -227,7 +245,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         setEventClickFigura(vaca);
                 
                         break;
-                    case 18:
+                    case CHARCO:
                         nextIndex = 'agua' + Object.keys(posiciones).length;
                         
                         img = '<img src='+(imagenes[7])+' name=agua></img>'
@@ -237,7 +255,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         parentDIV.appendChild(agua);
                         
                         break;
-                    case 19:
+                    case PLAYER:
                         nextIndex = 'player' + Object.keys(posiciones).length;
                         
                         
@@ -248,7 +266,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
                         break;
 
-                    case 60:
+                    case ALISHA:
                         nextIndex = 'alisha' + Object.keys(posiciones).length;
                         
                         
@@ -260,7 +278,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         
                         break;
 
-                    case 10:
+                    case SCHOOL:
                         nextIndex = 'cole' + Object.keys(posiciones).length;
 
                         img = '<img src='+(imagenes[8])+' name=cole></img>';
