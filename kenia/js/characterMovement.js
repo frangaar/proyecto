@@ -1,6 +1,6 @@
 // document.write('<script src="js/audio.js"></script>');
 // import {audioFall, audioJump, jumpSound, audioBackground, audioPause} from 'audio.js'
-
+// import { Barrel } from "./barrel.js";
 const BLOCK_SIZE = 36
 const PLAYER_WIDTH = 25
 const PLAYER_HEIGHT = 20
@@ -10,6 +10,7 @@ let final_del_mapa
 let colisionado = false
 let play = false
 let index_counting_barrels = 0
+
 
 /** Inizializar los botones del menu y el div*/
 // let botonAceptar = document.getElementById('buttonAceptar')
@@ -27,7 +28,10 @@ let enemyContainer = document.getElementById('kongContainer')
 // let barrelContainer = document.getElementById('barrelDiv')
 
 
+
+
 let focusPlayButton = document.getElementById('playButton')
+
 
 var pause = true
 // let file
@@ -64,36 +68,71 @@ const colisionables = []
 const colisionablesFila1 = []
 const barriles = []
 const barrilesContainerArray = []
+
 // audioBackground.muted = true
 // audioBackground.play()
 // Mostrar mapeado en pantalla con doble for.
 drawMap()
 
 
+
+
 // Variables de la posicion del personaje.
 let positionX = 0
-let positionY = 500   
+let positionY = 500  
 let barrelPositionX = 295
 let barrelPositionY = 50
+
+
 let barrelVelocityX = 0
 let barrelVelocityY = 0
-let barrelPositionXArray = 0
-let barrelPositionYArray = 0
+let barrelPositionX1Array = 0
+let barrelPositionY1Array = 0
 
+
+let barrelPositionX2Array = 0
+let barrelPositionY2Array = 0
+let barrelVelocityX2 = 0
+let barrelVelocityY2 = 0
+
+
+let barrelPositionX3Array = 0
+let barrelPositionY3Array = 0
+let barrelVelocityX3 = 0
+let barrelVelocityY3 = 0
+
+
+let barrelPositionX4Array = 0
+let barrelPositionY4Array = 0
+let barrelVelocityX4 = 0
+let barrelVelocityY4 = 0
+let numberOfBarrels = 0
+const posicionesXBarriles = [barrelPositionX1Array, barrelPositionX2Array, barrelPositionX3Array, barrelPositionX4Array]
+const posicionesYBarriles = [barrelPositionY1Array, barrelPositionY2Array, barrelPositionY3Array, barrelPositionY4Array]
+const velocityXBarriles = [barrelVelocityX, barrelVelocityX2, barrelVelocityX3, barrelVelocityX4]
+const velocityYBarriles = [barrelVelocityY, barrelVelocityY2, barrelVelocityY3, barrelVelocityY4]
 function draw () {
     container.style.left = positionX + 'px'
     container.style.top = positionY + 'px'
     // barrelContainer.style.left = barrelPositionX + 'px'
     // barrelContainer.style.top = barrelPositionY + 'px'
-    for (let index = 0; index < barrilesContainerArray.length; index++) {
-        barrilesContainerArray[index].style.left = barrelPositionX + 'px'
-        barrilesContainerArray[index].style.top = barrelPositionY + 'px'
+    if (barrilesContainerArray[numberOfBarrels] != null) {
+        for (let index = 0; index <= numberOfBarrels; index++) {
+            barrilesContainerArray[index].style.left = posicionesXBarriles[index] + 'px'
+            barrilesContainerArray[index].style.top = posicionesYBarriles[index] + 'px'
+        }
     }
-    //app.style.backgroundColor = '#000'
-    // audioBackground.play()
 }
 let barrilChocadoParedDerecha = false
 let barrilChocadoParedIzquierda = false
+let barrilChocadoParedDerecha2 = false
+let barrilChocadoParedIzquierda2 = false
+let barrilChocadoParedDerecha3 = false
+let barrilChocadoParedIzquierda3 = false
+let barrilChocadoParedDerecha4 = false
+let barrilChocadoParedIzquierda4 = false
+const arrayBarrilChocadoParedIzquierda = [barrilChocadoParedIzquierda, barrilChocadoParedIzquierda2, barrilChocadoParedIzquierda3, barrilChocadoParedIzquierda4]
+const arrayBarrilChocadoParedDerecha = [barrilChocadoParedDerecha, barrilChocadoParedDerecha2, barrilChocadoParedDerecha3, barrilChocadoParedDerecha4]
 // Loop de update para la gravedad y todo el movimiento.
 function update (){
     if (!pause) {
@@ -103,61 +142,70 @@ function update (){
         positionX += velocityX
         // barrelPositionX += barrelVelocityX
         // barrelPositionY += barrelVelocityY
-
-        barrelPositionX += barrelVelocityX
-        barrelPositionY += barrelVelocityY
+        for (let index = 0; index <= numberOfBarrels; index++) {
+            posicionesYBarriles[index] += velocityYBarriles[index]
+            posicionesXBarriles[index] += velocityXBarriles[index]
+        }
+        // barrelPositionX += barrelVelocityX
+        // barrelPositionY += barrelVelocityY
         // console.log(barrelPositionXArray);
             /** BARREL CONDITION */
             // barriles[index_counting_barrels]
-            for (let index = 0; index < barrilesContainerArray.length; index++) {
-                if (barrelPositionY + barrilesContainerArray[index].offsetWidth + barrelVelocityY <= app.offsetHeight) {
-                    barrelVelocityY += gravity
-                } else barrelVelocityY = 0
-                if (!barrilChocadoParedDerecha) {
-                    if (barrelPositionX + barrilesContainerArray[index].offsetWidth + barrelVelocityX < app.offsetWidth) {
-                        barrelVelocityX = 3
-                    } else {barrelVelocityX = 0 ; barrilChocadoParedDerecha = true;}
-                } 
-                // if (barrilChocadoParedDerecha) {
-                //     if (barrelPositionXArray > 0) {
-                //             barrelVelocityX = -3
-                //     } else {barrelVelocityX = 0; barrilChocadoParedDerecha = false;}
-                // }
-                // console.log(barrilesContainerArray[index].offsetLeft); 
-            }
+            /** OTRO COLISION */
+            if (barrilesContainerArray[numberOfBarrels] != null) {
+                for (let index = 0; index <= numberOfBarrels; index++) {
+                    if (posicionesYBarriles[index] + barrilesContainerArray[index].offsetWidth + velocityYBarriles[index] <= app.offsetHeight) {
+                        velocityYBarriles[index] += gravity
+                    } else velocityYBarriles[index] = 0
+
+
+                    if (!arrayBarrilChocadoParedDerecha[index]) {
+                        if (posicionesXBarriles[index] + barrilesContainerArray[index].offsetWidth + velocityXBarriles[index] < app.offsetWidth) {
+                            velocityXBarriles[index] = 3
+                            barrilesContainerArray[index].style.transform = 'scaleX(1)'
+                        } else {velocityXBarriles[index] = 0 ; arrayBarrilChocadoParedDerecha[index] = true;}
+                    } else if (arrayBarrilChocadoParedDerecha[index]) {
+                        if (posicionesXBarriles[index] > 0) {
+                            velocityXBarriles[index] = -3
+                            barrilesContainerArray[index].style.transform = 'scaleX(-1)'
+                        } else {velocityXBarriles[index] = 0; arrayBarrilChocadoParedDerecha[index] = false}
+                    }
+                    // barrilChocadoParedDerecha = false;
+                }
+        }
             //     if (barrelPositionY + container.offsetWidth + barrelVelocityY <= app.offsetHeight) {
             //         barrelVelocityY += gravity
             // } else barrelVelocityY = 0
-        
+       
             //     if (!barrilChocadoParedDerecha) {
             //         if (barrelPositionX + barrelContainer.offsetWidth + barrelVelocityX < app.offsetWidth) {
             //             barrelVelocityX = 3
             //         } else {barrelVelocityX = 0 ; barrilChocadoParedDerecha = true;}
-            //     } 
+            //     }
             //     if (barrilChocadoParedDerecha) {
             //         if (barrelPositionX > 0) {
             //                 barrelVelocityX = -3
             //         } else {barrelVelocityX = 0; barrilChocadoParedDerecha = false;}
-            //     } 
+            //     }
         //     if (barrelPositionY + container.offsetWidth + barrelVelocityY <= app.offsetHeight) {
         //         barrelVelocityY += gravity
         // } else barrelVelocityY = 0
-    
+   
         //     if (!barrilChocadoParedDerecha) {
         //         if (barrelPositionX + barrelContainer.offsetWidth + barrelVelocityX < app.offsetWidth) {
         //             barrelVelocityX = 3
         //         } else {barrelVelocityX = 0 ; barrilChocadoParedDerecha = true;}
-        //     } 
+        //     }
         //     if (barrilChocadoParedDerecha) {
         //         if (barrelPositionX > 0) {
         //                 barrelVelocityX = -3
         //         } else {barrelVelocityX = 0; barrilChocadoParedDerecha = false;}
-        //     } 
+        //     }
         if (!muerto && !colisionado) {
             // Condicional de que si la Y del objeto más su altura y la velocidad de la Y no superan la altura del canvas, tiene efecto la gravedad, de lo contrario significa que ha llegado al límite del canvas o ha tocado el suelo, en ese caso restablece la velocidad a 0 para que deje de caer.
             if (positionY + container.offsetWidth + velocityY <= app.offsetHeight) {
                 velocityY += gravity
-            } else {velocityY = 0;  } 
+            } else {velocityY = 0;  }
             // if (barrelVelocityY > 0) {
             //     if (barrelPositionX + barrelContainer.offsetWidth + barrelVelocityX <= app.offsetWidth) {
             //         barrelVelocityX = 5
@@ -169,7 +217,7 @@ function update (){
                 //     barrilChocadoParedIzquierda = false
                 //     if (!barrilChocadoParedIzquierda) {
                 //         barrelPositionX = -5
-                //     } else barrelVelocityX = 5   
+                //     } else barrelVelocityX = 5  
                 // } else barrilChocadoParedIzquierda = true; barrilChocadoParedDerecha = false;
             //Condicional para pared derecha y  pared izquierda
             if (keyLeftPressed) {
@@ -181,7 +229,7 @@ function update (){
                 imgStand = 1
                 imgUp = 1
                 imgCrouch = 1
-    
+   
                 if (positionX > 0) {
                     velocityX = -5
                     character.style.transform = 'scaleX(-1)'
@@ -195,15 +243,15 @@ function update (){
                 imgStand = 1
                 imgUp = 1
                 imgCrouch = 1
-    
+   
                 if (positionX + container.offsetWidth + velocityX < app.offsetWidth) {
                     velocityX = 5
                     character.style.transform = 'scaleX(1)'
                 } else velocityX = 0
             } else {
-                velocityX = 0 
+                velocityX = 0
                 if (imgCrouch === 1 ) {
-                    character.setAttribute('src', 'img/mario_stand.png') 
+                    character.setAttribute('src', 'img/mario_stand.png')
                 }
                 imgLeft = 1
                 imgRight = 1
@@ -211,16 +259,16 @@ function update (){
                 imgUp = 1
                 imgCrouch = 1
             }
-        
+       
             // Condicional para que solo puedas saltar cuando hayas tocado el suelo
             checkColisionBetweenCharacterHeadAndBlockBottom()
-            checkCloisionBetweenCharacterAndFile1() 
+            checkCloisionBetweenCharacterAndFile1()
         } else {
             if (!muertSalto) {
                 if (velocityY <= -5) {
                     muertSalto = true
                     return
-                } 
+                }
                 velocityY -= 5
             }
             velocityY += gravity
@@ -230,7 +278,8 @@ function update (){
             app.style.filter = 'blur(2px)'
         }
         checkBarrelColision()
-    } 
+    }
+
 
 }
 function animate (){
@@ -240,7 +289,7 @@ function animate (){
 animate()
 window.setInterval(function(){
     if (!pause) {
-        if (index_counting_barrels <= 4) {
+        if (index_counting_barrels <= 2) {
                 let barrilContainer = document.createElement('div');
                 document.querySelector('.barriles').appendChild(barrilContainer);
                 let nombreClasse = generarNombreConNumero('barril', index_counting_barrels)
@@ -254,14 +303,24 @@ window.setInterval(function(){
                 barrilContainer.style.left = '0px'
                 barrilContainer.style.top = '0px'
                 barriles.push(barrilIcono)
+                // QUITAR CUANDO TENGAMOS LAS CLASES
                 barrilesContainerArray.push(barrilContainer)
+                numberOfBarrels = index_counting_barrels
+                new Barrel(0, 0, 0, 0, barrilContainer, barrilIcono)
         }
         index_counting_barrels++
     }
   },5000);
-  function generarNombreConNumero(prefijo, numero) {
+function generarNombreConNumero(prefijo, numero) {
     return `${prefijo}${numero}`;
   }
+//   function colisionBarrilDerecha(index) {
+//     if (!barrilChocadoParedDerecha) {
+//         if (posicionesXBarriles[index] + barrilesContainerArray[index].offsetWidth + velocityXBarriles[index] < app.offsetWidth) {
+//             velocityXBarriles[numberOfBarrels] = 3
+//         } else {velocityXBarriles[index] = 0 ; barrilChocadoParedDerecha = true;}
+//     }
+//   }
 /** Hacer el keyEvent del keydown y el keyup para que el personaje se mueva solo cuando tiene la tecla presionada*/
 addEventListener('keydown', (event) => {
     switch (event.key) {
@@ -287,13 +346,13 @@ addEventListener('keydown', (event) => {
                 title.innerHTML = 'Pause Mode'
                 pause = true
             } else {
-                buttonAccept() 
+                buttonAccept()
                 play = true
             }
             // app.style.display = 'none'
             break
     }
-    
+   
 })
 addEventListener('keyup', (event) =>{
     switch (event.key) {
@@ -387,6 +446,7 @@ const map  = [
                 // Esto hace practicamente lo mismo que en el ejmplo de si es === 1, pero cambiando la imagen.
                 const groundBlock = document.createElement('div')
 
+
                 document.querySelector('.bloques').appendChild(groundBlock)
                 groundBlock.classList.add('suelo')
                 groundBlock.style.backgroundImage = 'url(../img/block3.png)'
@@ -397,9 +457,10 @@ const map  = [
                 groundBlock.style.height = BLOCK_SIZE + 'px'
                 groundBlock.style.position = 'absolute'
                 colisionables.push(groundBlock)
-                
+               
             } else if (map[fila][columna] === 2) {
                 const mapBlock1 = document.createElement('div')
+
 
                 document.querySelector('.fila1').appendChild(mapBlock1)
                 mapBlock1.style.backgroundImage = 'url(../img/bloque.png)'
@@ -409,10 +470,13 @@ const map  = [
                 mapBlock1.style.width =  BLOCK_SIZE + 'px'
                 mapBlock1.style.height = BLOCK_SIZE + 'px'
                 mapBlock1.style.position = 'absolute'
-                colisionablesFila1.push(mapBlock1)
+                colisionables.push(mapBlock1)
+                // colisionablesFila1.push(mapBlock1)
+
 
             } else if (map[fila][columna] === 3) {
                 const mapBlock2 = document.createElement('div')
+
 
                 document.querySelector('.bloques').appendChild(mapBlock2)
                 mapBlock2.classList.add('fila2')
@@ -425,8 +489,10 @@ const map  = [
                 mapBlock2.style.position = 'absolute'
                 colisionables.push(mapBlock2)
 
+
             } else if (map[fila][columna] === 4) {
                 const mapBlock3 = document.createElement('div')
+
 
                 document.querySelector('.bloques').appendChild(mapBlock3)
                 mapBlock3.classList.add('fila3')
@@ -439,8 +505,10 @@ const map  = [
                 mapBlock3.style.position = 'absolute'
                 colisionables.push(mapBlock3)
 
+
             } else if (map[fila][columna] === 5) {
                 const mapBlock4 = document.createElement('div')
+
 
                 document.querySelector('.bloques').appendChild(mapBlock4)
                 mapBlock4.classList.add('fila4')
@@ -454,6 +522,7 @@ const map  = [
                 colisionables.push(mapBlock4)            
             } else if (map[fila][columna] === 6) {
                 const mapBlock5 = document.createElement('div')
+
 
                 document.querySelector('.bloquesPadre').appendChild(mapBlock5)
                 mapBlock5.classList.add('filaPadre')
@@ -469,6 +538,7 @@ const map  = [
             }
             else if ( map[fila][columna] === 9) {
                 const mapBlock9 = document.createElement('div')
+
 
                 document.querySelector('.bloquesPadre').appendChild(mapBlock9)
                 mapBlock9.classList.add('filaPadre')
@@ -493,13 +563,13 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
         if (
         (positionY + character.offsetHeight) <= (colisionables[index].offsetTop)
         && (positionY + character.offsetHeight + velocityY) >= (colisionables[index].offsetTop)
-        && (positionX + container.offsetWidth) >= (colisionables[index].offsetLeft) 
+        && (positionX + container.offsetWidth) >= (colisionables[index].offsetLeft)
         && (positionX) <= (colisionables[index].offsetLeft + colisionables[index].offsetWidth)  
         ) {
-            // Personaje colisionado 
+            // Personaje colisionado
             velocityY = 0
             if (keyUpPressed) {
-                    personajeTocandoElSueloFoto = 0 
+                    personajeTocandoElSueloFoto = 0
                     velocityY -= PLAYER_VELOCITYJUMP
                     audioJump.play()
                     jumpSound.play()
@@ -516,9 +586,9 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                 // if (positionY + character.offsetHeight >= colisionablefila1[i].offsetTop
                 //     && (positionY + character.offsetHeight + velocityY) <= colisionablefila1[i].offsetTop) {
                 //     console.log('choque');
-                    
+                   
                 // }
-            } 
+            }
          
             if (keyDownPressed) {
                 if (imgCrouch === 1) {
@@ -531,12 +601,12 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                 imgStand = 1
                 velocityY = 0
                 velocityX = 0
-            } 
+            }
         }
         // while (indexFila1 < colisionables.length) {
-        //     if (positionY + character.offsetHeight > colisionables[indexFila1].offsetTop 
+        //     if (positionY + character.offsetHeight > colisionables[indexFila1].offsetTop
         //         && (positionY + character.offsetHeight + velocityY) < colisionables[indexFila1].offsetTop + colisionables[indexFila1].offsetHeight + (colisionables[indexFila1].offsetWidth)
-        //         && (positionX ) >= (colisionables[indexFila1].offsetLeft) 
+        //         && (positionX ) >= (colisionables[indexFila1].offsetLeft)
         //         && (positionX) <= (colisionables[indexFila1].offsetLeft + colisionables[indexFila1].offsetWidth)  
         //     ) {
         //         velocityY += (PLAYER_VELOCITYJUMP/2)
@@ -548,64 +618,71 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
         index++
     }  
 }
-function checkBarrelColision() 
+function checkBarrelColision()
 {
     let indexBarrel = 0
-    while (indexBarrel < colisionables.length) {
-        for (let index = 0; index < barrilesContainerArray.length; index++) {
+    if (barrilesContainerArray[numberOfBarrels] != null) {
+        while (indexBarrel < colisionables.length) {
+            for (let index = 0; index <= numberOfBarrels; index++) {
+                if (
+                    // (barrelPositionY + barrel.offsetHeight) <= (colisionables[indexBarrel].offsetTop)
+                    // && (barrelPositionY + barrel.offsetHeight + barrelVelocityY) >= (colisionables[indexBarrel].offsetTop)
+                    // && (barrelPositionX + barrelContainer.offsetWidth) >= (colisionables[indexBarrel].offsetLeft)
+                    // && (barrelPositionX) <= (colisionables[indexBarrel].offsetLeft + colisionables[indexBarrel].offsetWidth)  
+         
+                    (posicionesYBarriles[index] + barrilesContainerArray[index].offsetHeight) <= (colisionables[indexBarrel].offsetTop)
+                    && (posicionesYBarriles[index] + barrilesContainerArray[index].offsetHeight + velocityYBarriles[index]) >= (colisionables[indexBarrel].offsetTop)
+                    && (posicionesXBarriles[index] + barrilesContainerArray[index].offsetWidth) >= (colisionables[indexBarrel].offsetLeft)
+                    && (posicionesXBarriles[index]) <= (colisionables[indexBarrel].offsetLeft + colisionables[indexBarrel].offsetWidth)
+                    ) {
+                        // Barril colisionado
+                        velocityYBarriles[index] = 0
+                    }
+            // }
+           
+                // if ((barrelPositionY + barrel.offsetHeight) <= (final_del_mapa.offsetTop)
+                // && (barrelPositionY + barrel.offsetHeight + barrelVelocityY) >= (final_del_mapa.offsetTop)
+                // && (barrelPositionX + barrelContainer.offsetWidth) >= (final_del_mapa.offsetLeft)
+                // && (barrelPositionX) <= (final_del_mapa.offsetLeft + final_del_mapa.offsetWidth)  
+                //     ){
+                //         barrelPositionX = 295
+                //         barrelPositionY = 50
+                       
+                //     }
             if (
-                // (barrelPositionY + barrel.offsetHeight) <= (colisionables[indexBarrel].offsetTop)
-                // && (barrelPositionY + barrel.offsetHeight + barrelVelocityY) >= (colisionables[indexBarrel].offsetTop)
-                // && (barrelPositionX + barrelContainer.offsetWidth) >= (colisionables[indexBarrel].offsetLeft) 
-                // && (barrelPositionX) <= (colisionables[indexBarrel].offsetLeft + colisionables[indexBarrel].offsetWidth)  
-                (barrelPositionY + barrilesContainerArray[index].offsetHeight) <= (colisionables[indexBarrel].offsetTop)
-                && (barrelPositionY + barrilesContainerArray[index].offsetHeight + barrelVelocityY) >= (colisionables[indexBarrel].offsetTop)
-                && (barrelPositionX + barrilesContainerArray[index].offsetWidth) >= (colisionables[indexBarrel].offsetLeft) 
-                && (barrelPositionX) <= (colisionables[indexBarrel].offsetLeft + colisionables[indexBarrel].offsetWidth)
+                (posicionesYBarriles[index] + barrilesContainerArray[index].offsetHeight) <= (positionY + character.offsetHeight)
+                && (posicionesYBarriles[index] + barrilesContainerArray[index].offsetHeight + velocityYBarriles[index]) >= (positionY + character.offsetHeight + velocityY)
+                && (posicionesXBarriles[index] + barrilesContainerArray[index].offsetWidth) >= (positionX + container.offsetWidth)
+                && (posicionesXBarriles[index]) <= (positionX + container.offsetWidth)  
                 ) {
-                    // Barril colisionado 
-                    barrelVelocityY = 0
-                } 
+                    // Barril colisionado
+                    velocityYBarriles[index] = 0
+                    if (player_life > 0) {
+                       
+                        player_life -= 1
+                        colisionEfect_betweenCharacter_and_barrel()
+                        velocityY -= 5
+                        posicionesXBarriles[index] = 295
+                        posicionesYBarriles[index] = 50
+                        arrayBarrilChocadoParedDerecha[index] = false
+                    }
+                    if (player_life <= 0) {
+                        muerto = true
+                        character.setAttribute('src', 'img/mario_diyng.png')
+                    }
+                    if (muerto) {
+                        audioFall.play()
+                        audioBackground.pause()  
+                        // return
+                    }
+                }
+            }
+            indexBarrel++  
+
+
         }
-       
-            // if ((barrelPositionY + barrel.offsetHeight) <= (final_del_mapa.offsetTop)
-            // && (barrelPositionY + barrel.offsetHeight + barrelVelocityY) >= (final_del_mapa.offsetTop)
-            // && (barrelPositionX + barrelContainer.offsetWidth) >= (final_del_mapa.offsetLeft) 
-            // && (barrelPositionX) <= (final_del_mapa.offsetLeft + final_del_mapa.offsetWidth)  
-            //     ){
-            //         barrelPositionX = 295
-            //         barrelPositionY = 50
-                    
-            //     }
-        // if (
-        //     (barrelPositionY + barrel.offsetHeight) <= (positionY + character.offsetHeight)
-        //     && (barrelPositionY + barrel.offsetHeight + barrelVelocityY) >= (positionY + character.offsetHeight + velocityY)
-        //     && (barrelPositionX + barrelContainer.offsetWidth) >= (positionX + container.offsetWidth) 
-        //     && (barrelPositionX) <= (positionX + container.offsetWidth)  
-        //     ) {
-        //         // Barril colisionado 
-        //         barrelVelocityY = 0
-        //         if (player_life > 0) {
-                    
-        //             player_life -= 1
-        //             colisionEfect_betweenCharacter_and_barrel()
-        //             velocityY -= 5
-        //             barrelPositionX = 295
-        //             barrelPositionY = 50
-        //             barrilChocadoParedDerecha = false
-        //         } 
-        //         if (player_life <= 0) {
-        //             muerto = true
-        //             character.setAttribute('src', 'img/mario_diyng.png')
-        //         }
-        //         if (muerto) {
-        //             audioFall.play() 
-        //             audioBackground.pause()   
-        //             // return
-        //         } 
-        //     }
-        indexBarrel++  
     }
+   
 }
 function colisionEfect_betweenCharacter_and_barrel() {
     if (velocityY <= -5) {
@@ -617,7 +694,7 @@ function colisionEfect_betweenCharacter_and_barrel() {
         imgUp = 0
         imgCrouch = 0
         return
-    } 
+    }
 }
 function checkCloisionBetweenCharacterAndFile1()
 {
@@ -632,7 +709,7 @@ function checkCloisionBetweenCharacterAndFile1()
     if (
         (POSIY_AND_HEIGHT) <= (COLISION_INDEX_TOP)
         && (POSIY_AND_HEIGHT_AND_VELOCITYY) >= (COLISION_INDEX_TOP)
-        && (POSIX_AND_WIDTH) >= (COLISION_INDEX_LEFT) 
+        && (POSIX_AND_WIDTH) >= (COLISION_INDEX_LEFT)
         && (positionX) <= (COLISION_INDEX_LEFT + COLISION_INDEX_WIDTH )  
         ) {
             velocityY = 0
@@ -640,3 +717,6 @@ function checkCloisionBetweenCharacterAndFile1()
         indexFila1++
     }
 }
+
+
+

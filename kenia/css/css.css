@@ -51,10 +51,10 @@ p {
     /* width: 70px;
     height: 70px; */
 }
-.fila1 {
-    position: relative;
+/* .fila1 {
+    position: absolute;
     right: 19px;
     top: 32px;    
     transform: rotate(-2deg); 
     
-}
+} */
