@@ -122,9 +122,12 @@ html,body {
     margin:0;
 }
 
-body , body {
+body {
     display:flex;
+    background-color: #000000;
 }
+
+
 
 form {
     margin:auto;
@@ -162,14 +165,26 @@ form {
     text-align: center;
 }
 
-.header-section-intro{
+.container.landing-page{
+    box-shadow: 0px 2px 22px 17px rgba(81,171,199,0.75), 0px -192px 22px 17px rgba(4,92,44,0.75), 0px 200px 22px 17px rgba(81,171,199,0.75);
+}
+
+.landing-page .header-section{
+    backdrop-filter: blur(10px) saturate(70%);
+}
+
+.landing-page .header-section-intro{
     margin: auto;
 }
 
 body .landing-page{
-    /* height: fit-content; */
-    /* background-image: url('../img/landing1.jpg'); */
-    /* background-size: contain; */
+    height: fit-content;
+    background-image: url('../img/escenarios/landing2.png');
+    background-size: cover;
+}
+
+.landing-page #banner{
+    width: 50%;
 }
 
 .margin-center{

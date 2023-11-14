@@ -40,13 +40,20 @@
             <input type="button" class="btn btn-primary" value="Registro" data-bs-toggle="modal" data-bs-target="#registro"></input>
         </div>
         <div class="banner-section">
-            <img src="img/login.jpg" class="img-fluid" id="banner"> 
+            <img src="img/logo.jpg" class="img-fluid" id="banner"> 
         </div>
         <div class="header-section">
             <div class="col-10 header-section-intro">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non aliquet purus, id consectetur lectus. Maecenas sed velit tempor, rhoncus nisi eu, commodo orci. In finibus aliquam lorem, sagittis dignissim risus pellentesque id. Maecenas vitae lacus in lorem iaculis finibus nec vitae ante. Duis molestie dignissim sodales. Maecenas a orci et ipsum molestie pharetra. Curabitur congue libero turpis, ut dapibus leo malesuada eu. Aliquam imperdiet tempus turpis et dictum.
+                <p>En el apasionante juego <span style="font-weight:bold">"El Viaje Renovable de Laia"</span>, te sumergirás en la emocionante odisea de una valiente mujer llamada Laia, cuya misión es llevar energía renovable a una escuela mediante desafiantes pruebas alrededor del mundo. Laia se embarca en un viaje épico que la llevará a través de exóticos destinos, como la vibrante India, la salvaje Kenia y la exuberante Brasil.</p>
 
-                    Ut rutrum efficitur scelerisque. Nullam fringilla erat ut porta luctus. Etiam ullamcorper lorem sed nisi finibus commodo. Morbi eget diam arcu. Nunc congue felis id neque faucibus, a ultrices odio iaculis. Mauris varius lacinia mattis. Nam blandit lacus nisi, eget aliquet mi rhoncus suscipit. Praesent ac massa ex. Etiam bibendum, est eu blandit faucibus, metus risus vestibulum massa, vitae feugiat ante leo a lacus. Maecenas sagittis euismod erat id malesuada. Aenean commodo gravida nunc et porta. Vivamus ut facilisis arcu, et tempus nisl. Phasellus non aliquet purus, id laoreet felis. Nam mattis, nibh iaculis laoreet elementum, massa turpis aliquam turpis, non dignissim ex tortor sit amet orci. Sed est nulla, ornare vel eros interdum, bibendum commodo purus.</p>
+                <p>Laia, dotada de una mente aguda y habilidades excepcionales, enfrentará desafíos de lógica, matemáticas y geografía en cada país, resolviendo intrincados acertijos para obtener piezas esenciales que alimentarán de energía sostenible a la escuela. Estas piezas, impregnadas de tecnologías renovables innovadoras, representan la clave para un futuro más verde y sostenible.</p>
+
+                <p>Para financiar su viaje, Laia se sumerge en la bulliciosa ciudad de Barcelona, donde realiza encargos que le permiten ganar el dinero necesario. La ciudad se convierte en su patio de juegos, mientras Laia equilibra el trabajo, la vida cotidiana y la emocionante búsqueda de las piezas que transformarán vidas.</p>
+
+                <p>A medida que avanzas en el juego, descubrirás la riqueza cultural y la diversidad de los destinos, mientras Laia supera desafíos que van más allá de las pruebas mentales, enfrentándose a situaciones inesperadas y forjando amistades que la ayudarán en su noble causa.</p>
+
+                <p>En <span style="font-weight:bold">"El Viaje Renovable de Laia"</span>, únete a Laia en su emocionante travesía por el mundo, donde cada paso la acerca más a la meta de iluminar el futuro con energía limpia y sostenible. ¿Tienes lo necesario para superar los desafíos y ayudar a Laia a cumplir su misión?</p> 
+                <p style="font-weight:bold">¡El destino del planeta está en tus manos!</p>
             </div>
         </div>        
         <div class="games-section">
@@ -65,7 +72,7 @@
                     </div>
                     <div class="col">
                       <div class="card h-100">
-                        <img src="img/game.jpg" class="card-img-top" alt="...">
+                        <img src="img/escenarios/india_portada.png" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
                           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
