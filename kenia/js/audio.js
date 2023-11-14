@@ -14,6 +14,10 @@
     var audioMarioJumHo_Ho = document.getElementById('marioJumpSound')
     var fileMarioJumping2 = audioMarioJumHo_Ho.getAttribute('src')                 
     var jumpSound = new Audio(fileMarioJumping2)
+
+    var soundEnemyScream = document.getElementById('enemySound')
+    var fileAudioEnemy = soundEnemyScream.getAttribute('src')                 
+    var audioEnemy = new Audio(fileAudioEnemy)
     
     var backgroundTheme = document.getElementById('backgroundTheme')
     var fileBackgroundTheme = backgroundTheme.getAttribute('src')                 

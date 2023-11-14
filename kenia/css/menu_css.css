@@ -17,10 +17,11 @@
 .titleMenu {
     color: green;
     position: absolute;
-    left: 40%;
+    left: 43%;
     top: 30px;
     font-family: 'Pixelify Sans', sans-serif;
 }
+
 .showLaia{
     /* border: 1px solid white; */
     width: 120px;

@@ -2,10 +2,12 @@
 // import {audioFall, audioJump, jumpSound, audioBackground, audioPause} from 'audio.js'
 // import { Barrel } from "./barrel.js";
 const BLOCK_SIZE = 36
-const PLAYER_WIDTH = 25
-const PLAYER_HEIGHT = 20
-const PLAYER_VELOCITYJUMP = 12
+const PLAYER_WIDTH = 31
+const PLAYER_HEIGHT = 24
+const PLAYER_VELOCITYJUMP = 9
+let player_velocity = 3
 let player_life = 3
+let barrel_velocity = 3
 let final_del_mapa
 let colisionado = false
 let play = false
@@ -79,7 +81,8 @@ drawMap()
 
 // Variables de la posicion del personaje.
 let positionX = 0
-let positionY = 500  
+let positionY = 722
+// character.style.bottom = positionY + 'px'  
 let barrelPositionX = 295
 let barrelPositionY = 50
 
@@ -112,6 +115,7 @@ const posicionesYBarriles = [barrelPositionY1Array, barrelPositionY2Array, barre
 const velocityXBarriles = [barrelVelocityX, barrelVelocityX2, barrelVelocityX3, barrelVelocityX4]
 const velocityYBarriles = [barrelVelocityY, barrelVelocityY2, barrelVelocityY3, barrelVelocityY4]
 function draw () {
+    // app.style.border = '1px solid white'
     container.style.left = positionX + 'px'
     container.style.top = positionY + 'px'
     // barrelContainer.style.left = barrelPositionX + 'px'
@@ -161,13 +165,13 @@ function update (){
 
                     if (!arrayBarrilChocadoParedDerecha[index]) {
                         if (posicionesXBarriles[index] + barrilesContainerArray[index].offsetWidth + velocityXBarriles[index] < app.offsetWidth) {
-                            velocityXBarriles[index] = 3
-                            barrilesContainerArray[index].style.transform = 'scaleX(1)'
+                            velocityXBarriles[index] = barrel_velocity
+                            // barrilesContainerArray[index].style.transform = 'scaleX(1)'
                         } else {velocityXBarriles[index] = 0 ; arrayBarrilChocadoParedDerecha[index] = true;}
                     } else if (arrayBarrilChocadoParedDerecha[index]) {
                         if (posicionesXBarriles[index] > 0) {
-                            velocityXBarriles[index] = -3
-                            barrilesContainerArray[index].style.transform = 'scaleX(-1)'
+                            velocityXBarriles[index] = - (barrel_velocity)
+                            // barrilesContainerArray[index].style.transform = 'scaleX(-1)'
                         } else {velocityXBarriles[index] = 0; arrayBarrilChocadoParedDerecha[index] = false}
                     }
                     // barrilChocadoParedDerecha = false;
@@ -231,7 +235,7 @@ function update (){
                 imgCrouch = 1
    
                 if (positionX > 0) {
-                    velocityX = -5
+                    velocityX = - (player_velocity)
                     character.style.transform = 'scaleX(-1)'
                 } else velocityX = 0
             } else if (keyRightPressed){
@@ -245,7 +249,7 @@ function update (){
                 imgCrouch = 1
    
                 if (positionX + container.offsetWidth + velocityX < app.offsetWidth) {
-                    velocityX = 5
+                    velocityX = player_velocity
                     character.style.transform = 'scaleX(1)'
                 } else velocityX = 0
             } else {
@@ -264,12 +268,13 @@ function update (){
             checkColisionBetweenCharacterHeadAndBlockBottom()
             checkCloisionBetweenCharacterAndFile1()
         } else {
+            audioBackground.pause()
             if (!muertSalto) {
-                if (velocityY <= -5) {
+                if (velocityY <= - (player_velocity)) {
                     muertSalto = true
                     return
                 }
-                velocityY -= 5
+                velocityY -= player_velocity
             }
             velocityY += gravity
             button_Death.style.display = 'block'
@@ -311,6 +316,7 @@ window.setInterval(function(){
         index_counting_barrels++
     }
   },5000);
+  /** Funcion para generar un nombre de la clase del barril con un prefijo numérico. */
 function generarNombreConNumero(prefijo, numero) {
     return `${prefijo}${numero}`;
   }
@@ -339,6 +345,7 @@ addEventListener('keydown', (event) => {
         case 'p':
             if (!pause) {
                 play = false
+                audioBackground.pause()
                 botonAceptar.style.display = 'block'
                 divButton.style.display = 'grid'
                 divButton.style.backgroundColor = 'transparent'
@@ -373,73 +380,78 @@ addEventListener('keyup', (event) =>{
 /** Funcion que crea el mapa y los divs, y los mete en las clases y en el array de colisionables */
 function drawMap()
 {
-    // const map  = [
-//     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-//     [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 , 2, 2]
-// ]
 // const map  = [
 //     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-//     [2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 //     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 //     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0],
+//     [6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0],
 //     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 //     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0],
+//     [0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 6],
 //     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 //     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 //     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+//     [6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9]
+// ]
+/** MAPA BUENO */
+// const map  = [
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 6],
+//     [0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6],
 //     [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 //     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+//     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9]
 // ]
 const map  = [
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 6],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9]
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+    [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+    [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ]
-    // DIBUJAR MAPA
+    // DIBUJAR MAPA.
     for (let fila = 0; fila < map.length; fila++) {
         for (let columna = 0; columna < map[fila].length; columna++) {
             if (map[fila][columna] === 1) {
@@ -463,7 +475,7 @@ const map  = [
 
 
                 document.querySelector('.fila1').appendChild(mapBlock1)
-                mapBlock1.style.backgroundImage = 'url(../img/bloque.png)'
+                mapBlock1.style.backgroundImage = 'url(../img/block.png)'
                 mapBlock1.style.backgroundSize = 'cover'
                 mapBlock1.style.top = fila * BLOCK_SIZE + 'px'
                 mapBlock1.style.left = (columna * BLOCK_SIZE) + 'px'
@@ -474,84 +486,85 @@ const map  = [
                 // colisionablesFila1.push(mapBlock1)
 
 
-            } else if (map[fila][columna] === 3) {
-                const mapBlock2 = document.createElement('div')
+            } 
+            // else if (map[fila][columna] === 3) {
+            //     const mapBlock2 = document.createElement('div')
 
 
-                document.querySelector('.bloques').appendChild(mapBlock2)
-                mapBlock2.classList.add('fila2')
-                mapBlock2.style.backgroundImage = 'url(../img/bloque.png)'
-                mapBlock2.style.backgroundSize = 'cover'
-                mapBlock2.style.top = fila * BLOCK_SIZE + 'px'
-                mapBlock2.style.left = (columna * BLOCK_SIZE) + 'px'
-                mapBlock2.style.width =  BLOCK_SIZE + 'px'
-                mapBlock2.style.height = BLOCK_SIZE + 'px'
-                mapBlock2.style.position = 'absolute'
-                colisionables.push(mapBlock2)
+            //     document.querySelector('.bloques').appendChild(mapBlock2)
+            //     mapBlock2.classList.add('fila2')
+            //     mapBlock2.style.backgroundImage = 'url(../img/bloque.png)'
+            //     mapBlock2.style.backgroundSize = 'cover'
+            //     mapBlock2.style.top = fila * BLOCK_SIZE + 'px'
+            //     mapBlock2.style.left = (columna * BLOCK_SIZE) + 'px'
+            //     mapBlock2.style.width =  BLOCK_SIZE + 'px'
+            //     mapBlock2.style.height = BLOCK_SIZE + 'px'
+            //     mapBlock2.style.position = 'absolute'
+            //     colisionables.push(mapBlock2)
 
 
-            } else if (map[fila][columna] === 4) {
-                const mapBlock3 = document.createElement('div')
+            // } else if (map[fila][columna] === 4) {
+            //     const mapBlock3 = document.createElement('div')
 
 
-                document.querySelector('.bloques').appendChild(mapBlock3)
-                mapBlock3.classList.add('fila3')
-                mapBlock3.style.backgroundImage = 'url(../img/bloque.png)'
-                mapBlock3.style.backgroundSize = 'cover'
-                mapBlock3.style.top = fila * BLOCK_SIZE + 'px'
-                mapBlock3.style.left = (columna * BLOCK_SIZE) + 'px'
-                mapBlock3.style.width =  BLOCK_SIZE + 'px'
-                mapBlock3.style.height = BLOCK_SIZE + 'px'
-                mapBlock3.style.position = 'absolute'
-                colisionables.push(mapBlock3)
+            //     document.querySelector('.bloques').appendChild(mapBlock3)
+            //     mapBlock3.classList.add('fila3')
+            //     mapBlock3.style.backgroundImage = 'url(../img/bloque.png)'
+            //     mapBlock3.style.backgroundSize = 'cover'
+            //     mapBlock3.style.top = fila * BLOCK_SIZE + 'px'
+            //     mapBlock3.style.left = (columna * BLOCK_SIZE) + 'px'
+            //     mapBlock3.style.width =  BLOCK_SIZE + 'px'
+            //     mapBlock3.style.height = BLOCK_SIZE + 'px'
+            //     mapBlock3.style.position = 'absolute'
+            //     colisionables.push(mapBlock3)
 
 
-            } else if (map[fila][columna] === 5) {
-                const mapBlock4 = document.createElement('div')
+            // } else if (map[fila][columna] === 5) {
+            //     const mapBlock4 = document.createElement('div')
 
 
-                document.querySelector('.bloques').appendChild(mapBlock4)
-                mapBlock4.classList.add('fila4')
-                mapBlock4.style.backgroundImage = 'url(../img/bloque.png)'
-                mapBlock4.style.backgroundSize = 'cover'
-                mapBlock4.style.top = fila * BLOCK_SIZE + 'px'
-                mapBlock4.style.left = (columna * BLOCK_SIZE) + 'px'
-                mapBlock4.style.width =  BLOCK_SIZE + 'px'
-                mapBlock4.style.height = BLOCK_SIZE + 'px'
-                mapBlock4.style.position = 'absolute'
-                colisionables.push(mapBlock4)            
-            } else if (map[fila][columna] === 6) {
-                const mapBlock5 = document.createElement('div')
+            //     document.querySelector('.bloques').appendChild(mapBlock4)
+            //     mapBlock4.classList.add('fila4')
+            //     mapBlock4.style.backgroundImage = 'url(../img/bloque.png)'
+            //     mapBlock4.style.backgroundSize = 'cover'
+            //     mapBlock4.style.top = fila * BLOCK_SIZE + 'px'
+            //     mapBlock4.style.left = (columna * BLOCK_SIZE) + 'px'
+            //     mapBlock4.style.width =  BLOCK_SIZE + 'px'
+            //     mapBlock4.style.height = BLOCK_SIZE + 'px'
+            //     mapBlock4.style.position = 'absolute'
+            //     colisionables.push(mapBlock4)            
+            // } else if (map[fila][columna] === 6) {
+            //     const mapBlock5 = document.createElement('div')
 
 
-                document.querySelector('.bloquesPadre').appendChild(mapBlock5)
-                mapBlock5.classList.add('filaPadre')
-                // mapBlock5.style.backgroundImage = 'url(../img/block2.png)'
-                mapBlock5.style.backgroundColor = 'red'
-                mapBlock5.style.backgroundSize = 'cover'
-                mapBlock5.style.top = fila * BLOCK_SIZE + 'px'
-                mapBlock5.style.left = (columna * BLOCK_SIZE) + 'px'
-                mapBlock5.style.width =  BLOCK_SIZE + 'px'
-                mapBlock5.style.height = BLOCK_SIZE + 'px'
-                mapBlock5.style.position = 'absolute'
-                colisionables.push(mapBlock5)  
-            }
-            else if ( map[fila][columna] === 9) {
-                const mapBlock9 = document.createElement('div')
+            //     document.querySelector('.bloquesPadre').appendChild(mapBlock5)
+            //     mapBlock5.classList.add('filaPadre')
+            //     // mapBlock5.style.backgroundImage = 'url(../img/block2.png)'
+            //     mapBlock5.style.backgroundColor = 'red'
+            //     mapBlock5.style.backgroundSize = 'cover'
+            //     mapBlock5.style.top = fila * BLOCK_SIZE + 'px'
+            //     mapBlock5.style.left = (columna * BLOCK_SIZE) + 'px'
+            //     mapBlock5.style.width =  BLOCK_SIZE + 'px'
+            //     mapBlock5.style.height = BLOCK_SIZE + 'px'
+            //     mapBlock5.style.position = 'absolute'
+            //     colisionables.push(mapBlock5)  
+            // }
+            // else if ( map[fila][columna] === 9) {
+            //     const mapBlock9 = document.createElement('div')
 
 
-                document.querySelector('.bloquesPadre').appendChild(mapBlock9)
-                mapBlock9.classList.add('filaPadre')
-                // mapBlock5.style.backgroundImage = 'url(../img/block2.png)'
-                mapBlock9.style.backgroundColor = 'red'
-                mapBlock9.style.backgroundSize = 'cover'
-                mapBlock9.style.top = fila * BLOCK_SIZE + 'px'
-                mapBlock9.style.left = (columna * BLOCK_SIZE) + 'px'
-                mapBlock9.style.width =  BLOCK_SIZE + 'px'
-                mapBlock9.style.height = BLOCK_SIZE + 'px'
-                mapBlock9.style.position = 'absolute'
-                final_del_mapa = mapBlock9
-            }
+            //     document.querySelector('.bloquesPadre').appendChild(mapBlock9)
+            //     mapBlock9.classList.add('filaPadre')
+            //     // mapBlock5.style.backgroundImage = 'url(../img/block2.png)'
+            //     mapBlock9.style.backgroundColor = 'red'
+            //     mapBlock9.style.backgroundSize = 'cover'
+            //     mapBlock9.style.top = fila * BLOCK_SIZE + 'px'
+            //     mapBlock9.style.left = (columna * BLOCK_SIZE) + 'px'
+            //     mapBlock9.style.width =  BLOCK_SIZE + 'px'
+            //     mapBlock9.style.height = BLOCK_SIZE + 'px'
+            //     mapBlock9.style.position = 'absolute'
+            //     final_del_mapa = mapBlock9
+            // }
         }
     }
 }
@@ -573,21 +586,10 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                     velocityY -= PLAYER_VELOCITYJUMP
                     audioJump.play()
                     jumpSound.play()
-                    if ((positionY + container.offsetHeight) <= app.offsetTop) {
-                        velocityY += (PLAYER_VELOCITYJUMP/2)
-                    }
-                // if (colisionCabezaSueloPlataform) {
-                //     velocityY += 12
-                // }
-                // if (positionY + character.offsetHeight >= colisionables[i].offsetTop + colisionables[i].offsetHeight
-                //     && (positionY + character.offsetHeight + velocityY) <= colisionables[i].offsetTop + colisionables[i].offsetHeight) {
-                //        velocityY += 12
-                // }
-                // if (positionY + character.offsetHeight >= colisionablefila1[i].offsetTop
-                //     && (positionY + character.offsetHeight + velocityY) <= colisionablefila1[i].offsetTop) {
-                //     console.log('choque');
-                   
-                // }
+                    /** Colision con el techo quitada por el momento */
+                    // if ((positionY + container.offsetHeight) <= app.offsetTop) {
+                    //     velocityY += (PLAYER_VELOCITYJUMP/2)
+                    // }
             }
          
             if (keyDownPressed) {

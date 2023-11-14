@@ -2,17 +2,19 @@
     font-family: pixel;
     src: url(../img/DS-TERM.TTF);
 }
-html {
+html , body{
     /* cursor:  url(../img/cursorMano.png), auto; */
     cursor: grab;
-
+    /* height: 100%;
+    top: 0; */
 }
 #body{
     margin: 0;
     padding: 0;
     display: grid;
     place-content: center;
-    background-image: url(../img/background.jpg);
+    /* background-image: url(../img/background.jpg); */
+    background-color: black;
     background-size: cover;
 }
 p {
@@ -20,12 +22,17 @@ p {
     font-family: 'Pixelify Sans', sans-serif;
 }
 .app {
+    /* box-shadow: white 1px 1px 3px 4px; */
     margin: 0;
     padding: 0;
-    top: 20%;
-    left: 25%;
+    /* top: 20%;  */
+    left: 20%; 
+    /* width: 60%; */
+    /* height: 80%; */
     position: fixed;
     display: none;
+
+   
 }
 .bloques {
     position: absolute;
