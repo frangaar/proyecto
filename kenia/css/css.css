@@ -58,6 +58,9 @@ p {
     /* width: 70px;
     height: 70px; */
 }
+.barrilesHeight{
+    height: 32px;
+}
 /* .fila1 {
     position: absolute;
     right: 19px;

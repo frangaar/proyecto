@@ -4,7 +4,7 @@
 const BLOCK_SIZE = 36
 const PLAYER_WIDTH = 31
 const PLAYER_HEIGHT = 24
-const PLAYER_VELOCITYJUMP = 9
+const PLAYER_VELOCITYJUMP = 8.3
 let player_velocity = 3
 let player_life = 3
 let barrel_velocity = 3
@@ -56,8 +56,8 @@ let muertSalto = false
 // Background size y width y animar el fondo.
 app.style.width = BLOCK_SIZE * PLAYER_WIDTH + 'px'
 app.style.height = (BLOCK_SIZE * PLAYER_HEIGHT) + 'px'
-// app.style.backgroundImage = 'url(../img/bk.gif)'
-app.style.backgroundColor = 'black'
+app.style.backgroundImage = 'url(../img/bc.png)'
+// app.style.backgroundColor = 'black'
 app.style.backgroundSize = 'cover'
 // Create enemy and barrel size.
 enemy.style.width = '160px'
@@ -70,6 +70,7 @@ const colisionables = []
 const colisionablesFila1 = []
 const barriles = []
 const barrilesContainerArray = []
+const abarril = []
 
 // audioBackground.muted = true
 // audioBackground.play()
@@ -87,7 +88,7 @@ let barrelPositionX = 295
 let barrelPositionY = 50
 
 
-let barrelVelocityX = 0
+let barrelVelocityX = 10
 let barrelVelocityY = 0
 let barrelPositionX1Array = 0
 let barrelPositionY1Array = 0
@@ -110,20 +111,18 @@ let barrelPositionY4Array = 0
 let barrelVelocityX4 = 0
 let barrelVelocityY4 = 0
 let numberOfBarrels = 0
-const posicionesXBarriles = [barrelPositionX1Array, barrelPositionX2Array, barrelPositionX3Array, barrelPositionX4Array]
-const posicionesYBarriles = [barrelPositionY1Array, barrelPositionY2Array, barrelPositionY3Array, barrelPositionY4Array]
-const velocityXBarriles = [barrelVelocityX, barrelVelocityX2, barrelVelocityX3, barrelVelocityX4]
-const velocityYBarriles = [barrelVelocityY, barrelVelocityY2, barrelVelocityY3, barrelVelocityY4]
+let b1 = new Barrel()
+
 function draw () {
     // app.style.border = '1px solid white'
     container.style.left = positionX + 'px'
     container.style.top = positionY + 'px'
     // barrelContainer.style.left = barrelPositionX + 'px'
     // barrelContainer.style.top = barrelPositionY + 'px'
-    if (barrilesContainerArray[numberOfBarrels] != null) {
-        for (let index = 0; index <= numberOfBarrels; index++) {
-            barrilesContainerArray[index].style.left = posicionesXBarriles[index] + 'px'
-            barrilesContainerArray[index].style.top = posicionesYBarriles[index] + 'px'
+    if (abarril[numberOfBarrels] != null) {
+        for (let index = 0; index < numberOfBarrels; index++) {
+            abarril[index].container.style.left = abarril[index].x + 'px'
+            abarril[index].container.style.top = abarril[index].y + 'px'
         }
     }
 }
@@ -140,15 +139,16 @@ const arrayBarrilChocadoParedDerecha = [barrilChocadoParedDerecha, barrilChocado
 // Loop de update para la gravedad y todo el movimiento.
 function update (){
     if (!pause) {
+        
         // play = true
         draw()
         positionY += velocityY
         positionX += velocityX
-        // barrelPositionX += barrelVelocityX
-        // barrelPositionY += barrelVelocityY
-        for (let index = 0; index <= numberOfBarrels; index++) {
-            posicionesYBarriles[index] += velocityYBarriles[index]
-            posicionesXBarriles[index] += velocityXBarriles[index]
+        if (abarril[numberOfBarrels]!= null) {
+            for (let index = 0; index < numberOfBarrels; index++) {
+                abarril[index].y += abarril[index].vY
+                abarril[index].x += abarril[index].vX
+            }    
         }
         // barrelPositionX += barrelVelocityX
         // barrelPositionY += barrelVelocityY
@@ -156,73 +156,30 @@ function update (){
             /** BARREL CONDITION */
             // barriles[index_counting_barrels]
             /** OTRO COLISION */
-            if (barrilesContainerArray[numberOfBarrels] != null) {
+            
+            if (abarril[numberOfBarrels] != null) {
                 for (let index = 0; index <= numberOfBarrels; index++) {
-                    if (posicionesYBarriles[index] + barrilesContainerArray[index].offsetWidth + velocityYBarriles[index] <= app.offsetHeight) {
-                        velocityYBarriles[index] += gravity
-                    } else velocityYBarriles[index] = 0
-
-
-                    if (!arrayBarrilChocadoParedDerecha[index]) {
-                        if (posicionesXBarriles[index] + barrilesContainerArray[index].offsetWidth + velocityXBarriles[index] < app.offsetWidth) {
-                            velocityXBarriles[index] = barrel_velocity
+                    if (abarril[index].y + abarril[index].container.offsetWidth + abarril[index].vY <= app.offsetHeight) {
+                        abarril[index].vY += gravity
+                    } else abarril[index].vY = 0
+                      if (!arrayBarrilChocadoParedDerecha[index]) {
+                        if (abarril[index].x + abarril[index].container.offsetWidth + abarril[index].vX < app.offsetWidth) {
+                            abarril[index].vX = barrel_velocity
                             // barrilesContainerArray[index].style.transform = 'scaleX(1)'
-                        } else {velocityXBarriles[index] = 0 ; arrayBarrilChocadoParedDerecha[index] = true;}
+                        } else {abarril[index].vX = 0 ; arrayBarrilChocadoParedDerecha[index] = true;}
                     } else if (arrayBarrilChocadoParedDerecha[index]) {
-                        if (posicionesXBarriles[index] > 0) {
-                            velocityXBarriles[index] = - (barrel_velocity)
+                        if (abarril[index].x > 0) {
+                            abarril[index].vX = - (barrel_velocity)
                             // barrilesContainerArray[index].style.transform = 'scaleX(-1)'
-                        } else {velocityXBarriles[index] = 0; arrayBarrilChocadoParedDerecha[index] = false}
+                        } else {abarril[index].vX = 0; arrayBarrilChocadoParedDerecha[index] = false}
                     }
-                    // barrilChocadoParedDerecha = false;
                 }
         }
-            //     if (barrelPositionY + container.offsetWidth + barrelVelocityY <= app.offsetHeight) {
-            //         barrelVelocityY += gravity
-            // } else barrelVelocityY = 0
-       
-            //     if (!barrilChocadoParedDerecha) {
-            //         if (barrelPositionX + barrelContainer.offsetWidth + barrelVelocityX < app.offsetWidth) {
-            //             barrelVelocityX = 3
-            //         } else {barrelVelocityX = 0 ; barrilChocadoParedDerecha = true;}
-            //     }
-            //     if (barrilChocadoParedDerecha) {
-            //         if (barrelPositionX > 0) {
-            //                 barrelVelocityX = -3
-            //         } else {barrelVelocityX = 0; barrilChocadoParedDerecha = false;}
-            //     }
-        //     if (barrelPositionY + container.offsetWidth + barrelVelocityY <= app.offsetHeight) {
-        //         barrelVelocityY += gravity
-        // } else barrelVelocityY = 0
-   
-        //     if (!barrilChocadoParedDerecha) {
-        //         if (barrelPositionX + barrelContainer.offsetWidth + barrelVelocityX < app.offsetWidth) {
-        //             barrelVelocityX = 3
-        //         } else {barrelVelocityX = 0 ; barrilChocadoParedDerecha = true;}
-        //     }
-        //     if (barrilChocadoParedDerecha) {
-        //         if (barrelPositionX > 0) {
-        //                 barrelVelocityX = -3
-        //         } else {barrelVelocityX = 0; barrilChocadoParedDerecha = false;}
-        //     }
         if (!muerto && !colisionado) {
             // Condicional de que si la Y del objeto más su altura y la velocidad de la Y no superan la altura del canvas, tiene efecto la gravedad, de lo contrario significa que ha llegado al límite del canvas o ha tocado el suelo, en ese caso restablece la velocidad a 0 para que deje de caer.
             if (positionY + container.offsetWidth + velocityY <= app.offsetHeight) {
                 velocityY += gravity
             } else {velocityY = 0;  }
-            // if (barrelVelocityY > 0) {
-            //     if (barrelPositionX + barrelContainer.offsetWidth + barrelVelocityX <= app.offsetWidth) {
-            //         barrelVelocityX = 5
-            //     } else barrelVelocityX = 0 ;  
-            // } else if (barrelVelocityY <= 0) {
-            //     barrelVelocityX = -5
-            // }
-                // if (barrelPositionX > 0) {
-                //     barrilChocadoParedIzquierda = false
-                //     if (!barrilChocadoParedIzquierda) {
-                //         barrelPositionX = -5
-                //     } else barrelVelocityX = 5  
-                // } else barrilChocadoParedIzquierda = true; barrilChocadoParedDerecha = false;
             //Condicional para pared derecha y  pared izquierda
             if (keyLeftPressed) {
                 if (imgLeft === 1) {
@@ -294,11 +251,12 @@ function animate (){
 animate()
 window.setInterval(function(){
     if (!pause) {
-        if (index_counting_barrels <= 2) {
+        if (index_counting_barrels <= 6) {
                 let barrilContainer = document.createElement('div');
                 document.querySelector('.barriles').appendChild(barrilContainer);
                 let nombreClasse = generarNombreConNumero('barril', index_counting_barrels)
                 barrilContainer.classList.add(nombreClasse);
+                barrilContainer.classList.add('barrilesHeight');
                 barrilContainer.style.position = 'absolute'
                 let barrilIcono = document.createElement('img');
                 barrilContainer.appendChild(barrilIcono);  
@@ -311,8 +269,8 @@ window.setInterval(function(){
                 // QUITAR CUANDO TENGAMOS LAS CLASES
                 barrilesContainerArray.push(barrilContainer)
                 numberOfBarrels = index_counting_barrels
-                new Barrel(0, 0, 0, 0, barrilContainer, barrilIcono)
-        }
+                abarril.push(new Barrel(0, 0, 0, 0, barrilContainer, barrilIcono))
+            }
         index_counting_barrels++
     }
   },5000);
@@ -342,7 +300,7 @@ addEventListener('keydown', (event) => {
         case 'ArrowLeft':
             keyLeftPressed = true
             break
-        case 'p':
+        case 'Escape':
             if (!pause) {
                 play = false
                 audioBackground.pause()
@@ -449,7 +407,7 @@ const map  = [
     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9]
 ]
     // DIBUJAR MAPA.
     for (let fila = 0; fila < map.length; fila++) {
@@ -475,18 +433,49 @@ const map  = [
 
 
                 document.querySelector('.fila1').appendChild(mapBlock1)
-                mapBlock1.style.backgroundImage = 'url(../img/block.png)'
+                mapBlock1.style.backgroundImage = 'url(../img/wood_plataform.png)'
                 mapBlock1.style.backgroundSize = 'cover'
                 mapBlock1.style.top = fila * BLOCK_SIZE + 'px'
                 mapBlock1.style.left = (columna * BLOCK_SIZE) + 'px'
-                mapBlock1.style.width =  BLOCK_SIZE + 'px'
-                mapBlock1.style.height = BLOCK_SIZE + 'px'
+                mapBlock1.style.width =  38 + 'px'
+                mapBlock1.style.height = 30 + 'px'
                 mapBlock1.style.position = 'absolute'
+                // mapBlock1.style.borderRadius = '5px'
                 colisionables.push(mapBlock1)
                 // colisionablesFila1.push(mapBlock1)
 
 
-            } 
+            } else if (map[fila][columna] === 3) {
+                const mapBlock1 = document.createElement('div')
+
+                document.querySelector('.fila1').appendChild(mapBlock1)
+                mapBlock1.style.backgroundImage = 'url(../img/snake_face.png)'
+                mapBlock1.style.backgroundSize = 'cover'
+                mapBlock1.style.top = fila * BLOCK_SIZE + 'px'
+                mapBlock1.style.left = (columna * BLOCK_SIZE) + 'px'
+                mapBlock1.style.width =  38 + 'px'
+                mapBlock1.style.height = 30 + 'px'
+                mapBlock1.style.position = 'absolute'
+                // mapBlock1.style.borderRadius = '10px'
+                colisionables.push(mapBlock1)
+                // colisionablesFila1.push(mapBlock1)
+
+
+            }  else if (map[fila][columna] === 9) {
+                const mapBlock9 = document.createElement('div')
+
+                document.querySelector('.bloquesPadre').appendChild(mapBlock9)
+                mapBlock9.classList.add('filaPadre')
+                // mapBlock5.style.backgroundImage = 'url(../img/block2.png)'
+                mapBlock9.style.backgroundColor = 'red'
+                mapBlock9.style.backgroundSize = 'cover'
+                mapBlock9.style.top = fila * BLOCK_SIZE + 'px'
+                mapBlock9.style.left = (columna * BLOCK_SIZE) + 'px'
+                mapBlock9.style.width =  BLOCK_SIZE + 'px'
+                mapBlock9.style.height = BLOCK_SIZE + 'px'
+                mapBlock9.style.position = 'absolute'
+                final_del_mapa = mapBlock9
+            }
             // else if (map[fila][columna] === 3) {
             //     const mapBlock2 = document.createElement('div')
 
@@ -583,9 +572,19 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
             velocityY = 0
             if (keyUpPressed) {
                     personajeTocandoElSueloFoto = 0
-                    velocityY -= PLAYER_VELOCITYJUMP
+                    velocityY = - PLAYER_VELOCITYJUMP
                     audioJump.play()
                     jumpSound.play()
+                    if (imgUp === 1 ) {
+                        character.setAttribute('src', 'img/mario_jump.png')
+                    }
+                    setTimeout(() => {
+                        imgLeft = 1
+                        imgRight = 1
+                        imgStand = 1
+                        imgUp = 0
+                        imgCrouch = 1
+                    }, 900);
                     /** Colision con el techo quitada por el momento */
                     // if ((positionY + container.offsetHeight) <= app.offsetTop) {
                     //     velocityY += (PLAYER_VELOCITYJUMP/2)
@@ -623,49 +622,45 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
 function checkBarrelColision()
 {
     let indexBarrel = 0
-    if (barrilesContainerArray[numberOfBarrels] != null) {
+    if (abarril[numberOfBarrels] != null) {
         while (indexBarrel < colisionables.length) {
             for (let index = 0; index <= numberOfBarrels; index++) {
-                if (
-                    // (barrelPositionY + barrel.offsetHeight) <= (colisionables[indexBarrel].offsetTop)
-                    // && (barrelPositionY + barrel.offsetHeight + barrelVelocityY) >= (colisionables[indexBarrel].offsetTop)
-                    // && (barrelPositionX + barrelContainer.offsetWidth) >= (colisionables[indexBarrel].offsetLeft)
-                    // && (barrelPositionX) <= (colisionables[indexBarrel].offsetLeft + colisionables[indexBarrel].offsetWidth)  
-         
-                    (posicionesYBarriles[index] + barrilesContainerArray[index].offsetHeight) <= (colisionables[indexBarrel].offsetTop)
-                    && (posicionesYBarriles[index] + barrilesContainerArray[index].offsetHeight + velocityYBarriles[index]) >= (colisionables[indexBarrel].offsetTop)
-                    && (posicionesXBarriles[index] + barrilesContainerArray[index].offsetWidth) >= (colisionables[indexBarrel].offsetLeft)
-                    && (posicionesXBarriles[index]) <= (colisionables[indexBarrel].offsetLeft + colisionables[indexBarrel].offsetWidth)
+                if (    
+                    (abarril[index].y + abarril[index].container.offsetHeight) <= (colisionables[indexBarrel].offsetTop)
+                    && (abarril[index].y + abarril[index].container.offsetHeight + abarril[index].vY) >= (colisionables[indexBarrel].offsetTop)
+                    && (abarril[index].x + abarril[index].container.offsetWidth) >= (colisionables[indexBarrel].offsetLeft)
+                    && (abarril[index].x) <= (colisionables[indexBarrel].offsetLeft + colisionables[indexBarrel].offsetWidth)
                     ) {
                         // Barril colisionado
-                        velocityYBarriles[index] = 0
+                        abarril[index].vY = 0
                     }
             // }
            
-                // if ((barrelPositionY + barrel.offsetHeight) <= (final_del_mapa.offsetTop)
-                // && (barrelPositionY + barrel.offsetHeight + barrelVelocityY) >= (final_del_mapa.offsetTop)
-                // && (barrelPositionX + barrelContainer.offsetWidth) >= (final_del_mapa.offsetLeft)
-                // && (barrelPositionX) <= (final_del_mapa.offsetLeft + final_del_mapa.offsetWidth)  
-                //     ){
-                //         barrelPositionX = 295
-                //         barrelPositionY = 50
+                if ((abarril[index].y + abarril[index].container.offsetHeight) <= (final_del_mapa.offsetTop)
+                && (abarril[index].y + abarril[index].container.offsetHeight + abarril[index].vY) >= (final_del_mapa.offsetTop)
+                && (abarril[index].x + abarril[index].container.offsetWidth) >= (final_del_mapa.offsetLeft)
+                && (abarril[index].x) <= (final_del_mapa.offsetLeft + final_del_mapa.offsetWidth)  
+                    ){
+                        abarril[index].x = 295
+                        abarril[index].y = 50
                        
-                //     }
-            if (
-                (posicionesYBarriles[index] + barrilesContainerArray[index].offsetHeight) <= (positionY + character.offsetHeight)
-                && (posicionesYBarriles[index] + barrilesContainerArray[index].offsetHeight + velocityYBarriles[index]) >= (positionY + character.offsetHeight + velocityY)
-                && (posicionesXBarriles[index] + barrilesContainerArray[index].offsetWidth) >= (positionX + container.offsetWidth)
-                && (posicionesXBarriles[index]) <= (positionX + container.offsetWidth)  
-                ) {
+                    }
+
+                if (
+                    (abarril[index].y + abarril[index].container.offsetHeight) <= (positionY + character.offsetHeight)
+                    && (abarril[index].y + abarril[index].container.offsetHeight + abarril[index].vY) >= (positionY + character.offsetHeight + velocityY)
+                    && (abarril[index].x + abarril[index].container.offsetWidth) >= (positionX + container.offsetWidth)
+                    && (abarril[index].x) <= (positionX + container.offsetWidth)  
+                    ) {
                     // Barril colisionado
-                    velocityYBarriles[index] = 0
+                    abarril[index].vY = 0
                     if (player_life > 0) {
                        
                         player_life -= 1
                         colisionEfect_betweenCharacter_and_barrel()
                         velocityY -= 5
-                        posicionesXBarriles[index] = 295
-                        posicionesYBarriles[index] = 50
+                        abarril[index].x = 295
+                        abarril[index].y = 50
                         arrayBarrilChocadoParedDerecha[index] = false
                     }
                     if (player_life <= 0) {

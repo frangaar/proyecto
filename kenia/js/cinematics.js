@@ -16,3 +16,4 @@ function buttonAccept() {
 function buttonDeath() {
     window.location.href = '../index.html'
 }
+
