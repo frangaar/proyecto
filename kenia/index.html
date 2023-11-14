@@ -58,10 +58,17 @@
     <audio src="sound/" id="audioMarioDiying"></audio>
     <audio src="sound/mario_jump.wav" id="marioJump"></audio>
     <audio src="sound/mario-bros-woo-hoo.mp3" id="marioJumpSound"></audio>  
-    <audio src="sound/music_Background2.wav" id="backgroundTheme"></audio>
+    <audio src="sound/music_Background2.mp3" id="backgroundTheme"></audio>
     <audio src="sound/enemy_sound.mp3" id="enemySound"></audio>
     <script src="js/cinematics.js"></script>
     <script src="js/characterMovement.js"></script>
     <script src="js/audio.js"></script> 
+    <script>
+        document.addEventListener("keyup", function(event) {
+            if (event.code === 'Enter') {
+            buttonAccept()
+            }
+        });
+    </script>
 </body>
 </html>   
