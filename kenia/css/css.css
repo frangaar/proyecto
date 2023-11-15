@@ -31,8 +31,6 @@ p {
     /* height: 80%; */
     position: fixed;
     display: none;
-
-   
 }
 .bloques {
     position: absolute;
@@ -53,7 +51,7 @@ p {
     width: 40px;
 }
 #character {
-    width: 40px;
+    width: 45px;
     height: 70px;
     /* width: 70px;
     height: 70px; */
