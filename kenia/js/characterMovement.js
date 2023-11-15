@@ -1,13 +1,15 @@
 // document.write('<script src="js/audio.js"></script>');
 // import {audioFall, audioJump, jumpSound, audioBackground, audioPause} from 'audio.js'
 // import { Barrel } from "./barrel.js";
+let body = document.getElementById('body')
 const BLOCK_SIZE = 36
 const PLAYER_WIDTH = 31
 const PLAYER_HEIGHT = 24
 const PLAYER_VELOCITYJUMP = 8.3
-let player_velocity = 3
-let player_life = 3
-let barrel_velocity = 3
+const NUM_OF_BARRELS = 5
+let player_velocity = 1.8
+let player_life = 1
+let barrel_velocity = 5.5
 let final_del_mapa
 let colisionado = false
 let play = false
@@ -56,7 +58,7 @@ let muertSalto = false
 // Background size y width y animar el fondo.
 app.style.width = BLOCK_SIZE * PLAYER_WIDTH + 'px'
 app.style.height = (BLOCK_SIZE * PLAYER_HEIGHT) + 'px'
-app.style.backgroundImage = 'url(../img/bc.png)'
+app.style.backgroundImage = 'url(../img/image.jpg)'
 // app.style.backgroundColor = 'black'
 app.style.backgroundSize = 'cover'
 // Create enemy and barrel size.
@@ -183,7 +185,7 @@ function update (){
             //Condicional para pared derecha y  pared izquierda
             if (keyLeftPressed) {
                 if (imgLeft === 1) {
-                    character.setAttribute('src', 'img/mario_running.gif')
+                    character.setAttribute('src', 'img/char_running(2).gif')
                     imgLeft = 0
                 }
                 imgRight = 1
@@ -197,7 +199,7 @@ function update (){
                 } else velocityX = 0
             } else if (keyRightPressed){
                 if (imgRight === 1) {
-                    character.setAttribute('src', 'img/mario_running.gif')
+                    character.setAttribute('src', 'img/char_running(2).gif')
                     imgRight = 0
                 }
                 imgLeft = 1
@@ -212,7 +214,7 @@ function update (){
             } else {
                 velocityX = 0
                 if (imgCrouch === 1 ) {
-                    character.setAttribute('src', 'img/mario_stand.png')
+                    character.setAttribute('src', 'img/char_stand.png')
                 }
                 imgLeft = 1
                 imgRight = 1
@@ -233,7 +235,9 @@ function update (){
                 }
                 velocityY -= player_velocity
             }
-            velocityY += gravity
+            if (container.offsetTop <= 1000) {
+                velocityY += gravity
+            }
             button_Death.style.display = 'block'
             menu_death.style.display = 'grid'
             menu_death.style.backgroundColor = 'transparent'
@@ -251,7 +255,7 @@ function animate (){
 animate()
 window.setInterval(function(){
     if (!pause) {
-        if (index_counting_barrels <= 6) {
+        if (index_counting_barrels <= NUM_OF_BARRELS) {
                 let barrilContainer = document.createElement('div');
                 document.querySelector('.barriles').appendChild(barrilContainer);
                 let nombreClasse = generarNombreConNumero('barril', index_counting_barrels)
@@ -273,7 +277,7 @@ window.setInterval(function(){
             }
         index_counting_barrels++
     }
-  },5000);
+  },3000);
   /** Funcion para generar un nombre de la clase del barril con un prefijo numérico. */
 function generarNombreConNumero(prefijo, numero) {
     return `${prefijo}${numero}`;
@@ -361,28 +365,6 @@ function drawMap()
 //     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9]
 // ]
 /** MAPA BUENO */
-// const map  = [
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 6],
-//     [0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6],
-//     [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9]
-// ]
 const map  = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -409,6 +391,32 @@ const map  = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9]
 ]
+// const map  = [
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+//     [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+//     [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+//     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9]
+// ]
     // DIBUJAR MAPA.
     for (let fila = 0; fila < map.length; fila++) {
         for (let columna = 0; columna < map[fila].length; columna++) {
@@ -438,7 +446,7 @@ const map  = [
                 mapBlock1.style.top = fila * BLOCK_SIZE + 'px'
                 mapBlock1.style.left = (columna * BLOCK_SIZE) + 'px'
                 mapBlock1.style.width =  38 + 'px'
-                mapBlock1.style.height = 30 + 'px'
+                mapBlock1.style.height = 37 + 'px'
                 mapBlock1.style.position = 'absolute'
                 // mapBlock1.style.borderRadius = '5px'
                 colisionables.push(mapBlock1)
@@ -466,8 +474,7 @@ const map  = [
 
                 document.querySelector('.bloquesPadre').appendChild(mapBlock9)
                 mapBlock9.classList.add('filaPadre')
-                // mapBlock5.style.backgroundImage = 'url(../img/block2.png)'
-                mapBlock9.style.backgroundColor = 'red'
+                mapBlock9.style.backgroundImage = 'url(../img/block3.png)'
                 mapBlock9.style.backgroundSize = 'cover'
                 mapBlock9.style.top = fila * BLOCK_SIZE + 'px'
                 mapBlock9.style.left = (columna * BLOCK_SIZE) + 'px'
@@ -560,6 +567,7 @@ const map  = [
 function checkColisionBetweenCharacterHeadAndBlockBottom()
 {
     let index = 0
+    let indexFila1 = 0
     while (index < colisionables.length) {
         /** CONDICION PERSONAJE */
         if (
@@ -574,9 +582,9 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                     personajeTocandoElSueloFoto = 0
                     velocityY = - PLAYER_VELOCITYJUMP
                     audioJump.play()
-                    jumpSound.play()
+                    // jumpSound.play()
                     if (imgUp === 1 ) {
-                        character.setAttribute('src', 'img/mario_jump.png')
+                        character.setAttribute('src', 'img/char_jump.png')
                     }
                     setTimeout(() => {
                         imgLeft = 1
@@ -584,7 +592,7 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                         imgStand = 1
                         imgUp = 0
                         imgCrouch = 1
-                    }, 900);
+                    }, 540);
                     /** Colision con el techo quitada por el momento */
                     // if ((positionY + container.offsetHeight) <= app.offsetTop) {
                     //     velocityY += (PLAYER_VELOCITYJUMP/2)
@@ -593,7 +601,7 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
          
             if (keyDownPressed) {
                 if (imgCrouch === 1) {
-                    character.setAttribute('src', 'img/mario_crouched_down.png')
+                    character.setAttribute('src', 'img/char_agachado.png')
                     imgCrouch = 0
                 }
                 imgLeft = 1
@@ -604,16 +612,47 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                 velocityX = 0
             }
         }
+        for (let index2 = 0; index2 <= numberOfBarrels; index2++) {
+            if (abarril[numberOfBarrels] != null) {
+                if  ( (positionY + character.offsetHeight) >= (abarril[index2].y + abarril[index2].container.offsetHeight)
+                    && (positionY + character.offsetHeight + velocityY) >= (abarril[index2].y + abarril[index2].container.offsetHeight + abarril[index2].vY)
+                    && (positionX + container.offsetWidth) >= (abarril[index2].x + abarril[index2].container.offsetWidth) 
+                    && (positionX + container.offsetWidth) <= (abarril[index2].x)
+                    ) {
+                    // Barril colisionado
+                    abarril[index2].vY = 0
+                    if (player_life > 0) {
+                    
+                        player_life -= 1
+                        colisionEfect_betweenCharacter_and_barrel()
+                        velocityY -= 5
+                        abarril[index2].x = 0
+                        abarril[index2].y = 0
+                        arrayBarrilChocadoParedDerecha[index2] = false
+                    }
+                    if (player_life <= 0) {
+                        muerto = true
+                        character.setAttribute('src', 'img/char_death.png')
+                    }
+                    if (muerto) {
+                        audioFall.play()
+                        audioBackground.pause()  
+                        // return
+                    }
+                }
+        }  
+        }
+        
         // while (indexFila1 < colisionables.length) {
-        //     if (positionY + character.offsetHeight > colisionables[indexFila1].offsetTop
-        //         && (positionY + character.offsetHeight + velocityY) < colisionables[indexFila1].offsetTop + colisionables[indexFila1].offsetHeight + (colisionables[indexFila1].offsetWidth)
-        //         && (positionX ) >= (colisionables[indexFila1].offsetLeft)
-        //         && (positionX) <= (colisionables[indexFila1].offsetLeft + colisionables[indexFila1].offsetWidth)  
-        //     ) {
-        //         velocityY += (PLAYER_VELOCITYJUMP/2)
-        //         colisionCabezaSueloPlataform = true
-        //     }
-        //     indexFila1++
+            // if (positionY + character.offsetHeight > colisionables[indexFila1].offsetTop
+            //     && (positionY + character.offsetHeight + velocityY) < colisionables[indexFila1].offsetTop + colisionables[indexFila1].offsetHeight + (colisionables[indexFila1].offsetWidth)
+            //     && (positionX ) >= (colisionables[indexFila1].offsetLeft)
+            //     && (positionX) <= (colisionables[indexFila1].offsetLeft + colisionables[indexFila1].offsetWidth)  
+            // ) {
+            //     velocityY += (PLAYER_VELOCITYJUMP/2)
+            //     colisionCabezaSueloPlataform = true
+            // }
+            // indexFila1++
         // }
        // checkColisionBetweenCharacterHeadAndBlockBottom(indexFila1, indexFila2)
         index++
@@ -635,22 +674,22 @@ function checkBarrelColision()
                         abarril[index].vY = 0
                     }
             // }
-           
+                /** Condicion de cuando toque el último suelo, para que vuelva al principio */
                 if ((abarril[index].y + abarril[index].container.offsetHeight) <= (final_del_mapa.offsetTop)
                 && (abarril[index].y + abarril[index].container.offsetHeight + abarril[index].vY) >= (final_del_mapa.offsetTop)
                 && (abarril[index].x + abarril[index].container.offsetWidth) >= (final_del_mapa.offsetLeft)
                 && (abarril[index].x) <= (final_del_mapa.offsetLeft + final_del_mapa.offsetWidth)  
                     ){
-                        abarril[index].x = 295
-                        abarril[index].y = 50
+                        abarril[index].x = 0
+                        abarril[index].y = 0
                        
                     }
-
+                    
                 if (
                     (abarril[index].y + abarril[index].container.offsetHeight) <= (positionY + character.offsetHeight)
                     && (abarril[index].y + abarril[index].container.offsetHeight + abarril[index].vY) >= (positionY + character.offsetHeight + velocityY)
-                    && (abarril[index].x + abarril[index].container.offsetWidth) >= (positionX + container.offsetWidth)
-                    && (abarril[index].x) <= (positionX + container.offsetWidth)  
+                    && (abarril[index].x + abarril[index].container.offsetWidth) >= (container.offsetLeft)
+                    && (abarril[index].x) <= (container.offsetLeft + container.offsetWidth)  
                     ) {
                     // Barril colisionado
                     abarril[index].vY = 0
@@ -659,13 +698,13 @@ function checkBarrelColision()
                         player_life -= 1
                         colisionEfect_betweenCharacter_and_barrel()
                         velocityY -= 5
-                        abarril[index].x = 295
-                        abarril[index].y = 50
+                        abarril[index].x = 0
+                        abarril[index].y = 0
                         arrayBarrilChocadoParedDerecha[index] = false
                     }
                     if (player_life <= 0) {
                         muerto = true
-                        character.setAttribute('src', 'img/mario_diyng.png')
+                        character.setAttribute('src', 'img/char_death.png')
                     }
                     if (muerto) {
                         audioFall.play()
