@@ -28,7 +28,6 @@ session_start();
             </div>
             <div class="col text-end">
                 <img src="img/volver.png" class="volver" id="volver"></img>
-                <!-- <button type="button" id="volver" class="btn btn-primary">Volver</button> -->
             </div>
         </div>
     </div>
@@ -204,14 +203,14 @@ session_start();
                     descubrir! Preparaos para enfrentaros a desafíos matemáticos, resolver rompecabezas y 
                     hasta descifrar preguntas sobre las vacas en la India. 
                     ¿Listos para ser los héroes que traen la luz sostenible a nuestro colegio? 
-                    ¡Que la aventura comience en "Luz Sostenible"!. 
+                    ¡Que la aventura comience en "Luz Sostenible"!.<br>
                     <span>¡Importante!: El tiempo empieza a contar cuando este mensaje desaparezca. Cuanto menos tiempo
                     necesites, mayor puntos tendrás. Pulsa el botón para empezar.
                     </p>
             </div>
             <div class="modal-footer">
-                <button type="button" id="iniciarJuego" class="btn btn-primary">A jugar!!</button>
-                <button type="button" id="acabarJuego" class="btn btn-primary">Aceptar!!</button>
+                <img src="img/jugar.png" class="cursor" id="iniciarJuego">
+                <img src="img/aceptar.png" class="cursor" id="acabarJuego">
             </div>
         </div>
     </div>
@@ -238,14 +237,12 @@ session_start();
                 <div class="row">
                     <div class="col-6">
                         <div class="col-si">
-                            <img src="img/salirSi.png" data-respuesta="si" id="si">
-                            <!-- <button type="button" id="si" class="btn btn-primary">Sí</button> -->
+                            <img src="img/salirSi.png" class="cursor" data-respuesta="si" id="si">
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="col-no">
-                            <img src="img/salirNo.png" data-respuesta="no" id="no">
-                            <!-- <button type="button" id="no" class="btn btn-primary">No</button> -->
+                            <img src="img/salirNo.png" class="cursor" data-respuesta="no" id="no">
                         </div>
                     </div>
                 </div>

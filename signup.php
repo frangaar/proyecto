@@ -11,7 +11,7 @@
 <?php
     session_start();    
 ?>
-<body>
+<body class="admin">
 
     <div class="container text-center margin-center">
         <div class="text-end">

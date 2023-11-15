@@ -16,7 +16,7 @@ include_once('db.php');
 $ranking=obtenerRanking();
 ?>
 
-<body>
+<body class="admin">
 
     <div class="container">
 

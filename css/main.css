@@ -3,6 +3,14 @@ p,h1,h2,h3,h4,h5,span,label,input,button,.alert{
 }
 
 
+.admin{
+    background-image: none;
+}
+
+.admin .cerrar-sesion{
+    padding-bottom: 10px;
+}
+
 .map-container{
     display: grid; 
     align-content: center;
@@ -146,9 +154,18 @@ form {
     margin: auto;
 }
 
-#login .logo{
+.landing-page #login .logo{
     margin: auto;
-    width: 338px;
+    width: 430px;
+}
+
+#login .logo img{
+    margin: auto;
+    width: 580px;
+}
+
+#login label{
+    color: white;
 }
 
 .pixelart-to-css {
@@ -303,6 +320,15 @@ button.audio-close{
     position: absolute;
     width: 31px;
 }
+
+.cursor{
+    cursor: pointer;
+}
+
+.cursor:hover{
+    filter: brightness(110%);
+}
+
 
 @media (min-width: 768px) and (max-width: 991px){
     

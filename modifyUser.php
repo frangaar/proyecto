@@ -12,7 +12,7 @@
     include_once('db.php'); 
     $data=obtenerInfoUsuario();
 ?>
-<body>
+<body class="admin">
 
     <div class="container text-center margin-center">
         <div class="text-end">
@@ -56,9 +56,9 @@
                         </div>    
                     </div>
                     <div class="input-group mb-3">
-                        <label for="rol" class="form-label">Rol</label>
+                        <!-- <label for="rol" class="form-label">Rol</label> -->
                         <div class="col-sm-12">
-                            <input type="text" disabled class="form-control" name="rol" aria-label="Rol" value="<?php echo $data['rol'] ?>">
+                            <input type="hidden" disabled class="form-control" name="rol" aria-label="Rol" value="<?php echo $data['rol'] ?>">
                         </div>
                     </div>
                     <div class="col-12">

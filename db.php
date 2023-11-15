@@ -303,13 +303,6 @@
             $selectAll->execute();
 
 
-            $sql = "delete FROM niveles where uid=".$id;
-
-           
-            $selectAll = $conn->prepare($sql);
-            $selectAll->execute();
-
-
             $sql = "delete FROM usuarios where id=".$id;
 
             $selectAll = $conn->prepare($sql);

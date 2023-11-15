@@ -7,37 +7,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/botones.css">
     <title>Document</title>
 </head>
 <?php
     session_start();    
     unset($_SESSION['id']);
 ?>
-<!-- <script>
-    function login() {
-
-        let params = [
-            'width='+screen.width,
-            'height='+screen.height]       
-
-        window.open("login.php", "", params);
-    }
-
-    function signup() {
-
-      let params = [
-          'width='+screen.width,
-          'height='+screen.height]       
-
-      window.open("signup.php", "", params);
-    }
-    </script> -->
 <body>
     
     <div class="container landing-page">
         <div class="login-bar-section">
-            <input type="button" class="btn btn-primary" value="Login" data-bs-toggle="modal" data-bs-target="#login"></input>
-            <input type="button" class="btn btn-primary" value="Registro" data-bs-toggle="modal" data-bs-target="#registro"></input>
+            <input type="button" class="btn btn-primary cursor" id="btnLandingLogin" value="Login" data-bs-toggle="modal" data-bs-target="#login"></input>
+            <input type="button" class="btn btn-primary cursor" id="btnLandingRegistro" value="Registro" data-bs-toggle="modal" data-bs-target="#registro"></input>
         </div>
         <div class="banner-section">
             <img src="img/logo.jpg" class="img-fluid" id="banner"> 
@@ -58,7 +40,7 @@
         </div>        
         <div class="games-section">
             <div class="col-12 mb-3 landing-juegos">
-                <h2 >Juegos</h2><a href="ranking.php"><input type="button" class="btn btn-primary" value="Ranking"></input></a>
+                <h2 >Juegos</h2><a href="ranking.php"><input type="button" id="btnRanking" class="btn btn-primary cursor" value="Ranking"></input></a>
             </div>
                 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                     <div class="col">
@@ -173,7 +155,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" name="login" class="btn btn-primary">Login</button>
+                <button type="submit" name="login" id="btnModalLogin" class="btn btn-primary">Login</button>
             </div>
             </form>
         </div>
@@ -231,7 +213,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" name="signup" class="btn btn-primary">Crear</button>
+                <button type="submit" name="signup" id="btnModalCrear" class="btn btn-primary">Crear</button>
             </div>
             </form>
         </div>

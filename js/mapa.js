@@ -88,66 +88,14 @@ document.addEventListener('DOMContentLoaded',function(){
     
     }    
 
-    
+    let btnCierreSesion = document.getElementById('cierraSesion');
 
-    /* let intervalID = 0;
-    let detenerX = true;
-    let detenerY = true;
+    btnCierreSesion.addEventListener('click', cierreSesion);
 
-    intervalID = setInterval(moverLaia,30);
+    function cierreSesion(){
 
-
-    function moverLaia(){
-
-        let laiaX = laia.offsetLeft;
-        let laiaY = laia.offsetTop;
-
-        if(!localStorage.getItem('primerInicio')){
-            nivelActual--;
-        }
-
-        if(nivelActual == 2){
-
-            if(laiaX < alishaX + 50){
-                laia.style.left = laiaX + 4 + 'px';
-                detenerX = false;
-            }else{
-                detenerX = true;
-            }
-    
-    
-            if(laiaY < alishaY){
-                laia.style.top = laiaY + 1 + 'px';
-                detenerY = false;
-            }else{
-                detenerY = true;
-            }
-
-        }
-
-        if(nivelActual == 3){
-
-            if(laiaX < malikX - 50){
-                laia.style.left = laiaX - 4 + 'px';
-                detenerX = false;
-            }else{
-                detenerX = true;
-            }
-    
-    
-            if(laiaY < malikY){
-                laia.style.top = laiaY - 1 + 'px';
-                detenerY = false;
-            }else{
-                detenerY = true;
-            }
-
-        }
-
-
-        if(detenerX && detenerY){
-            clearInterval(intervalID);
-        }
-    } */
+        localStorage.clear();
+        window.location.href="logout.php";
+    }
     
 });

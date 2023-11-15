@@ -1,0 +1,40 @@
+#btnLogin,#btnInicio,#btnLandingLogin,#btnLandingRegistro,#btnRanking,#btnModalLogin,#btnModalCrear{
+    background-image: url('../img/botones/boton.png');
+    background-color: transparent;
+    border: none;
+}
+
+#btnLogin{
+    width: 115px;
+    height: 42px;
+}
+
+#btnInicio{
+    width: 114px;
+    height: 42px;
+}
+
+#btnLandingLogin{
+    width: 115px;
+    height: 42px;
+}
+
+#btnLandingRegistro{
+    width: 114px;
+    height: 42px;
+}
+
+#btnRanking{
+    width: 114px;
+    height: 42px;
+}
+
+#btnModalLogin{
+    width: 114px;
+    height: 42px;
+}
+
+#btnModalCrear{
+    width: 114px;
+    height: 42px;
+}
