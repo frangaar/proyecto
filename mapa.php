@@ -32,9 +32,9 @@
     ?>
     <div class="container map-container">
         <div class="col-12 cerrar-sesion">
-            <!-- <a href="logout.php"> -->
-                <button type="button" id="cierraSesion" class="btn btn-primary">Cerrar sesión</button>
-            <!-- </a> -->
+            <a href="logout.php">
+                <button type="button" id="btnCierraSesion" class="btn btn-primary cursor botones">Cerrar sesión</button>
+            </a>
         </div>
         <!-- <img src="img/escenarios/india.png" id="india" class="escenario">
         <img src="img/escenarios/kenia.png" id="kenia" class="escenario">

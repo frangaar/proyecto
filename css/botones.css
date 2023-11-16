@@ -1,40 +1,39 @@
-#btnLogin,#btnInicio,#btnLandingLogin,#btnLandingRegistro,#btnRanking,#btnModalLogin,#btnModalCrear{
+.botones{
     background-image: url('../img/botones/boton.png');
     background-color: transparent;
     border: none;
+    width: 135px;
+    height: 45px;
 }
 
-#btnLogin{
-    width: 115px;
-    height: 42px;
+.botones:hover{
+    background-color: transparent !important;
+    border: none !important;
 }
 
-#btnInicio{
-    width: 114px;
-    height: 42px;
+
+.si{
+    background-image: url('../india/img/salirSi.png');
+    background-color: transparent;
+    border: none;
+    width: 135px;
+    height: 45px;
 }
 
-#btnLandingLogin{
-    width: 115px;
-    height: 42px;
+.si:hover{
+    background-color: transparent !important;
+    border: none !important;
 }
 
-#btnLandingRegistro{
-    width: 114px;
-    height: 42px;
+.no{
+    background-image: url('../india/img/salirNo.png');
+    background-color: transparent;
+    border: none;
+    width: 135px;
+    height: 45px;
 }
 
-#btnRanking{
-    width: 114px;
-    height: 42px;
-}
-
-#btnModalLogin{
-    width: 114px;
-    height: 42px;
-}
-
-#btnModalCrear{
-    width: 114px;
-    height: 42px;
+.no:hover{
+    background-color: transparent !important;
+    border: none !important;
 }

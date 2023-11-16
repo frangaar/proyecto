@@ -88,14 +88,14 @@ document.addEventListener('DOMContentLoaded',function(){
     
     }    
 
-    let btnCierreSesion = document.getElementById('cierraSesion');
+    // let btnCierreSesion = document.getElementById('btnCierraSesion');
 
-    btnCierreSesion.addEventListener('click', cierreSesion);
+    // btnCierreSesion.addEventListener('click', cierreSesion);
 
-    function cierreSesion(){
+    // function cierreSesion(){
 
-        localStorage.clear();
-        window.location.href="logout.php";
-    }
+    //     localStorage.clear();
+    //     window.location.href="logout.php";
+    // }
     
 });

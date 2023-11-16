@@ -16,7 +16,7 @@
     <body>    
         <div class="container text-center margin-center">
             <div class="text-end">
-                <a href="index.php"><input type="button" id="btnInicio" class="btn btn-primary cursor" value="Ir a inicio"></input></a>
+                <a href="index.php"><input type="button" id="btnInicio" class="btn btn-primary cursor botones" value="Ir a inicio"></input></a>
             </div>
             
             <div class="row align-items-end" id="login">
@@ -54,7 +54,7 @@
                             </div>    
                         </div>
                         <div class="col-12">
-                            <button type="submit" name="login" id="btnLogin" class="btn btn-primary cursor">Login</button>
+                            <button type="submit" name="login" id="btnLogin" class="btn btn-primary cursor botones">Login</button>
                         </div>
                     </form>
                 </div>

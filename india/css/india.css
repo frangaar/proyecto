@@ -31,12 +31,12 @@ i{
     padding-left: 25px;
 }
 
-.botones-juego #volver{
+/* .botones-juego #volver{
     width: 96px;
     height: 45px;
     float: right;
     cursor: pointer;
-}
+} */
 
 .botones-juego #volver:hover{
     filter: brightness(110%);
@@ -458,7 +458,7 @@ img[name="muroDown"] {
   }
 
   #jugar .modal-content button{
-    width: 125px;
+    /* width: 125px; */
     font-size: 25px;
     margin: auto;
     font-size: 20px;
@@ -587,13 +587,18 @@ img[name="muroDown"] {
 }
 
 button.audio{
-    width: 55px;
+    background-image: url(../img/musica/iconos.png);
+    background-color: transparent;
+    background-size: 35px;
+    width: 17px;
     height: 17px;
     padding: 0;
     font-size: 11px;
     position: absolute;
     bottom: 1px;
     right: 1px;
+    border-radius: 10px;
+    border: none;
 }
 
 button.audio-close{
@@ -674,12 +679,12 @@ button.audio-close{
     background-color: transparent;
     border: none;
     width: 108px;
-    height: 65px;
+    height: 63px;
     padding: 0;
 }
 
 #iniciarJuego{
-    width: 120px;
+    /* width: 120px; */
     margin: auto;
     cursor: pointer;
 }
@@ -689,7 +694,7 @@ button.audio-close{
 } */
 
 #acabarJuego{
-    width: 115px;
+    /* width: 115px; */
     margin: auto;
 }
 

@@ -168,6 +168,10 @@ form {
     color: white;
 }
 
+#login.modal label{
+    color: black;
+}
+
 .pixelart-to-css {
     box-shadow: 60px 50px 0 0 rgba(255, 0, 0, 1), 70px 50px 0 0 rgba(255, 0, 0, 1), 80px 50px 0 0 rgba(255, 0, 0, 1), 90px 50px 0 0 rgba(255, 0, 0, 1), 100px 50px 0 0 rgba(255, 0, 0, 1), 110px 50px 0 0 rgba(255, 0, 0, 1), 120px 50px 0 0 rgba(255, 0, 0, 1), 130px 50px 0 0 rgba(255, 0, 0, 1);
     height: 10px;
@@ -328,6 +332,18 @@ button.audio-close{
 .cursor:hover{
     filter: brightness(110%);
 }
+
+
+#india_static{
+    min-height: 189px
+}
+
+#india_gif{
+    display: none;
+    min-height: 189px
+}
+
+
 
 
 @media (min-width: 768px) and (max-width: 991px){

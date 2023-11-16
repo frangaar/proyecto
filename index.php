@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/botones.css">
+    <script src="js/landing.js"></script>
     <title>Document</title>
 </head>
 <?php
@@ -18,8 +19,8 @@
     
     <div class="container landing-page">
         <div class="login-bar-section">
-            <input type="button" class="btn btn-primary cursor" id="btnLandingLogin" value="Login" data-bs-toggle="modal" data-bs-target="#login"></input>
-            <input type="button" class="btn btn-primary cursor" id="btnLandingRegistro" value="Registro" data-bs-toggle="modal" data-bs-target="#registro"></input>
+            <input type="button" class="btn btn-primary cursor botones" id="btnLandingLogin" value="Login" data-bs-toggle="modal" data-bs-target="#login"></input>
+            <input type="button" class="btn btn-primary cursor botones" id="btnLandingRegistro" value="Registro" data-bs-toggle="modal" data-bs-target="#registro"></input>
         </div>
         <div class="banner-section">
             <img src="img/logo.jpg" class="img-fluid" id="banner"> 
@@ -40,7 +41,7 @@
         </div>        
         <div class="games-section">
             <div class="col-12 mb-3 landing-juegos">
-                <h2 >Juegos</h2><a href="ranking.php"><input type="button" id="btnRanking" class="btn btn-primary cursor" value="Ranking"></input></a>
+                <h2 >Juegos</h2><a href="ranking.php"><input type="button" id="btnRanking" class="btn btn-primary cursor botones" value="Ranking"></input></a>
             </div>
                 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                     <div class="col">
@@ -52,9 +53,10 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col">
+                    <div class="col" id="india">
                       <div class="card h-100">
-                        <img src="img/escenarios/india_portada.png" class="card-img-top" alt="...">
+                        <img src="img/escenarios/india_portada.png" class="card-img-top" id="india_static" alt="">
+                        <img src="img/landing_gifs/india.gif" class="card-img-top" id="india_gif" alt="">
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
                           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -155,7 +157,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" name="login" id="btnModalLogin" class="btn btn-primary">Login</button>
+                <button type="submit" name="login" id="btnModalLogin" class="btn btn-primary cursor botones">Login</button>
             </div>
             </form>
         </div>
@@ -213,7 +215,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" name="signup" id="btnModalCrear" class="btn btn-primary">Crear</button>
+                <button type="submit" name="signup" id="btnModalCrear" class="btn btn-primary cursor botones">Crear</button>
             </div>
             </form>
         </div>
