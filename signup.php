@@ -6,6 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/botones.css">
     <title>Document</title>
 </head>
 <?php
@@ -13,14 +14,14 @@
 ?>
 <body>
 
-    <div class="container text-center margin-center">
+    <div class="container text-center margin-center" id="registro">
         <div class="text-end">
-            <a href="index.php"><input type="button" class="btn btn-primary" value="Ir a inicio"></input></a>
+            <a href="index.php"><input type="button" class="btn btn-primary cursor botones" value="Ir a inicio"></input></a>
         </div>
         
         <div class="row align-items-end">
             <div class="col"></div>
-            <div class="col">
+            <div class="col registro-form">
             <?php if(isset($_SESSION['success']) == 1){ ?>
                     <div class="alert alert-success alert-dismissible" role="alert">
                         <?php echo $_SESSION['success']; ?>
@@ -38,7 +39,6 @@
                 } ?>
                 <form action="./action_page.php" method="post">
                     <div class="input-group mb-3">
-                        <!-- <img src="img/login.jpg"> -->
                         <h1>Formulario de creación usuario</h1>
                     </div>
                     <div class="input-group mb-3">    
@@ -54,7 +54,7 @@
                         </div>    
                     </div>
                     <div class="col-12">
-                        <button type="submit" name="signup" class="btn btn-primary">Crear</button>
+                        <button type="submit" name="signup" class="btn btn-primary cursor botones">Crear</button>
                     </div>
                 </form>
             </div>

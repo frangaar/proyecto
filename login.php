@@ -6,6 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/botones.css">
     <title>Document</title>
 </head>
 <?php
@@ -15,7 +16,7 @@
     <body>    
         <div class="container text-center margin-center">
             <div class="text-end">
-                <a href="index.php"><input type="button" class="btn btn-primary" value="Ir a inicio"></input></a>
+                <a href="index.php"><input type="button" id="btnInicio" class="btn btn-primary cursor botones" value="Ir a inicio"></input></a>
             </div>
             
             <div class="row align-items-end" id="login">
@@ -53,7 +54,7 @@
                             </div>    
                         </div>
                         <div class="col-12">
-                            <button type="submit" name="login" class="btn btn-primary">Login</button>
+                            <button type="submit" name="login" id="btnLogin" class="btn btn-primary cursor botones">Login</button>
                         </div>
                     </form>
                 </div>

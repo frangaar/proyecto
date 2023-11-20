@@ -31,15 +31,15 @@ i{
     padding-left: 25px;
 }
 
-.botones-juego #volver{
+/* .botones-juego #volver{
     width: 96px;
     height: 45px;
     float: right;
     cursor: pointer;
-}
+} */
 
 .botones-juego #volver:hover{
-    filter: brightness(130%);
+    filter: brightness(110%);
 }
 
 .botones-juego .volver.pulsado{
@@ -436,6 +436,8 @@ img[name="muroDown"] {
 
   #jugar .modal-content{
     height: 475px;
+    background-color: #7db585;
+    box-shadow: 0px 1px 5px 5px rgba(255,255,255,0.75);
   }
 
   #jugar .modal-content span{
@@ -456,7 +458,7 @@ img[name="muroDown"] {
   }
 
   #jugar .modal-content button{
-    width: 125px;
+    /* width: 125px; */
     font-size: 25px;
     margin: auto;
     font-size: 20px;
@@ -585,13 +587,18 @@ img[name="muroDown"] {
 }
 
 button.audio{
-    width: 55px;
-    height: 17px;
+    background-image: url(../../img/botones/iconos.png);
+    background-color: transparent;
+    background-size: 51px;
+    width: 25px;
+    height: 25px;
     padding: 0;
     font-size: 11px;
     position: absolute;
     bottom: 1px;
     right: 1px;
+    border-radius: 13px;
+    border: none;
 }
 
 button.audio-close{
@@ -672,8 +679,27 @@ button.audio-close{
     background-color: transparent;
     border: none;
     width: 108px;
-    height: 65px;
+    height: 63px;
     padding: 0;
+}
+
+#iniciarJuego{
+    /* width: 120px; */
+    margin: auto;
+    cursor: pointer;
+}
+
+/* #iniciarJuego:hover{
+    filter: brightness(110%);
+} */
+
+#acabarJuego{
+    /* width: 115px; */
+    margin: auto;
+}
+
+/* #acabarJuego:hover{
+    filter: brightness(110%);
 }
 
 
@@ -682,10 +708,16 @@ button.audio-close{
 }
 
 #salirJuego .modal-footer img:hover,#salirJuego .modal-footer img:hover{
-    filter: brightness(130%);
+    filter: brightness(110%);
+} */
+
+.cursor{
     cursor: pointer;
 }
 
+.cursor:hover{
+    filter: brightness(110%);
+}
 
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }

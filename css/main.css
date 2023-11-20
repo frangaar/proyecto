@@ -1,7 +1,44 @@
-p,h1,h2,h3,h4,h5,span,label,input,button,.alert{
+p,h1,h2,h3,h4,h5,span,label,input,button,.alert, table{
     font-family: 'Pixelify Sans', sans-serif !important;
 }
 
+
+.admin{
+    background-image: none;
+}
+
+.admin .cerrar-sesion{
+    padding-bottom: 10px;
+}
+
+.ranking .alert-warning{
+    margin-top: 20px;
+}
+
+.ranking{
+    background-image: url('../img/escenarios/fondo_ranking.png');
+}
+
+.ranking button{
+    background-color: #b84731;
+    border-color: #b84731;
+}
+
+.ranking button:hover{
+    background-color: #b84731;
+    border-color: #b84731;
+}
+
+.ranking table{
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'VT323', monospace !important;
+}
+
+.ranking table thead{
+    background-color: black;
+    color: white;
+}
 
 .map-container{
     display: grid; 
@@ -142,13 +179,34 @@ form {
     text-align: right;
 }
 
-#login button[name="login"],#registro button[name="registro"]{
-    margin: auto;
+#login .modal-header,#registro .modal-header{
+    background-color: #6495ED;
 }
 
-#login .logo{
+#login .modal-header .modal-title,#registro .modal-header .modal-title{
+    color: white;
+}
+
+#registro .registro-form h1,#registro .registro-form label{
+    color: white;
+}
+
+.landing-page #login .logo{
     margin: auto;
-    width: 338px;
+    width: 430px;
+}
+
+#login .logo img{
+    margin: auto;
+    width: 580px;
+}
+
+#login label{
+    color: white;
+}
+
+#login.modal label{
+    color: black;
 }
 
 .pixelart-to-css {
@@ -272,14 +330,20 @@ div.text {
 /* Bocadillo */
 
 button.audio{
-    width: 50px;
-    height: 17px;
+    background-image: url(../img/botones/iconos.png);
+    background-color: transparent;
+    background-size: 51px;
+    width: 25px;
+    height: 25px;
     padding: 0;
     font-size: 11px;
     position: absolute;
     bottom: 1px;
     right: 1px;
+    border-radius: 13px;
+    border: none;
 }
+
 
 button.audio-close{
     position: absolute;
@@ -303,6 +367,36 @@ button.audio-close{
     position: absolute;
     width: 31px;
 }
+
+.cursor{
+    cursor: pointer;
+}
+
+.cursor:hover{
+    filter: brightness(110%);
+}
+
+
+#india_static{
+    min-height: 189px
+}
+
+#india_gif{
+    display: none;
+    min-height: 189px
+}
+
+.developer-img-container{
+    margin: 10px;
+    width: 100px;
+}
+
+.developers-img{
+    border-radius: 55px;
+    height: 100px;
+    width: 100px;
+}
+
 
 @media (min-width: 768px) and (max-width: 991px){
     

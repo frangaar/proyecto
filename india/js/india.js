@@ -949,7 +949,7 @@ function lightOn(){
         btnFinJuego.style.display = "block";
         rayos.style.display = "none";
 
-        finalJuego.classList.add('bgColor');
+        // finalJuego.classList.add('bgColor');
         alturaModal.classList.add('resize-modal');
         finalJuego.style.display = "block";
     }else{

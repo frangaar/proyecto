@@ -7,37 +7,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/botones.css">
+    <script src="js/landing.js"></script>
     <title>Document</title>
 </head>
 <?php
     session_start();    
     unset($_SESSION['id']);
 ?>
-<!-- <script>
-    function login() {
-
-        let params = [
-            'width='+screen.width,
-            'height='+screen.height]       
-
-        window.open("login.php", "", params);
-    }
-
-    function signup() {
-
-      let params = [
-          'width='+screen.width,
-          'height='+screen.height]       
-
-      window.open("signup.php", "", params);
-    }
-    </script> -->
 <body>
     
     <div class="container landing-page">
         <div class="login-bar-section">
-            <input type="button" class="btn btn-primary" value="Login" data-bs-toggle="modal" data-bs-target="#login"></input>
-            <input type="button" class="btn btn-primary" value="Registro" data-bs-toggle="modal" data-bs-target="#registro"></input>
+            <input type="button" class="btn btn-primary cursor botones" id="btnLandingLogin" value="Login" data-bs-toggle="modal" data-bs-target="#login"></input>
+            <input type="button" class="btn btn-primary cursor botones" id="btnLandingRegistro" value="Registro" data-bs-toggle="modal" data-bs-target="#registro"></input>
         </div>
         <div class="banner-section">
             <img src="img/logo.jpg" class="img-fluid" id="banner"> 
@@ -58,7 +41,7 @@
         </div>        
         <div class="games-section">
             <div class="col-12 mb-3 landing-juegos">
-                <h2 >Juegos</h2><a href="ranking.php"><input type="button" class="btn btn-primary" value="Ranking"></input></a>
+                <h2 >Juegos</h2><a href="ranking.php"><input type="button" id="btnRanking" class="btn btn-primary cursor botones" value="Ranking"></input></a>
             </div>
                 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                     <div class="col">
@@ -70,9 +53,10 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col">
+                    <div class="col" id="india">
                       <div class="card h-100">
-                        <img src="img/escenarios/india_portada.png" class="card-img-top" alt="...">
+                        <img src="img/escenarios/india_portada.png" class="card-img-top" id="india_static" alt="">
+                        <img src="img/landing_gifs/india.gif" class="card-img-top" id="india_gif" alt="">
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
                           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -110,12 +94,84 @@
         </div>
         <div class="developers-section">
             <div class="col-12 ">
-                <h2>Desarrolladores</h2>
-            </div>
-        </div>
-        <div class="footer-section">
-            <div class="col-12 ">
-                <h2>Footer</h2>
+                <h2>Desarrolladores</h2>                
+                <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+                    <div class="col">
+                        <div class="card mb-3 h-100">
+                            <div class="row g-0">
+                                <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
+                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
+                                </div>
+                                <div class="col col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">David Neriz</h5>
+                                    <p class="card-text">RRSS</p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 h-100">
+                            <div class="row g-0">
+                                <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
+                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
+                                </div>
+                                <div class="col col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Fran García</h5>
+                                    <p class="card-text">RRSS</p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 h-100">
+                            <div class="row g-0">
+                                <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
+                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
+                                </div>
+                                <div class="col col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Javier Diaz</h5>
+                                    <p class="card-text">RRSS</p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 h-100">
+                            <div class="row g-0">
+                                <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
+                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
+                                </div>
+                                <div class="col col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Marc Pons</h5>
+                                    <p class="card-text">RRSS</p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 h-100">
+                            <div class="row g-0">
+                                <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
+                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
+                                </div>
+                                <div class="col col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">JiaJie Chen</h5>
+                                    <p class="card-text">RRSS</p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -173,7 +229,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" name="login" class="btn btn-primary">Login</button>
+                <button type="submit" name="login" id="btnModalLogin" class="btn btn-primary cursor botones">Login</button>
             </div>
             </form>
         </div>
@@ -231,7 +287,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" name="signup" class="btn btn-primary">Crear</button>
+                <button type="submit" name="signup" id="btnModalCrear" class="btn btn-primary cursor botones">Crear</button>
             </div>
             </form>
         </div>

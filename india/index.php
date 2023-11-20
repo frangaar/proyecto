@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="css/puzzle.css">
 	<link rel="stylesheet" href="css/calculos.css">
 	<link rel="stylesheet" href="css/preguntas.css">
+    <link rel="stylesheet" href="../css/botones.css">
     <script src="js/india.js"></script>
     <script src="js/puzzle.js"></script>
     <script src="js/calculos.js"></script>
@@ -24,11 +25,10 @@ session_start();
     <div class="container-fluid botones-juego">
         <div class="row">
             <div class="col text-start">
-                <img id="musica" class="pausa">
+                <img id="musica" class="pausa cursor">
             </div>
             <div class="col text-end">
-                <img src="img/volver.png" class="volver" id="volver"></img>
-                <!-- <button type="button" id="volver" class="btn btn-primary">Volver</button> -->
+                <button type="button" id="volver" class="btn btn-primary cursor botones">Volver</button>
             </div>
         </div>
     </div>
@@ -73,37 +73,37 @@ session_start();
         <div class="bocadillo-cuadrado" id="bocadillo-cuadrado1">
             <button type="button" id="audio-close1" class="btn-close audio-close"></button>
             <div class="text">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. Mapmet, consectetur adipiscing elit. Map</p>
+                <p>Hola, soy Gandhi, una de las 3 pruebas que deberás superar para conseguir todas las piezas necesarias que te permitirán iluminar la escuela. Para ello, deberás resolver el puzzle que te propongo. ¿Estás preparado para el reto?. Adelante!!</p>
             </div>
-            <button type="button" data-audio="audio/spain.mp3" class="audio btn btn-primary" id="audio1" class="btn btn-primary">Escuchar</button>
+            <button type="button" data-audio="audio/gandhi.mp3" class="audio btn btn-primary cursor" id="audio1" class="btn btn-primary"></button>
         </div>
         <div class="bocadillo-cuadrado" id="bocadillo-cuadrado2">
             <button type="button" id="audio-close2" class="btn-close audio-close"></button>
             <div class="text">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. Mapmet, consectetur adipiscing elit. Map</p>
+                <p>Hola, soy el Taj Mahal, una de las 3 pruebas que deberás superar para conseguir todas las piezas necesarias que te permitirán iluminar la escuela. Para ello, deberás resolver todas las pruebas matemáticas que te propongo. ¿Estás preparado para el reto?. Adelante!!</p>
             </div>
-            <button type="button" data-audio="audio/spain.mp3" class="audio btn btn-primary" id="audio2" class="btn btn-primary">Escuchar</button>
+            <button type="button" data-audio="audio/taj.mp3" class="audio btn btn-primary cursor" id="audio2" class="btn btn-primary"></button>
         </div>
         <div class="bocadillo-cuadrado" id="bocadillo-cuadrado3">
             <button type="button" id="audio-close3" class="btn-close audio-close"></button>
             <div class="text">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. Mapmet, consectetur adipiscing elit. Map</p>
+                <p>Hola, soy Tomasa la vaca, una de las 3 pruebas que deberás superar para conseguir todas las piezas necesarias que te permitirán iluminar la escuela. Para ello, deberás escoger entre verdadero o falso para cada pregunta. ¿Estás preparado para el reto?. Adelante!!</p>
             </div>
-            <button type="button" data-audio="audio/spain.mp3" class="audio btn btn-primary" id="audio3" class="btn btn-primary">Escuchar</button>
+            <button type="button" data-audio="audio/vaca.mp3" class="audio btn btn-primary cursor" id="audio3" class="btn btn-primary"></button>
         </div>
         <div class="bocadillo-cuadrado" id="bocadillo-cuadrado4">
             <button type="button" id="audio-close4" class="btn-close audio-close"></button>
             <div class="text">
                 <p>Vaya!!, parece que la escuela necesita luz para poder continuar las clases. Debo conseguir todas las piezas para poder iluminar la escuela utilizando energias renovables</p>
             </div>
-            <button type="button" data-audio="audio/spain.mp3" class="audio btn btn-primary" id="audio4" class="btn btn-primary">Escuchar</button>
+            <button type="button" data-audio="audio/spain.mp3" class="audio btn btn-primary cursor" id="audio4" class="btn btn-primary"></button>
         </div>
         <div class="bocadillo-cuadrado" id="bocadillo-cuadrado5">
             <button type="button" id="audio-close5" class="btn-close audio-close"></button>
             <div class="text">
                 <p>Ohh!!, esta debe ser la casa de Alisha y su familia.</p>
             </div>
-            <button type="button" data-audio="audio/spain.mp3" class="audio btn btn-primary" id="audio5" class="btn btn-primary">Escuchar</button>
+            <button type="button" data-audio="audio/spain.mp3" class="audio btn btn-primary cursor" id="audio5" class="btn btn-primary"></button>
         </div>
     </div>  
     
@@ -157,7 +157,7 @@ session_start();
                         </div>
                     </div>
                     <div class="modal-guardar text-end">
-                        <button type="button" id="guardarGhandi" disabled class="btn btn-primary" value="completado">Guardar</button>
+                        <button type="button" id="guardarGhandi" disabled class="btn btn-primary cursor botones" value="completado">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -174,7 +174,7 @@ session_start();
                     </div>
                 </div>
                 <div class="modal-guardar text-end">
-                    <button type="button" id="guardarTaj" class="btn btn-primary">Comprobar</button>
+                    <button type="button" id="guardarTaj" class="btn btn-primary cursor botones">Comprobar</button>
                 </div>
             </div>
         </div>
@@ -190,7 +190,7 @@ session_start();
                     </div>
                 </div>
                 <div class="modal-guardar text-end">
-                    <button type="button" id="guardarVaca" class="btn btn-primary">Comprobar</button>
+                    <button type="button" id="guardarVaca" class="btn btn-primary cursor botones">Comprobar</button>
                 </div>
             </div>
         </div>
@@ -204,14 +204,14 @@ session_start();
                     descubrir! Preparaos para enfrentaros a desafíos matemáticos, resolver rompecabezas y 
                     hasta descifrar preguntas sobre las vacas en la India. 
                     ¿Listos para ser los héroes que traen la luz sostenible a nuestro colegio? 
-                    ¡Que la aventura comience en "Luz Sostenible"!. 
+                    ¡Que la aventura comience en "Luz Sostenible"!.<br>
                     <span>¡Importante!: El tiempo empieza a contar cuando este mensaje desaparezca. Cuanto menos tiempo
                     necesites, mayor puntos tendrás. Pulsa el botón para empezar.
                     </p>
             </div>
             <div class="modal-footer">
-                <button type="button" id="iniciarJuego" class="btn btn-primary">A jugar!!</button>
-                <button type="button" id="acabarJuego" class="btn btn-primary">Aceptar!!</button>
+                <button type="button" id="iniciarJuego" class="btn btn-primary cursor botones">A jugar!!</button>
+                <button type="button" id="acabarJuego" class="btn btn-primary cursor botones">Aceptar!!</button>
             </div>
         </div>
     </div>
@@ -223,7 +223,7 @@ session_start();
                 <p></p>
             </div>
             <div class="modal-footer">
-                <button type="button" id="aceptar" class="btn btn-primary">Aceptar!!</button>
+                <button type="button" id="aceptar" class="btn btn-primary cursor botones">Aceptar!!</button>
             </div>
         </div>
     </div>
@@ -238,14 +238,12 @@ session_start();
                 <div class="row">
                     <div class="col-6">
                         <div class="col-si">
-                            <img src="img/salirSi.png" data-respuesta="si" id="si">
-                            <!-- <button type="button" id="si" class="btn btn-primary">Sí</button> -->
+                            <button type="button" id="si" class="btn btn-primary cursor si" data-respuesta="si">Si</button>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="col-no">
-                            <img src="img/salirNo.png" data-respuesta="no" id="no">
-                            <!-- <button type="button" id="no" class="btn btn-primary">No</button> -->
+                            <button type="button" id="no" class="btn btn-primary cursor no" data-respuesta="no">No</button>
                         </div>
                     </div>
                 </div>
