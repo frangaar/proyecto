@@ -94,12 +94,84 @@
         </div>
         <div class="developers-section">
             <div class="col-12 ">
-                <h2>Desarrolladores</h2>
-            </div>
-        </div>
-        <div class="footer-section">
-            <div class="col-12 ">
-                <h2>Footer</h2>
+                <h2>Desarrolladores</h2>                
+                <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+                    <div class="col">
+                        <div class="card mb-3 h-100">
+                            <div class="row g-0">
+                                <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
+                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
+                                </div>
+                                <div class="col col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">David Neriz</h5>
+                                    <p class="card-text">RRSS</p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 h-100">
+                            <div class="row g-0">
+                                <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
+                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
+                                </div>
+                                <div class="col col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Fran García</h5>
+                                    <p class="card-text">RRSS</p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 h-100">
+                            <div class="row g-0">
+                                <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
+                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
+                                </div>
+                                <div class="col col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Javier Diaz</h5>
+                                    <p class="card-text">RRSS</p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 h-100">
+                            <div class="row g-0">
+                                <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
+                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
+                                </div>
+                                <div class="col col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Marc Pons</h5>
+                                    <p class="card-text">RRSS</p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 h-100">
+                            <div class="row g-0">
+                                <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
+                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
+                                </div>
+                                <div class="col col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">JiaJie Chen</h5>
+                                    <p class="card-text">RRSS</p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

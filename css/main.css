@@ -386,7 +386,16 @@ button.audio-close{
     min-height: 189px
 }
 
+.developer-img-container{
+    margin: 10px;
+    width: 100px;
+}
 
+.developers-img{
+    border-radius: 55px;
+    height: 100px;
+    width: 100px;
+}
 
 
 @media (min-width: 768px) and (max-width: 991px){
