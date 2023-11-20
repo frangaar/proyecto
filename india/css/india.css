@@ -587,17 +587,17 @@ img[name="muroDown"] {
 }
 
 button.audio{
-    background-image: url(../img/musica/iconos.png);
+    background-image: url(../../img/botones/iconos.png);
     background-color: transparent;
-    background-size: 35px;
-    width: 17px;
-    height: 17px;
+    background-size: 51px;
+    width: 25px;
+    height: 25px;
     padding: 0;
     font-size: 11px;
     position: absolute;
     bottom: 1px;
     right: 1px;
-    border-radius: 10px;
+    border-radius: 13px;
     border: none;
 }
 

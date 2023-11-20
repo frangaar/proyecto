@@ -1,4 +1,4 @@
-p,h1,h2,h3,h4,h5,span,label,input,button,.alert{
+p,h1,h2,h3,h4,h5,span,label,input,button,.alert, table{
     font-family: 'Pixelify Sans', sans-serif !important;
 }
 
@@ -9,6 +9,35 @@ p,h1,h2,h3,h4,h5,span,label,input,button,.alert{
 
 .admin .cerrar-sesion{
     padding-bottom: 10px;
+}
+
+.ranking .alert-warning{
+    margin-top: 20px;
+}
+
+.ranking{
+    background-image: url('../img/escenarios/fondo_ranking.png');
+}
+
+.ranking button{
+    background-color: #b84731;
+    border-color: #b84731;
+}
+
+.ranking button:hover{
+    background-color: #b84731;
+    border-color: #b84731;
+}
+
+.ranking table{
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'VT323', monospace !important;
+}
+
+.ranking table thead{
+    background-color: black;
+    color: white;
 }
 
 .map-container{
@@ -158,6 +187,10 @@ form {
     color: white;
 }
 
+#registro .registro-form h1,#registro .registro-form label{
+    color: white;
+}
+
 .landing-page #login .logo{
     margin: auto;
     width: 430px;
@@ -297,14 +330,20 @@ div.text {
 /* Bocadillo */
 
 button.audio{
-    width: 50px;
-    height: 17px;
+    background-image: url(../img/botones/iconos.png);
+    background-color: transparent;
+    background-size: 51px;
+    width: 25px;
+    height: 25px;
     padding: 0;
     font-size: 11px;
     position: absolute;
     bottom: 1px;
     right: 1px;
+    border-radius: 13px;
+    border: none;
 }
+
 
 button.audio-close{
     position: absolute;
