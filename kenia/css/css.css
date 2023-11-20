@@ -59,10 +59,6 @@ p {
 .barrilesHeight{
     height: 32px;
 }
-/* .fila1 {
-    position: absolute;
-    right: 19px;
-    top: 32px;    
-    transform: rotate(-2deg); 
-    
-} */
+.fila2{
+    /* transform: rotate(2deg); */
+}
