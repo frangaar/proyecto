@@ -20,8 +20,6 @@ $ranking=obtenerRanking();
 <body class="ranking">
 
     <div class="container">
-
-        
         
         <div class="col-12 cerrar-sesion">
             <a href="index.php"><button type="button" class="btn btn-primary">Ir a inicio</button></a>
@@ -77,7 +75,7 @@ $ranking=obtenerRanking();
         <div class="col-12 listado-usuarios-title mt-5">
             <h2>Listado de usuarios</h2>
         </div>
-            <table class="table table-striped table-hover">
+            <table id="tabla-ranking" class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Fecha</th>

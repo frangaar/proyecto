@@ -49,7 +49,8 @@
                         <img src="img/game.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                          <p class="card-text"><small class="text-body-secondary">Desarrollador: </small></p>
                         </div>
                       </div>
                     </div>
@@ -59,7 +60,8 @@
                         <img src="img/landing_gifs/india.gif" class="card-img-top" id="india_gif" alt="">
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                          <p class="card-text"><small class="text-body-secondary">Desarrollador: </small></p>
                         </div>
                       </div>
                     </div>
@@ -69,6 +71,7 @@
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
                           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                          <p class="card-text"><small class="text-body-secondary">Desarrollador: </small></p>
                         </div>
                       </div>
                     </div>
@@ -77,7 +80,8 @@
                         <img src="img/game.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                          <p class="card-text"><small class="text-body-secondary">Desarrollador: </small></p>
                         </div>
                       </div>
                     </div>
@@ -86,7 +90,8 @@
                           <img src="img/game.jpg" class="card-img-top" alt="...">
                           <div class="card-body">
                             <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                            <p class="card-text"><small class="text-body-secondary">Desarrollador: </small></p>
                           </div>
                         </div>
                     </div>
@@ -104,53 +109,8 @@
                                 </div>
                                 <div class="col col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">David Neriz</h5>
-                                    <p class="card-text">RRSS</p>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card mb-3 h-100">
-                            <div class="row g-0">
-                                <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
-                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
-                                </div>
-                                <div class="col col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Fran García</h5>
-                                    <p class="card-text">RRSS</p>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card mb-3 h-100">
-                            <div class="row g-0">
-                                <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
-                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
-                                </div>
-                                <div class="col col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Javier Diaz</h5>
-                                    <p class="card-text">RRSS</p>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card mb-3 h-100">
-                            <div class="row g-0">
-                                <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
-                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
-                                </div>
-                                <div class="col col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Marc Pons</h5>
-                                    <p class="card-text">RRSS</p>
+                                    <h5 class="card-title">David Neriz Bonet</h5>
+                                    <p class="card-text">Email: </p>
                                 </div>
                                 </div>
                             </div>
@@ -165,7 +125,52 @@
                                 <div class="col col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">JiaJie Chen</h5>
-                                    <p class="card-text">RRSS</p>
+                                    <p class="card-text">Email: </p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 h-100">
+                            <div class="row g-0">
+                                <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
+                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
+                                </div>
+                                <div class="col col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Javier Diaz Neira</h5>
+                                    <p class="card-text">Email: </p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 h-100">
+                            <div class="row g-0">
+                                <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
+                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
+                                </div>
+                                <div class="col col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Marc Pons Cabrera</h5>
+                                    <p class="card-text">Email: </p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 h-100">
+                            <div class="row g-0">
+                                <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
+                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
+                                </div>
+                                <div class="col col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Fran García Arroyo</h5>
+                                    <p class="card-text">Email: </p>
                                 </div>
                                 </div>
                             </div>

@@ -29,13 +29,22 @@ p,h1,h2,h3,h4,h5,span,label,input,button,.alert, table{
     border-color: #b84731;
 }
 
-.ranking table{
+#tabla-ranking th{
+    background-color: black;
+    color: white;
+}
+
+#tabla-ranking td{
+    background-color: transparent;
+}
+
+#tabla-ranking{
     font-size: 25px;
     font-weight: bold;
     font-family: 'VT323', monospace !important;
 }
 
-.ranking table thead{
+#tabla-ranking thead{
     background-color: black;
     color: white;
 }
@@ -395,6 +404,28 @@ button.audio-close{
     border-radius: 55px;
     height: 100px;
     width: 100px;
+    margin-top: 5px;
+}
+
+.games-section, .developers-section{
+    padding-top: 40px;
+}
+
+.developers-section{
+    margin-bottom: 25px;
+}
+
+.games-section h2, .developers-section h2{
+    color: white;
+}
+
+.botones{
+    background-image: url(../img/botones/boton.png);
+    background-color: transparent;
+    border: none;
+    width: 100px;
+    height: 33px;
+    background-size: 100px;
 }
 
 

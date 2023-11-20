@@ -2,13 +2,20 @@
     background-image: url('../img/botones/boton.png');
     background-color: transparent;
     border: none;
-    width: 135px;
-    height: 45px;
+    width: 100px;
+    height: 33px;
+    background-size: 100px;
 }
 
 .botones:hover{
     background-color: transparent !important;
     border: none !important;
+}
+
+.map-container .botones{
+    width: 141px;
+    height: 47px;
+    background-size: 141px;
 }
 
 
@@ -36,4 +43,22 @@
 .no:hover{
     background-color: transparent !important;
     border: none !important;
+}
+
+@media (min-width: 1200px){
+
+    .botones{
+        width: 120px;
+        height: 40px;
+        background-size: 120px;
+    }
+}
+
+@media (min-width: 1400px) and (max-width: 1399px){
+
+    .botones{
+        width: 120px;
+        height: 40px;
+        background-size: 120px;
+    }
 }

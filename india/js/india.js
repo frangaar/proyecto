@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
                 switch(mapa[i][j]){
 
-                    case VALLAR:
+                    case VALLAU:
                         nextIndex = 'muro' + Object.keys(posiciones).length;
 
                         img= `<img src='`+(pared)+`.png' name='muroUp'></img>`
