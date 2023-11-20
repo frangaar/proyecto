@@ -9,7 +9,7 @@ function buttonAccept() {
     app.style.display= 'block'
     pause = false
     audioBackground.play()
-    body.style.backgroundImage = 'url(../img/fondo.jpg)'
+    // body.style.backgroundImage = 'url(../img/fondo.jpg)'
     botonAceptar.style.display = 'none'
     divButton.style.display = 'none'
     app.style.filter = 'blur(0px)'

@@ -1,15 +1,13 @@
-// document.write('<script src="js/audio.js"></script>');
-// import {audioFall, audioJump, jumpSound, audioBackground, audioPause} from 'audio.js'
-// import { Barrel } from "./barrel.js";
 let body = document.getElementById('body')
 const BLOCK_SIZE = 36
 const PLAYER_WIDTH = 31
-const PLAYER_HEIGHT = 24
+const PLAYER_HEIGHT = 26
 const PLAYER_VELOCITYJUMP = 8.3
 const NUM_OF_BARRELS = 5
-let player_velocity = 1.8
+// 1.8
+let player_velocity = 3
 let player_life = 1
-let barrel_velocity = 5.5
+let barrel_velocity = 5
 let final_del_mapa
 let colisionado = false
 let play = false
@@ -17,9 +15,6 @@ let index_counting_barrels = 0
 
 
 /** Inizializar los botones del menu y el div*/
-// let botonAceptar = document.getElementById('buttonAceptar')
-// let divButton = document.getElementById('buttonContinue')
-/** Inizializar los botones del menu de cuando mueres y el div*/
 let button_Death = document.getElementById('buttonAceptar_Death')
 let menu_death = document.getElementById('deathMenu')
 let title = document.getElementById('title')
@@ -28,17 +23,11 @@ var app = document.getElementById('app')
 let container = document.getElementById('character-Container')
 let enemy = document.getElementById('donkeyKongCharacter')
 let enemyContainer = document.getElementById('kongContainer')
-// let barrel = document.getElementById('barrelIcon')
-// let barrelContainer = document.getElementById('barrelDiv')
-
-
-
 
 let focusPlayButton = document.getElementById('playButton')
 
 
 var pause = true
-// let file
 let velocityX = 0
 let velocityY = 5
 const gravity = 0.5
@@ -55,32 +44,21 @@ let imgStand = 0
 let personajeTocandoElSueloFoto = 0
 let muerto = false
 let muertSalto = false
+
 // Background size y width y animar el fondo.
 app.style.width = BLOCK_SIZE * PLAYER_WIDTH + 'px'
 app.style.height = (BLOCK_SIZE * PLAYER_HEIGHT) + 'px'
 app.style.backgroundImage = 'url(../img/image.jpg)'
-// app.style.backgroundColor = 'black'
 app.style.backgroundSize = 'cover'
 // Create enemy and barrel size.
 enemy.style.width = '160px'
 enemyContainer.style.left = '65px'
 enemyContainer.style.top = '18px'
-// barrel.style.width = '40px'
-// barrelContainer.style.left = '0px'
-// barrelContainer.style.top = '0px'
 const colisionables = []
 const colisionablesFila1 = []
-const barriles = []
-const barrilesContainerArray = []
 const abarril = []
-
-// audioBackground.muted = true
-// audioBackground.play()
 // Mostrar mapeado en pantalla con doble for.
 drawMap()
-
-
-
 
 // Variables de la posicion del personaje.
 let positionX = 0
@@ -88,39 +66,17 @@ let positionY = 722
 // character.style.bottom = positionY + 'px'  
 let barrelPositionX = 295
 let barrelPositionY = 50
-
+let barrelColisionRight = false
+let barrelColisionLeft = false
 
 let barrelVelocityX = 10
 let barrelVelocityY = 0
-let barrelPositionX1Array = 0
-let barrelPositionY1Array = 0
-
-
-let barrelPositionX2Array = 0
-let barrelPositionY2Array = 0
-let barrelVelocityX2 = 0
-let barrelVelocityY2 = 0
-
-
-let barrelPositionX3Array = 0
-let barrelPositionY3Array = 0
-let barrelVelocityX3 = 0
-let barrelVelocityY3 = 0
-
-
-let barrelPositionX4Array = 0
-let barrelPositionY4Array = 0
-let barrelVelocityX4 = 0
-let barrelVelocityY4 = 0
 let numberOfBarrels = 0
 let b1 = new Barrel()
-
+const elementosFila2 = document.querySelectorAll('.fila2');
 function draw () {
-    // app.style.border = '1px solid white'
     container.style.left = positionX + 'px'
     container.style.top = positionY + 'px'
-    // barrelContainer.style.left = barrelPositionX + 'px'
-    // barrelContainer.style.top = barrelPositionY + 'px'
     if (abarril[numberOfBarrels] != null) {
         for (let index = 0; index < numberOfBarrels; index++) {
             abarril[index].container.style.left = abarril[index].x + 'px'
@@ -128,16 +84,6 @@ function draw () {
         }
     }
 }
-let barrilChocadoParedDerecha = false
-let barrilChocadoParedIzquierda = false
-let barrilChocadoParedDerecha2 = false
-let barrilChocadoParedIzquierda2 = false
-let barrilChocadoParedDerecha3 = false
-let barrilChocadoParedIzquierda3 = false
-let barrilChocadoParedDerecha4 = false
-let barrilChocadoParedIzquierda4 = false
-const arrayBarrilChocadoParedIzquierda = [barrilChocadoParedIzquierda, barrilChocadoParedIzquierda2, barrilChocadoParedIzquierda3, barrilChocadoParedIzquierda4]
-const arrayBarrilChocadoParedDerecha = [barrilChocadoParedDerecha, barrilChocadoParedDerecha2, barrilChocadoParedDerecha3, barrilChocadoParedDerecha4]
 // Loop de update para la gravedad y todo el movimiento.
 function update (){
     if (!pause) {
@@ -151,31 +97,24 @@ function update (){
                 abarril[index].y += abarril[index].vY
                 abarril[index].x += abarril[index].vX
             }    
-        }
-        // barrelPositionX += barrelVelocityX
-        // barrelPositionY += barrelVelocityY
-        // console.log(barrelPositionXArray);
-            /** BARREL CONDITION */
-            // barriles[index_counting_barrels]
-            /** OTRO COLISION */
-            
-            if (abarril[numberOfBarrels] != null) {
-                for (let index = 0; index <= numberOfBarrels; index++) {
-                    if (abarril[index].y + abarril[index].container.offsetWidth + abarril[index].vY <= app.offsetHeight) {
-                        abarril[index].vY += gravity
-                    } else abarril[index].vY = 0
-                      if (!arrayBarrilChocadoParedDerecha[index]) {
-                        if (abarril[index].x + abarril[index].container.offsetWidth + abarril[index].vX < app.offsetWidth) {
-                            abarril[index].vX = barrel_velocity
-                            // barrilesContainerArray[index].style.transform = 'scaleX(1)'
-                        } else {abarril[index].vX = 0 ; arrayBarrilChocadoParedDerecha[index] = true;}
-                    } else if (arrayBarrilChocadoParedDerecha[index]) {
-                        if (abarril[index].x > 0) {
-                            abarril[index].vX = - (barrel_velocity)
-                            // barrilesContainerArray[index].style.transform = 'scaleX(-1)'
-                        } else {abarril[index].vX = 0; arrayBarrilChocadoParedDerecha[index] = false}
-                    }
+        }    
+        if (abarril[numberOfBarrels] != null) {
+            for (let index = 0; index <= numberOfBarrels; index++) {
+                if (abarril[index].y + abarril[index].container.offsetWidth + abarril[index].vY <= app.offsetHeight) {
+                    abarril[index].vY += gravity
+                } else abarril[index].vY = 0
+                    if (!abarril[index].barrelColisionRight) {
+                    if (abarril[index].x + abarril[index].container.offsetWidth + abarril[index].vX < app.offsetWidth) {
+                        abarril[index].vX = barrel_velocity
+                        // barrilesContainerArray[index].style.transform = 'scaleX(1)'
+                    } else {abarril[index].vX = 0 ; abarril[index].barrelColisionRight = true;}
+                } else if (abarril[index].barrelColisionRight) {
+                    if (abarril[index].x > 0) {
+                        abarril[index].vX = - (barrel_velocity)
+                        // barrilesContainerArray[index].style.transform = 'scaleX(-1)'
+                    } else {abarril[index].vX = 0; abarril[index].barrelColisionRight = false}
                 }
+            }
         }
         if (!muerto && !colisionado) {
             // Condicional de que si la Y del objeto más su altura y la velocidad de la Y no superan la altura del canvas, tiene efecto la gravedad, de lo contrario significa que ha llegado al límite del canvas o ha tocado el suelo, en ese caso restablece la velocidad a 0 para que deje de caer.
@@ -225,7 +164,7 @@ function update (){
        
             // Condicional para que solo puedas saltar cuando hayas tocado el suelo
             checkColisionBetweenCharacterHeadAndBlockBottom()
-            checkCloisionBetweenCharacterAndFile1()
+            // checkCloisionBetweenCharacterAndFile1()
         } else {
             audioBackground.pause()
             if (!muertSalto) {
@@ -253,6 +192,7 @@ function animate (){
     update()
 }
 animate()
+/** CREAR BARRILES CADA 3 SEGUNDOS */
 window.setInterval(function(){
     if (!pause) {
         if (index_counting_barrels <= NUM_OF_BARRELS) {
@@ -269,27 +209,18 @@ window.setInterval(function(){
                 barrilIcono.style.width = '40px'
                 barrilContainer.style.left = '0px'
                 barrilContainer.style.top = '0px'
-                barriles.push(barrilIcono)
-                // QUITAR CUANDO TENGAMOS LAS CLASES
-                barrilesContainerArray.push(barrilContainer)
+
                 numberOfBarrels = index_counting_barrels
-                abarril.push(new Barrel(0, 0, 0, 0, barrilContainer, barrilIcono))
+                abarril.push(new Barrel(0, 0, 0, 0, barrilContainer, barrilIcono, barrelColisionRight))
             }
         index_counting_barrels++
     }
   },3000);
-  /** Funcion para generar un nombre de la clase del barril con un prefijo numérico. */
+/** Funcion para generar un nombre de la clase del barril con un prefijo numérico. */
 function generarNombreConNumero(prefijo, numero) {
     return `${prefijo}${numero}`;
-  }
-//   function colisionBarrilDerecha(index) {
-//     if (!barrilChocadoParedDerecha) {
-//         if (posicionesXBarriles[index] + barrilesContainerArray[index].offsetWidth + velocityXBarriles[index] < app.offsetWidth) {
-//             velocityXBarriles[numberOfBarrels] = 3
-//         } else {velocityXBarriles[index] = 0 ; barrilChocadoParedDerecha = true;}
-//     }
-//   }
-/** Hacer el keyEvent del keydown y el keyup para que el personaje se mueva solo cuando tiene la tecla presionada*/
+}
+/** Hacer el keyEvent del keydown y el keyup para que el personaje se mueva solo cuando tiene la tecla presionada.*/
 addEventListener('keydown', (event) => {
     switch (event.key) {
         case 'ArrowUp':
@@ -339,58 +270,65 @@ addEventListener('keyup', (event) =>{
             break
     }
 })
-/** Funcion que crea el mapa y los divs, y los mete en las clases y en el array de colisionables */
+/** Funcion que crea el mapa y los divs, y los mete en las clases y en el array de colisionables. */
 function drawMap()
 {
 // const map  = [
-//     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-//     [5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 6],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9]
-// ]
+    const map  = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+        [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+        [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9]
+    ]
 /** MAPA BUENO */
-const map  = [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-    [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-    [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9]
-]
+// const map  = [
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+//     [0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+//     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0],
+//     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9]
+// ]
 // const map  = [
 //     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 //     [2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -448,26 +386,20 @@ const map  = [
                 mapBlock1.style.width =  38 + 'px'
                 mapBlock1.style.height = 37 + 'px'
                 mapBlock1.style.position = 'absolute'
-                // mapBlock1.style.borderRadius = '5px'
                 colisionables.push(mapBlock1)
-                // colisionablesFila1.push(mapBlock1)
-
 
             } else if (map[fila][columna] === 3) {
                 const mapBlock1 = document.createElement('div')
 
-                document.querySelector('.fila1').appendChild(mapBlock1)
-                mapBlock1.style.backgroundImage = 'url(../img/snake_face.png)'
-                mapBlock1.style.backgroundSize = 'cover'
+                document.querySelector('.fila2').appendChild(mapBlock1)
+                mapBlock1.classList.add('fila22')
+                mapBlock1.style.backgroundColor = 'black'
                 mapBlock1.style.top = fila * BLOCK_SIZE + 'px'
                 mapBlock1.style.left = (columna * BLOCK_SIZE) + 'px'
                 mapBlock1.style.width =  38 + 'px'
                 mapBlock1.style.height = 30 + 'px'
                 mapBlock1.style.position = 'absolute'
-                // mapBlock1.style.borderRadius = '10px'
                 colisionables.push(mapBlock1)
-                // colisionablesFila1.push(mapBlock1)
-
 
             }  else if (map[fila][columna] === 9) {
                 const mapBlock9 = document.createElement('div')
@@ -483,93 +415,16 @@ const map  = [
                 mapBlock9.style.position = 'absolute'
                 final_del_mapa = mapBlock9
             }
-            // else if (map[fila][columna] === 3) {
-            //     const mapBlock2 = document.createElement('div')
 
-
-            //     document.querySelector('.bloques').appendChild(mapBlock2)
-            //     mapBlock2.classList.add('fila2')
-            //     mapBlock2.style.backgroundImage = 'url(../img/bloque.png)'
-            //     mapBlock2.style.backgroundSize = 'cover'
-            //     mapBlock2.style.top = fila * BLOCK_SIZE + 'px'
-            //     mapBlock2.style.left = (columna * BLOCK_SIZE) + 'px'
-            //     mapBlock2.style.width =  BLOCK_SIZE + 'px'
-            //     mapBlock2.style.height = BLOCK_SIZE + 'px'
-            //     mapBlock2.style.position = 'absolute'
-            //     colisionables.push(mapBlock2)
-
-
-            // } else if (map[fila][columna] === 4) {
-            //     const mapBlock3 = document.createElement('div')
-
-
-            //     document.querySelector('.bloques').appendChild(mapBlock3)
-            //     mapBlock3.classList.add('fila3')
-            //     mapBlock3.style.backgroundImage = 'url(../img/bloque.png)'
-            //     mapBlock3.style.backgroundSize = 'cover'
-            //     mapBlock3.style.top = fila * BLOCK_SIZE + 'px'
-            //     mapBlock3.style.left = (columna * BLOCK_SIZE) + 'px'
-            //     mapBlock3.style.width =  BLOCK_SIZE + 'px'
-            //     mapBlock3.style.height = BLOCK_SIZE + 'px'
-            //     mapBlock3.style.position = 'absolute'
-            //     colisionables.push(mapBlock3)
-
-
-            // } else if (map[fila][columna] === 5) {
-            //     const mapBlock4 = document.createElement('div')
-
-
-            //     document.querySelector('.bloques').appendChild(mapBlock4)
-            //     mapBlock4.classList.add('fila4')
-            //     mapBlock4.style.backgroundImage = 'url(../img/bloque.png)'
-            //     mapBlock4.style.backgroundSize = 'cover'
-            //     mapBlock4.style.top = fila * BLOCK_SIZE + 'px'
-            //     mapBlock4.style.left = (columna * BLOCK_SIZE) + 'px'
-            //     mapBlock4.style.width =  BLOCK_SIZE + 'px'
-            //     mapBlock4.style.height = BLOCK_SIZE + 'px'
-            //     mapBlock4.style.position = 'absolute'
-            //     colisionables.push(mapBlock4)            
-            // } else if (map[fila][columna] === 6) {
-            //     const mapBlock5 = document.createElement('div')
-
-
-            //     document.querySelector('.bloquesPadre').appendChild(mapBlock5)
-            //     mapBlock5.classList.add('filaPadre')
-            //     // mapBlock5.style.backgroundImage = 'url(../img/block2.png)'
-            //     mapBlock5.style.backgroundColor = 'red'
-            //     mapBlock5.style.backgroundSize = 'cover'
-            //     mapBlock5.style.top = fila * BLOCK_SIZE + 'px'
-            //     mapBlock5.style.left = (columna * BLOCK_SIZE) + 'px'
-            //     mapBlock5.style.width =  BLOCK_SIZE + 'px'
-            //     mapBlock5.style.height = BLOCK_SIZE + 'px'
-            //     mapBlock5.style.position = 'absolute'
-            //     colisionables.push(mapBlock5)  
-            // }
-            // else if ( map[fila][columna] === 9) {
-            //     const mapBlock9 = document.createElement('div')
-
-
-            //     document.querySelector('.bloquesPadre').appendChild(mapBlock9)
-            //     mapBlock9.classList.add('filaPadre')
-            //     // mapBlock5.style.backgroundImage = 'url(../img/block2.png)'
-            //     mapBlock9.style.backgroundColor = 'red'
-            //     mapBlock9.style.backgroundSize = 'cover'
-            //     mapBlock9.style.top = fila * BLOCK_SIZE + 'px'
-            //     mapBlock9.style.left = (columna * BLOCK_SIZE) + 'px'
-            //     mapBlock9.style.width =  BLOCK_SIZE + 'px'
-            //     mapBlock9.style.height = BLOCK_SIZE + 'px'
-            //     mapBlock9.style.position = 'absolute'
-            //     final_del_mapa = mapBlock9
-            // }
         }
     }
 }
+/** Función que contiene una condicion del personaje colisionando con diferentes objetos, como el barril, las filas del mapa, y las condiciones de salto y agacharse, junto con la condición de muerte. */
 function checkColisionBetweenCharacterHeadAndBlockBottom()
 {
     let index = 0
     let indexFila1 = 0
     while (index < colisionables.length) {
-        /** CONDICION PERSONAJE */
         if (
         (positionY + character.offsetHeight) <= (colisionables[index].offsetTop)
         && (positionY + character.offsetHeight + velocityY) >= (colisionables[index].offsetTop)
@@ -582,7 +437,6 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                     personajeTocandoElSueloFoto = 0
                     velocityY = - PLAYER_VELOCITYJUMP
                     audioJump.play()
-                    // jumpSound.play()
                     if (imgUp === 1 ) {
                         character.setAttribute('src', 'img/char_jump.png')
                     }
@@ -593,12 +447,24 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                         imgUp = 0
                         imgCrouch = 1
                     }, 540);
+                    // if (abarril[numberOfBarrels] != null) {
+                    //     for (let index2 = 0; index2 <= numberOfBarrels; index2++) {
+                    //         if ((positionY + character.offsetHeight) >= (abarril[index2].y) &&
+                    //             (positionY) <= (abarril[index2].y + abarril[index2].container.offsetHeight) &&
+                    //             (positionX + container.offsetWidth) >= (abarril[index2].x) &&
+                    //             (positionX) <= (abarril[index2].x + abarril[index2].container.offsetWidth)
+                    //         ) 
+                    //         {  
+                    //             console.log('aplastado');
+                    //             velocityY = - PLAYER_VELOCITYJUMP                      
+                    //         }
+                    //     }
+                    // }
                     /** Colision con el techo quitada por el momento */
                     // if ((positionY + container.offsetHeight) <= app.offsetTop) {
                     //     velocityY += (PLAYER_VELOCITYJUMP/2)
                     // }
             }
-         
             if (keyDownPressed) {
                 if (imgCrouch === 1) {
                     character.setAttribute('src', 'img/char_agachado.png')
@@ -612,13 +478,17 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                 velocityX = 0
             }
         }
+        // Colision del personaje con un barril 
+        //  (positionY + character.offsetHeight) >= (abarril[index2].y) &&
         for (let index2 = 0; index2 <= numberOfBarrels; index2++) {
             if (abarril[numberOfBarrels] != null) {
-                if  ( (positionY + character.offsetHeight) >= (abarril[index2].y + abarril[index2].container.offsetHeight)
-                    && (positionY + character.offsetHeight + velocityY) >= (abarril[index2].y + abarril[index2].container.offsetHeight + abarril[index2].vY)
-                    && (positionX + container.offsetWidth) >= (abarril[index2].x + abarril[index2].container.offsetWidth) 
-                    && (positionX + container.offsetWidth) <= (abarril[index2].x)
-                    ) {
+                if (
+                    // + character.offsetHeight
+                    (positionY + character.offsetHeight) >= (abarril[index2].y) &&
+                    (positionY) <= (abarril[index2].y + abarril[index2].container.offsetHeight) &&
+                    (positionX + container.offsetWidth) >= (abarril[index2].x) &&
+                    (positionX) <= (abarril[index2].x + abarril[index2].container.offsetWidth)
+                ) {
                     // Barril colisionado
                     abarril[index2].vY = 0
                     if (player_life > 0) {
@@ -628,7 +498,7 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                         velocityY -= 5
                         abarril[index2].x = 0
                         abarril[index2].y = 0
-                        arrayBarrilChocadoParedDerecha[index2] = false
+                        abarril[index2].barrelColisionRight = false
                     }
                     if (player_life <= 0) {
                         muerto = true
@@ -637,10 +507,28 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                     if (muerto) {
                         audioFall.play()
                         audioBackground.pause()  
-                        // return
                     }
-                }
-        }  
+                } 
+                // else if (
+                //     (positionY + character.offsetHeight) >= (abarril[index2].y) &&
+                //     (positionY) <= (abarril[index2].y + abarril[index2].container.offsetHeight) &&
+                //     (positionX + container.offsetWidth) >= (abarril[index2].x) &&
+                //     (positionX) <= (abarril[index2].x + abarril[index2].container.offsetWidth)
+                // ) {
+                //     velocityY = - PLAYER_VELOCITYJUMP
+                // }
+                // else if (
+                //     (positionY + character.offsetHeight) >= (abarril[index2].y) &&
+                //     (positionY) <= (abarril[index2].y + abarril[index2].container.offsetHeight) &&
+                //     (positionX + container.offsetWidth) >= (abarril[index2].x) &&
+                //     (positionX) <= (abarril[index2].x + abarril[index2].container.offsetWidth)
+                // ) 
+                // {  
+                //     console.log('aplastado');
+                //     velocityY = - PLAYER_VELOCITYJUMP                      
+                // }
+                  
+            } 
         }
         
         // while (indexFila1 < colisionables.length) {
@@ -684,41 +572,38 @@ function checkBarrelColision()
                         abarril[index].y = 0
                        
                     }
-                    
-                if (
-                    (abarril[index].y + abarril[index].container.offsetHeight) <= (positionY + character.offsetHeight)
-                    && (abarril[index].y + abarril[index].container.offsetHeight + abarril[index].vY) >= (positionY + character.offsetHeight + velocityY)
-                    && (abarril[index].x + abarril[index].container.offsetWidth) >= (container.offsetLeft)
-                    && (abarril[index].x) <= (container.offsetLeft + container.offsetWidth)  
-                    ) {
-                    // Barril colisionado
-                    abarril[index].vY = 0
-                    if (player_life > 0) {
+/** COLISION DE QUE EL BARRIL TE TOQUE A TI, QUITADO DE MOMENTO, PORQUE CON EL DEL PERSONAJE ME SIRVE */
+                // if (
+                //     (abarril[index].y + abarril[index].container.offsetHeight) <= (positionY + character.offsetHeight)
+                //     && (abarril[index].y + abarril[index].container.offsetHeight + abarril[index].vY) >= (positionY + character.offsetHeight + velocityY)
+                //     && (abarril[index].x + abarril[index].container.offsetWidth) >= (container.offsetLeft)
+                //     && (abarril[index].x) <= (container.offsetLeft + container.offsetWidth)  
+                //     ) {
+                //     // Barril colisionado
+                //     abarril[index].vY = 0
+                //     if (player_life > 0) {
                        
-                        player_life -= 1
-                        colisionEfect_betweenCharacter_and_barrel()
-                        velocityY -= 5
-                        abarril[index].x = 0
-                        abarril[index].y = 0
-                        arrayBarrilChocadoParedDerecha[index] = false
-                    }
-                    if (player_life <= 0) {
-                        muerto = true
-                        character.setAttribute('src', 'img/char_death.png')
-                    }
-                    if (muerto) {
-                        audioFall.play()
-                        audioBackground.pause()  
-                        // return
-                    }
-                }
+                //         player_life -= 1
+                //         colisionEfect_betweenCharacter_and_barrel()
+                //         velocityY -= 5
+                //         abarril[index].x = 0
+                //         abarril[index].y = 0
+                //         abarril[index].barrelColisionRight = false
+                //     }
+                //     if (player_life <= 0) {
+                //         muerto = true
+                //         character.setAttribute('src', 'img/char_death.png')
+                //     }
+                //     if (muerto) {
+                //         audioFall.play()
+                //         audioBackground.pause()  
+                //         // return
+                //     }
+                // }
             }
             indexBarrel++  
-
-
         }
     }
-   
 }
 function colisionEfect_betweenCharacter_and_barrel() {
     if (velocityY <= -5) {
@@ -732,27 +617,27 @@ function colisionEfect_betweenCharacter_and_barrel() {
         return
     }
 }
-function checkCloisionBetweenCharacterAndFile1()
-{
-    let indexFila1 = 0
- while (indexFila1 < colisionablesFila1.length) {
-    const POSIY_AND_HEIGHT = positionY + character.offsetHeight
-    const POSIY_AND_HEIGHT_AND_VELOCITYY = positionY + character.offsetHeight + velocityY
-    const POSIX_AND_WIDTH = positionX + container.offsetWidth
-    const COLISION_INDEX_TOP = colisionablesFila1[indexFila1].offsetTop
-    const COLISION_INDEX_LEFT = colisionablesFila1[indexFila1].offsetLeft
-    const COLISION_INDEX_WIDTH = colisionablesFila1[indexFila1].offsetWidth
-    if (
-        (POSIY_AND_HEIGHT) <= (COLISION_INDEX_TOP)
-        && (POSIY_AND_HEIGHT_AND_VELOCITYY) >= (COLISION_INDEX_TOP)
-        && (POSIX_AND_WIDTH) >= (COLISION_INDEX_LEFT)
-        && (positionX) <= (COLISION_INDEX_LEFT + COLISION_INDEX_WIDTH )  
-        ) {
-            velocityY = 0
-        }
-        indexFila1++
-    }
-}
+// function checkCloisionBetweenCharacterAndFile1()
+// {
+//     let indexFila1 = 0
+//  while (indexFila1 < colisionablesFila1.length) {
+//     const POSIY_AND_HEIGHT = positionY + character.offsetHeight
+//     const POSIY_AND_HEIGHT_AND_VELOCITYY = positionY + character.offsetHeight + velocityY
+//     const POSIX_AND_WIDTH = positionX + container.offsetWidth
+//     const COLISION_INDEX_TOP = colisionablesFila1[indexFila1].offsetTop
+//     const COLISION_INDEX_LEFT = colisionablesFila1[indexFila1].offsetLeft
+//     const COLISION_INDEX_WIDTH = colisionablesFila1[indexFila1].offsetWidth
+//     if (
+//         (POSIY_AND_HEIGHT) <= (COLISION_INDEX_TOP)
+//         && (POSIY_AND_HEIGHT_AND_VELOCITYY) >= (COLISION_INDEX_TOP)
+//         && (POSIX_AND_WIDTH) >= (COLISION_INDEX_LEFT)
+//         && (positionX) <= (COLISION_INDEX_LEFT + COLISION_INDEX_WIDTH )  
+//         ) {
+//             velocityY = 0
+//         }
+//         indexFila1++
+//     }
+// }
 
 
 
