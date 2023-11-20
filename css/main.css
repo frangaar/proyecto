@@ -150,8 +150,12 @@ form {
     text-align: right;
 }
 
-#login button[name="login"],#registro button[name="registro"]{
-    margin: auto;
+#login .modal-header,#registro .modal-header{
+    background-color: #6495ED;
+}
+
+#login .modal-header .modal-title,#registro .modal-header .modal-title{
+    color: white;
 }
 
 .landing-page #login .logo{
