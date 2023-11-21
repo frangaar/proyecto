@@ -4,15 +4,15 @@ var divButton = document.getElementById('buttonContinue')
 // let fileBackgroundTheme = backgroundTheme.getAttribute('src')   
 // var audioBackground = new Audio(fileBackgroundTheme)
 function buttonAccept() {
-    var app = document.getElementById('app')              
+    var level1_Map = document.getElementById('level1')              
     /** Cuando empieza el juego */
-    app.style.display= 'block'
+    level1_Map.style.display= 'block'
     pause = false
     audioBackground.play()
     // body.style.backgroundImage = 'url(../img/fondo.jpg)'
     botonAceptar.style.display = 'none'
     divButton.style.display = 'none'
-    app.style.filter = 'blur(0px)'
+    level1_Map.style.filter = 'blur(0px)'
 }   
 function buttonDeath() {
     window.location.href = '../index.html'

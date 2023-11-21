@@ -2,13 +2,17 @@ let body = document.getElementById('body')
 const BLOCK_SIZE = 36
 const PLAYER_WIDTH = 31
 const PLAYER_HEIGHT = 26
-const PLAYER_VELOCITYJUMP = 8.3
-const NUM_OF_BARRELS = 5
-// 1.8
-let player_velocity = 3
+const PLAYER_VELOCITYJUMP = 8.3 
+const NUM_OF_BARRELS = 8
+// 2.9
+let enemyVelocity = 2.3
+let player_velocity = 2.9
 let player_life = 1
+//5
 let barrel_velocity = 5
 let final_del_mapa
+let final_nivel_1
+let final_nivel_2   
 let colisionado = false
 let play = false
 let index_counting_barrels = 0
@@ -19,7 +23,7 @@ let button_Death = document.getElementById('buttonAceptar_Death')
 let menu_death = document.getElementById('deathMenu')
 let title = document.getElementById('title')
 let character = document.getElementById('character')
-var app = document.getElementById('app')
+var level1_Map = document.getElementById('level1')
 let container = document.getElementById('character-Container')
 let enemy = document.getElementById('donkeyKongCharacter')
 let enemyContainer = document.getElementById('kongContainer')
@@ -44,19 +48,22 @@ let imgStand = 0
 let personajeTocandoElSueloFoto = 0
 let muerto = false
 let muertSalto = false
+let level_1_finished = false
+let level_2_finished = false
 
 // Background size y width y animar el fondo.
-app.style.width = BLOCK_SIZE * PLAYER_WIDTH + 'px'
-app.style.height = (BLOCK_SIZE * PLAYER_HEIGHT) + 'px'
-app.style.backgroundImage = 'url(../img/image.jpg)'
-app.style.backgroundSize = 'cover'
+level1_Map.style.width = BLOCK_SIZE * PLAYER_WIDTH + 'px'
+level1_Map.style.height = (BLOCK_SIZE * PLAYER_HEIGHT) + 'px'
+level1_Map.style.backgroundImage = 'url(../img/image.jpg)'
+level1_Map.style.backgroundSize = 'cover'
 // Create enemy and barrel size.
 enemy.style.width = '160px'
 enemyContainer.style.left = '65px'
-enemyContainer.style.top = '18px'
+enemyContainer.style.bottom = '790px'
 const colisionables = []
-const colisionablesFila1 = []
+const colisionFinalNivel1 = []
 const abarril = []
+let enemyPositionX = 65
 // Mostrar mapeado en pantalla con doble for.
 drawMap()
 
@@ -77,6 +84,9 @@ const elementosFila2 = document.querySelectorAll('.fila2');
 function draw () {
     container.style.left = positionX + 'px'
     container.style.top = positionY + 'px'
+    if (level_1_finished) {
+        enemyContainer.style.left = enemyPositionX + 'px'
+    }
     if (abarril[numberOfBarrels] != null) {
         for (let index = 0; index < numberOfBarrels; index++) {
             abarril[index].container.style.left = abarril[index].x + 'px'
@@ -86,10 +96,9 @@ function draw () {
 }
 // Loop de update para la gravedad y todo el movimiento.
 function update (){
-    if (!pause) {
-        
+    draw()
+    if (!pause && !level_1_finished) {
         // play = true
-        draw()
         positionY += velocityY
         positionX += velocityX
         if (abarril[numberOfBarrels]!= null) {
@@ -100,11 +109,11 @@ function update (){
         }    
         if (abarril[numberOfBarrels] != null) {
             for (let index = 0; index <= numberOfBarrels; index++) {
-                if (abarril[index].y + abarril[index].container.offsetWidth + abarril[index].vY <= app.offsetHeight) {
+                if (abarril[index].y + abarril[index].container.offsetWidth + abarril[index].vY <= level1_Map.offsetHeight) {
                     abarril[index].vY += gravity
                 } else abarril[index].vY = 0
                     if (!abarril[index].barrelColisionRight) {
-                    if (abarril[index].x + abarril[index].container.offsetWidth + abarril[index].vX < app.offsetWidth) {
+                    if (abarril[index].x + abarril[index].container.offsetWidth + abarril[index].vX < level1_Map.offsetWidth) {
                         abarril[index].vX = barrel_velocity
                         // barrilesContainerArray[index].style.transform = 'scaleX(1)'
                     } else {abarril[index].vX = 0 ; abarril[index].barrelColisionRight = true;}
@@ -118,7 +127,7 @@ function update (){
         }
         if (!muerto && !colisionado) {
             // Condicional de que si la Y del objeto más su altura y la velocidad de la Y no superan la altura del canvas, tiene efecto la gravedad, de lo contrario significa que ha llegado al límite del canvas o ha tocado el suelo, en ese caso restablece la velocidad a 0 para que deje de caer.
-            if (positionY + container.offsetWidth + velocityY <= app.offsetHeight) {
+            if (positionY + container.offsetWidth + velocityY <= level1_Map.offsetHeight) {
                 velocityY += gravity
             } else {velocityY = 0;  }
             //Condicional para pared derecha y  pared izquierda
@@ -146,7 +155,7 @@ function update (){
                 imgUp = 1
                 imgCrouch = 1
    
-                if (positionX + container.offsetWidth + velocityX < app.offsetWidth) {
+                if (positionX + container.offsetWidth + velocityX < level1_Map.offsetWidth) {
                     velocityX = player_velocity
                     character.style.transform = 'scaleX(1)'
                 } else velocityX = 0
@@ -164,6 +173,7 @@ function update (){
        
             // Condicional para que solo puedas saltar cuando hayas tocado el suelo
             checkColisionBetweenCharacterHeadAndBlockBottom()
+            finishLevel1()
             // checkCloisionBetweenCharacterAndFile1()
         } else {
             audioBackground.pause()
@@ -180,12 +190,28 @@ function update (){
             button_Death.style.display = 'block'
             menu_death.style.display = 'grid'
             menu_death.style.backgroundColor = 'transparent'
-            app.style.filter = 'blur(2px)'
+            level1_Map.style.filter = 'blur(2px)'
         }
         checkBarrelColision()
+    } 
+    if (level_1_finished) {
+        audioEnemy.play()
+        audioBackground.pause()
+        character.setAttribute('src', 'img/char_stand.png')
+        imgLeft = 1
+        imgRight = 1
+        imgStand = 1
+        imgUp = 1
+        imgCrouch = 1
+        setTimeout(() => {
+            if (enemyPositionX > 0) {
+                enemyPositionX -=  enemyVelocity
+            } else {
+                enemyPositionX = 0
+                enemyContainer.style.display = 'none'
+            } 
+        }, 2000);
     }
-
-
 }
 function animate (){
     requestAnimationFrame(animate)
@@ -215,7 +241,7 @@ window.setInterval(function(){
             }
         index_counting_barrels++
     }
-  },3000);
+  },2000);
 /** Funcion para generar un nombre de la clase del barril con un prefijo numérico. */
 function generarNombreConNumero(prefijo, numero) {
     return `${prefijo}${numero}`;
@@ -242,7 +268,7 @@ addEventListener('keydown', (event) => {
                 botonAceptar.style.display = 'block'
                 divButton.style.display = 'grid'
                 divButton.style.backgroundColor = 'transparent'
-                app.style.filter = 'blur(2px)'
+                level1_Map.style.filter = 'blur(2px)'
                 title.innerHTML = 'Pause Mode'
                 pause = true
             } else {
@@ -275,11 +301,11 @@ function drawMap()
 {
 // const map  = [
     const map  = [
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -389,17 +415,19 @@ function drawMap()
                 colisionables.push(mapBlock1)
 
             } else if (map[fila][columna] === 3) {
-                const mapBlock1 = document.createElement('div')
+                const mapBlock3 = document.createElement('div')
 
-                document.querySelector('.fila2').appendChild(mapBlock1)
-                mapBlock1.classList.add('fila22')
-                mapBlock1.style.backgroundColor = 'black'
-                mapBlock1.style.top = fila * BLOCK_SIZE + 'px'
-                mapBlock1.style.left = (columna * BLOCK_SIZE) + 'px'
-                mapBlock1.style.width =  38 + 'px'
-                mapBlock1.style.height = 30 + 'px'
-                mapBlock1.style.position = 'absolute'
-                colisionables.push(mapBlock1)
+                document.querySelector('.fila1').appendChild(mapBlock3)
+                mapBlock3.style.backgroundImage = 'url(../img/wood_plataform.png)'
+                mapBlock3.style.backgroundSize = 'cover'
+                mapBlock3.style.top = fila * BLOCK_SIZE + 'px'
+                mapBlock3.style.left = (columna * BLOCK_SIZE) + 'px'
+                mapBlock3.style.width =  38 + 'px'
+                mapBlock3.style.height = 37 + 'px'
+                mapBlock3.style.position = 'absolute'
+                colisionFinalNivel1.push(mapBlock3)
+                colisionables.push(mapBlock3)
+                // colisionables.push(mapBlock3)
 
             }  else if (map[fila][columna] === 9) {
                 const mapBlock9 = document.createElement('div')
@@ -431,39 +459,46 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
         && (positionX + container.offsetWidth) >= (colisionables[index].offsetLeft)
         && (positionX) <= (colisionables[index].offsetLeft + colisionables[index].offsetWidth)  
         ) {
-            // Personaje colisionado
-            velocityY = 0
-            if (keyUpPressed) {
-                    personajeTocandoElSueloFoto = 0
-                    velocityY = - PLAYER_VELOCITYJUMP
-                    audioJump.play()
-                    if (imgUp === 1 ) {
-                        character.setAttribute('src', 'img/char_jump.png')
-                    }
-                    setTimeout(() => {
-                        imgLeft = 1
-                        imgRight = 1
-                        imgStand = 1
-                        imgUp = 0
-                        imgCrouch = 1
-                    }, 540);
-                    // if (abarril[numberOfBarrels] != null) {
-                    //     for (let index2 = 0; index2 <= numberOfBarrels; index2++) {
-                    //         if ((positionY + character.offsetHeight) >= (abarril[index2].y) &&
-                    //             (positionY) <= (abarril[index2].y + abarril[index2].container.offsetHeight) &&
-                    //             (positionX + container.offsetWidth) >= (abarril[index2].x) &&
-                    //             (positionX) <= (abarril[index2].x + abarril[index2].container.offsetWidth)
-                    //         ) 
-                    //         {  
-                    //             console.log('aplastado');
-                    //             velocityY = - PLAYER_VELOCITYJUMP                      
-                    //         }
-                    //     }
-                    // }
-                    /** Colision con el techo quitada por el momento */
-                    // if ((positionY + container.offsetHeight) <= app.offsetTop) {
-                    //     velocityY += (PLAYER_VELOCITYJUMP/2)
-                    // }
+        // Personaje colisionado
+        velocityY = 0
+        if (keyUpPressed) {
+                personajeTocandoElSueloFoto = 0
+                velocityY = - PLAYER_VELOCITYJUMP
+                audioJump.play()
+                if (imgUp === 1 ) {
+                    character.setAttribute('src', 'img/char_jump.png')
+                }
+                setTimeout(() => {
+                    imgLeft = 1
+                    imgRight = 1
+                    imgStand = 1
+                    imgUp = 0
+                    imgCrouch = 1
+                }, 540);
+                // if (abarril[numberOfBarrels] != null) {
+                //     for (let index2 = 0; index2 <= numberOfBarrels; index2++) {
+                //         if ((positionY + character.offsetHeight) >= (abarril[index2].y) &&
+                //             (positionY) <= (abarril[index2].y + abarril[index2].container.offsetHeight) &&
+                //             (positionX + container.offsetWidth) >= (abarril[index2].x) &&
+                //             (positionX) <= (abarril[index2].x + abarril[index2].container.offsetWidth)
+                //         ) 
+                //         {  
+                //             console.log('aplastado');
+                //             velocityY = - PLAYER_VELOCITYJUMP                      
+                //         }
+                //     }
+                // }
+                /** Colision con el techo quitada por el momento */
+                // if ((positionY + container.offsetHeight) <= app.offsetTop) {
+                //     velocityY += (PLAYER_VELOCITYJUMP/2)
+                // }
+                if 
+                (
+                    (positionY + container.offsetHeight) <= colisionables[index].offsetTop
+                    && (positionY + character.offsetHeight + velocityY) >= (colisionables[index].offsetTop)
+                ) {
+                    velocityY += (PLAYER_VELOCITYJUMP/2)
+                }
             }
             if (keyDownPressed) {
                 if (imgCrouch === 1) {
@@ -476,10 +511,9 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                 imgStand = 1
                 velocityY = 0
                 velocityX = 0
-            }
+            }  
         }
         // Colision del personaje con un barril 
-        //  (positionY + character.offsetHeight) >= (abarril[index2].y) &&
         for (let index2 = 0; index2 <= numberOfBarrels; index2++) {
             if (abarril[numberOfBarrels] != null) {
                 if (
@@ -530,21 +564,34 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                   
             } 
         }
-        
-        // while (indexFila1 < colisionables.length) {
-            // if (positionY + character.offsetHeight > colisionables[indexFila1].offsetTop
-            //     && (positionY + character.offsetHeight + velocityY) < colisionables[indexFila1].offsetTop + colisionables[indexFila1].offsetHeight + (colisionables[indexFila1].offsetWidth)
-            //     && (positionX ) >= (colisionables[indexFila1].offsetLeft)
-            //     && (positionX) <= (colisionables[indexFila1].offsetLeft + colisionables[indexFila1].offsetWidth)  
-            // ) {
-            //     velocityY += (PLAYER_VELOCITYJUMP/2)
-            //     colisionCabezaSueloPlataform = true
-            // }
-            // indexFila1++
-        // }
-       // checkColisionBetweenCharacterHeadAndBlockBottom(indexFila1, indexFila2)
+     /** Condicion de cuando toque el último suelo, para que se pase el nivel */  
         index++
-    }  
+    } 
+    // COLISION CABEZA BLOQUES
+    // while (indexFila1 < colisionables.length) {
+    //     if  (positionY + character.offsetHeight >= colisionables[indexFila1].offsetTop
+    //         && (positionY + character.offsetHeight + velocityY) < colisionables[indexFila1].offsetTop + colisionables[indexFila1].offsetHeight + (colisionables[indexFila1].offsetWidth)
+    //         && (positionX + container.offsetWidth) >= (colisionables[indexFila1].offsetLeft)
+    //         && (positionX) <= (colisionables[indexFila1].offsetLeft + colisionables[indexFila1].offsetWidth)  
+    //     ) {
+    //         velocityY += (PLAYER_VELOCITYJUMP/2)
+    //         colisionCabezaSueloPlataform = true
+    //     }
+    //     indexFila1++
+    // }
+
+}
+function finishLevel1() {
+    let index = 0
+    while (index < colisionFinalNivel1.length) {
+        if ((positionY) <= (colisionFinalNivel1[index].offsetTop)
+        && (positionX + container.offsetWidth + velocityX) >= (colisionFinalNivel1[index].offsetLeft)
+        && (positionX) <= (colisionFinalNivel1[index].offsetLeft + colisionFinalNivel1[index].offsetWidth)  
+            ){
+                level_1_finished = true
+            }
+        index++
+    }
 }
 function checkBarrelColision()
 {
@@ -617,27 +664,6 @@ function colisionEfect_betweenCharacter_and_barrel() {
         return
     }
 }
-// function checkCloisionBetweenCharacterAndFile1()
-// {
-//     let indexFila1 = 0
-//  while (indexFila1 < colisionablesFila1.length) {
-//     const POSIY_AND_HEIGHT = positionY + character.offsetHeight
-//     const POSIY_AND_HEIGHT_AND_VELOCITYY = positionY + character.offsetHeight + velocityY
-//     const POSIX_AND_WIDTH = positionX + container.offsetWidth
-//     const COLISION_INDEX_TOP = colisionablesFila1[indexFila1].offsetTop
-//     const COLISION_INDEX_LEFT = colisionablesFila1[indexFila1].offsetLeft
-//     const COLISION_INDEX_WIDTH = colisionablesFila1[indexFila1].offsetWidth
-//     if (
-//         (POSIY_AND_HEIGHT) <= (COLISION_INDEX_TOP)
-//         && (POSIY_AND_HEIGHT_AND_VELOCITYY) >= (COLISION_INDEX_TOP)
-//         && (POSIX_AND_WIDTH) >= (COLISION_INDEX_LEFT)
-//         && (positionX) <= (COLISION_INDEX_LEFT + COLISION_INDEX_WIDTH )  
-//         ) {
-//             velocityY = 0
-//         }
-//         indexFila1++
-//     }
-// }
 
 
 
