@@ -287,12 +287,12 @@ body .landing-page{
 }
 
 .bocadillo-cuadrado p{
-    font-size: 11px;
+    font-size: 13px;
     padding: 5px;
     /* padding-top: 25px; */
     display: -webkit-box;
     max-width: 220px;
-    -webkit-line-clamp: 8;
+    -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
     overflow: hidden;
     height: 140px;
@@ -320,7 +320,17 @@ div.text {
     top: -24%;
     left: 49%;
     z-index: 1000;
+    background-color: #ee5627;
+    color: white;
 }
+
+#bocadillo-cuadrado2:before{
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-top-color: #ee5627
+}
+
 #bocadillo-cuadrado3{
     top: -13%;
     left: 37%;
@@ -358,6 +368,7 @@ button.audio-close{
     position: absolute;
     right: 0;
     font-size: 9px;
+    opacity: 1;
 }
 
 
@@ -409,6 +420,21 @@ button.audio-close{
 
 .games-section, .developers-section{
     padding-top: 40px;
+}
+
+.games-section h5.card-title{
+    font-weight: 800;
+}
+
+.games-section .card img{
+    height: 257px;
+}
+
+.games-section .card span.email,.games-section .card span.nombre,
+.developers-section .card span.email,.developers-section .card span.nombre{
+    font-weight: 800;
+    font-family: 'VT323', monospace !important;
+    font-size: 17px;
 }
 
 .developers-section{

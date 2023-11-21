@@ -7,6 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/fontawesome/css/all.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/botones.css">
     <script src="js/landing.js"></script>
@@ -51,7 +52,7 @@
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
                           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                          <p class="card-text"><small class="text-body-secondary">Desarrollador: </small></p>
+                          <p class="card-text">Desarrollador: <span class="nombre"></span></p>
                         </div>
                       </div>
                     </div>
@@ -60,9 +61,10 @@
                         <img src="img/escenarios/india_portada.png" class="card-img-top" id="india_static" alt="">
                         <img src="img/landing_gifs/india.gif" class="card-img-top" id="india_gif" alt="">
                         <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                          <p class="card-text"><small class="text-body-secondary">Desarrollador: </small></p>
+                          <h5 class="card-title">Luz Sostenible</h5>
+                          <p class="card-text">Imaginad un desafío increíble en "Luz Sostenible". Vuestra misión: iluminar nuestro colegio con energía renovable. Pero esperad, ¡hay tres piezas por 
+                                                descubrir! Preparaos para enfrentaros a desafíos matemáticos, resolver rompecabezas y hasta descifrar preguntas sobre las vacas en la India.</p>
+                          <p class="card-text">Desarrollador: <span class="nombre">Fran García Arroyo</span></p>
                         </div>
                       </div>
                     </div>
@@ -72,7 +74,7 @@
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
                           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                          <p class="card-text"><small class="text-body-secondary">Desarrollador: </small></p>
+                          <p class="card-text">Desarrollador: <span class="nombre"></span></p>
                         </div>
                       </div>
                     </div>
@@ -82,7 +84,7 @@
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
                           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                          <p class="card-text"><small class="text-body-secondary">Desarrollador: </small></p>
+                          <p class="card-text">Desarrollador: <span class="nombre"></span></p>
                         </div>
                       </div>
                     </div>
@@ -92,7 +94,7 @@
                           <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                            <p class="card-text"><small class="text-body-secondary">Desarrollador: </small></p>
+                            <p class="card-text">Desarrollador: <span class="nombre"></span></p>
                           </div>
                         </div>
                     </div>
@@ -111,7 +113,8 @@
                                 <div class="col col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">David Neriz Bonet</h5>
-                                    <p class="card-text">Email: </p>
+                                    <p class="card-text">Email: <span class="email"></span></p>
+                                    <p class="card-text"><a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a></p>
                                 </div>
                                 </div>
                             </div>
@@ -126,7 +129,8 @@
                                 <div class="col col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">Fran García Arroyo</h5>
-                                    <p class="card-text">Email: fgarciaa2223@politecnics.barcelona</p>
+                                    <p class="card-text">Email: <span class="email">fgarciaa2223@politecnics.barcelona</span></p>
+                                    <p class="card-text"><a href="https://www.linkedin.com/in/francisco-garcia-arroyo-a4b763a4" target="_blank"><i class="fa-brands fa-linkedin"></i></a></p>
                                 </div>
                                 </div>
                             </div>
@@ -141,7 +145,8 @@
                                 <div class="col col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">JiaJie Chen</h5>
-                                    <p class="card-text">Email: </p>
+                                    <p class="card-text">Email: <span class="email"></span></p>
+                                    <p class="card-text"><a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a></p>
                                 </div>
                                 </div>
                             </div>
@@ -156,7 +161,8 @@
                                 <div class="col col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">Javier Diaz Neira</h5>
-                                    <p class="card-text">Email: </p>
+                                    <p class="card-text">Email: <span class="email"></span></p>
+                                    <p class="card-text"><a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a></p>
                                 </div>
                                 </div>
                             </div>
@@ -171,7 +177,8 @@
                                 <div class="col col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">Marc Pons Cabrera</h5>
-                                    <p class="card-text">Email: </p>
+                                    <p class="card-text">Email: <span class="email"></span></p>
+                                    <p class="card-text"><a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a></p>
                                 </div>
                                 </div>
                             </div>

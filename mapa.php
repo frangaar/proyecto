@@ -50,11 +50,11 @@
             <div class="bocadillo-cuadrado" id="bocadillo-cuadrado2">
                 <button type="button" id="audio-close2" class="btn-close audio-close"></button>
                 <div class="text">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. Mapmet, consectetur adipiscing elit. Map</p>
+                <p><span>Bienvenid@s a la India!!.</span><br>Imaginad un desafío increíble en "Luz Sostenible". Vuestra misión: iluminar nuestro colegio con energía renovable. Pero esperad, ¡hay tres piezas por descubrir! Preparaos para enfrentaros a desafíos matemáticos, resolver rompecabezas y hasta descifrar preguntas sobre las vacas en la India.</p>
                 </div>
                 <button type="button" class="audio btn btn-primary" id="audio2" class="btn btn-primary"></button>
             </div>
-            <img src="img/punto.png" data-audio="audio/india.mp3" id="nivel2" class="nivel" name="india" data-status="noCompletado" data-jugable="false">
+            <img src="img/punto.png" data-audio="audio/india_mapa.mp3" id="nivel2" class="nivel" name="india" data-status="noCompletado" data-jugable="false">
             <img src="img/personajes/alisha.png" id="alisha" class="personaje" name="alisha">
             <div class="bocadillo-cuadrado" id="bocadillo-cuadrado3">
                 <button type="button" id="audio-close3" class="btn-close audio-close"></button>
