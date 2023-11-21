@@ -6,6 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/botones.css">
     <script src="js/landing.js"></script>
@@ -120,6 +121,21 @@
                         <div class="card mb-3 h-100">
                             <div class="row g-0">
                                 <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
+                                <img src="img/desarrolladores/fran.png" class="img-fluid developers-img" alt="...">
+                                </div>
+                                <div class="col col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Fran García Arroyo</h5>
+                                    <p class="card-text">Email: fgarciaa2223@politecnics.barcelona</p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 h-100">
+                            <div class="row g-0">
+                                <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
                                 <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
                                 </div>
                                 <div class="col col-md-8">
@@ -155,21 +171,6 @@
                                 <div class="col col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">Marc Pons Cabrera</h5>
-                                    <p class="card-text">Email: </p>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card mb-3 h-100">
-                            <div class="row g-0">
-                                <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
-                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
-                                </div>
-                                <div class="col col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Fran García Arroyo</h5>
                                     <p class="card-text">Email: </p>
                                 </div>
                                 </div>

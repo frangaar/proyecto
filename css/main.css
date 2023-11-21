@@ -419,6 +419,11 @@ button.audio-close{
     color: white;
 }
 
+.developers-section .card-text{
+    font-family: 'VT323', monospace !important;
+    font-size: 17px;
+}
+
 .botones{
     background-image: url(../img/botones/boton.png);
     background-color: transparent;
