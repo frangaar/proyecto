@@ -337,7 +337,7 @@
         try {
             
             if(isset($_SESSION['params'])){
-                $sql = "select r.fecha,r.uid,u.user,r.puntuacion, r.nivel from ranking r, usuarios u where r.uid=u.id ".$_SESSION['params']." order by r.fecha asc";
+                $sql = "select r.fecha,r.uid,u.user,r.puntuacion, r.nivel from ranking r, usuarios u where r.uid=u.id ".$_SESSION['params']." order by r.puntuacion desc";
             }else{
                 $sql = "select r.fecha,r.uid,u.user,r.puntuacion, r.nivel from ranking r left join usuarios u on r.uid=u.id order by r.fecha asc";
             }
@@ -357,6 +357,31 @@
         $conn=closeDB();
 
         return $ranking;
+    }
+
+    function obtenerAnyos(){
+
+        $conn=openDB();
+
+        try {
+            
+            $sql = "select distinct fecha from ranking order by fecha asc";
+            
+            $selectAll = $conn->prepare($sql);
+            $selectAll->execute();
+
+            $anyos = $selectAll->fetchAll();
+
+
+        }catch (Exception $e) {
+        
+            $_SESSION['error'] =  $e->errorInfo[1] . ' - ' . $e->errorInfo[2];
+        }
+        
+
+        $conn=closeDB();
+
+        return $anyos;
     }
 
 ?>

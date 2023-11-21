@@ -14,13 +14,15 @@
     <title>Document</title>
 </head>
 <?php
-    session_start();    
+    session_start();
     unset($_SESSION['id']);
 ?>
 <body>
     
     <div class="container landing-page">
         <div class="login-bar-section">
+            <img id="esp" class="idiomas" src="img/idiomas/esp.png">
+            <img id="cat" class="idiomas" src="img/idiomas/cat.png">
             <input type="button" class="btn btn-primary cursor botones" id="btnLandingLogin" value="Login" data-bs-toggle="modal" data-bs-target="#login"></input>
             <input type="button" class="btn btn-primary cursor botones" id="btnLandingRegistro" value="Registro" data-bs-toggle="modal" data-bs-target="#registro"></input>
         </div>

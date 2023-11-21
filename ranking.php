@@ -15,6 +15,7 @@
 include_once('db.php');
 
 $ranking=obtenerRanking();
+$anyos=obtenerAnyos();
 ?>
 
 <body class="ranking">
@@ -30,9 +31,9 @@ $ranking=obtenerRanking();
                     <div class="col">
                         <select class="form-select" name="fecha" aria-label="Default select example">
                             <option selected value="">Selecciona fecha</option>
-                            <option value="2023-10-15">2023-10-15</option>
-                            <option value="2023-10-16">2023-10-16</option>
-                            <option value="2023-10-17">2023-10-17</option>
+                            <?php foreach ($anyos as $anyo){ ?>
+                            <option value="<?php echo $anyo['fecha'] ?>"><?php echo $anyo['fecha'] ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="col">

@@ -186,6 +186,7 @@ form {
 
 .login-bar-section{
     text-align: right;
+    margin-top: 5px;
 }
 
 #login .modal-header,#registro .modal-header{
@@ -457,6 +458,16 @@ button.audio-close{
     width: 100px;
     height: 33px;
     background-size: 100px;
+}
+
+.idiomas{
+    width: 30px;
+    float: left;
+    cursor: pointer;
+}
+
+#cat{
+    margin-left: 5px;
 }
 
 
