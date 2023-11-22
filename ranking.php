@@ -23,7 +23,7 @@ $anyos=obtenerAnyos();
     <div class="container">
         
         <div class="col-12 cerrar-sesion">
-            <a href="index.php"><button type="button" class="btn btn-primary">Ir a inicio</button></a>
+            <a href="index.php"><input type="button" class="btn btn-primary cursor botones" value="Ir a inicio"></input></a>
         </div>
         
             <form action="./action_page.php" method="post">
@@ -47,7 +47,7 @@ $anyos=obtenerAnyos();
                         </select>
                     </div>
                     <div class="col">
-                        <a href="ranking.php"><button name="buscarRanking" type="submit" class="btn btn-primary">Buscar</button></a>
+                        <a href="ranking.php"><input name="buscarRanking" type="submit" class="btn btn-primary cursor botones" value="Buscar"></input></a>
                     </div>
                 </div>
             </form>

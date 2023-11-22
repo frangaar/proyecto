@@ -456,8 +456,17 @@ button.audio-close{
     background-color: transparent;
     border: none;
     width: 100px;
-    height: 33px;
+    height: 39px;
     background-size: 100px;
+    color: #622F37;
+    font-weight: 900;
+    padding-bottom: 10px;
+}
+
+.botones:hover{
+    color: #622F37;
+    background-color: transparent !important;
+    border: none !important;
 }
 
 .idiomas{
