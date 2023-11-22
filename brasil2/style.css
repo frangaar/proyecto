@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-image: url(img/fondo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.text {
+    width: 80%;
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.puntuacio {
+    color: aquamarine;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+    padding-right: 50px;
+    font-size: 45px;
+}
+
+.temps {
+    color: deeppink;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+    font-size: 45px;
+}
+
+.container {
+    width: 1100px;
+    height: 820px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+}
+
+.quadrat {
+    width: 150px;
+    height: 120px;
+    margin: 20px 100px;
+    border-radius: 50%;
+    background-color: rgb(165, 85, 11);
+    box-shadow: inset 0 10px 0 7px rgb(53, 21, 6),
+        inset 0 20px 20px 15px rgba(0, 0, 0, .3),
+        0 0 5px rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.quadrat img {
+    width: 70%;
+    height: 110px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    animation: aparicio .3s ease-out;
+}
+
+@keyframes aparicio {
+    0% {
+        transform: translateX(-50%) translateY(100%);
+    }
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+.cursor {
+    height: 150px;
+    width: 150px;
+    position: fixed;
+    top: 100px;
+    left: 100px;
+    background-image: url(img/martillo.png);
+    background-size: 100% 100%;
+    transform: translate(-50%, -35%);
+    pointer-events: none;
+}
+
+.cursor.click {
+    transform: translate(-45%, -30%) rotate(55deg);
+}
