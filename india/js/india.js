@@ -726,13 +726,13 @@ document.addEventListener('DOMContentLoaded',function(){
 
         if(tienesClases != ""){
             if(direccion == "abajo"){
-                figura.src = "img/laiaDerechaCaminando.gif";
+                figura.src = "../img/laiaDerechaCaminando.gif";
             }else if(direccion == "arriba"){
-                figura.src = "img/laiaDerechaCaminando.gif";
+                figura.src = "../img/laiaDerechaCaminando.gif";
             }else if(direccion == "izquierda"){
-                figura.src = "img/laiaIzquierdaCaminando.gif";
+                figura.src = "../img/laiaIzquierdaCaminando.gif";
             }else if(direccion == "derecha"){
-                figura.src = "img/laiaDerechaCaminando.gif";
+                figura.src = "../img/laiaDerechaCaminando.gif";
             }
         }else{
             

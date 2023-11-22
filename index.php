@@ -54,7 +54,7 @@
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
                           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                          <p class="card-text">Desarrollador: <span class="nombre"></span></p>
+                          <span class="card-subtitle">Desarrollador: </span><span class="nombre"></span>
                         </div>
                       </div>
                     </div>
@@ -66,7 +66,7 @@
                           <h5 class="card-title">Luz Sostenible</h5>
                           <p class="card-text">Imaginad un desafío increíble en "Luz Sostenible". Vuestra misión: iluminar nuestro colegio con energía renovable. Pero esperad, ¡hay tres piezas por 
                                                 descubrir! Preparaos para enfrentaros a desafíos matemáticos, resolver rompecabezas y hasta descifrar preguntas sobre las vacas en la India.</p>
-                          <p class="card-text">Desarrollador: <span class="nombre">Fran García Arroyo</span></p>
+                          <span class="card-subtitle">Desarrollador: </span><span class="nombre">Fran García Arroyo</span>
                         </div>
                       </div>
                     </div>
@@ -76,7 +76,7 @@
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
                           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                          <p class="card-text">Desarrollador: <span class="nombre"></span></p>
+                          <span class="card-subtitle">Desarrollador: </span><span class="nombre"></span>
                         </div>
                       </div>
                     </div>
@@ -86,7 +86,7 @@
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
                           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                          <p class="card-text">Desarrollador: <span class="nombre"></span></p>
+                          <span class="card-subtitle">Desarrollador: </span><span class="nombre"></span>
                         </div>
                       </div>
                     </div>
@@ -96,7 +96,7 @@
                           <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                            <p class="card-text">Desarrollador: <span class="nombre"></span></p>
+                            <span class="card-subtitle">Desarrollador: </span><span class="nombre"></span>
                           </div>
                         </div>
                     </div>
@@ -115,7 +115,7 @@
                                 <div class="col col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">David Neriz Bonet</h5>
-                                    <p class="card-text">Email: <span class="email"></span></p>
+                                    <p class="card-text">Email: <span class="email">dnerizb2223@politecnics.barcelona</span></p>
                                     <p class="card-text"><a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a></p>
                                 </div>
                                 </div>
@@ -147,7 +147,7 @@
                                 <div class="col col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">JiaJie Chen</h5>
-                                    <p class="card-text">Email: <span class="email"></span></p>
+                                    <p class="card-text">Email: <span class="email">jchen2223@politecnics.barcelona</span></p>
                                     <p class="card-text"><a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a></p>
                                 </div>
                                 </div>
@@ -163,7 +163,7 @@
                                 <div class="col col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">Javier Diaz Neira</h5>
-                                    <p class="card-text">Email: <span class="email"></span></p>
+                                    <p class="card-text">Email: <span class="email">jdiazn2223@politecnics.barcelona</span></p>
                                     <p class="card-text"><a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a></p>
                                 </div>
                                 </div>
@@ -179,7 +179,7 @@
                                 <div class="col col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">Marc Pons Cabrera</h5>
-                                    <p class="card-text">Email: <span class="email"></span></p>
+                                    <p class="card-text">Email: <span class="email">mponsc2223@politecnics.barcelona</span></p>
                                     <p class="card-text"><a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a></p>
                                 </div>
                                 </div>
@@ -228,7 +228,7 @@
                                 <div class="input-group mb-3">    
                                     <label for="nombre" class="form-label">Nombre</label>
                                     <div class="col-sm-12">
-                                        <input type="text" id="nombre" class="form-control" name="user" placeholder="Escribe aquí tu usuario" aria-label="Username">
+                                        <input type="text" id="nombreLogin" class="form-control" name="user" placeholder="Escribe aquí tu usuario" aria-label="Username">
                                     </div>
                                 </div>
                                 <div class="input-group mb-3">
@@ -287,7 +287,7 @@
                                 <div class="input-group mb-3">    
                                     <label for="nombre" class="form-label">Nombre</label>
                                     <div class="col-sm-12">
-                                        <input type="text" id="nombre" class="form-control" name="user" placeholder="Escribe aquí tu usuario" aria-label="Username">
+                                        <input type="text" id="nombreRegistro" class="form-control" name="user" placeholder="Escribe aquí tu usuario" aria-label="Username">
                                     </div>
                                 </div>
                                 <div class="input-group mb-3">

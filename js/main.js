@@ -286,5 +286,4 @@ document.addEventListener('DOMContentLoaded',function(){
 
     const user = localStorage.getItem("user");
 
-    
 });

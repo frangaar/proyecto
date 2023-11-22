@@ -25,7 +25,7 @@ session_start();
     <div class="container-fluid botones-juego">
         <div class="row">
             <div class="col text-start">
-                <img id="musica" class="pausa cursor">
+                <div id="musica" class="pausa cursor"></div>
             </div>
             <div class="col text-end">
                 <button type="button" id="volver" class="btn btn-primary cursor botones">Volver</button>
@@ -42,7 +42,7 @@ session_start();
                     </span>
                 </div>
             <div class="imagen">
-                <img src="img/laia.png">
+                <img src="img/laiaDerechaParada.png">
             </div>
             <div class="items-owned">
                 <table>
