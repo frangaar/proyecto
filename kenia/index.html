@@ -31,9 +31,6 @@
             <img src="img/donkeyKong.gif" alt="" id="donkeyKongCharacter">
         </div>
         <div class="barriles">
-            <!-- <div class="barrel" id="barrelDiv">
-                <img src="img/barrel.gif" alt="" id="barrelIcon">
-            </div> -->
             <!-- Aqui crea los demás -->
         </div>    
     </div>
@@ -41,9 +38,9 @@
         <h1 class="titleMenu" id="title">Laia En Kenia</h1>
         <div class="showLaia"></div>
         <ul id="buttonAceptar">
-            <li id="playButton"><span onclick="buttonAccept()">Jugar</span></li>
-            <li id="creditButton"><span>Creditos</span></li>
-            <li id="exitButton"><span>Salir</span></li>
+            <li><span onclick="buttonAccept()" id="playButton">Jugar</span></li>
+            <li id="creditButton"><span>Controles</span></li>
+            <li id="exitButton"><span id="credits/exit">Creditos</span></li>
         </ul>
     </div>
     <div id="deathMenu">
@@ -53,6 +50,9 @@
             <li id="playButton_Death"><span onclick="buttonDeath()">Volver a Jugar</span></li>
             <li id="exitButton_Death"><span>Salir</span></li>
         </ul>
+    </div>
+    <div class="showControls">
+
     </div>
     <audio src="sound/character_Death.mp3" id="audioMarioFallin"></audio> 
     <audio src="sound/" id="audioMarioDiying"></audio>
@@ -66,7 +66,13 @@
     <script>
         document.addEventListener("keyup", function(event) {
             if (event.code === 'Enter') {
-            buttonAccept()
+                if (!character_is_dead) 
+                {
+                    buttonAccept()
+                } else 
+                {
+                    buttonDeath()
+                }
             }
         });
     </script> 
