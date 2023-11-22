@@ -42,7 +42,7 @@ session_start();
                     </span>
                 </div>
             <div class="imagen">
-                <img src="img/laia.png">
+                <img src="img/laiaDerechaParada.png">
             </div>
             <div class="items-owned">
                 <table>
