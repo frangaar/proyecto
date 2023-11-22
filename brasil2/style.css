@@ -27,15 +27,15 @@ body {
 
 .puntuacio {
     color: aquamarine;
-    font-family: 'Kdam Thmor Pro', sans-serif;
+    font-family: 'Pixelify Sans', sans-serif !important;
     padding-right: 50px;
-    font-size: 45px;
+    font-size: 50px;
 }
 
 .temps {
     color: deeppink;
-    font-family: 'Kdam Thmor Pro', sans-serif;
-    font-size: 45px;
+    font-family: 'Pixelify Sans', sans-serif !important;
+    font-size: 50px;
 }
 
 .container {

@@ -49,7 +49,7 @@ let tempsRestant = minutsInicial * 60;
 
 const temps = document.getElementById('temporitzador');
 
-setInterval(compteEnrere,1000)
+let interval = setInterval(compteEnrere,1000)
 
 
 function compteEnrere() {
@@ -61,5 +61,7 @@ function compteEnrere() {
   temps.innerHTML = `${minuts}: ${segons}`;
   tempsRestant--;
 
-
+  if (tempsRestant < 0) {
+    clearInterval(interval);
+  }
 }
