@@ -1,29 +1,32 @@
 function asomaTopos() {
-  // poner todos a display none
+  // Poner todos a display none
   for (let i = 1; i <= 9; i++) {
     const topo = document.getElementById("imatge" + i);
     topo.style.display = "none";
   }
 
-  let ultimoNum;
-  let num;
-  // genera un nuevo número hasta que sea diferente al último número
-  do {
-    num = Math.floor(Math.random() * 9) + 1;
-  } while (num === ultimoNum);
+  // Generar un número aleatorio de topos a mostrar
+  const numTopos = Math.floor(Math.random() * 3) + 1;
 
-  // almacena el número actual
-  ultimoNum = num;
+  // Mostrar los topos seleccionados
+  for (let i = 0; i < numTopos; i++) {
+    let num;
+    do {
+      // Generar un nuevo número hasta que sea diferente a los anteriores
+      num = Math.floor(Math.random() * 9) + 1;
+    } while (document.getElementById("imatge" + num).style.display === "block");
 
-  // pinta el topo en el id = num
-  const topo = document.getElementById("imatge" + num);
-  topo.style.display = "block";
+    // Pintar el topo en el id = num
+    const topo = document.getElementById("imatge" + num);
+    topo.style.display = "block";
+  }
 
+  // Llamar nuevamente a la función después de un tiempo
   setTimeout(asomaTopos, 900);
 }
 
-document.addEventListener("DOMContentLoaded", asomaTopos);
 
+document.addEventListener("DOMContentLoaded", asomaTopos);
 
 const cursor = document.querySelector(".cursor");
 
@@ -47,16 +50,15 @@ window.addEventListener("mouseup", () => {
 const minutsInicial = 1;
 let tempsRestant = minutsInicial * 60;
 
-const temps = document.getElementById('temporitzador');
+const temps = document.getElementById("temporitzador");
 
-let interval = setInterval(compteEnrere,1000)
-
+let interval = setInterval(compteEnrere, 1000);
 
 function compteEnrere() {
   const minuts = Math.floor(tempsRestant / 60);
   let segons = tempsRestant % 60;
 
-  segons = segons < 10 ? '0' + segons : segons;
+  segons = segons < 10 ? "0" + segons : segons;
 
   temps.innerHTML = `${minuts}: ${segons}`;
   tempsRestant--;
@@ -65,3 +67,19 @@ function compteEnrere() {
     clearInterval(interval);
   }
 }
+
+let puntsInicial = 0;
+
+function sumarPunts() {
+  for (let i = 1; i <= 9; i++) {
+    const topo = document.getElementById("imatge" + i);
+
+    topo.addEventListener("click", () => {
+      puntsInicial += 10; // Incrementa la puntuación en 10 unidades
+      const punts = document.getElementById("puntuacio");
+      punts.innerHTML = `${puntsInicial}`;
+    });
+  }
+}
+
+sumarPunts();
