@@ -18,7 +18,7 @@ body {
 }
 
 .text {
-    width: 80%;
+    width: 100%;
     display: flex;
     margin-top: 30px;
     justify-content: center;
@@ -65,8 +65,8 @@ body {
 }
 
 .quadrat img {
-    width: 70%;
-    height: 110px;
+    width: 80%;
+    height: 120px;
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -84,17 +84,17 @@ body {
     }
 }
 .cursor {
-    height: 150px;
-    width: 150px;
+    height: 110px;
+    width: 100px;
     position: fixed;
     top: 100px;
     left: 100px;
     background-image: url(img/martillo.png);
     background-size: 100% 100%;
-    transform: translate(-50%, -35%);
+    transform: translate(-50%, -25%);
     pointer-events: none;
 }
 
 .cursor.click {
-    transform: translate(-45%, -30%) rotate(55deg);
+    transform: translate(-45%, -30%) rotate(-55deg);
 }
