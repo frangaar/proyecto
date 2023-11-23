@@ -11,16 +11,16 @@ function buttonAccept() {
     level1_Map.style.display= 'block'
     pause = false
     audioBackground.play()
-    body.style.backgroundImage = 'url(../img/image.jpg)'
+    // body.style.backgroundImage = 'url(../img/image.jpg)'
     botonAceptar.style.display = 'none'
     divButton.style.display = 'none'
     level1_Map.style.filter = 'blur(0px)'
 }   
 function buttonDeath() {
-    window.location.href = '../index.html'
+    window.location.href = '../kenia/index.html'
 }
 function pausePulsed() {
-    character.setAttribute('src', 'img/char_stand.png')
+    character.setAttribute('src', '../kenia/img/char_stand.png')
     imgLeft = 1
     imgRight = 1
     imgStand = 1

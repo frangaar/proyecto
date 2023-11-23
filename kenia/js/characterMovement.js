@@ -53,7 +53,7 @@ let level_2_finished = false
 // Background size y width y animar el fondo.
 level1_Map.style.width = BLOCK_SIZE * PLAYER_WIDTH + 'px'
 level1_Map.style.height = (BLOCK_SIZE * PLAYER_HEIGHT) + 'px'
-level1_Map.style.backgroundImage = 'url(../img/bc2.png)'
+level1_Map.style.backgroundImage = 'url(../kenia/img/bc2.png)'
 level1_Map.style.backgroundSize = 'cover'
 // Create enemy and barrel size.
 enemy.style.width = '160px'
@@ -134,7 +134,7 @@ function update ()
             //Condicional para pared derecha y  pared izquierda
             if (keyLeftPressed) {
                 if (imgLeft === 1) {
-                    character.setAttribute('src', 'img/char_running(2).gif')
+                    character.setAttribute('src', '../kenia/img/char_running(2).gif')
                     imgLeft = 0
                 }
                 imgRight = 1
@@ -148,7 +148,7 @@ function update ()
                 } else velocityX = 0
             } else if (keyRightPressed){
                 if (imgRight === 1) {
-                    character.setAttribute('src', 'img/char_running(2).gif')
+                    character.setAttribute('src', '../kenia/img/char_running(2).gif')
                     imgRight = 0
                 }
                 imgLeft = 1
@@ -163,7 +163,7 @@ function update ()
             } else {
                 velocityX = 0
                 if (imgCrouch === 1 ) {
-                    character.setAttribute('src', 'img/char_stand.png')
+                    character.setAttribute('src', '../kenia/img/char_stand.png')
                 }
                 imgLeft = 1
                 imgRight = 1
@@ -205,7 +205,7 @@ window.setInterval(function()
                 let barrilIcono = document.createElement('img');
                 barrilContainer.appendChild(barrilIcono);  
                 barrilIcono.classList.add('barrilLanzadoIcono');
-                barrilIcono.setAttribute('src', 'img/barrel.gif');
+                barrilIcono.setAttribute('src', '../kenia/img/barrel.gif');
                 barrilIcono.style.width = '40px'
                 barrilContainer.style.left = '0px'
                 barrilContainer.style.top = '0px'
@@ -361,7 +361,7 @@ function drawMap()
 
                 document.querySelector('.bloques').appendChild(groundBlock)
                 groundBlock.classList.add('suelo')
-                groundBlock.style.backgroundImage = 'url(../img/block3.png)'
+                groundBlock.style.backgroundImage = 'url(../kenia/img/block3.png)'
                 groundBlock.style.backgroundSize = 'cover'
                 groundBlock.style.top = fila * BLOCK_SIZE + 'px'
                 groundBlock.style.left = (columna * BLOCK_SIZE) + 'px'
@@ -375,7 +375,7 @@ function drawMap()
 
 
                 document.querySelector('.fila1').appendChild(mapBlock1)
-                mapBlock1.style.backgroundImage = 'url(../img/wood_plataform.png)'
+                mapBlock1.style.backgroundImage = 'url(../kenia/img/wood_plataform.png)'
                 mapBlock1.style.backgroundSize = 'cover'
                 mapBlock1.style.top = fila * BLOCK_SIZE + 'px'
                 mapBlock1.style.left = (columna * BLOCK_SIZE) + 'px'
@@ -388,7 +388,7 @@ function drawMap()
                 const mapBlock3 = document.createElement('div')
 
                 document.querySelector('.fila1').appendChild(mapBlock3)
-                mapBlock3.style.backgroundImage = 'url(../img/wood_plataform.png)'
+                mapBlock3.style.backgroundImage = 'url(../kenia/img/wood_plataform.png)'
                 mapBlock3.style.backgroundSize = 'cover'
                 mapBlock3.style.top = fila * BLOCK_SIZE + 'px'
                 mapBlock3.style.left = (columna * BLOCK_SIZE) + 'px'
@@ -404,7 +404,7 @@ function drawMap()
 
                 document.querySelector('.bloquesPadre').appendChild(mapBlock9)
                 mapBlock9.classList.add('filaPadre')
-                mapBlock9.style.backgroundImage = 'url(../img/block3.png)'
+                mapBlock9.style.backgroundImage = 'url(../kenia/img/block3.png)'
                 mapBlock9.style.backgroundSize = 'cover'
                 mapBlock9.style.top = fila * BLOCK_SIZE + 'px'
                 mapBlock9.style.left = (columna * BLOCK_SIZE) + 'px'
@@ -437,7 +437,7 @@ function level1_FinishedAnimation()
     } else {velocityY = 0;  }
     audioEnemy.play()
     audioBackground.pause()
-    character.setAttribute('src', 'img/char_stand.png')
+    // character.setAttribute('src', '../kenia/img/char_stand.png')
     imgLeft = 1
     imgRight = 1
     imgStand = 1
@@ -487,9 +487,9 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
         if (keyUpPressed) {
                 characterTouchGround = 0
                 velocityY = - PLAYER_VELOCITYJUMP
-                audioJump.play()
+                // audioJump.play()
                 if (imgUp === 1 ) {
-                    character.setAttribute('src', 'img/char_jump.png')
+                    character.setAttribute('src', '../kenia/img/char_jump.png')
                 }
                 setTimeout(() => {
                     imgLeft = 1
@@ -512,7 +512,7 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
             }
             if (keyDownPressed) {
                 if (imgCrouch === 1) {
-                    character.setAttribute('src', 'img/char_agachado.png')
+                    character.setAttribute('src', '../kenia/img/char_agachado.png')
                     imgCrouch = 0
                 }
                 imgLeft = 1
@@ -546,7 +546,7 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                     }
                     if (player_life <= 0) {
                         character_is_dead = true
-                        character.setAttribute('src', 'img/char_death.png')
+                        character.setAttribute('src', '../kenia/img/char_death.png')
                     }
                     if (character_is_dead) {
                         audioFall.play()
@@ -654,7 +654,7 @@ function colisionEfect_betweenCharacter_and_barrel()
 {
     if (velocityY <= -5) {
         colisionado = true
-        character.setAttribute('src', 'img/mario_diyng.png')
+        character.setAttribute('src', '..kenia/img/mario_diyng.png')
         imgLeft = 0
         imgRight = 0
         imgStand = 0
