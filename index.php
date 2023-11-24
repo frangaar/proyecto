@@ -18,7 +18,7 @@
     unset($_SESSION['id']);
 ?>
 <body>
-    
+    <div id="fondo"></div>
     <div class="container landing-page">
         <div class="login-bar-section">
             <img id="esp" class="idiomas" src="img/idiomas/esp.png">

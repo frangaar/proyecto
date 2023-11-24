@@ -30,6 +30,7 @@
         unset($_SESSION['level']);
     }
     ?>
+    <div id="fondo"></div>
     <div class="container map-container">
         <div class="col-12 cerrar-sesion">
             <a href="logout.php">
