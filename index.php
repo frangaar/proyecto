@@ -28,8 +28,9 @@
         </div>
         <div class="banner-section">
             <img src="img/logo.jpg" class="img-fluid" id="banner"> 
+            <img src="img/titulo.jpg" class="img-fluid" id="titulo"> 
         </div>
-        <div class="header-section">
+        <!-- <div class="header-section">
             <div class="col-10 header-section-intro">
                 <p>En el apasionante juego <span style="font-weight:bold">"El Viaje Renovable de Laia"</span>, te sumergirás en la emocionante odisea de una valiente mujer llamada Laia, cuya misión es llevar energía renovable a una escuela mediante desafiantes pruebas alrededor del mundo. Laia se embarca en un viaje épico que la llevará a través de exóticos destinos, como la vibrante India, la salvaje Kenia y la exuberante Brasil.</p>
 
@@ -42,7 +43,7 @@
                 <p>En <span style="font-weight:bold">"El Viaje Renovable de Laia"</span>, únete a Laia en su emocionante travesía por el mundo, donde cada paso la acerca más a la meta de iluminar el futuro con energía limpia y sostenible. ¿Tienes lo necesario para superar los desafíos y ayudar a Laia a cumplir su misión?</p> 
                 <p style="font-weight:bold">¡El destino del planeta está en tus manos!</p>
             </div>
-        </div>        
+        </div>         -->
         <div class="games-section">
             <div class="col-12 mb-3 landing-juegos">
                 <h2 >Juegos</h2><a href="ranking.php"><input type="button" id="btnRanking" class="btn btn-primary cursor botones" value="Ranking"></input></a>

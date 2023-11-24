@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     esp.addEventListener('click', function cambiarIdioma(event){
 
-        headerSectionIntro.innerHTML = idiomasLanding[0]['Castellano'].Banner;
+        // headerSectionIntro.innerHTML = idiomasLanding[0]['Castellano'].Banner;
         btnRegistro.value = idiomasLanding[0]['Castellano'].Registro;
         juegosHeader.innerHTML = idiomasLanding[0]['Castellano'].Juegos;
 
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     cat.addEventListener('click', function cambiarIdioma(event){
 
-        headerSectionIntro.innerHTML = idiomasLanding[1]['Catalan'].Banner;
+        // headerSectionIntro.innerHTML = idiomasLanding[1]['Catalan'].Banner;
         btnRegistro.value = idiomasLanding[1]['Catalan'].Registro;
         juegosHeader.innerHTML = idiomasLanding[1]['Catalan'].Juegos;
 

@@ -16,6 +16,11 @@
     color: #622F37;
 }
 
+.botones:disabled{
+    background-color: transparent;
+    border-color: none;
+}
+
 .map-container .botones{
     width: 141px;
     height: 53px;

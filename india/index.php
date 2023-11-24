@@ -22,51 +22,53 @@
 session_start();
 ?>
 <body>
-    <div class="container-fluid botones-juego">
-        <div class="row">
-            <div class="col text-start">
-                <div id="musica" class="pausa cursor"></div>
-            </div>
-            <div class="col text-end">
-                <button type="button" id="volver" class="btn btn-primary cursor botones">Volver</button>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid" id="player-panel">
+    <div id="fondo"></div>
+    <div class="container" id="player-panel">
         <div class="content-items">
-            <div id="tiempo">
-                    <span>Tiempo de juego</span>
-                    <div id="timer">
-                        <span>0</span>
-                    </div>    
-                    </span>
+            <div class="row">
+                <div class="col-3 text-start">
+                    <div id="musica" class="pausa cursor"></div>
                 </div>
-            <div class="imagen">
-                <img src="img/laiaDerechaParada.png">
+                <div class="col text-start">
+                    <div id="tiempo">
+                        <span>Tiempo de juego</span>
+                        <div id="timer">
+                            <span>0</span>
+                        </div>    
+                        </span>
+                    </div>
+                    <div class="imagen">
+                        <img src="img/laiaDerechaParada.png">
+                    </div>
+                    <div class="items-owned">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="separacion">
+                                        <div class="item" id="item1" ondrop="dropScenario(event)" ondragover="allowDropScenario(event)">
+                                        </div>
+                                    </td>
+                                    <td class="separacion">
+                                        <div class="item" id="item2" ondrop="dropScenario(event)" ondragover="allowDropScenario(event)">
+                                        </div>
+                                    </td>
+                                    <td class="separacion">
+                                        <div class="item" id="item3" ondrop="dropScenario(event)" ondragover="allowDropScenario(event)">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-3 text-end">
+                    <button type="button" id="volver" class="btn btn-primary cursor botones">Volver</button>
+                </div>
             </div>
-            <div class="items-owned">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td class="separacion">
-                                <div class="item" id="item1" ondrop="dropScenario(event)" ondragover="allowDropScenario(event)">
-                                </div>
-                            </td>
-                            <td class="separacion">
-                                <div class="item" id="item2" ondrop="dropScenario(event)" ondragover="allowDropScenario(event)">
-                                </div>
-                            </td>
-                            <td class="separacion">
-                                <div class="item" id="item3" ondrop="dropScenario(event)" ondragover="allowDropScenario(event)">
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            
         </div>
     </div>
-    <div class="container-fluid" id="game">
+    <div class="container" id="game">
         <div class="content" id="mapa">
             <!-- Aqui hacemos append de todos los items del escenario -->
         </div>

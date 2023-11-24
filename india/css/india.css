@@ -16,9 +16,11 @@ i{
     font-size: 22px;
 }
 
-.container-fluid#game{
+.container#game{
     position: absolute;
-    top: 135px;
+    /* top: 135px; */
+    top: 127px;
+    left: 118px;
 }
 
 .content{
@@ -84,14 +86,18 @@ i{
 
 #character {
     position: absolute;
-    width: 46px;
-    height: 73px;
+    /* width: 46px;
+    height: 73px; */
+    width: 30px;
+    height: 54px;
     z-index: 4100;
 }
 
 #character > img{
-    width: 46px;
-    height: 73px;
+    /* width: 46px;
+    height: 73px; */
+    width: 35px;
+    height: 54px;
 }
 
 #character0 {
@@ -147,14 +153,14 @@ i{
 }
 
 .grid-container.colisionable.cole{
-    width: 165px !important;
-    height: 152px !important;
+    width: 125px !important;
+    height: 112px !important;
     z-index: 5000;
 }
 
 .grid-container.colisionable.cole > img{
-    width: 165px !important;
-    height: 152px !important;
+    width: 125px !important;
+    height: 112px !important;
     filter: brightness(0%);
     transition: filter 1.5s ease-in-out;
 }
@@ -162,10 +168,10 @@ i{
 #rayos{
     position: absolute;
     filter: brightness(100%);
-    left: 50px;
-    width: 60px !important;
-    height: 100px !important;
-    top: 35px;
+    left: 40px;
+    width: 40px !important;
+    height: 80px !important;
+    top: 20px;
 }
 
 .grid-container.colisionable.gandhi{
@@ -219,7 +225,7 @@ img[name="muroLeft"] {
 }
 
 .grid-container.colisionable.muroRight{
-    left: 1800px !important;
+    left: 1603px !important;
     width: 10px !important;
     height: 48px;
     z-index: 6000;
@@ -240,7 +246,7 @@ img[name="muroUp"] {
 }
 
 .grid-container.colisionable.muroDown{
-    top: 775px !important;
+    top: 727px !important;
     height: 39px;
     z-index: 6000;
 }
@@ -263,13 +269,20 @@ img[name="muroDown"] {
 #player-panel{
     background-color: black;
     height: 85px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
+    position: absolute;
+    left: 158px;
+    top: 70px;
 }
 
-#player-panel .content-items{
+#player-panel.container{
+    max-width: 1623px;
+}
+
+/* #player-panel .content-items{
     width: 640px;
     margin: auto;
-}
+} */
 
 #player-panel .content-items .items-owned{
     display: inline-block;
@@ -280,7 +293,7 @@ img[name="muroDown"] {
     width: 84px;
     height: 84px;
     border: 1px solid white;
-    margin-right: 100px;
+    margin-right: 80px;
     border-radius: 10px;
 }
 
@@ -312,8 +325,9 @@ img[name="muroDown"] {
 }
 
 #player-panel .imagen{
-    width: 140px;
+    /* width: 140px; */
     float: left;
+    margin-right: 60px;
 }
 
 #player-panel .imagen img{
@@ -740,10 +754,14 @@ button.audio-close{
 
   #fondo{
     background-size: cover;
-    background-image: url('../  ../img/escenarios/fondo.png');
+    background-image: url('../../img/escenarios/fondo.png');
     width: 100%;
     height: 100%;
     position: fixed;
     z-index: 100;
     pointer-events: none;
+  }
+
+  #musica,#volver{
+    margin-top: 23px;
   }

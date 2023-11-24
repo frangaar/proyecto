@@ -230,6 +230,13 @@ form {
 
 .banner-section{
     text-align: center;
+    position: relative;
+}
+
+#titulo{
+    position: absolute;
+    top: 195px;
+    left: 283px;
 }
 
 .container.landing-page{
@@ -422,9 +429,13 @@ button.audio-close{
     margin-top: 5px;
 }
 
-.games-section, .developers-section{
-    padding-top: 40px;
+.games-section{
+    padding-bottom: 30px;
 }
+
+/* .games-section, .developers-section{
+    padding-top: 40px;
+} */
 
 .games-section h5.card-title{
     font-weight: 800;
