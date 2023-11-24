@@ -14,6 +14,7 @@
     unset($_SESSION['id']);
 ?>
     <body>    
+        <div id="fondo"></div>
         <div class="container text-center margin-center">
             <div class="text-end">
                 <a href="index.php"><input type="button" id="btnInicio" class="btn btn-primary cursor botones" value="Ir a inicio"></input></a>

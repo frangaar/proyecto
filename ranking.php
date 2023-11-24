@@ -18,9 +18,9 @@ $ranking=obtenerRanking();
 $anyos=obtenerAnyos();
 ?>
 
-<body class="ranking">
-
-    <div class="container">
+<body>
+    <div id="fondo"></div>
+    <div class="container ranking" id="containerRanking">
         
         <div class="col-12 cerrar-sesion">
             <a href="index.php"><input type="button" class="btn btn-primary cursor botones" value="Ir a inicio"></input></a>
