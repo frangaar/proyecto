@@ -15,12 +15,12 @@
 ?>
     <body>    
         <div id="fondo"></div>
-        <div class="container text-center margin-center">
-            <div class="text-end">
+        <div class="container text-center margin-center" id="login">
+            <div class="text-end login-top">
                 <a href="index.php"><input type="button" id="btnInicio" class="btn btn-primary cursor botones" value="Ir a inicio"></input></a>
             </div>
             
-            <div class="row align-items-end" id="login">
+            <div class="row align-items-end">
                 <div class="col"></div>
                 <div class="col">
                 <?php if(isset($_SESSION['success']) == 1){ ?>

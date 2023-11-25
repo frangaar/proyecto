@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded',function(){
 
     
     getParams(this);
-    
 
     let container = document.getElementsByClassName('container')[0];
     let textos = document.querySelectorAll('.text > p');

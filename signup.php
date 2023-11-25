@@ -15,7 +15,7 @@
 <body>
     <div id="fondo"></div>
     <div class="container text-center margin-center" id="registro">
-        <div class="text-end">
+        <div class="text-end registro-top">
             <a href="index.php"><input type="button" class="btn btn-primary cursor botones" value="Ir a inicio"></input></a>
         </div>
         

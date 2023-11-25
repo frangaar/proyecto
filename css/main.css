@@ -170,9 +170,14 @@ html,body {
 }
 
 body {
-    display:flex;
+    /* display:flex; */
     background-image: url('../img/fondo_negro.jpg');
 }
+
+.animarArcade{
+    animation: zoom 6s linear;
+}
+
 
 form {
     margin:auto;
@@ -186,6 +191,10 @@ form {
 .login-bar-section{
     text-align: right;
     margin-top: 5px;
+}
+
+#login .login-top,#registro .registro-top{
+    padding-top: 100px;
 }
 
 #login .modal-header,#registro .modal-header{
@@ -236,7 +245,8 @@ form {
 #titulo{
     position: absolute;
     top: 195px;
-    left: 283px;
+    left: 274px;
+    font-size: 75px;
 }
 
 .container.landing-page{
@@ -257,8 +267,20 @@ body .landing-page{
     background-size: cover;
     position: absolute;
     left: 232px;
-    top: 62px;
+    top: 43px;
     max-width: 1480px;
+    /* display: none; */
+    /* opacity: 1; */
+}
+
+.encendido{
+    display: block;
+    animation: encender 9s linear;
+}
+
+.apagado{
+    display: none;
+    animation: apagar 9s linear;
 }
 
 .landing-page #banner{
@@ -830,15 +852,108 @@ button.audio-close{
   #fondo{
     background-size: cover;
     background-image: url('../img/escenarios/fondo.png');
-    width: 100%;
+    /* width: 100%;
     height: 100%;
     position: fixed;
     z-index: 100;
+    pointer-events: none; */
+
+    width: 109%;
+    height: 1821px;
+    position: fixed;
+    z-index: 100;
     pointer-events: none;
+    top: -653px;
+    background-size: 2208px;
+    left: -133px;
   }
 
   #containerRanking{
     position: absolute;
     left: 305px;
-    top: 60px;
+    /* top: 42px; */
+    min-height: 922px;
+    padding-top: 40px;
+  }
+
+  @keyframes zoom {
+    0% {
+      transform: scale(0, 0);
+    }
+    100% {
+      transform: scale(1, 1);
+    }
+  }
+
+  @keyframes encender {
+    0% {
+      opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+  }
+
+  @keyframes apagar {
+    0% {
+      opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+  }
+
+  @keyframes left {
+    0% {
+        left: 0px;
+    }
+    100% {
+        left: 320px;
+    }
+  }
+
+  #encender{
+    position: absolute;
+    left: 720px;
+    top: 220px;
+  }
+
+  #laiaLanding{
+    position: absolute;
+    z-index: 100;
+    width: 120px;
+    top: 148px;
+  }
+
+
+  #laiaLanding.mover {
+    animation:left 5s linear;
+  }
+
+  #btnOnOff{
+    background-image: url('../img/encender_apagar.png');
+    width: 51px;
+    height: 57px;
+    z-index: 250;
+    position: absolute;
+    right: 50px;
+    top: 40px;
+    background-size: 100px;
+    cursor: pointer;
+  }
+
+  .btnApagar{
+    background-position-x: -50px;
+  }
+
+  .encenderPantalla{
+    animation:encender 5s linear;
+  }
+
+  .btnEncender{
+    background-position-x: 0px;
+  }
+
+  .apagarPantalla{
+    animation:apagar 5s linear;
   }

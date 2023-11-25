@@ -86,16 +86,6 @@ document.addEventListener('DOMContentLoaded',function(){
             localStorage.setItem('primerInicio',false);
         }
     
-    }    
-
-    // let btnCierreSesion = document.getElementById('btnCierraSesion');
-
-    // btnCierreSesion.addEventListener('click', cierreSesion);
-
-    // function cierreSesion(){
-
-    //     localStorage.clear();
-    //     window.location.href="logout.php";
-    // }
+    }
     
 });

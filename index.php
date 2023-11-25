@@ -17,9 +17,11 @@
     session_start();
     unset($_SESSION['id']);
 ?>
-<body>
+<body id="mainPage">
+    <div id="btnOnOff" class="btnEncender"></div>
+    <img src="img/laiaDerechaCaminando.gif" id="laiaLanding">
     <div id="fondo"></div>
-    <div class="container landing-page">
+    <div class="container landing-page apagado">
         <div class="login-bar-section">
             <img id="esp" class="idiomas" src="img/idiomas/esp.png">
             <img id="cat" class="idiomas" src="img/idiomas/cat.png">
@@ -28,7 +30,7 @@
         </div>
         <div class="banner-section">
             <img src="img/logo.jpg" class="img-fluid" id="banner"> 
-            <img src="img/titulo.jpg" class="img-fluid" id="titulo"> 
+            <h1 id="titulo">El Viaje Renovable de Laia</h1>
         </div>
         <!-- <div class="header-section">
             <div class="col-10 header-section-intro">
