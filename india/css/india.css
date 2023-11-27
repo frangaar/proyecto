@@ -754,7 +754,7 @@ button.audio-close{
 
   #fondo{
     background-size: cover;
-    background-image: url('../../img/escenarios/fondo.png');
+    /* background-image: url('../../img/escenarios/fondo.png');
     width: 109%;
     height: 1821px;
     position: fixed;
@@ -762,7 +762,17 @@ button.audio-close{
     pointer-events: none;
     top: -653px;
     background-size: 2208px;
-    left: -133px;
+    left: -133px; */
+
+    position: fixed;
+    z-index: 100;
+    pointer-events: none;
+    background-image: url('../../img/escenarios/fondo.png');
+    height: 5161px;
+    width: 115%;
+    top: -734px;
+    background-size: 2208px;
+    left: -154px;
   }
 
   #musica,#volver{
