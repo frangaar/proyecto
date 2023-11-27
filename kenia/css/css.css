@@ -32,6 +32,8 @@ p {
     /* height: 80%; */
     position: fixed;
     display: none;
+    position: absolute;
+    left: 316px;
 }
 .bloques {
     position: absolute;

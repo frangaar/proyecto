@@ -16,7 +16,7 @@
 }
 .titleMenu {
     color: green;
-    position: absolute;
+    /* position: absolute; */
     left: 43%;
     top: 30px;
     font-family: 'Pixelify Sans', sans-serif;
@@ -24,8 +24,9 @@
 
 .showLaia{
     /* border: 1px solid white; */
+    margin-left: 80px;
     width: 120px;
-    position: absolute;
+    /* position: absolute; */
     height: 120px;
     left: 45%;
     top: 20%;
@@ -50,15 +51,21 @@ li {
 #buttonContinue{
     margin: 0;
     padding: 0;
-    top: 20%;
-    left: 25%;
+    /* top: 20%; */
+    /* left: 25%; */
     position: fixed;
     background-color: black;
-    width: 900px;
-    height: 720px;
+    width: 100%;
+    height: 100%;
     display: grid;
     place-content: center;
     
+}
+.menu_de_inico {
+    /* position: absolute; */
+    padding-top: 20px;
+    text-align: center;
+    /* height: 00px; */
 }
 li::before,
 li::after
