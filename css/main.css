@@ -948,6 +948,7 @@ button.audio-close{
     top: 40px;
     background-size: 100px;
     cursor: pointer;
+    position: fixed;
   }
 
   .btnApagar{
