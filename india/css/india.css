@@ -271,12 +271,12 @@ img[name="muroDown"] {
     height: 85px;
     /* margin-top: 10px; */
     position: absolute;
-    left: 158px;
+    left: 118px;
     top: 70px;
 }
 
 #player-panel.container{
-    max-width: 1623px;
+    max-width: 1675px;
 }
 
 /* #player-panel .content-items{
