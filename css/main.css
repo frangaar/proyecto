@@ -919,6 +919,18 @@ button.audio-close{
     }
   }
 
+  @keyframes mostrarBocata {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+  }
+
   #encender{
     position: absolute;
     left: 720px;
@@ -932,6 +944,63 @@ button.audio-close{
     top: 148px;
   }
 
+  .laiaBocata{
+    position: absolute;
+    width: 340px;
+    height: 210px;
+    z-index: 500;
+    left: 419px;
+    top: 55px;
+    opacity: 0;
+  }
+
+  .mostrar{
+    animation: mostrarBocata 3s linear;
+  }
+
+  .laiaBocata p{
+    font-size: 12px;
+    padding: 5px;
+    height: 181px;
+    background-color: white;
+  }
+
+  .carousel-inner{
+    left: 7px;
+    top: 7px;
+    width: 326px;
+    height: 168px;
+  }
+
+  .carousel-control-prev{
+    top: 145px;
+    height: 26px;
+    left: 290px;
+    width: 18px;
+    background-color: black;
+  }
+
+  .carousel-control-prev-icon{
+    top: 145px;
+    height: 26px;
+    width: 18px;
+    background-size: 20px;
+  }
+  
+  .carousel-control-next{
+    top: 145px;
+    height: 26px;
+    width: 18px;
+    right: 10px;
+    background-color: black;
+  }
+
+  .carousel-control-next-icon{
+    top: 145px;
+    height: 26px;
+    width: 18px;
+    background-size: 20px;
+  }
 
   #laiaLanding.mover {
     animation:left 5s linear;
