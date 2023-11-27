@@ -1,0 +1,196 @@
+/* CSS para el modal */
+@font-face {
+    font-family: pixel;
+    src: url(./SHPinscher-Regular.otf);
+}
+
+html{
+    font-family: pixel;
+}
+
+#titulo-binvenida{
+    font-size: xx-large;
+}
+
+#texto-presentacion{
+    font-size:larger;
+}
+
+
+/* Estilo para el temporizador */
+#timer {
+    text-align: center;
+    width: 250px;
+    height: 55px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff; /* Color del texto */
+    background-color: #333; /* Color de fondo */
+    padding: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border-radius: 5px;
+    z-index: 999;
+  }
+  
+  /* Estilo adicional para la página si es necesario */
+  body {
+    text-align: center; /* Centrar el contenido en la página */
+  }
+  
+  /* Agrega cualquier otro estilo que necesites para el juego */
+  
+
+/*----------------------------------MODALS----------------------------------------------*/
+
+.modal {
+    background-color: #33333360;
+    display: none;
+    position: fixed; /* Cambiar a absolute */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+
+.modal-content{
+    position: absolute; /* Cambiar a absolute */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrar vertical y horizontalmente */
+    z-index: 999;
+    width: 400px;
+    height: 280px;
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border-radius: 20px;
+}
+
+.modal-content-missio{
+    position: absolute; /* Cambiar a absolute */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrar vertical y horizontalmente */
+    z-index: 999;
+    width: 300px;
+    height: 130px;
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content-missio2{
+    position: absolute; /* Cambiar a absolute */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrar vertical y horizontalmente */
+    z-index: 999;
+    width: 300px;
+    height: 130px;
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/*----------------------------------MODALS----------------------------------------------*/
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.laia {
+    width: 50px;
+    height: 65px;
+    position: relative;
+}
+
+.personaje{
+    position: absolute;       
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Asegura que el cuerpo ocupe al menos toda la altura de la pantalla. */
+}
+
+
+#caja {
+    width: 1300px;
+    height: 825px;
+    background-image: url(../media/fondo2.jpg);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative; /* Cambia a 'relative' en lugar de 'absolute'. */
+    border: solid black 2px;
+    border-radius: 20px;
+}
+
+
+#grid-container {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: repeat(33, 1fr);
+    grid-template-rows: repeat(33, 1fr);
+    overflow: hidden;
+
+}
+
+.cell {
+    aspect-ratio: 1/1;
+    border: solid black 1px;
+
+}
+.wall {
+    aspect-ratio: 1/1;
+    border: solid black 1px;
+
+}
+
+.empty {
+    aspect-ratio: 1/1;
+    border: solid black 1px;
+}
+
+.pelota {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+
+}
+
+.persona {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+    
+}
+
+.persona-extra {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+    
+}
