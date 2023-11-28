@@ -22,9 +22,8 @@ function asomaTopos() {
   }
 
   // Llamar nuevamente a la función después de un tiempo
-  setTimeout(asomaTopos, 900);
+  setTimeout(asomaTopos, 1000);
 }
-
 
 document.addEventListener("DOMContentLoaded", asomaTopos);
 
@@ -68,9 +67,9 @@ function compteEnrere() {
   }
 }
 
-let puntsInicial = 0;
-
 function sumarPunts() {
+  let puntsInicial = 0;
+
   for (let i = 1; i <= 9; i++) {
     const topo = document.getElementById("imatge" + i);
 
@@ -78,8 +77,20 @@ function sumarPunts() {
       puntsInicial += 10; // Incrementa la puntuación en 10 unidades
       const punts = document.getElementById("puntuacio");
       punts.innerHTML = `${puntsInicial}`;
+      topo.style.display = "none";
     });
   }
 }
 
 sumarPunts();
+
+function musicaFons () {
+  let audio = new Audio ("./audios/minecraft4.mp3");
+
+  audio.volume = 0.3;
+  audio.loop = true;
+  audio.playbackRate = 1.5;
+  audio.play();
+}
+
+window.addEventListener("DOMContentLoaded", musicaFons);
