@@ -98,14 +98,14 @@ session_start();
             <div class="text">
                 <p>Vaya!!, parece que la escuela necesita luz para poder continuar las clases. Debo conseguir todas las piezas para poder iluminar la escuela utilizando energias renovables</p>
             </div>
-            <button type="button" data-audio="audio/gandhi.mp3" class="audio btn btn-primary cursor" id="audio4" class="btn btn-primary"></button>
+            <button type="button" data-audio="audio/cole.mp3" class="audio btn btn-primary cursor" id="audio4" class="btn btn-primary"></button>
         </div>
         <div class="bocadillo-cuadrado" id="bocadillo-cuadrado5">
             <button type="button" id="audio-close5" class="btn-close audio-close"></button>
             <div class="text">
-                <p>Ohh!!, esta debe ser la casa de Alisha y su familia.</p>
+                <p>Genial!!, esta debe ser la casa de Alisha y su familia.</p>
             </div>
-            <button type="button" data-audio="audio/gandhi.mp3" class="audio btn btn-primary cursor" id="audio5" class="btn btn-primary"></button>
+            <button type="button" data-audio="audio/alisha.mp3" class="audio btn btn-primary cursor" id="audio5" class="btn btn-primary"></button>
         </div>
     </div>  
     
