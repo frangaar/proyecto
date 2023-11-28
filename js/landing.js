@@ -181,17 +181,18 @@ document.addEventListener('DOMContentLoaded',function(){
         desarrolladoresHeader.innerHTML = idiomasLanding[1]['Catalan'].Desarrolladores;
     });
 
-    const arcade = document.querySelector("body");
     const pantalla = document.querySelector("body .landing-page");
     let body = document.querySelector('body#mainPage');
     let laia = document.getElementById('laiaLanding');
+    let gorro = document.getElementById('laiaGorro');
     let bocata = document.getElementsByClassName('laiaBocata');
     
 
     if(localStorage.getItem('encendido') == 'false' || localStorage.getItem('encendido') == null){
 
         body.classList.add('animarArcade');
-        // pantalla.classList.add('encender');
+        // Si máquina apagada quitamos  scroll
+        body.style.overflow = 'hidden';
         
     }else{
         body.classList.remove('animarArcade');
@@ -200,6 +201,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
         pantalla.style.display = 'block';
         laia.classList.add('mover');
+        // gorro.classList.add('mover');
     }
 
     
@@ -208,20 +210,28 @@ document.addEventListener('DOMContentLoaded',function(){
         // Solo mover si pantalla encendida
         if(pantalla.classList.contains('encenderPantalla')){
             laia.classList.add('mover');
+            // gorro.classList.add('mover');
         }
         
         // Mantener pantalla apagada al apagar
         if(pantalla.classList.contains('apagarPantalla')){
             pantalla.style.display = 'none';
         }
+
+        // Mostrar scroll solo cuando la máquina se haya encendido
+        body.style.overflow= 'inherit';
+        body.style.pointerEvents = "inherit";
     });
 
     let stopMovement = '320px';
+    let stopGorro = '130px';
 
     laia.addEventListener("animationend", () => {
         
         laia.setAttribute('src','img/laiaDerechaParada.png');
         laia.style.left = stopMovement;
+        gorro.classList.add('mover');
+        gorro.style.top = stopGorro;
 
         bocata[0].classList.add('mostrar');
         bocata[1].classList.add('mostrar');
@@ -243,6 +253,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
             pantalla.style.display = 'block';
             localStorage.setItem('encendido',true);
+            body.style.pointerEvents = "inherit";
         }else{
             btnApagar.classList.add('btnEncender');
             pantalla.classList.add('apagarPantalla');
@@ -251,7 +262,9 @@ document.addEventListener('DOMContentLoaded',function(){
             pantalla.classList.remove('encenderPantalla');
 
             laia.style.left = '0px';
+            gorro.style.top= '-15px';
             laia.classList.remove('mover');
+            gorro.classList.remove('mover');
 
             bocata[0].classList.remove('mostrar');
             bocata[1].classList.remove('mostrar');
@@ -259,6 +272,7 @@ document.addEventListener('DOMContentLoaded',function(){
             bocata[1].style.opacity = 0;
             
             localStorage.removeItem('encendido');
+            body.style.pointerEvents = "none";
         }
     })
 

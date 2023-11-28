@@ -271,7 +271,7 @@ img[name="muroDown"] {
     height: 85px;
     /* margin-top: 10px; */
     position: absolute;
-    left: 118px;
+    left: 131px;
     top: 70px;
 }
 
@@ -772,7 +772,7 @@ button.audio-close{
     width: 115%;
     top: -734px;
     background-size: 2208px;
-    left: -154px;
+    left: -144px;
   }
 
   #musica,#volver{
