@@ -20,6 +20,7 @@
 <body id="mainPage">
     <div id="btnOnOff" class="btnEncender"></div>
     <img src="img/laiaDerechaCaminando.gif" id="laiaLanding">
+    <img src="img/escenarios/bocata.png" class="laiaBocata">
     <div id="fondo"></div>
     <div class="container landing-page apagado">
         <div class="login-bar-section">
@@ -32,20 +33,6 @@
             <img src="img/logo.jpg" class="img-fluid" id="banner"> 
             <h1 id="titulo">El Viaje Renovable de Laia</h1>
         </div>
-        <!-- <div class="header-section">
-            <div class="col-10 header-section-intro">
-                <p>En el apasionante juego <span style="font-weight:bold">"El Viaje Renovable de Laia"</span>, te sumergirás en la emocionante odisea de una valiente mujer llamada Laia, cuya misión es llevar energía renovable a una escuela mediante desafiantes pruebas alrededor del mundo. Laia se embarca en un viaje épico que la llevará a través de exóticos destinos, como la vibrante India, la salvaje Kenia y la exuberante Brasil.</p>
-
-                <p>Laia, dotada de una mente aguda y habilidades excepcionales, enfrentará desafíos de lógica, matemáticas y geografía en cada país, resolviendo intrincados acertijos para obtener piezas esenciales que alimentarán de energía sostenible a la escuela. Estas piezas, impregnadas de tecnologías renovables innovadoras, representan la clave para un futuro más verde y sostenible.</p>
-
-                <p>Para financiar su viaje, Laia se sumerge en la bulliciosa ciudad de Barcelona, donde realiza encargos que le permiten ganar el dinero necesario. La ciudad se convierte en su patio de juegos, mientras Laia equilibra el trabajo, la vida cotidiana y la emocionante búsqueda de las piezas que transformarán vidas.</p>
-
-                <p>A medida que avanzas en el juego, descubrirás la riqueza cultural y la diversidad de los destinos, mientras Laia supera desafíos que van más allá de las pruebas mentales, enfrentándose a situaciones inesperadas y forjando amistades que la ayudarán en su noble causa.</p>
-
-                <p>En <span style="font-weight:bold">"El Viaje Renovable de Laia"</span>, únete a Laia en su emocionante travesía por el mundo, donde cada paso la acerca más a la meta de iluminar el futuro con energía limpia y sostenible. ¿Tienes lo necesario para superar los desafíos y ayudar a Laia a cumplir su misión?</p> 
-                <p style="font-weight:bold">¡El destino del planeta está en tus manos!</p>
-            </div>
-        </div>         -->
         <div class="games-section">
             <div class="col-12 mb-3 landing-juegos">
                 <h2 >Juegos</h2><a href="ranking.php"><input type="button" id="btnRanking" class="btn btn-primary cursor botones" value="Ranking"></input></a>
@@ -312,5 +299,33 @@
         </div>
     </div>
 
+    <div id="carouselExample" class="carousel slide laiaBocata">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <p>En el apasionante juego <span style="font-weight:bold">"El Viaje Renovable de Laia"</span>, te sumergirás en la emocionante odisea de una valiente mujer llamada Laia, cuya misión es llevar energía renovable a una escuela mediante desafiantes pruebas alrededor del mundo. Laia se embarca en un viaje épico que la llevará a través de exóticos destinos, como la vibrante India, la salvaje Kenia y la exuberante Brasil.</p>
+            </div>
+            <div class="carousel-item">
+                <p>Laia, dotada de una mente aguda y habilidades excepcionales, enfrentará desafíos de lógica, matemáticas y geografía en cada país, resolviendo intrincados acertijos para obtener piezas esenciales que alimentarán de energía sostenible a la escuela. Estas piezas, impregnadas de tecnologías renovables innovadoras, representan la clave para un futuro más verde y sostenible.</p>
+            </div>
+            <div class="carousel-item">
+                <p>Para financiar su viaje, Laia se sumerge en la bulliciosa ciudad de Barcelona, donde realiza encargos que le permiten ganar el dinero necesario. La ciudad se convierte en su patio de juegos, mientras Laia equilibra el trabajo, la vida cotidiana y la emocionante búsqueda de las piezas que transformarán vidas.</p>            
+            </div>
+            <div class="carousel-item">
+                <p>A medida que avanzas en el juego, descubrirás la riqueza cultural y la diversidad de los destinos, mientras Laia supera desafíos que van más allá de las pruebas mentales, enfrentándose a situaciones inesperadas y forjando amistades que la ayudarán en su noble causa.</p>            
+            </div>
+            <div class="carousel-item">
+                <p>En <span style="font-weight:bold">"El Viaje Renovable de Laia"</span>, únete a Laia en su emocionante travesía por el mundo, donde cada paso la acerca más a la meta de iluminar el futuro con energía limpia y sostenible. ¿Tienes lo necesario para superar los desafíos y ayudar a Laia a cumplir su misión?</p> 
+                <p style="font-weight:bold">¡El destino del planeta está en tus manos!</p>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 </body>
 </html>
