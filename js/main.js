@@ -182,31 +182,31 @@ document.addEventListener('DOMContentLoaded',function(){
                             case 'spain':
                                 detener = false;
 
-                                window.location.replace("spain/index.php");
+                                window.location.replace("spain/index.html");
 
                                 break;
                             case 'india':
                                 detener = false;
 
-                                window.location.replace("india/index.php");
+                                window.location.replace("india/index.html");
                                 
                                 break;
                             case 'kenia':
                                 detener = false;
                                 
-                                window.location.replace("kenia/index.php");
+                                window.location.replace("kenia/index.html");
                                 
                                 break;
                             case 'brasil1':
                                 detener = false;
                                 
-                                window.location.replace("brasil1/index.php");
+                                window.location.replace("brasil1/index.html");
                                 
                                 break;
                             case 'brasil2':
                                 detener = false;
                                 
-                                window.location.replace("brasil2/index.php");
+                                window.location.replace("brasil2/index.html");
                                 
                                 break;
                         }           
