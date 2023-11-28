@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded',function(){
     let posiciones = new Array();
     const VELOCIDAD = 3;
     
-    dimension = 32;
+    dimension = 48;
 
     const imagenes = ['img/arbol.png','img/hierba.png','img/laiaDerechaParada.png','img/gandhi2.png','img/taj_mahal.png','img/vaca.png','img/casaAlisha.png','img/agua.png','img/cole.png','img/electricidad.gif'];
     const piezas = ['placa_solar.png','generador.png','turbina.png'];
@@ -49,11 +49,11 @@ document.addEventListener('DOMContentLoaded',function(){
     
     function fillScenario(){
 
-        if(window.innerWidth > 1900){
-            dimension = 48;
-        }else{
-            dimension = 32;
-        }
+        // if(window.innerWidth > 1900){
+        //     dimension = 48;
+        // }else{
+        //     dimension = 32;
+        // }
 
         let pared="img/zanja";
         let suelo="img/terra";
@@ -300,13 +300,13 @@ document.addEventListener('DOMContentLoaded',function(){
         // Hago resize para adaptarlo al tamaño de la pantalla y rellenarla
         resizeItems();
 
-        if(sessionStorage.getItem('x') != null){
-            player.style.left=sessionStorage.getItem('x') + 'px';       
-        }
+        // if(sessionStorage.getItem('x') != null){
+        //     player.style.left=sessionStorage.getItem('x') + 'px';       
+        // }
 
-        if(sessionStorage.getItem('y') != null){
-            player.style.top=sessionStorage.getItem('y') + 'px';
-        }
+        // if(sessionStorage.getItem('y') != null){
+        //     player.style.top=sessionStorage.getItem('y') + 'px';
+        // }
     }
 
     function setPlayer(img,x,y,index){

@@ -19,6 +19,7 @@
 ?>
 <body id="mainPage">
     <div id="btnOnOff" class="btnEncender"></div>
+    <img src="img/gorro.png" id="laiaGorro">
     <img src="img/laiaDerechaCaminando.gif" id="laiaLanding">
     <img src="img/escenarios/bocata.png" class="laiaBocata">
     <div id="fondo"></div>
@@ -26,6 +27,10 @@
         <div class="login-bar-section">
             <img id="esp" class="idiomas" src="img/idiomas/esp.png">
             <img id="cat" class="idiomas" src="img/idiomas/cat.png">
+            <div id="ranking">
+                <img src="img/botones/corona.png" id="corona">
+                <a href="ranking.php"><input type="button" id="btnRanking" class="btn btn-primary cursor botones" value="Ranking"></input></a>
+            </div>
             <input type="button" class="btn btn-primary cursor botones" id="btnLandingLogin" value="Login" data-bs-toggle="modal" data-bs-target="#login"></input>
             <input type="button" class="btn btn-primary cursor botones" id="btnLandingRegistro" value="Registro" data-bs-toggle="modal" data-bs-target="#registro"></input>
         </div>
@@ -35,7 +40,8 @@
         </div>
         <div class="games-section">
             <div class="col-12 mb-3 landing-juegos">
-                <h2 >Juegos</h2><a href="ranking.php"><input type="button" id="btnRanking" class="btn btn-primary cursor botones" value="Ranking"></input></a>
+                <h2 >Juegos</h2>
+                <!-- <a href="ranking.php"><input type="button" id="btnRanking" class="btn btn-primary cursor botones" value="Ranking"></input></a> -->
             </div>
                 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                     <div class="col">

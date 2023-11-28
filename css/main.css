@@ -170,7 +170,6 @@ html,body {
 }
 
 body {
-    /* display:flex; */
     background-image: url('../img/fondo_negro.jpg');
 }
 
@@ -190,7 +189,7 @@ form {
 
 .login-bar-section{
     text-align: right;
-    margin-top: 5px;
+    margin-top: 15px;
 }
 
 #login .login-top,#registro .registro-top{
@@ -864,15 +863,15 @@ button.audio-close{
     left: -133px; */
 
     position: fixed;
-    z-index: 100;
+    z-index: 200;
     pointer-events: none;
     background-image: url('../img/escenarios/fondo.png');
     height: 4211px;
     width: 115%;
     top: -734px;
     background-size: 2208px;
-    left: -145px;
-    overflow: hidden;
+    left: -144px;
+    /* overflow: hidden; */
   }
 
   #containerRanking{
@@ -910,12 +909,21 @@ button.audio-close{
     }
   }
 
-  @keyframes left {
+  @keyframes moverse {
     0% {
         left: 0px;
     }
     100% {
         left: 320px;
+    }
+  }
+  
+  @keyframes moverGorro {
+    0% {
+        top: 0px;
+    }
+    100% {
+        top: 130px;
     }
   }
 
@@ -939,9 +947,19 @@ button.audio-close{
 
   #laiaLanding{
     position: absolute;
-    z-index: 100;
+    z-index: 101;
     width: 120px;
     top: 148px;
+  }
+
+  #laiaGorro{
+    width: 95px;
+    height: 50px;
+    position: absolute;
+    left: 308px;
+    top: -15px;
+    z-index: 102;
+    transform: rotate(-10deg);
   }
 
   .laiaBocata{
@@ -1003,7 +1021,11 @@ button.audio-close{
   }
 
   #laiaLanding.mover {
-    animation:left 5s linear;
+    animation:moverse 5s linear;
+  }
+
+  #laiaGorro.mover {
+    animation:moverGorro 0.5s ease-in;
   }
 
   #btnOnOff{
@@ -1034,4 +1056,18 @@ button.audio-close{
 
   .apagarPantalla{
     animation:apagar 5s linear;
+  }
+
+  #ranking{
+    display: inline-block;
+    position: relative;
+  }
+
+  #corona{
+    position: absolute;
+    width: 35px;
+    transform: rotate(-20deg);
+    top: -9px;
+    left: 7px;
+    z-index: 500;
   }
