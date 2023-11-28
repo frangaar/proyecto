@@ -225,7 +225,7 @@ window.setInterval(function()
             }
         index_counting_barrels++
     }
-  },3000);
+  },30000);
 /** Funcion para generar un nombre de la clase del barril con un prefijo numérico. */
 function generarNombreConNumero(prefijo, numero)
 {
@@ -398,7 +398,7 @@ function drawMap()
             } else if (map[fila][columna] === 3) {
                 const mapBlock3 = document.createElement('div')
 
-                document.querySelector('.fila1').appendChild(mapBlock3)
+                document.querySelector('.fila2').appendChild(mapBlock3)
                 mapBlock3.style.backgroundImage = 'url(../kenia/img/wood_plataform.png)'
                 mapBlock3.style.backgroundSize = 'cover'
                 mapBlock3.style.top = fila * BLOCK_SIZE + 'px'
@@ -494,7 +494,9 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
     const PX_CONTAINER_WIDTH = positionX + container.offsetWidth
     const PX = positionX
     const PY = positionY
-    while (index < COLLIDABLE.length) {
+    
+    while (index < COLLIDABLE.length || iLateralColider < COLLIDABLE_ROWS.length) {
+       
         if (
         (PY_CONTAINER_HEIGHT) <= (COLLIDABLE[index].offsetTop)
         && (PY_CONTAINER_HEIGHT_VELOCITY) >= (COLLIDABLE[index].offsetTop)
@@ -598,25 +600,26 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
           
     } 
   // COLISION CABEZA BLOQUES
-    while (indexFila1 < COLLIDABLE_ROWS.length) {
-        if  (
-            (PY_CONTAINER_HEIGHT >= COLLIDABLE_ROWS[indexFila1].offsetTop + COLLIDABLE_ROWS[indexFila1].offsetHeight)
-            && (PY_CONTAINER_HEIGHT_VELOCITY) < COLLIDABLE_ROWS[indexFila1].offsetTop + COLLIDABLE_ROWS[indexFila1].offsetHeight + (COLLIDABLE_ROWS[indexFila1].offsetWidth)
-            && (PX_CONTAINER_WIDTH) >= (COLLIDABLE_ROWS[indexFila1].offsetLeft )
-            && (PX) <= (COLLIDABLE_ROWS[indexFila1].offsetLeft + COLLIDABLE_ROWS[indexFila1].offsetWidth)  
-            ) {
-            // velocityX = 0
-            // if (keyRightPressed) {
-            //     velocityX = 0
-            // }
-            velocityX = 0
-            velocityY = 0
-            dontTouchTheCOLLIDABLEWithTheHeadRight = true
-            // velocityY += (PLAYER_VELOCITYJUMP/2)
+    // while (indexFila1 < COLLIDABLE_ROWS.length) {
+    //     if  (
+    //         (PY_CONTAINER_HEIGHT >= COLLIDABLE_ROWS[indexFila1].offsetTop + COLLIDABLE_ROWS[indexFila1].offsetHeight)
+    //         && (PY_CONTAINER_HEIGHT_VELOCITY) < COLLIDABLE_ROWS[indexFila1].offsetTop + COLLIDABLE_ROWS[indexFila1].offsetHeight + (COLLIDABLE_ROWS[indexFila1].offsetWidth)
+    //         && (PX_CONTAINER_WIDTH) >= (COLLIDABLE_ROWS[indexFila1].offsetLeft )
+    //         && (PX) <= (COLLIDABLE_ROWS[indexFila1].offsetLeft + COLLIDABLE_ROWS[indexFila1].offsetWidth)  
+    //         ) {
+
+    //         // velocityX = 0
+    //         // if (keyRightPressed) {
+    //         //     velocityX = 0
+    //         // }
+    //         velocityX = 0
+    //         velocityY = 0
+    //         dontTouchTheCOLLIDABLEWithTheHeadRight = true
+    //         // velocityY += (PLAYER_VELOCITYJUMP/2)
             
-        } 
-        indexFila1++
-    } 
+    //     } 
+    //     indexFila1++
+    // } 
     // COLISION CUERPO BLOQUE POR LOS LADOS
     // while (iLateralColider < COLLIDABLE.length) {
     //     if  (
