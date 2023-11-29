@@ -7,12 +7,8 @@
     <title>Juego | 1.0</title>
     <link rel="stylesheet" href="./style/css.css">
     <link rel="stylesheet" href="../css/main.css">
-    <!-- <link rel="shortcut icon" href="./img/personaje.png" type="image/x-icon"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
-<!-- <?php
-session_start();
-?> -->
 <body>
     <div id="fondo"></div>
     <div id="timer">Temps restant: <br><span id="countdown">2:00</span></div>
@@ -28,7 +24,7 @@ session_start();
         <div class="modal-content-missio">
             <span class="close" id="close-post-bienvenida">&times;</span>
             <h2>Primer encàrrec!</h2>
-            <p>Porta la pilota de futbol al nen vestit amb un pantalo blau.</p>
+            <p>Porta la pilota de futbol al nen vestit amb una samarreta vermella pantalo blau.</p>
         </div>
     </div>
     <div id="modal-post-bienvenida" class="modal">
@@ -40,8 +36,8 @@ session_start();
     </div>
     <div id="gameLossModal" class="modal">
         <div class="modal-content">
-            <h2>¡Has perdido!</h2>
-            <p>Has entregado la pelota a un personaje extra. Juego terminado.</p>
+            <h2>¡Has perdut!</h2>
+            <p>Has entregat la pilota a una persona que no toca. S'ha acabat el joc.</p>
         </div>
     </div>
     <div id="modal-next-task" class="modal">
@@ -52,7 +48,7 @@ session_start();
     </div>    
     <div id="caja">
         <div id="grid-container">
-            <div class="personaje" id="personaje"><img  src="../img/personajes/laiaDerechaParada.png" alt="" class="laia"></div>
+            <div class="personaje" id="personaje"><img  src="./media/laiaDerechaParada.png" alt="" class="laia"></div>
         </div>
     </div>
     <script src="./js/js.js"></script>
