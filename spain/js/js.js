@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function clearMap() {
         for (let i = 0; i < gameMap.length; i++) {
             for (let j = 0; j < gameMap[i].length; j++) {
-                if (gameMap[i][j] !== 0 && gameMap[i][j] !== 1) {
+                if (gameMap[i][j] !== 0 && gameMap[i][j] !== 1 && gameMap[i][j] !== 5 && gameMap[i][j] !== 6 && gameMap[i][j] !== 7) {
                     gameMap[i][j] = 0;
                 }
             }
@@ -212,15 +212,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function showAllElements() {
-        document.querySelectorAll('.persona1').forEach(function(element) {
+        document.querySelectorAll('.persona2').forEach(function(element) {
             element.style.display = 'block'; // o el valor que corresponda a tu diseño
         });
         
-        document.querySelectorAll('.persona-extra1').forEach(function(element) {
+        document.querySelectorAll('.persona-extra2').forEach(function(element) {
             element.style.display = 'block'; // o el valor que corresponda a tu diseño
         });
         
-        document.querySelectorAll('.pelota').forEach(function(element) {
+        document.querySelectorAll('.libro').forEach(function(element) {
             element.style.display = 'block'; // o el valor que corresponda a tu diseño
         });
         // Agregar aquí cualquier otro elemento que debas mostrar
@@ -272,9 +272,9 @@ document.addEventListener('DOMContentLoaded', function() {
         [1, 0, 0, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 4, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
+        [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 6, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
+        [1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 7, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1],
@@ -290,15 +290,15 @@ document.addEventListener('DOMContentLoaded', function() {
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
         [1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 4, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+        [1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+        [1, 1, 0, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
+        [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
+        [1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 0, 0, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 4, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
+        [1, 0, 0, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1],
@@ -321,25 +321,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 gridCell.className = "wall";
             } else if (gameMap[i][j] === 2) {
                 let pelota = document.createElement("img");
-                pelota.src = "../media/caja.png";
+                pelota.src = "../spain/media/pelota.png";
                 pelota.className = "pelota";
                 gridCell.appendChild(pelota);
                 pelota.addEventListener("click", function () {
                 });
             } else if (gameMap[i][j] === 3) {
                 let persona = document.createElement("img");
-                persona.src = "../media/persona1.png";
+                persona.src = "../spain/media/persona1.png";
                 persona.className = "persona";
                 gridCell.appendChild(persona);
                 persona.addEventListener("click", function () {
                 });
             } else if (gameMap[i][j] === 4) {
                 let personaExtra = document.createElement("img");
-                personaExtra.src = "../media/persona-extra1.png";
+                personaExtra.src = "../spain/media/persona-extra1.png";
                 personaExtra.className = "persona-extra";
                 gridCell.appendChild(personaExtra);
                 personaExtra.addEventListener("click", function () {
                 });
+            // } else if (gameMap[i][j] === 5) {
+            //     let persona2 = document.createElement("img");
+            //     persona2.src = "../spain/media/persona2.png";
+            //     persona2.className = "persona2";
+            //     gridCell.appendChild(persona2);
+            //     persona2.addEventListener("click", function () {
+            //     });
             } else {
                 gridCell.className = "empty";
             }
@@ -359,19 +366,31 @@ document.addEventListener('DOMContentLoaded', function() {
                 for (let j = 0; j < gameMap[i].length; j++) {
                     // Reemplaza el elemento de matrizOriginal con el correspondiente de nuevaMatriz
                     gameMap[i][j] = gameMap2[i][j];
-                    if (gameMap[i][j] === 2) {
+                    if (gameMap[i][j] === 1) {
+                        gridCell.className = "wall";
+                    } else if (gameMap[i][j] === 2) {
                         let pelota = document.createElement("img");
-                        pelota.src = "../media/pelota.png";
+                        pelota.src = "../spain/media/pelota.png";
                         pelota.className = "pelota";
+                        gridCell.appendChild(pelota);
                         pelota.addEventListener("click", function () {
                         });
-                    }else if (gameMap[i][j] === 5) {
-                        let persona2 = document.createElement("img");
-                        persona2.src = "../media/personaje2.png";
-                        persona2.className = "persona2";
-                        gridCell.appendChild(persona2);
-                        persona2.addEventListener("click", function () {
+                    } else if (gameMap[i][j] === 3) {
+                        let persona = document.createElement("img");
+                        persona.src = "../spain/media/persona1.png";
+                        persona.className = "persona";
+                        gridCell.appendChild(persona);
+                        persona.addEventListener("click", function () {
                         });
+                    } else if (gameMap[i][j] === 4) {
+                        let personaExtra = document.createElement("img");
+                        personaExtra.src = "../spain/media/persona-extra1.png";
+                        personaExtra.className = "persona-extra";
+                        gridCell.appendChild(personaExtra);
+                        personaExtra.addEventListener("click", function () {
+                        });
+                    } else {
+                        gridCell.className = "empty";
                     }
                 }
             }

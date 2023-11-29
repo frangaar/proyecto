@@ -162,18 +162,16 @@ body {
 
 .cell {
     aspect-ratio: 1/1;
-    /* border: solid black 1px; */
-
+    border: solid black 1px;
 }
 .wall {
     aspect-ratio: 1/1;
-    /* border: solid black 1px; */
-
+    border: solid black 1px;
 }
 
 .empty {
     aspect-ratio: 1/1;
-    /* border: solid black 1px; */
+    border: solid black 1px;
 }
 
 .pelota {
