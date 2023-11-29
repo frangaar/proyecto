@@ -10,12 +10,11 @@
     <!-- <link rel="shortcut icon" href="./img/personaje.png" type="image/x-icon"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
-<?php
+<!-- <?php
 session_start();
-?>
+?> -->
 <body>
     <div id="fondo"></div>
-    <audio src="./audio/musica.mp3" autoplay="autoplay" loop="loop"></audio>
     <div id="timer">Temps restant: <br><span id="countdown">2:00</span></div>
     <div id="modal-bienvenida" class="modal">
         <div class="modal-content">
