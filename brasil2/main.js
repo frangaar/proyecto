@@ -10,51 +10,41 @@ imatgeCursor();
 
 function imatgeCursor() {
   const cursor = document.querySelector(".cursor");
-  //el cursor tiene la apariencia de un martillo
   window.addEventListener("mousemove", (e) => {
     cursor.style.top = e.pageY + "px";
     cursor.style.left = e.pageX + "px";
-    document.body.style.cursor = "none";
   });
 
-  //el martillo da un golpe al hacer click con el raton
   window.addEventListener("mousedown", () => {
     cursor.classList.add("click");
   });
 
-  //el martillo vuelva a su posicion al soltar el click del raton
   window.addEventListener("mouseup", () => {
     cursor.classList.remove("click");
   });
 }
 
 function asomaTopos() {
-  // Poner todos a display none
   for (let i = 1; i <= 9; i++) {
     const topo = document.getElementById("imatge" + i);
     topo.style.display = "none";
   }
   if (tempsRestant > 0) {
-    // Generar un número aleatorio de topos a mostrar
     const numTopos = Math.floor(Math.random() * 3) + 1;
 
-    // Mostrar los topos seleccionados
     for (let i = 0; i < numTopos; i++) {
       let num;
       do {
-        // Generar un nuevo número hasta que sea diferente a los anteriores
         num = Math.floor(Math.random() * 9) + 1;
       } while (
         document.getElementById("imatge" + num).style.display === "block"
       );
 
-      // Pintar el topo en el id = num
       const topo = document.getElementById("imatge" + num);
       topo.style.display = "block";
     }
-
-    // Llamar nuevamente a la función después de un tiempo
-    setTimeout(asomaTopos, 1000);
+    
+    setTimeout(asomaTopos, 1300);
   }
 }
 
@@ -80,7 +70,7 @@ function sumarPunts() {
 
     topo.addEventListener("click", () => {
       if (tempsRestant > 0) {
-        puntsInicial += 10; // Incrementa la puntuación en 10 unidades
+        puntsInicial += 10;
         const punts = document.getElementById("puntuacio");
         punts.innerHTML = `${puntsInicial}`;
         topo.src = "img/mole-whacked.png"
