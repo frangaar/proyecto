@@ -22,6 +22,10 @@
     <img src="img/gorro.png" id="laiaGorro">
     <img src="img/laiaDerechaCaminando.gif" id="laiaLanding">
     <img src="img/escenarios/bocata.png" class="laiaBocata">
+    <div id="bocataSaberMas">
+        <img src="img/escenarios/mas_info.png" id="laiaInfo">
+        <p>Clica aquí si quieres saber más!!</p>
+    </div>
     <div id="fondo"></div>
     <div class="container landing-page apagado">
         <div class="login-bar-section">

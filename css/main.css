@@ -1078,3 +1078,29 @@ button.audio-close{
     left: 7px;
     z-index: 500;
   }
+
+  #bocataSaberMas{
+    position: relative;
+    left: 420px;
+    z-index: 1000;
+    width: 143px;
+    top: 70px;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  #laiaInfo{
+    width: 153px;
+  }
+
+  #bocataSaberMas p{
+    position: absolute;
+    top: 9px;
+    font-size: 17px;
+    left: 10px;
+    background-color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 21px;
+  }
