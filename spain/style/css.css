@@ -20,18 +20,19 @@ html{
 /* Estilo para el temporizador */
 #timer {
     text-align: center;
-    width: 250px;
-    height: 55px;
+    z-index: 999;
+    width: 100px;
+    height: 90px;
     font-size: 24px;
     font-weight: bold;
-    color: #fff; /* Color del texto */
-    background-color: #333; /* Color de fondo */
+    color: #000000; /* Color del texto */
+    background-color: white; /* Color de fondo */
     padding: 10px;
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 85px;
+    left: 180px;
+    border: solid black 1px;
     border-radius: 5px;
-    z-index: 999;
   }
   
   /* Estilo adicional para la página si es necesario */
@@ -57,13 +58,13 @@ html{
     z-index: 999;
 }
 
-.modal-content{
+.modal-content {
     position: absolute; /* Cambiar a absolute */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); /* Centrar vertical y horizontalmente */
     z-index: 999;
-    width: 400px;
+    width: 350px;
     height: 280px;
     background-color: white;
     padding: 20px;
@@ -115,8 +116,9 @@ html{
 }
 
 .laia {
-    width: 50px;
-    height: 65px;
+    top: 20px;
+    width: 35px;
+    height: 50px;
     position: relative;
 }
 
@@ -136,16 +138,16 @@ body {
 
 
 #caja {
-    width: 1300px;
-    height: 825px;
-    background-image: url(../media/fondo2.jpg);
+    width: 1250px;
+    height: 800px;
+    background-image: url(../media/fondoPixel.png);
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
     position: relative; /* Cambia a 'relative' en lugar de 'absolute'. */
-    border: solid black 2px;
     border-radius: 20px;
 }
+
 
 
 #grid-container {
@@ -160,18 +162,18 @@ body {
 
 .cell {
     aspect-ratio: 1/1;
-    border: solid black 1px;
+    /* border: solid black 1px; */
 
 }
 .wall {
     aspect-ratio: 1/1;
-    border: solid black 1px;
+    /* border: solid black 1px; */
 
 }
 
 .empty {
     aspect-ratio: 1/1;
-    border: solid black 1px;
+    /* border: solid black 1px; */
 }
 
 .pelota {
