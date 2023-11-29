@@ -15,13 +15,7 @@
 
 </head>
 <body id="body">
-    <p>KENIA VIDEO GAME</p>
-    <!-- <div class="continuarButton" id="buttonContinue">
-        <button id="buttonAceptar" onclick="buttonAccept()">Aceptar</button>
-    </div> -->
-    <div id="fondo">
-        
-    </div>
+    <div id="fondo"></div>
     <div class="app" id="level1">
         <div class="character" id="character-Container" >
             <img src="" alt=""  id="character">
@@ -46,8 +40,9 @@
             <div class="showLaia"></div>
             <ul id="buttonAceptar">
                 <li><span onclick="buttonAccept()" id="playButton">Jugar</span></li>
-                <li id="creditButton"><span>Controles</span></li>
+                <li id="controls"><span onclick="showControls()">Controles</span></li>
                 <li id="exitButton"><span id="credits/exit">Creditos</span></li>
+                <li id="exit"><span onclick="exitGame()">Salir al mapa</span></li>
             </ul>
         </div>
     </div>
@@ -59,8 +54,16 @@
             <li id="exitButton_Death"><span>Salir</span></li>
         </ul>
     </div>
-    <div class="showControls">
+    <div id="showControls">
         <!-- <img src="../img/image.jpg" alt=""> -->
+        <div class="container" id="containerControls">
+            <h1 id="controlsTitle">Como Jugar</h1>
+            <img src="../kenia/img/keyboard_controls.png" alt="" class="imgKeyboard">
+            <img src="../img/laiaDerechaCaminando.gif" alt="laia derecha" class="imagenControles" id="laiaRight">
+            <img src="../img/laiaIzquierdaCaminando.gif" alt="Laia izquierda" class="imagenControles" id="laiaLeft">
+            <img src="../img/laiaIzquierdaParada.png" alt="Laia Saltando" class="imagenControles" id="laiaStand">
+            <li id="goMenu"><span id="buttonGoMenu"></span></li>
+        </div>
     </div>
     <audio src="sound/character_Death.mp3" id="audioMarioFallin"></audio> 
     <audio src="sound/" id="audioMarioDiying"></audio>
