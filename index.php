@@ -27,6 +27,7 @@
         <div class="login-bar-section">
             <img id="esp" class="idiomas" src="img/idiomas/esp.png">
             <img id="cat" class="idiomas" src="img/idiomas/cat.png">
+            <img id="ing" class="idiomas" src="img/idiomas/ing.png">
             <div id="ranking">
                 <img src="img/botones/corona.png" id="corona">
                 <a href="ranking.php"><input type="button" id="btnRanking" class="btn btn-primary cursor botones" value="Ranking"></input></a>

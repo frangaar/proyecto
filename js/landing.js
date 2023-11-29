@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded',function(){
             "Catalan":
             {
                 "Titulo":"El Viatge Renovable de Laia",
-                "Banner":"<p>En l'apassionant joc <span style='font-weight:bold'>'El Viatge Renovable de Laia'</span>, et submergiràs en l'emocionant odissea d'una valenta dona anomenada Laia, la missió de la qual és portar energia renovable a una escola mitjançant desafiadores proves al voltant del món. Laia s'embarca en un viatge èpic que la portarà a través d'exòtics destins, com la vibrant Índia, la salvatge Kenya i l'exuberant Brasil.</p><p>Laia, dotada d'una ment aguda i habilitats excepcionals, enfrontarà desafiaments de lògica, matemàtiques i geografia en cada país, resolent intricades endevinalles per a obtenir peces essencials que alimentaran d'energia sostenible a l'escola. Aquestes peces, impregnades de tecnologies renovables innovadores, representen la clau per a un futur més verd i sostenible.</p> <p>Per a finançar el seu viatge, Laia se submergeix en la bulliciosa ciutat de Barcelona, on realitza encàrrecs que li permeten guanyar els diners necessaris. La ciutat es converteix en el seu pati de jocs, mentre Laia equilibra el treball, la vida quotidiana i l'emocionant cerca de les peces que transformaran vides.</p> <p>A mesura que avances en el joc, descobriràs la riquesa cultural i la diversitat dels destins, mentre Laia supera desafiaments que van més enllà de les proves mentals, enfrontant-se a situacions inesperades i forjant amistats que l'ajudaran en la seva noble causa.</p><p>En <span style='font-weight:bold'>'El Viatge Renovable de Laia'</span>, uneix-te a Laia en la seva emocionant travessia pel món, on cada pas l'acosta més a la meta d'il·luminar el futur amb energia neta i sostenible. Tens el necessari per a superar els desafiaments i ajudar a Laia a complir la seva missió?</p><p style='font-weight:bold'>El destí del planeta és a les teves mans!</p>",
                 "Registro":"Registre",
                 "Juegos":"Jocs",
                 "TituloJuegos":[   
@@ -122,11 +121,65 @@ document.addEventListener('DOMContentLoaded',function(){
                 ],
                 "Desarrolladores":"Desenvolupadors"
             }    
+        },
+        {
+            "Ingles":
+            {
+                "Titulo":"Laia's Renewable Journey",
+                "Registro": "Registration",
+                "Juegos": "Games",
+                "TituloJuegos":[   
+                    {
+                        "Juego": "Game 1",
+                        "Descripcion": "Description 1",
+                        "Desarrollador": "Developer: "
+                    },
+                    {
+                        "Juego": "Sustainable Light",
+                        "Descripcion": "Imagine an amazing challenge in 'Sustainable Light'. Your mission: to light up our school with renewable energy. But wait, there are three pieces to discover! Get ready to face mathematical challenges, solve puzzles and even decipher questions about cows in India.",
+                        "Desarrollador": "Developer: "
+                    },
+                    {
+                        "Juego": "Game 3",
+                        "Descripcion": "Description 3",
+                        "Desarrollador": "Developer:"
+                    },
+                    {
+                        "Juego": "Game 4",
+                        "Descripcion": "Description 4",
+                        "Desarrollador": "Developer: "
+                    },
+                    {
+                        "Juego": "Game 5",
+                        "Descripcion": "Description 5",
+                        "Desarrollador": "Developer: "
+                    }
+                ],
+                "BocataTextos":[   
+                    {
+                        "Texto":"<p>In the exciting game <span style='font-weight:bold'>'Laia's Renewable Journey'</span>, you will immerse yourself in the exciting odyssey of a brave woman named Laia, whose mission is to bring renewable energy to a school through challenging tests around the world. Laia embarks on an epic journey that will take her through exotic destinations, such as vibrant India, wild Kenya and lush Brazil.</p>"
+                    },
+                    {
+                        "Texto":"<p>Laia, gifted with a sharp mind and exceptional skills, will face logic, mathematics and geography challenges in each country, solving intricate puzzles to obtain essential pieces that will feed sustainable energy to the school. These pieces, infused with innovative renewable technologies, represent the key to a greener and more sustainable future.</p>"
+                    },
+                    {
+                        "Texto":"<p>To finance her trip, Laia immerses herself in the bustling city of Barcelona, where she carries out assignments that allow her to earn the necessary money. The city becomes her playground, as Laia balances work, everyday life, and the exciting search for the pieces that will transform lives. </ P>"
+                    },
+                    {
+                        "Texto":"<p>As you progress through the game, you will discover the cultural richness and diversity of the destinations, while Laia overcomes challenges that go beyond mental tests, facing unexpected situations and forging friendships that will help her in her noble cause. </p>"
+                    },
+                    {
+                        "Texto":"<p>In <span style='font-weight:bold'>'Laia's Renewable Journey'</span>, join Laia on her exciting journey around the world, where each step brings her closer to the goal of illuminating the future with clean and sustainable energy. Do you have what it takes to overcome the challenges and help Laia fulfill her mission? </ P > < p style = 'font-weight: bold' > The fate of the planet is in your hands! </ P >"
+                    }
+                ],
+                "Desarrolladores":"Developers"
+            }    
         }
     ];
 
     let cat = document.getElementById('cat');
     let esp = document.getElementById('esp');
+    let ing = document.getElementById('ing');
 
     let btnRegistro = document.getElementById('btnLandingRegistro');
     let lblTitulo = document.querySelector('.landing-page #titulo');
@@ -179,6 +232,28 @@ document.addEventListener('DOMContentLoaded',function(){
         }
         
         desarrolladoresHeader.innerHTML = idiomasLanding[1]['Catalan'].Desarrolladores;
+    });
+    
+    ing.addEventListener('click', function cambiarIdioma(event){
+
+        // headerSectionIntro.innerHTML = idiomasLanding[1]['Catalan'].Banner;
+        lblTitulo.innerHTML = idiomasLanding[2]['Ingles'].Titulo;
+        btnRegistro.value = idiomasLanding[2]['Ingles'].Registro;
+        juegosHeader.innerHTML = idiomasLanding[2]['Ingles'].Juegos;
+
+        for (let index = 0; index < tituloJuegos.length; index++) {
+            
+            tituloJuegos[index].innerHTML = idiomasLanding[2]['Ingles']['TituloJuegos'][index].Juego;
+            descripcionJuegos[index].innerHTML = idiomasLanding[2]['Ingles']['TituloJuegos'][index].Descripcion;
+            dedarrolladorJuegos[index].innerHTML = idiomasLanding[2]['Ingles']['TituloJuegos'][index].Desarrollador;
+        }
+
+        for (let index = 0; index < bocatas.length; index++) {
+            
+            bocatas[index].innerHTML = idiomasLanding[2]['Ingles']['BocataTextos'][index].Texto;
+        }
+        
+        desarrolladoresHeader.innerHTML = idiomasLanding[2]['Ingles'].Desarrolladores;
     });
 
     const pantalla = document.querySelector("body .landing-page");
