@@ -20,7 +20,8 @@ function buttonDeath() {
     window.location.href = '../kenia/index.html'
 }
 function pausePulsed() {
-    character.setAttribute('src', '../kenia/img/char_stand.png')
+    character.setAttribute('src', '../img/laiaDerechaParada.png')
+    // character.setAttribute('src', '../kenia/img/char_stand.png')
     imgLeft = 1
     imgRight = 1
     imgStand = 1

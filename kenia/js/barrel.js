@@ -6,14 +6,16 @@ class Barrel {
     container
     icono
     chocadoDerecha = false
+    numOfBarrel
     
-    constructor(x, y, vX, vY, container, icono, chocadoDerecha) {
+    constructor(x, y, vX, vY, container, icono, chocadoDerecha, numOfBarrel) {
         this.x = x
         this.y = y
         this.vX = vX
         this.vY = vY
         this.container = container
         this.icono = icono
-        this.chocadoDerecha = chocadoDerecha   
+        this.chocadoDerecha = chocadoDerecha
+        this.numOfBarrel = numOfBarrel   
       }
 }
