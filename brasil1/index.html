@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Prototipo Proyecto</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Russo+One&display=swap">
+        <link rel="icon" href="https://politecnics.barcelona/wp-content/uploads/favicon-politecnics.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./style/bootstrap.min.css">
+        <link rel="stylesheet" href="./style/style.css">
+        <link rel="stylesheet" href="../css/fontawesome/css/all.css">
+        <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href="../css/botones.css">
+        <script src="./js/bootstrap.bundle.min.js"></script>
+        <script src="./js/script.js"></script>
+    </head>
+    <body>
+        <div id="fondo"></div>
+        <div class="frame">
+            <div class="progress-bar-container">
+                <div class="progress-bar-frame">
+                    <div class="progress-bar-recorrido">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <img src="./media/progress-bar-frame.png" draggable="false">
+                </div>
+            </div>
+            <div class="titulo">
+                <div class="titulo-img-container">
+                    <img src="./media/titulo.png" draggable="false">
+                </div>
+                <div class="titulo-btn-container">
+                    <div class="play" onclick="setInterface()"><i class="fa-solid fa-play"></i></div>
+                    <div class="how-to-play" data-bs-toggle="modal" data-bs-target="#modal-howto"><i class="fa-solid fa-question"></i></div>
+                </div>
+            </div>
+            <div class="tambores">
+                <img class="img-tambores" src="./media/tambores.png" draggable="false">
+                <div class="efects">
+                    <img class="img-efecto" draggable="false">
+                    <audio class="audio-efecto"></audio>
+                </div>
+                <div class="hitboxes">
+                    <div class="hitbox" onmousedown="controlInputjugador(0)"></div>
+                    <div class="hitbox" onmousedown="controlInputjugador(1)"></div>
+                    <div class="hitbox" onmousedown="controlInputjugador(2)"></div>
+                    <div class="hitbox" onmousedown="controlInputjugador(3)"></div>
+                </div>
+            </div>
+            <div class="modal fade" id="modal-howto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                    <div class="how-to-title">INSTRUCCIONES</div>
+                    <div class="how-to-description">
+                        <div class="how-to-instruction">
+                            <div class="how-to-text">Para comenzar deberas iniciar la partida, para ello, pulsa en este botón que encontraras en el menú principal</div>
+                            <div class="how-to-img"><img src="media/captura-btn-inicio.png"></div>
+                        </div>
+                        <div class="how-to-instruction">
+                            <div class="how-to-text">En el juego, únicamente deberás replicar la secuencia tambores que se iluminen</div>
+                            <div class="how-to-img"><img src="./media/tambor-ejemplo.png"></div>
+                        </div>
+                    </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="audio-container">
+                <audio class="campire-audio" src="./media/audio/campire.mp3" loop></audio>
+                <audio class="forest-audio" src="./media/audio/forest.mp3" loop></audio>
+                <audio class="success-audio" src="./media/audio/success.mp3"></audio>
+                <audio class="error-audio" src="./media/audio/error.mp3"></audio>
+                <audio class="victory-audio" src="./media/audio/victory.mp3"></audio>
+            </div>
+            <div class="frame-effect"></div>
+        </div>
+    </body>
+</html>
