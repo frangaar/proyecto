@@ -22,11 +22,16 @@
     <img src="img/gorro.png" id="laiaGorro">
     <img src="img/laiaDerechaCaminando.gif" id="laiaLanding">
     <img src="img/escenarios/bocata.png" class="laiaBocata">
+    <div id="bocataSaberMas">
+        <img src="img/escenarios/mas_info.png" id="laiaInfo">
+        <p>Clica aquí si quieres saber más!!</p>
+    </div>
     <div id="fondo"></div>
     <div class="container landing-page apagado">
         <div class="login-bar-section">
             <img id="esp" class="idiomas" src="img/idiomas/esp.png">
             <img id="cat" class="idiomas" src="img/idiomas/cat.png">
+            <img id="ing" class="idiomas" src="img/idiomas/ing.png">
             <div id="ranking">
                 <img src="img/botones/corona.png" id="corona">
                 <a href="ranking.php"><input type="button" id="btnRanking" class="btn btn-primary cursor botones" value="Ranking"></input></a>
