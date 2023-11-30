@@ -754,16 +754,6 @@ button.audio-close{
 
   #fondo{
     background-size: cover;
-    /* background-image: url('../../img/escenarios/fondo.png');
-    width: 109%;
-    height: 1821px;
-    position: fixed;
-    z-index: 100;
-    pointer-events: none;
-    top: -653px;
-    background-size: 2208px;
-    left: -133px; */
-
     position: fixed;
     z-index: 100;
     pointer-events: none;
@@ -777,4 +767,84 @@ button.audio-close{
 
   #musica,#volver{
     margin-top: 23px;
+  }
+
+  #mision{
+    display: block;
+    z-index: 50000;
+  }
+
+  #mision .modal-content{
+    width: 80%;
+    height: 64%;
+  }
+
+  #mision .carousel-item{
+    height: 100%;
+  }
+
+  #mision .instruccion1{
+    text-align: center;
+    left: 300;
+    font-size: 50px;
+  }
+
+  #mision .instruccion2{
+    text-align: center;
+    font-size: 37px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  
+  #mision .carousel-item #teclas{
+    position: absolute;
+    left: 600px;
+    top: 190px;
+  }
+
+  #mision .carousel-item #laiaUp,
+  #mision .carousel-item #laiaDown,
+  #mision .carousel-item #laiaRight,
+  #mision .carousel-item #laiaLeft{
+    position: absolute;
+    width: 50px;
+  }
+
+  #mision #capt11{
+    position: absolute;
+    left: 100px;
+    top: 93px;
+    width: 629px;
+  }
+
+  #mision #capt12{
+    position: absolute;
+    left: 763px;
+    top: 93px;
+    width: 602px;
+  }
+
+  #mision .carousel-item #laiaUp{
+    left: 700px;
+    top: 80px;
+  }
+
+  #mision .carousel-item #laiaDown{
+    left: 700px;
+    top: 362px;
+  }
+  #mision .carousel-item #laiaRight{
+    left: 880px;
+    top: 262px;
+  }
+  #mision .carousel-item #laiaLeft{
+    left: 530px;
+    top: 262px;
+  }
+
+  #mision .carousel-control-next,
+  #mision .carousel-control-prev{
+
+    background-color: black;
+    width: 50px;
   }

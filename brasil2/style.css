@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
 
 * {
     margin: 0;
@@ -31,12 +31,19 @@ body {
     font-family: 'Pixelify Sans', sans-serif !important;
     padding-right: 50px;
     font-size: 50px;
+    font-weight: bold;
 }
 
 .temps {
     color: deeppink;
     font-family: 'Pixelify Sans', sans-serif !important;
     font-size: 50px;
+    font-weight: bold;
+}
+
+.text img {
+    position: absolute;
+    right: 150px;
 }
 
 .container {
