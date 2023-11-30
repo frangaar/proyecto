@@ -49,7 +49,6 @@ let character_is_dead = false
 let characterDeathJump = false
 let level_1_finished = false
 let level_2_finished = false
-
 // Background size y width y animar el fondo.
 level1_Map.style.width = BLOCK_SIZE * PLAYER_WIDTH + 'px'
 level1_Map.style.height = (BLOCK_SIZE * PLAYER_HEIGHT) + 'px'
@@ -260,10 +259,10 @@ addEventListener('keydown', (event) =>
         case 'Escape':
             if (!pause && !character_is_dead) {
                pausePulsed()
-            } else {
+            } else if (game_is_started) {
                 buttonAccept()
-                play = true
-            }
+                play = true 
+            } 
             // app.style.display = 'none'
             break
     }

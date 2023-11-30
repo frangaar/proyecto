@@ -1,3 +1,42 @@
+@keyframes move {
+	0% {
+        left: 310px;
+	}
+	100% {
+        left: 510px;
+	}
+}
+@keyframes moveAway {
+    0% {
+        left: 510px;
+    }
+    100% {
+        left: 1460px;
+    }
+}
+@keyframes donkyeAppareance {
+    0% {
+        transform: rotate(45deg);
+        top: 723px;
+        left: 0px;
+    }
+    50% {
+        transform: rotate(45deg);
+    }
+    100% {
+        top: 693px;
+        left: 164px;
+    }
+}
+@keyframes donkeyMoveAway {
+    0% {
+        left: 164px;
+    }
+    100% {
+        left: 1460px;
+    }
+}
+
 #deathMenu {
     display: none;
     margin: 0;
@@ -15,14 +54,64 @@
     height: 100px;
 }
 .titleMenu {
-    color: green;
+    text-shadow: -2px -2px 1px #000, 2px 2px 1px #000, -2px 2px 1px #000, 2px -2px 1px #000;
+    font-weight: bold;
+    color: white;
+    /* color: green; */
     /* position: absolute; */
     left: 43%;
     top: 30px;
     font-family: 'Pixelify Sans', sans-serif;
 }
+#showHistory {
+    display: none;
+}
+#exitButton {
+    display: none;
+}
+#controls {
+    display: none;
+}
 #showControls {
     display: none;
+}
+#donkey_history {
+    display: none;
+    top: 693px;
+    left: 164px;
+    position: absolute;
+}
+.storyImages {
+    bottom: -33px;
+    position: absolute;
+    width: 189px;
+    /* left: 310px; */
+    /* animation: move 3s linear;  */
+    left: 510px;
+}
+#mensajeHistoria {
+    display: none;
+    width: 358px;
+    height: 180px;
+    position: absolute;
+    left: 625px;
+    bottom: 383px;
+    background-color: white;
+}
+#bocata_Story {
+    font-size: 16px;
+    display: none;
+    width: 367px;
+    margin-left: -2px;
+    height: 216px;
+}
+#mensaje1 {
+    font-size: 16px;
+    display: none;
+    top: 11px;
+    color: black !important;
+    position: absolute;
+    padding-left: 5px;
 }
 .container {
     border: 1px solid white;
@@ -71,6 +160,7 @@ li#goMenu {
     position: absolute;
     left: 1352px;
     top: 68px;
+    /* animation: float 4s ease-in-out infinite; */
 }
 .showLaia{
     /* border: 1px solid white; */
@@ -86,13 +176,15 @@ li#goMenu {
 ul {
     bottom: 50%;
     list-style-type: none;
+    
 }
 
 li {
-    font-size: 25px;
-    width: 8em;
-    height: 2em;
-    color: green;
+    font-size: 20px;
+    width: 9em;
+    height: 3em;
+    color: white;
+    /* color: green; */
     border-left: 0.08em solid;
     position: relative;
     margin-top: 0.8em;
@@ -142,18 +234,24 @@ li::after {
 }
 
 li span {
+    text-shadow: -2px -2px 1px #000, 2px 2px 1px #000, -2px 2px 1px #000, 2px -2px 1px #000;
+    font-weight: bold;
     position: relative;
     height: 120%;
     top: -10%;
     box-sizing: border-box;
-    border: 0.08em solid;
-    background-color: black;
+    /* border: 0.08em solid; */
+    /* background-color: black; */
+    background-image: url(../img/boton.png);
+    background-size: cover;
+    /* background-position:bottom; */
+
     /* background-color: #333; */
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Pixelify Sans', sans-serif ;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
     transform: translateX(calc(-0.15em * 3 - 0.08em * 2));
     transition: 0.3s;
 }

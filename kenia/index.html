@@ -68,6 +68,20 @@
             </li>
         </div>
     </div>
+    <div id="showHistory">
+        <div class="container" id="containerStory">
+            <img src="" alt="laia quieta" id="laiaStory" class="storyImages">
+            <div id="mensajeHistoria">
+                <img src="../img/escenarios/bocata.png" alt="" id="bocata_Story">
+                <p id="mensaje1">¡Bienvenidos a Kenia!. <br>
+                    Un país maravilloso lleno de fauna y buenas personas, como Malik. <br>
+                    Me ha contado que un científico loco ha apagado todo el sistema eléctrico del país.
+                    ¡Rápido, tenemos que llegar a la central eléctrica lo más rápido posible!.
+                </p>
+            </div>
+            <img src="../kenia/img/donkeyKong.gif" alt="donkey kong" id="donkey_history">
+        </div>
+    </div>
     <audio src="sound/character_Death.mp3" id="audioMarioFallin"></audio> 
     <audio src="sound/" id="audioMarioDiying"></audio>
     <audio src="sound/mario_jump.wav" id="marioJump"></audio>
@@ -82,7 +96,7 @@
             if (event.code === 'Enter') {
                 if (!character_is_dead) 
                 {
-                    buttonAccept()
+                    startGame()
                 } else 
                 {
                     buttonDeath()

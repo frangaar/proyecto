@@ -2,6 +2,7 @@ var botonAceptar = document.getElementById('buttonAceptar')
 var divButton = document.getElementById('buttonContinue')
 let focusPlayButton = document.getElementById('playButton')
 let exitButton = document.getElementById('credits/exit')
+let exitMenuButton = document.getElementById('exitButton')
 let exit = document.getElementById('exit')
 let controlsButton = document.getElementById('controls')
 let showCtrl = document.getElementById('showControls')
@@ -9,10 +10,16 @@ let buttonGoMenu = document.getElementById('buttonGoMenu')
 let containerGoMenu = document.getElementById('goMenu')
 let controlsTitle = document.getElementById('controlsTitle')
 let containerControls = document.getElementById('containerControls')
+let history = document.getElementById('showHistory')
+let laia = document.getElementById('laiaStory')
+
 var play = false
 let viewControls = false
+var game_is_started = false
+
 /** Función para empezar el juego.*/
 function buttonAccept() {
+    history.style.display = 'none'
     var level1_Map = document.getElementById('level1')              
     /** Cuando empieza el juego */
     level1_Map.style.display= 'block'
@@ -26,13 +33,12 @@ function buttonAccept() {
 } 
 /** Funcion menú para cuando muera el jugador. */  
 function buttonDeath() {
-    window.location.href = '../kenia/index.html'
+    window.location.href = 'http://localhost/proyecto/kenia/index.html'
 }
 /** Función para menú pausa. */
 function pausePulsed() {
     viewControls = true
     character.setAttribute('src', '../img/laiaDerechaParada.png')
-    // character.setAttribute('src', '../kenia/img/char_stand.png')
     imgLeft = 1
     imgRight = 1
     imgStand = 1
@@ -47,18 +53,43 @@ function pausePulsed() {
     title.innerHTML = 'Pause Mode'
     focusPlayButton.innerHTML = 'Volver al juego'
     exitButton.innerHTML = 'Ir al menu'
-    // exit.style.display = 'none'
-    exitButton.setAttribute('onclick', 'buttonDeath()')
+    exitButton.setAttribute('onclick', 'back_Menu()')
     pause = true
+    document.addEventListener("keyup", function(event) {
+        if (event.code === 'Enter') {
+            if (!character_is_dead) 
+            {
+                buttonAccept()
+            }
+        }
+    });
+}
+/** Función para volver al menú. */
+function back_Menu() {
+    laia.style.display = 'block'
+    exit.style.display = 'block'
+    play = false
+    game_is_started = false
+    audioBackground.pause()
+    focusPlayButton.setAttribute('onclick', 'startGame()')
+    focusPlayButton.innerHTML = 'Jugar'
+    exitMenuButton.style.display = 'none'
+    controlsButton.style.display = 'none'
+    divButton.style.backgroundColor = 'black'
+    title.innerHTML = 'Laia en Kenia'
+    level1_Map.style.display = 'none'
+    botonAceptar.style.display = null
+    divButton.style.display = null
+    buttonGoMenu.style.display = null
+    containerGoMenu.style.display = null
+    // window.location.href = 'http://localhost/proyecto/kenia/index.html'
 }
 /** Función para salir del juego. */
 function exitGame() {
     window.location.href = '../save.php?nivel=3+&tiempo=' + timerCount;
-    console.log(timerCount);
 }
 /** Funcion para mostrar todos los controles para jugar. */
 function showControls() {
-    // viewControls = true
     if (viewControls) {
         controlsTitle.innerHTML = 'Controles'
         buttonGoMenu.innerHTML = 'Atras'
@@ -73,7 +104,6 @@ function showControls() {
         buttonGoMenu.innerHTML = 'Menu'
         buttonGoMenu.setAttribute('onclick', 'buttonDeath()')
         level1_Map.style.display = 'none'
-        botonAceptar.display = 'none'
         botonAceptar.style.display = 'none'
         divButton.style.display = 'none'
     }
@@ -82,8 +112,11 @@ function showControls() {
     buttonGoMenu.style.top = '-40px'
     viewControls = false
 }
+/** Función para empezar el juego. */
 function startGame() {
     showControls()
+    divButton.style.display = 'none'
+    controlsTitle.innerHTML = 'Antes de jugar'
     buttonGoMenu.style.display = 'none'
     containerGoMenu.style.display = 'none'
     setTimeout(() => {
@@ -92,8 +125,71 @@ function startGame() {
         buttonGoMenu.innerHTML = 'Siguiente'
         buttonGoMenu.setAttribute('onclick', 'showStory()')  
     }, 3000);
+    document.addEventListener("keyup", function(event) {
+        if (event.code === 'Enter') {
+            if (!character_is_dead) 
+            {
+                showStory()
+            }
+        }
+    });
 }  
+/** Función para mostrar la historia. */
 function showStory() {
-    showCtrl.style.display = 'none'
+    let mensajeHistoria = document.getElementById('mensajeHistoria')
+    let containerHistory = document.getElementById('containerStory')
+    let bocata = document.getElementById('bocata_Story')
+    let mensaje1 = document.getElementById('mensaje1')
+    let donkey = document.getElementById('donkey_history')
+    containerHistory.style.backgroundImage = 'url(../kenia/img/fondo2.png)'
+    containerHistory.style.backgroundSize = 'cover'
     // Mostrar cinematica historia
+    controlsButton.style.display = 'block'
+    exitMenuButton.style.display = 'block'
+    exit.style.display = 'none'
+    laia.setAttribute('src', '../img/laiaDerechaCaminando.gif')
+    history.style.display = 'block'
+    showCtrl.style.display = 'none'
+    laia.style.animation = 'move 3s linear'
+    laia.addEventListener('animationend', function() {
+        laia.setAttribute('src', '../img/laiaDerechaParada.png')
+        mensajeHistoria.style.display = 'block'
+        bocata.style.display = 'block'
+        mensaje1.style.display = 'block'
+        setTimeout(() => {
+            mensaje1.innerHTML = `¡Oh no, hay un gorila enfadado que no nos deja pasar!
+            Esta tirando barriles, tenemos que derrotarlo para ir a la central y encender la electricidad.
+            <br>
+            Deja que te de un consejo, ves con cuidado, salta los barriles y llega hasta el, pero sobretodo, ten mucho cuiado, esos barriles no tienen buena pinta.`
+            setTimeout(() => {
+                bocata.style.display = 'none'
+                mensaje1.style.display = 'none'
+                mensajeHistoria.style.display = 'none'
+                laia.setAttribute('src', '../img/laiaDerechaCaminando.gif')
+                laia.style.animation = 'moveAway 4s linear'
+                laia.addEventListener('animationend', function() {
+                    laia.style.display = 'none'
+                    donkey.style.display = 'block'
+                    bocata.style.display = 'none'
+                    mensaje1.style.display = 'none'
+                    mensajeHistoria.style.display = 'none'
+                })
+            }, 1000);
+
+        }, 1000);
+    })
+    setTimeout(() => {
+        donkey.style.animation = 'donkyeAppareance 1s linear'
+        donkey.style.transform = 'rotate(0)'   
+    }, 4000);
+    donkey.addEventListener('animationend', function() {
+       donkey.style.animation = 'donkeyMoveAway 4s linear'
+       donkey.style.left = '1460px'
+       donkey.addEventListener('animationend', function() {
+        donkey.style.display = 'none'
+        game_is_started = true
+        buttonAccept()
+    })
+    })
+    
 }
