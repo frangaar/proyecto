@@ -11,14 +11,14 @@ let enemyVelocity = 2.3
 let player_velocity = 2.9
 let player_life = 1
 //5
-let barrel_velocity = 5
+let barrel_velocity = 3
 let final_del_mapa
 let final_nivel_1
 let final_nivel_2   
 let colisionado = false
-let play = false
+// let play = false
 let index_counting_barrels = 0
-
+var timerCount = 1
 
 /** Inizializar los botones del menu y el div*/
 let button_Death = document.getElementById('buttonAceptar_Death')
@@ -30,8 +30,6 @@ let container = document.getElementById('character-Container')
 let enemy = document.getElementById('donkeyKongCharacter')
 let enemyContainer = document.getElementById('kongContainer')
 
-
-
 var pause = true
 let velocityX = 0
 let velocityY = 5
@@ -41,7 +39,6 @@ let keyLeftPressed = false
 let keyUpPressed = false
 let keyDownPressed = false
 let dontTouchTheCOLLIDABLEWithTheHeadRight = false
-// let chocado = false
 let imgLeft = 0
 let imgRight = 1
 let imgUp = 0
@@ -75,7 +72,7 @@ drawMap()
 // }
 // Variables de la posicion del personaje.
 let positionX = 0
-let positionY = 752
+let positionY = 762
 // character.style.bottom = positionY + 'px'  
 let barrelPositionX = 295
 let barrelPositionY = 50
@@ -88,6 +85,14 @@ let numberOfBarrels = 0
 let b1 = new Barrel()
 let f1 = new ColisionablesObjects()
 const elementosFila2 = document.querySelectorAll('.fila2');
+function timer() {
+    if (play) {
+        timerCount++
+    }
+}
+setInterval(() => {
+    timer()
+}, 1000);
 function draw () 
 {
     container.style.left = positionX + 'px'
@@ -532,6 +537,7 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                 // if ((positionY + container.offsetHeight) <= app.offsetTop) {
                 //     velocityY += (PLAYER_VELOCITYJUMP/2)
                 // }
+                
                 // if 
                 // (
                 //     (PY_CONTAINER_HEIGHT) <= COLLIDABLE[index].offsetTop
@@ -592,10 +598,10 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
     while (iLateralColider < COLLIDABLE_ROWS.length) {
         // console.log(COLLIDABLE_ROWS[iLateralColider]);
         if (
-            positionX + character.offsetWidth >= COLLIDABLE_ROWS[iLateralColider].x
+            positionX + container.offsetWidth >= COLLIDABLE_ROWS[iLateralColider].x
             && positionX <= COLLIDABLE_ROWS[iLateralColider].x + COLLIDABLE_ROWS[iLateralColider].width
-            && positionY + character.offsetHeight <= COLLIDABLE_ROWS[iLateralColider].y
-            && positionY >= COLLIDABLE_ROWS[iLateralColider].y + COLLIDABLE_ROWS[iLateralColider].height
+            // && positionY + character.offsetHeight >= COLLIDABLE_ROWS[iLateralColider].y
+            && positionY <= COLLIDABLE_ROWS[iLateralColider].y + COLLIDABLE_ROWS[iLateralColider].height
             // && (PY_CONTAINER_HEIGHT_VELOCITY) >= (COLLIDABLE_ROWS[iLateralColider].y)
             ) 
             {

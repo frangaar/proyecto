@@ -1,0 +1,254 @@
+* {
+    overflow: hidden !important;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body{
+    margin: 0px;
+}
+
+.frame{
+    position: absolute;
+    top: 4%;
+    height: 91vh;
+    width: 88%;
+    background-image: url(../media/fondo_original.gif);
+    background-position: top;
+    background-size: cover;
+    transition: 1.5s;
+    left: 6%;
+}
+
+.frame-effect{
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    pointer-events: none;
+}
+
+
+.starting-game.frame{
+    background-position: bottom;
+}
+
+
+.titulo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    transform: translate(-48%, -50%);
+    transition: 1.5s;
+}
+
+.starting-game .titulo{
+    top: -100%;    
+}
+
+
+.titulo img{
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.8);
+    object-fit: contain;
+}
+
+.titulo-btn-container{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+}
+
+.titulo-btn-container > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    background-image: url('../media/wood-btn.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    font-size: 50px;
+    color: rgba(0,0,0,0.7);
+    padding-bottom: 15px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.titulo-btn-container > div:hover{
+    filter: brightness(1.2);
+}
+
+.titulo-btn-container > div:active{
+    transform: scale(0.95);
+    filter: brightness(0.8);
+    transition: 0s;
+}
+
+
+.tambores{
+    position: absolute;
+    bottom: -100%;  
+    left: 50%;
+    width: 85%;
+    height: 60%;
+    transform: translateX(-48%);
+    transition: 1.5s;
+}
+
+.interface-in .tambores{
+    bottom: -20%;
+}
+
+.interface-in .progress-bar-container{
+    top: 3%;
+
+}
+
+.progress-bar-container{
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    width: 75%;
+    transform: translateX(-48%);
+    transition: 1.5s;
+}
+
+.progress-bar-frame > img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.progress-bar-recorrido{
+    position: absolute;
+    top: 20%;
+    left: 1.2%;
+    height: 58%;
+    width: 97.6%;
+    transition: 0.5s;
+}
+
+.progress-bar{
+    height: 100%;
+    width: 0%;
+    background-color: rgb(202 203 0);
+    transition: 0.5s;
+}
+
+.tambores > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.img-tambores, .efects > img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.efects > img{
+    opacity: 0;
+    transition: 0.8s;
+}
+
+.hitboxes{
+    display: flex;
+    flex-direction: row;
+}
+
+.hitbox {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.modal-content{
+    background: transparent;
+}
+
+.modal-content{
+    background-color: transparent;
+    border: none;
+}
+
+#modal-howto{
+    font-family: 'Permanent Marker', cursive;
+}
+
+
+#modal-howto .modal-content{
+    height: 860px !important;
+    background-image: url('../media/modal-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.img-bg-howto{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.how-to-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 1%;
+    left: 27%;
+    height: 18%;
+    width: 46%;
+    color: white;
+    font-weight: 900;
+    font-size: 58px;
+}
+
+.how-to-description{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    height: 70%;
+    width: 90%;
+    font-size: 35px;
+    font-weight: 500;
+    padding: 50px;
+}
+
+.how-to-instruction{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+
+.how-to-text{
+    padding: 20px;
+}
+
+.how-to-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+}
+
+.how-to-img > img{
+    width: 100%;
+    object-fit: contain;
+}

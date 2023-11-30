@@ -2,12 +2,14 @@
     font-family: pixel;
     src: url(../img/DS-TERM.TTF);
 }
+
 html , body{
     /* cursor:  url(../img/cursorMano.png), auto; */
     cursor: grab;
     /* height: 100%;
     top: 0; */
     /* filter: hue-rotate(200deg); */
+
 }
 #body{
     margin: 0;
@@ -22,6 +24,10 @@ p {
     color: greenyellow;
     font-family: 'Pixelify Sans', sans-serif;
 }
+.buttonSalir{
+    display: block !important;
+    position: absolute;
+}
 .app {
     /* box-shadow: white 1px 1px 3px 4px; */
     margin: 0;
@@ -32,7 +38,7 @@ p {
     /* height: 80%; */
     position: fixed;
     display: none;
-    position: absolute;
+    /* position: absolute; */
     left: 316px;
 }
 .bloques {
