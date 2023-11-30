@@ -39,7 +39,7 @@
             <h1 class="titleMenu" id="title">Laia En Kenia</h1>
             <div class="showLaia"></div>
             <ul id="buttonAceptar">
-                <li><span onclick="buttonAccept()" id="playButton">Jugar</span></li>
+                <li><span onclick="startGame()" id="playButton">Jugar</span></li>
                 <li id="controls"><span onclick="showControls()">Controles</span></li>
                 <li id="exitButton"><span id="credits/exit">Creditos</span></li>
                 <li id="exit"><span onclick="exitGame()">Salir al mapa</span></li>
@@ -55,14 +55,17 @@
         </ul>
     </div>
     <div id="showControls">
-        <!-- <img src="../img/image.jpg" alt=""> -->
         <div class="container" id="containerControls">
             <h1 id="controlsTitle">Como Jugar</h1>
             <img src="../kenia/img/keyboard_controls.png" alt="" class="imgKeyboard">
             <img src="../img/laiaDerechaCaminando.gif" alt="laia derecha" class="imagenControles" id="laiaRight">
             <img src="../img/laiaIzquierdaCaminando.gif" alt="Laia izquierda" class="imagenControles" id="laiaLeft">
             <img src="../img/laiaIzquierdaParada.png" alt="Laia Saltando" class="imagenControles" id="laiaStand">
-            <li id="goMenu"><span id="buttonGoMenu"></span></li>
+            <img src="../kenia/img/esc_keyboard.png" alt="" class="imagenControles" id="esc_key">
+            <p id="esc_description">Presiona esta tecla cuando quieras entrar en el menú de pausa.</p>
+            <li id="goMenu">
+                <span id="buttonGoMenu"></span>
+            </li>
         </div>
     </div>
     <audio src="sound/character_Death.mp3" id="audioMarioFallin"></audio> 

@@ -6,6 +6,7 @@ let exit = document.getElementById('exit')
 let controlsButton = document.getElementById('controls')
 let showCtrl = document.getElementById('showControls')
 let buttonGoMenu = document.getElementById('buttonGoMenu')
+let containerGoMenu = document.getElementById('goMenu')
 let controlsTitle = document.getElementById('controlsTitle')
 let containerControls = document.getElementById('containerControls')
 var play = false
@@ -18,12 +19,10 @@ function buttonAccept() {
     showCtrl.style.display = 'none'
     pause = false
     audioBackground.play()
-    // body.style.backgroundImage = 'url(../img/image.jpg)'
     botonAceptar.style.display = 'none'
     divButton.style.display = 'none'
     level1_Map.style.filter = 'blur(0px)'
     play = true
-    // viewControls = false
 } 
 /** Funcion menú para cuando muera el jugador. */  
 function buttonDeath() {
@@ -68,7 +67,8 @@ function showControls() {
         containerControls.style.width = '1008px'
         containerControls.style.width = '836px'
         containerControls.style.backgroundColor = 'rgba(255, 255, 255, 0.525)'
-        // showCtrl.style.width = '1000px'
+        containerGoMenu.style.left = '1142px'
+        containerGoMenu.style.top = '68px'
     } else {
         buttonGoMenu.innerHTML = 'Menu'
         buttonGoMenu.setAttribute('onclick', 'buttonDeath()')
@@ -78,7 +78,22 @@ function showControls() {
         divButton.style.display = 'none'
     }
     showCtrl.style.display = 'block'
-    buttonGoMenu.style.left = '25px'
+    buttonGoMenu.style.left = '5px'
     buttonGoMenu.style.top = '-40px'
     viewControls = false
+}
+function startGame() {
+    showControls()
+    buttonGoMenu.style.display = 'none'
+    containerGoMenu.style.display = 'none'
+    setTimeout(() => {
+        buttonGoMenu.style.display = 'flex'
+        containerGoMenu.style.display = null
+        buttonGoMenu.innerHTML = 'Siguiente'
+        buttonGoMenu.setAttribute('onclick', 'showStory()')  
+    }, 3000);
+}  
+function showStory() {
+    showCtrl.style.display = 'none'
+    // Mostrar cinematica historia
 }

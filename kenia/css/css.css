@@ -28,41 +28,6 @@ p {
     display: block !important;
     position: absolute;
 }
-#showControls {
-    display: none;
-}
-.container {
-    border: 1px solid white;
-    border-radius: 15px;
-    width: 1296px;
-    height: 836px;
-    background-color: rgba(255, 255, 255, 0.525);
-    /* background-color: rgba(255, 255, 255, 0.241); */
-
-    text-align: center;
-}
-.imgKeyboard {
-    position: absolute;
-    top: 30%;
-    left: 38%;
-}
-.imagenControles {
-    position: absolute;
-    width: 70px;
-    height: 90px;
-}
-#laiaRight {
-    left: 65%;
-    top: 50%;
-}
-#laiaLeft {
-    left: 32%;
-    top: 50%;
-}
-#laiaStand{
-    top: 17%;
-    left: 48%;
-}
 .app {
     /* box-shadow: white 1px 1px 3px 4px; */
     margin: 0;
