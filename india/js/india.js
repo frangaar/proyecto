@@ -883,6 +883,14 @@ document.addEventListener('DOMContentLoaded',function(){
         modalSuperado.classList.remove('success');
     });
 
+    let btnComoJugar = document.getElementById('entendido');
+    let mision = document.getElementById('mision');
+
+    btnComoJugar.addEventListener('click',function(){
+
+        mision.style.display = 'none';
+    });
+
 
 });
 

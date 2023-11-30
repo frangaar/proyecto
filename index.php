@@ -18,6 +18,7 @@
     unset($_SESSION['id']);
 ?>
 <body id="mainPage">
+    <div id="luces"></div>
     <div id="btnOnOff" class="btnEncender"></div>
     <img src="img/gorro.png" id="laiaGorro">
     <img src="img/laiaDerechaCaminando.gif" id="laiaLanding">

@@ -189,7 +189,7 @@ form {
 
 .login-bar-section{
     text-align: right;
-    margin-top: 15px;
+    margin-top: 25px;
 }
 
 #login .login-top,#registro .registro-top{
@@ -870,7 +870,7 @@ button.audio-close{
     left: -133px; */
 
     position: fixed;
-    z-index: 200;
+    z-index: 600;
     pointer-events: none;
     background-image: url('../img/escenarios/fondo.png');
     height: 4211px;
@@ -1028,7 +1028,7 @@ button.audio-close{
   }
 
   #laiaLanding.mover {
-    animation:moverse 5s linear;
+    animation:moverse 3.5s linear;
   }
 
   #laiaGorro.mover {
@@ -1039,11 +1039,11 @@ button.audio-close{
     background-image: url('../img/encender_apagar.png');
     width: 51px;
     height: 57px;
-    z-index: 250;
+    z-index: 700;
     position: absolute;
     /* left: 70px; */
     left: 38px;
-    top: 40px;
+    top: 70px;
     background-size: 100px;
     cursor: pointer;
     position: fixed;
@@ -1082,7 +1082,7 @@ button.audio-close{
   #bocataSaberMas{
     position: relative;
     left: 420px;
-    z-index: 1000;
+    z-index: 510;
     width: 143px;
     top: 70px;
     opacity: 0;
@@ -1103,4 +1103,14 @@ button.audio-close{
     padding-right: 15px;
     padding-top: 15px;
     padding-bottom: 21px;
+  }
+
+  #luces{
+    background-image: url('../img/guirnalda.gif');
+    position: fixed;
+    z-index: 5000;
+    width: 1903px;
+    height: 71px;
+    background-size: 190px;
+    opacity: 0;
   }

@@ -270,6 +270,7 @@ document.addEventListener('DOMContentLoaded',function(){
     let gorro = document.getElementById('laiaGorro');
     let bocata = document.getElementsByClassName('laiaBocata');
     let laiaInfo = document.getElementById('laiaInfo');
+    let guirnalda = document.getElementById('luces');
     
     
 
@@ -286,7 +287,6 @@ document.addEventListener('DOMContentLoaded',function(){
 
         pantalla.style.display = 'block';
         laia.classList.add('mover');
-        // gorro.classList.add('mover');
     }
 
     
@@ -317,6 +317,8 @@ document.addEventListener('DOMContentLoaded',function(){
         laia.style.left = stopMovement;
         gorro.classList.add('mover');
         gorro.style.top = stopGorro;
+        guirnalda.classList.add('mostrar');
+        guirnalda.style.opacity = 1;
 
         laiaInfo.classList.add('mostrar');
         laiaInfo.style.opacity = 1;
@@ -350,6 +352,8 @@ document.addEventListener('DOMContentLoaded',function(){
             pantalla.style.display = 'block';
             localStorage.setItem('encendido',true);
             body.style.pointerEvents = "inherit";
+            laia.setAttribute('src','img/laiaDerechaCaminando.gif');
+
         }else{
             btnApagar.classList.add('btnEncender');
             pantalla.classList.add('apagarPantalla');
@@ -361,6 +365,9 @@ document.addEventListener('DOMContentLoaded',function(){
             gorro.style.top= '-15px';
             laia.classList.remove('mover');
             gorro.classList.remove('mover');
+
+            guirnalda.classList.remove('mostrar');
+            guirnalda.style.opacity = 0;
 
             bocataSaberMas.classList.remove('mostrar');
             bocataSaberMas.style.opacity = 0;
