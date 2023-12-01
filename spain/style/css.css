@@ -16,14 +16,13 @@ html{
     font-size:larger;
 }
 
-
-/* Estilo para el temporizador */
-#timer {
+.botonSalir{
+    right: 180px;
     font-family: pixel;
     text-align: center;
     z-index: 999;
     width: 100px;
-    height: 90px;
+    height: 60px;
     font-size: 24px;
     font-weight: bold;
     color: #7100bd; /* Color del texto */
@@ -31,7 +30,25 @@ html{
     padding: 10px;
     position: absolute;
     top: 85px;
-    left: 180px;
+    border: solid black 1px;
+    border-radius: 5px;
+}
+
+/* Estilo para el temporizador */
+#timer {
+    font-family: pixel;
+    text-align: center;
+    z-index: 999;
+    width: 130px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #7100bd; /* Color del texto */
+    background-color: white; /* Color de fondo */
+    padding: 10px;
+    position: absolute;
+    top: 85px;
+    left: 160px;
     border: solid black 1px;
     border-radius: 5px;
   }
