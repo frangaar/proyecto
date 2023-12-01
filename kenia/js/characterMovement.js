@@ -7,7 +7,7 @@ const PLAYER_HEIGHT = 26
 const PLAYER_VELOCITYJUMP = 8.3 
 const NUM_OF_BARRELS = 4
 // 2.9
-let enemyVelocity = 2.3
+let enemyVelocity = 2.9
 let player_velocity = 2.9
 let player_life = 1
 //5

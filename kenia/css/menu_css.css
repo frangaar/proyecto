@@ -121,13 +121,42 @@
     height: 500px;
     position: absolute;
 }
-#containerMessageImportant {
+.selectorDeNivel {
+    display: none;
+}
+ul#level_characterSelected {
+    /* display: flex; */
+    left: -9px;
+    top: 79px;
+    position: absolute;
+    /* bottom: 50%; */
+    list-style-type: none;
+}
+li.lvl{
+    margin-right: 50px !important;
+}
+#levelSelectorTitle {
+    left: 23px;
+    position: absolute;
+    font-size: 30px;
+    color: white;
+}
+#containerMessageImportant #containerLevelSelector{
     top: 34% !important;
     left: 85% !important;
     position: absolute !important;
     width: 996px !important;
     height: 636px !important;
     background-size: cover;
+}
+.container#containerLevelSelector {
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    left: 310px;
+    top: 119px;
+    width: 1296px;
+    height: 436px;
 }
 #informativeText {
     padding: 0px 25px 0px 25px;

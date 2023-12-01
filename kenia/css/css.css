@@ -9,7 +9,7 @@ html , body{
     /* height: 100%;
     top: 0; */
     /* filter: hue-rotate(200deg); */
-
+    user-select: none;
 }
 #body{
     margin: 0;

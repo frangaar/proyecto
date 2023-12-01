@@ -124,26 +124,35 @@ function showControls() {
 }
 /** Función para empezar el juego. */
 function startGame() {
-    showControls()
-    divButton.style.display = 'none'
-    controlsTitle.innerHTML = 'Antes de jugar'
-    buttonGoMenu.style.display = 'none'
-    containerGoMenu.style.display = 'none'
-    setTimeout(() => {
-        buttonGoMenu.style.display = 'flex'
-        containerGoMenu.style.display = null
-        buttonGoMenu.innerHTML = 'Siguiente'
-        buttonGoMenu.setAttribute('onclick', 'showStory()')  
-    }, 3000);
-    document.addEventListener("keyup", function(event) {
-        if (event.code === 'Enter') {
-            if (!character_is_dead) 
-            {
-                showStory()
-            }
-        }
-    });
+    selectDificultAndCharacter()
+    // showControls()
+    // divButton.style.display = 'none'
+    // controlsTitle.innerHTML = 'Antes de jugar'
+    // buttonGoMenu.style.display = 'none'
+    // containerGoMenu.style.display = 'none'
+    // setTimeout(() => {
+    //     buttonGoMenu.style.display = 'flex'
+    //     containerGoMenu.style.display = null
+    //     buttonGoMenu.innerHTML = 'Siguiente'
+    //     buttonGoMenu.setAttribute('onclick', 'showStory()')  
+    // }, 3000);
+    // document.addEventListener("keyup", function(event) {
+    //     if (event.code === 'Enter') {
+    //         if (!character_is_dead) 
+    //         {
+    //             showStory()
+    //         }
+    //     }
+    // });
 }  
+function selectDificultAndCharacter() {
+    let container = document.getElementById('selectorDeNivel')
+    let level = document.getElementById('level_characterSelected')
+    let title = document.getElementById('levelSelectorTitle')
+    // divButton.style.display = 'none'   
+    container.style.display = 'block'
+    title.innerHTML = 'Selecciona la dificultad que quieras que tenga el juego'
+}
 /** Función para mostrar la historia. */
 function showStory() {
     let mensajeHistoria = document.getElementById('mensajeHistoria')
@@ -184,19 +193,18 @@ function showStory() {
                     bocata.style.display = 'none'
                     mensaje1.style.display = 'none'
                     mensajeHistoria.style.display = 'none'
+                    donkey.style.animation = 'donkyeAppareance 1s linear'
+                    donkey.style.transform = 'rotate(0)'
                 })
             }, 200);
 
         }, 200);
-    })
-    setTimeout(() => {
-        donkey.style.animation = 'donkyeAppareance 1s linear'
-        donkey.style.transform = 'rotate(0)'   
-    }, 4000);
+    })   
     donkey.addEventListener('animationend', function() {
-       donkey.style.animation = 'donkeyMoveAway 4s linear'
-       donkey.style.left = '1460px'
-       donkey.addEventListener('animationend', function() {
+        audioEnemy.play()
+        donkey.style.animation = 'donkeyMoveAway 4s linear'
+        donkey.style.left = '1460px'
+        donkey.addEventListener('animationend', function() {
         donkey.style.display = 'none'
         game_is_started = true
         buttonAccept()
