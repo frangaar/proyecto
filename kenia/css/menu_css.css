@@ -36,7 +36,9 @@
         left: 1460px;
     }
 }
-
+#controlsTitle {
+    color: white;
+}
 #deathMenu {
     display: none;
     margin: 0;
@@ -113,13 +115,38 @@
     position: absolute;
     padding-left: 5px;
 }
+#goingToTheLanding {
+    display: none;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+}
+#containerMessageImportant {
+    top: 34% !important;
+    left: 85% !important;
+    position: absolute !important;
+    width: 996px !important;
+    height: 636px !important;
+    background-size: cover;
+}
+#informativeText {
+    padding: 0px 25px 0px 25px;
+    position: absolute;
+    font-size: 45px;
+    color: white;
+}
+#buttonSureExit {
+    position: absolute;
+    left: 385px;
+    bottom: 150px;
+}
+
 .container {
     border: 1px solid white;
     border-radius: 15px;
     width: 1296px;
     height: 836px;
-    background-color: rgba(255, 255, 255, 0.525);
-    /* background-color: rgba(255, 255, 255, 0.241); */
+    background-color: #383681;    /* background-color: rgba(255, 255, 255, 0.241); */
 
     text-align: center;
 }
@@ -151,7 +178,7 @@
 }
 #esc_description {
     font-size: 20px;
-    color: black;
+    color: white;
     position: absolute;
     top: 77%;
     left: 35%;

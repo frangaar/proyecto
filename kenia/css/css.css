@@ -21,10 +21,6 @@ html , body{
     background-size: cover;
     overflow: hidden;
 }
-p {
-    color: greenyellow;
-    font-family: 'Pixelify Sans', sans-serif;
-}
 .buttonSalir{
     display: block !important;
     position: absolute;
