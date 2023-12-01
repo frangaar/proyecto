@@ -12,6 +12,8 @@ let controlsTitle = document.getElementById('controlsTitle')
 let containerControls = document.getElementById('containerControls')
 let history = document.getElementById('showHistory')
 let laia = document.getElementById('laiaStory')
+let sesion1
+let gameCompleted = false 
 
 var play = false
 let viewControls = false
@@ -66,27 +68,33 @@ function pausePulsed() {
 }
 /** Función para volver al menú. */
 function back_Menu() {
-    laia.style.display = 'block'
-    exit.style.display = 'block'
-    play = false
-    game_is_started = false
-    audioBackground.pause()
-    focusPlayButton.setAttribute('onclick', 'startGame()')
-    focusPlayButton.innerHTML = 'Jugar'
-    exitMenuButton.style.display = 'none'
-    controlsButton.style.display = 'none'
-    divButton.style.backgroundColor = 'black'
-    title.innerHTML = 'Laia en Kenia'
-    level1_Map.style.display = 'none'
-    botonAceptar.style.display = null
-    divButton.style.display = null
-    buttonGoMenu.style.display = null
-    containerGoMenu.style.display = null
-    // window.location.href = 'http://localhost/proyecto/kenia/index.html'
+    if (gameCompleted) {
+        sesion1 = localStorage.setItem('Tiempo de partida',timerCount)
+    }
+    window.location.href = 'http://localhost/proyecto/kenia/index.html' 
 }
 /** Función para salir del juego. */
 function exitGame() {
-    window.location.href = '../save.php?nivel=3+&tiempo=' + timerCount;
+    let landingText = document.getElementById('goingToTheLanding')
+    let text = document.getElementById('informativeText')
+    if (gameCompleted) {
+        let recuperedDates = localStorage.getItem('Tiempo de partida'); 
+        window.location.href = '../save.php?nivel=3+&tiempo=' + recuperedDates;
+    } else {
+        botonAceptar.style.display = 'none'
+        divButton.style.display = 'none'
+        landingText.style.display = 'block'
+        text.innerHTML = 'Cuidado, no te has pasado el juego, si te vas ahora no se guardará la partida.'
+        console.log(text.innerHTML);
+        // window.location.href = '../action_page.php';
+    }
+
+}
+function exitSureOption() {
+    window.location.href = '../action_page.php';
+}
+function goBackInSureOption() {
+    window.location.href = 'http://localhost/proyecto/kenia/index.html'
 }
 /** Funcion para mostrar todos los controles para jugar. */
 function showControls() {
@@ -97,7 +105,7 @@ function showControls() {
         showCtrl.style.zIndex = 500
         containerControls.style.width = '1008px'
         containerControls.style.width = '836px'
-        containerControls.style.backgroundColor = 'rgba(255, 255, 255, 0.525)'
+        containerControls.style.backgroundColor = '#3836818c'
         containerGoMenu.style.left = '1142px'
         containerGoMenu.style.top = '68px'
     } else {
@@ -157,6 +165,7 @@ function showStory() {
         bocata.style.display = 'block'
         mensaje1.style.display = 'block'
         setTimeout(() => {
+            console.log('cambio hecho');
             mensaje1.innerHTML = `¡Oh no, hay un gorila enfadado que no nos deja pasar!
             Esta tirando barriles, tenemos que derrotarlo para ir a la central y encender la electricidad.
             <br>
@@ -174,9 +183,9 @@ function showStory() {
                     mensaje1.style.display = 'none'
                     mensajeHistoria.style.display = 'none'
                 })
-            }, 1000);
+            }, 200);
 
-        }, 1000);
+        }, 200);
     })
     setTimeout(() => {
         donkey.style.animation = 'donkyeAppareance 1s linear'

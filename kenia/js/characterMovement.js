@@ -63,6 +63,8 @@ const COLLIDABLE_ROWS = []
 const COLLIDABLE_FINAL_LEVEL1 = []
 const ARRAY_BARRELS = []
 let enemyPositionX = 65
+let imgCharacterRight
+let imgCharacterStand
 // Mostrar mapeado en pantalla con doble for.
 drawMap()
 
@@ -72,6 +74,7 @@ drawMap()
 // Variables de la posicion del personaje.
 let positionX = 0
 let positionY = 762
+// x, y, vx, vy, velocity, width, height, isDeath, imgRigth, imgStand
 // character.style.bottom = positionY + 'px'  
 let barrelPositionX = 295
 let barrelPositionY = 50
