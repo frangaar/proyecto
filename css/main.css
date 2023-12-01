@@ -1,3 +1,7 @@
+*{
+    user-select: none;
+}
+
 p,h1,h2,h3,h4,h5,span,label,input,button,.alert, table{
     font-family: 'Pixelify Sans', sans-serif !important;
 }

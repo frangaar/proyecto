@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded',function(){
     let img1 = document.getElementById('india_static');
     let img2 = document.getElementById('india_gif');
 
+    const imgs = this.getElementsByTagName('img');
+    for (const img of imgs) {
+        img.draggable = false;
+    }
+
     landing.addEventListener('mouseover',function(){
         img1.style.display = 'none';
         img2.style.display = 'block';
