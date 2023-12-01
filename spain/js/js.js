@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const numCols = 33;
     let gamePaused = false;
     let hasBall = false; 
+    let hasReloj = false;
     let postBienvenidaModalOpen = true; // Variable de control
     const modalBienvenida = document.getElementById('modal-bienvenida');
     const closeBienvenida = document.getElementById('close-bienvenida');
@@ -82,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         const newRow = currentRow - 1;
         handleMovement(newRow, currentCol);
+        encarrec2(newRow, currentCol);
     }
 
     function moveCharacterLeft() {
@@ -90,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         const newCol = currentCol - 1;
         handleMovement(currentRow, newCol);
+        encarrec2(currentRow, newCol);
     }
 
     function moveCharacterRight() {
@@ -98,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         const newCol = currentCol + 1;
         handleMovement(currentRow, newCol);
+        encarrec2(currentRow, newCol);
     }
 
     function moveCharacterDown() {
@@ -106,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         const newRow = currentRow + 1;
         handleMovement(newRow, currentCol);
+        encarrec2(newRow, currentCol);
     }
 
     document.addEventListener('keydown', function(event) {
@@ -155,9 +160,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Display a modal with the next task
                     const nextTaskContent = "Porta la pilota al noi de la samarreta blava.";
-                    reemplazarElementos(gameMap, gameMap2);
+                    // reemplazarElementos(gameMap, gameMap2);
                     displayNextTask(nextTaskContent);
                     showAllElements();
+                    
                 } else {
                     alert("No tens la pilota per entregarla!!");
                 }
@@ -174,6 +180,59 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if (gameMap[newRow][newCol] === 2 && !hasBall) {
                 hasBall = true;
                 $(".pelota").hide();
+            }
+    
+            currentRow = newRow;
+            currentCol = newCol;
+            updateCharacterPosition();
+        }
+    }
+
+    function encarrec2(){
+        if (isValidMove(newRow, newCol)) {
+            if (gameMap[newRow][newCol] === 5) {
+                if (hasReloj) {
+                    hasReloj = false;
+    
+                    // Hide the characters first
+                    document.querySelectorAll('.persona2').forEach(function(element) {
+                        element.style.display = 'none';
+                    });
+                    
+                    document.querySelectorAll('.persona-extra2').forEach(function(element) {
+                        element.style.display = 'none';
+                    });
+                    
+                    document.querySelectorAll('.libro').forEach(function(element) {
+                        element.style.display = 'none';
+                    });
+                    
+                    
+                    // Clear the map
+                    clearMap();
+                    
+                    // Display a modal with the next task
+                    const nextTaskContent = "Porta la pilota al noi de la samarreta blava.";
+                    // reemplazarElementos(gameMap, gameMap2);
+                    displayNextTask(nextTaskContent);
+                    // showAllElements();
+                    // encarrec2
+                } else {
+                    alert("No tens la pilota per entregarla!!");
+                }
+            } else if (gameMap[newRow][newCol] === 6) {
+                if (hasReloj) {
+                    alert("No pots entregar la pilota a una persona incorrecte. Has perdut. :(");
+                    location.reload(); // Reload the page on an incorrect action
+                }
+                return; // Stop further movement
+            } else if (gameMap[newRow][newCol] === 5) {
+                if (!hasReloj) {
+                    alert("No tens la pilota per entregarla!!");
+                }
+            } else if (gameMap[newRow][newCol] === 7 && !hasReloj) {
+                hasReloj = true;
+                $(".reloj").hide();
             }
     
             currentRow = newRow;
@@ -200,6 +259,13 @@ document.addEventListener('DOMContentLoaded', function() {
             $(".pelota").hide();
         }
     }
+
+    function checkForReloj() {
+        if (gameMap[currentRow][currentCol] === 2 && !hasBall) {
+            hasBall = true;
+            $(".reloj").hide();
+        }
+    }
     
     function displayNextTask(task) {
         const modalNextTask = document.getElementById('modal-next-task');
@@ -213,19 +279,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function showAllElements() {
-        document.querySelectorAll('.persona2').forEach(function(element) {
-            element.style.display = 'block'; // o el valor que corresponda a tu diseño
+        // Tu código existente para mostrar otros elementos
+        
+        // Mostrar los elementos con las clases "persona2" y "persona-extra2"
+        document.querySelectorAll(".persona2").forEach(function (element) {
+            element.style.display = 'block'; // o 'inline' según el estilo original
         });
         
-        document.querySelectorAll('.persona-extra2').forEach(function(element) {
-            element.style.display = 'block'; // o el valor que corresponda a tu diseño
+        document.querySelectorAll(".persona-extra2").forEach(function (element) {
+            element.style.display = 'block'; // o 'inline' según el estilo original
         });
-        
-        document.querySelectorAll('.libro').forEach(function(element) {
-            element.style.display = 'block'; // o el valor que corresponda a tu diseño
+
+        document.querySelectorAll(".reloj").forEach(function (element) {
+            element.style.display = 'block'; // o 'inline' según el estilo original
         });
-        // Agregar aquí cualquier otro elemento que debas mostrar
     }
+    
 
 
 
@@ -286,30 +355,6 @@ document.addEventListener('DOMContentLoaded', function() {
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ];
 
-    let gameMap2 = [
-        [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
-        [1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 0, 0, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    ];
-
 /*----------------------------------CREACIO OBJECTES----------------------------------------------*/
 
     const gridcontenedor = document.querySelector(".grid-container");
@@ -344,25 +389,24 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if (gameMap[i][j] === 5) {
                 let persona2 = document.createElement("img");
                 persona2.src = "../spain/media/persona2.png";
-                // element.style.display = 'none';
-                persona2.className = "persona2";
+                persona2.className = "persona2 hidden"; // Agrega la clase "hidden"
                 gridCell.appendChild(persona2);
                 persona2.addEventListener("click", function () {
                 });
             } else if (gameMap[i][j] === 6) {
                 let personaExtra2 = document.createElement("img");
                 personaExtra2.src = "../spain/media/persona-extra2.png";
-                personaExtra2.className = "persona-extra2";
+                personaExtra2.className = "persona-extra2 hidden"; // Agrega la clase "hidden"
                 gridCell.appendChild(personaExtra2);
                 personaExtra2.addEventListener("click", function () {
                 });
-            // } else if (gameMap[i][j] === 7) {
-            //     let libro = document.createElement("img");
-            //     libro.src = "../spain/media/clave.webm";
-            //     libro.className = "libro";
-            //     gridCell.appendChild(libro);
-            //     libro.addEventListener("click", function () {
-            //     });
+            } else if (gameMap[i][j] === 7) {
+                let reloj = document.createElement("img");
+                reloj.src = "../spain/media/reloj.png";
+                reloj.className = "reloj hidden";
+                gridCell.appendChild(reloj);
+                reloj.addEventListener("click", function () {
+                });
             } else {
                 gridCell.className = "empty";
             }
@@ -388,48 +432,48 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /*----------------------------------CAMBIAR MATRIU----------------------------------------------*/
 
-    function reemplazarElementos(gameMap, gameMap2) {
-        // Verifica que ambas matrices tengan las mismas dimensiones
-        if (gameMap.length === gameMap2.length && gameMap[0].length === gameMap2[0].length) {
-            // Recorre las filas
-            for (let i = 0; i < gameMap.length; i++) {
-                // Recorre las columnas
-                for (let j = 0; j < gameMap[i].length; j++) {
-                    // Reemplaza el elemento de matrizOriginal con el correspondiente de nuevaMatriz
-                    gameMap[i][j] = gameMap2[i][j];
-                    if (gameMap[i][j] === 1) {
-                        gridCell.className = "wall";
-                    } else if (gameMap[i][j] === 2) {
-                        let pelota = document.createElement("img");
-                        pelota.src = "../spain/media/pelota.png";
-                        pelota.className = "pelota";
-                        gridCell.appendChild(pelota);
-                        pelota.addEventListener("click", function () {
-                        });
-                    } else if (gameMap[i][j] === 3) {
-                        let persona = document.createElement("img");
-                        persona.src = "../spain/media/persona1.png";
-                        persona.className = "persona";
-                        gridCell.appendChild(persona);
-                        persona.addEventListener("click", function () {
-                        });
-                    } else if (gameMap[i][j] === 4) {
-                        let personaExtra = document.createElement("img");
-                        personaExtra.src = "../spain/media/persona-extra1.png";
-                        personaExtra.className = "persona-extra";
-                        gridCell.appendChild(personaExtra);
-                        personaExtra.addEventListener("click", function () {
-                        });
-                    } else {
-                        gridCell.className = "empty";
-                    }
-                }
-            }
+    // function reemplazarElementos(gameMap, gameMap2) {
+    //     // Verifica que ambas matrices tengan las mismas dimensiones
+    //     if (gameMap.length === gameMap2.length && gameMap[0].length === gameMap2[0].length) {
+    //         // Recorre las filas
+    //         for (let i = 0; i < gameMap.length; i++) {
+    //             // Recorre las columnas
+    //             for (let j = 0; j < gameMap[i].length; j++) {
+    //                 // Reemplaza el elemento de matrizOriginal con el correspondiente de nuevaMatriz
+    //                 gameMap[i][j] = gameMap2[i][j];
+    //                 if (gameMap[i][j] === 1) {
+    //                     gridCell.className = "wall";
+    //                 } else if (gameMap[i][j] === 2) {
+    //                     let pelota = document.createElement("img");
+    //                     pelota.src = "../spain/media/pelota.png";
+    //                     pelota.className = "pelota";
+    //                     gridCell.appendChild(pelota);
+    //                     pelota.addEventListener("click", function () {
+    //                     });
+    //                 } else if (gameMap[i][j] === 3) {
+    //                     let persona = document.createElement("img");
+    //                     persona.src = "../spain/media/persona1.png";
+    //                     persona.className = "persona";
+    //                     gridCell.appendChild(persona);
+    //                     persona.addEventListener("click", function () {
+    //                     });
+    //                 } else if (gameMap[i][j] === 4) {
+    //                     let personaExtra = document.createElement("img");
+    //                     personaExtra.src = "../spain/media/persona-extra1.png";
+    //                     personaExtra.className = "persona-extra";
+    //                     gridCell.appendChild(personaExtra);
+    //                     personaExtra.addEventListener("click", function () {
+    //                     });
+    //                 } else {
+    //                     gridCell.className = "empty";
+    //                 }
+    //             }
+    //         }
 
-        } else {
-            console.error("Las matrices tienen dimensiones diferentes.");
-        }
-    }
+    //     } else {
+    //         console.error("Las matrices tienen dimensiones diferentes.");
+    //     }
+    // }
 
 /*----------------------------------CREACIO OBJECTES----------------------------------------------*/
 
