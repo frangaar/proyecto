@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentCol = 3;
     const numRows = 21;
     const numCols = 33;
+    let missio1 = false;
+    let missio2 = false;
     let gamePaused = false;
     let hasBall = false; 
     let hasReloj = false;
@@ -83,13 +85,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /*----------------------------------MOVIMENT----------------------------------------------*/
 
+document.addEventListener('keydown', function(event) {
+    switch (event.key) {
+        case 'ArrowUp':
+            moveCharacterUp();
+            break;
+        case 'ArrowLeft':
+            moveCharacterLeft();
+            break;
+
+        case 'ArrowRight':
+            moveCharacterRight();
+            break;
+
+        case 'ArrowDown':
+            moveCharacterDown();
+            break;
+    }
+});
+
     function moveCharacterUp() {
         if (postBienvenidaModalOpen) {
             return;
         }
         const newRow = currentRow - 1;
-        handleMovement(newRow, currentCol);
-        encarrec2(newRow, currentCol);
+        if (!missio1) {
+            handleMovement(newRow, currentCol);
+        } else if(!missio2){
+            handleMovement2(newRow, currentCol);
+        } else {
+            handleMovement3(newRow, currentCol);
+        }
     }
 
     function moveCharacterLeft() {
@@ -97,8 +123,13 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         const newCol = currentCol - 1;
-        handleMovement(currentRow, newCol);
-        encarrec2(currentRow, newCol);
+        if (!missio1) {
+            handleMovement(currentRow, newCol);
+        } else if(!missio2){
+            handleMovement2(currentRow, newCol);
+        }else{
+            handleMovement3(currentRow, newCol);
+        }
     }
 
     function moveCharacterRight() {
@@ -106,8 +137,13 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         const newCol = currentCol + 1;
-        handleMovement(currentRow, newCol);
-        encarrec2(currentRow, newCol);
+        if (!missio1) {
+            handleMovement(currentRow, newCol);
+        } else if(!missio2){
+            handleMovement2(currentRow, newCol);
+        }else{
+            handleMovement3(currentRow, newCol);
+        }
     }
 
     function moveCharacterDown() {
@@ -115,29 +151,17 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         const newRow = currentRow + 1;
-        handleMovement(newRow, currentCol);
-        encarrec2(newRow, currentCol);
+        if (!missio1) {
+            handleMovement(newRow, currentCol);
+        } else if(!missio2){
+            handleMovement2(newRow, currentCol);
+        }else{
+            handleMovement3(newRow, currentCol);
+        }
+        
     }
 
-    document.addEventListener('keydown', function(event) {
-        switch (event.which) {
-            case 38:
-                moveCharacterUp();
-                break;
-    
-            case 37:
-                moveCharacterLeft();
-                break;
-    
-            case 39:
-                moveCharacterRight();
-                break;
-    
-            case 40:
-                moveCharacterDown();
-                break;
-        }
-    });
+
 
 /*----------------------------------FUNCIO ENTREGUES----------------------------------------------*/
 
@@ -145,6 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isValidMove(newRow, newCol)) {
             if (gameMap[newRow][newCol] === 3) {
                 if (hasBall) {
+                    missio1=true;
                     hasBall = false;
     
                     // Hide the characters first
@@ -163,13 +188,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Clear the map
                     clearMap();
-                    
+                     
                     // Display a modal with the next task
                     const nextTaskContent = "Porta la pilota al noi de la samarreta blava.";
                     // reemplazarElementos(gameMap, gameMap2);
                     displayNextTask(nextTaskContent);
                     showAllElements();
-                    
+                    handleMovement2(newRow,newCol);
                 } else {
                     alert("No tens la pilota per entregarla!!");
                 }
@@ -194,11 +219,66 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function encarrec2(){
+    function handleMovement2(newRow,newCol){
         if (isValidMove(newRow, newCol)) {
             if (gameMap[newRow][newCol] === 5) {
                 if (hasReloj) {
                     hasReloj = false;
+                    missio2 = true;
+    
+                    // Hide the characters first
+                    document.querySelectorAll('.persona2').forEach(function(element) {
+                        element.style.display = 'none';
+                    });
+                    
+                    document.querySelectorAll('.persona-extra2').forEach(function(element) {
+                        element.style.display = 'none';
+                    });
+                    
+                    document.querySelectorAll('.libro').forEach(function(element) {
+                        element.style.display = 'none';
+                    });
+                    
+                    
+                    // Clear the map
+                    clearMap2();
+                    
+                    // Display a modal with the next task
+                    const nextTaskContent = "Porta la pilota al noi de la samarreta blava.";
+                    // reemplazarElementos(gameMap, gameMap2);
+                    displayNextTask(nextTaskContent);
+                    showAllElements2();
+                    handleMovement3(newRow,newCol);
+                } else {
+                    alert("No tens la pilota per entregarla!!");
+                }
+            } else if (gameMap[newRow][newCol] === 6) {
+                if (hasReloj) {
+                    alert("No pots entregar la pilota a una persona incorrecte. Has perdut. :(");
+                    location.reload(); // Reload the page on an incorrect action
+                }
+                return; // Stop further movement
+            } else if (gameMap[newRow][newCol] === 5) {
+                if (!hasReloj) {
+                    alert("No tens la pilota per entregarla!!");
+                }
+            } else if (gameMap[newRow][newCol] === 7 && !hasReloj) {
+                hasReloj = true;
+                $(".reloj").hide();
+            }
+    
+            currentRow = newRow;
+            currentCol = newCol;
+            updateCharacterPosition();
+        }
+    }
+
+    function handleMovement3(newRow,newCol){
+        if (isValidMove(newRow, newCol)) {
+            if (gameMap[newRow][newCol] === 5) {
+                if (hasReloj) {
+                    hasReloj = false;
+                    missio2 = true;
     
                     // Hide the characters first
                     document.querySelectorAll('.persona2').forEach(function(element) {
@@ -252,12 +332,22 @@ document.addEventListener('DOMContentLoaded', function() {
     function clearMap() {
         for (let i = 0; i < gameMap.length; i++) {
             for (let j = 0; j < gameMap[i].length; j++) {
-                if (gameMap[i][j] !== 0 && gameMap[i][j] !== 1 && gameMap[i][j] !== 5 && gameMap[i][j] !== 6 && gameMap[i][j] !== 7) {
+                if (gameMap[i][j] !== 0 && gameMap[i][j] !== 1 && gameMap[i][j] !== 4 && gameMap[i][j] !== 5 && gameMap[i][j] !== 6 && gameMap[i][j] !== 7 && gameMap[i][j] !== 8 && gameMap[i][j] !== 9 && gameMap[i][j] !== 10) {
                     gameMap[i][j] = 0;
                 }
             }
         }
     }   
+
+    function clearMap2() {
+        for (let i = 0; i < gameMap.length; i++) {
+            for (let j = 0; j < gameMap[i].length; j++) {
+                if (gameMap[i][j] !== 0 && gameMap[i][j] !== 1 && gameMap[i][j] !== 4 && gameMap[i][j] !== 6 && gameMap[i][j] !== 8 && gameMap[i][j] !== 9 && gameMap[i][j] !== 10) {
+                    gameMap[i][j] = 0;
+                }
+            }
+        }
+    }  
 
     function checkForBall() {
         if (gameMap[currentRow][currentCol] === 2 && !hasBall) {
@@ -291,10 +381,44 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll(".persona2").forEach(function (element) {
             element.style.display = 'block'; // o 'inline' según el estilo original
         });
+
+        document.querySelectorAll(".persona-extra").forEach(function (element) {
+            element.style.display = 'block'; // o 'inline' según el estilo original
+        });
         
         document.querySelectorAll(".persona-extra2").forEach(function (element) {
             element.style.display = 'block'; // o 'inline' según el estilo original
         });
+
+        document.querySelectorAll(".persona-extra3").forEach(function (element) {
+            element.style.display = 'block'; // o 'inline' según el estilo original
+        });
+
+        document.querySelectorAll(".reloj").forEach(function (element) {
+            element.style.display = 'block'; // o 'inline' según el estilo original
+        });
+    }
+    
+    function showAllElements2() {
+        // Tu código existente para mostrar otros elementos
+        
+        // Mostrar los elementos con las clases "persona2" y "persona-extra2"
+        document.querySelectorAll(".persona3").forEach(function (element) {
+            element.style.display = 'block'; // o 'inline' según el estilo original
+        });
+
+        document.querySelectorAll(".persona-extra").forEach(function (element) {
+            element.style.display = 'block'; // o 'inline' según el estilo original
+        });
+        
+        document.querySelectorAll(".persona-extra2").forEach(function (element) {
+            element.style.display = 'block'; // o 'inline' según el estilo original
+        });
+
+        document.querySelectorAll(".persona-extra3").forEach(function (element) {
+            element.style.display = 'block'; // o 'inline' según el estilo original
+        });
+
 
         document.querySelectorAll(".reloj").forEach(function (element) {
             element.style.display = 'block'; // o 'inline' según el estilo original
@@ -341,22 +465,22 @@ document.addEventListener('DOMContentLoaded', function() {
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
         [1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 4, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 0, 0, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 4, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
+        [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 6, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 6, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 7, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
+        [1, 9, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 7, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+        [1, 1, 0, 0, 0, 8, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 10, 0, 0, 0, 0, 0, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
+        [1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ];
@@ -402,11 +526,32 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if (gameMap[i][j] === 6) {
                 let personaExtra2 = document.createElement("img");
                 personaExtra2.src = "../spain/media/persona-extra2.png";
-                personaExtra2.className = "persona-extra2 hidden"; // Agrega la clase "hidden"
+                personaExtra2.className = "persona-extra2"; // Agrega la clase "hidden"
                 gridCell.appendChild(personaExtra2);
                 personaExtra2.addEventListener("click", function () {
                 });
             } else if (gameMap[i][j] === 7) {
+                let reloj = document.createElement("img");
+                reloj.src = "../spain/media/reloj.png";
+                reloj.className = "reloj hidden";
+                gridCell.appendChild(reloj);
+                reloj.addEventListener("click", function () {
+                });
+            } else if (gameMap[i][j] === 8) {
+                let persona2 = document.createElement("img");
+                persona2.src = "../spain/media/persona3.png";
+                persona2.className = "persona2 hidden"; // Agrega la clase "hidden"
+                gridCell.appendChild(persona2);
+                persona2.addEventListener("click", function () {
+                });
+            } else if (gameMap[i][j] === 9) {
+                let personaExtra2 = document.createElement("img");
+                personaExtra2.src = "../spain/media/persona-extra3.png";
+                personaExtra2.className = "persona-extra2"; // Agrega la clase "hidden"
+                gridCell.appendChild(personaExtra2);
+                personaExtra2.addEventListener("click", function () {
+                });
+            } else if (gameMap[i][j] === 10) {
                 let reloj = document.createElement("img");
                 reloj.src = "../spain/media/reloj.png";
                 reloj.className = "reloj hidden";
