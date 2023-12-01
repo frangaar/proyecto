@@ -15,7 +15,13 @@ try {
     $pass=$_SESSION['pass'];
     $nivel=$_REQUEST['nivel'];
     $fecha= date('Y-m-d');
-    $puntuacion=$puntosBase/$_REQUEST['tiempo'];
+
+    if($nivel==5){
+        $puntuacion=$_REQUEST['puntos'];    
+    }else{
+        $puntuacion=$puntosBase/$_REQUEST['tiempo'];    
+    }
+
 
     // Comprobar si existe usuario con nivel
     $selectSql = "select * from ranking where uid=".$userID. " and fecha='".$fecha."' and nivel=".$nivel;

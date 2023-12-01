@@ -4,6 +4,7 @@ const minutsInicial = 1;
 let tempsRestant = minutsInicial * 60;
 const temps = document.getElementById("temporitzador");
 let interval = setInterval(compteEnrere, 1000);
+let puntsInicial = 0;
 
 sumarPunts();
 imatgeCursor();
@@ -51,7 +52,7 @@ function asomaTopos() {
       if (numAleatorio < 0.1) {
         const topoVerde = document.getElementById("imatge1" + num);
         topoVerde.style.display = "block";
-      } else if (numAleatorio < 0.2) {
+      } else if (numAleatorio < 0.4) {
         const topoRojo = document.getElementById("imatge2" + num);
         topoRojo.style.display = "block";
       } else {
@@ -80,7 +81,6 @@ function compteEnrere() {
 }
 
 function sumarPunts() {
-  let puntsInicial = 0;
   
   for (let i = 1; i <= 9; i++) {
     const topo = document.getElementById("imatge" + i);
@@ -137,5 +137,9 @@ function musicaFons() {
   audio.play();
 }
 
+let volver = document.getElementById("tornar");
 
+volver.addEventListener("click", function () {
+  window.location.href='../save.php?nivel=5+&puntos='+puntsInicial;
+})
 

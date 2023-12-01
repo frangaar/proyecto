@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <title>Prototipo Proyecto</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Russo+One&display=swap">
@@ -18,6 +18,13 @@
     <body>
         <div id="fondo"></div>
         <div class="frame">
+            <div class="audio-container">
+                <audio class="campire-audio" src="./media/audio/campire.mp3" loop></audio>
+                <audio class="forest-audio" src="./media/audio/forest.mp3" loop></audio>
+                <audio class="success-audio" src="./media/audio/success.mp3"></audio>
+                <audio class="error-audio" src="./media/audio/error.mp3"></audio>
+                <audio class="victory-audio" src="./media/audio/victory.mp3"></audio>
+            </div>
             <div class="progress-bar-container">
                 <div class="progress-bar-frame">
                     <div class="progress-bar-recorrido">
@@ -38,8 +45,14 @@
             <div class="tambores">
                 <img class="img-tambores" src="./media/tambores.png" draggable="false">
                 <div class="efects">
-                    <img class="img-efecto" draggable="false">
-                    <audio class="audio-efecto"></audio>
+                    <img id="effect-click-rojo" class="img-efecto" src="./media/efecto-rojo.png" draggable="false">
+                    <img id="effect-click-amarillo" class="img-efecto" src="./media/efecto-amarillo.png" draggable="false">
+                    <img id="effect-click-azul" class="img-efecto" src="./media/efecto-azul.png" draggable="false">
+                    <img id="effect-click-verde" class="img-efecto" src="./media/efecto-verde.png" draggable="false">
+                    <audio id="audio-effect-rojo" src="./media/audio/higher.mp3"></audio>
+                    <audio id="audio-effect-amarillo" src="./media/audio/high.mp3"></audio>
+                    <audio id="audio-effect-azul" src="./media/audio/low.mp3"></audio>
+                    <audio id="audio-effect-verde" src="./media/audio/lower.mp3"></audio>
                 </div>
                 <div class="hitboxes">
                     <div class="hitbox" onmousedown="controlInputjugador(0)"></div>
@@ -48,33 +61,45 @@
                     <div class="hitbox" onmousedown="controlInputjugador(3)"></div>
                 </div>
             </div>
-            <div class="modal fade" id="modal-howto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-xl">
-                    <div class="modal-content">
-                    <div class="how-to-title">INSTRUCCIONES</div>
-                    <div class="how-to-description">
-                        <div class="how-to-instruction">
-                            <div class="how-to-text">Para comenzar deberas iniciar la partida, para ello, pulsa en este botón que encontraras en el menú principal</div>
-                            <div class="how-to-img"><img src="media/captura-btn-inicio.png"></div>
-                        </div>
-                        <div class="how-to-instruction">
-                            <div class="how-to-text">En el juego, únicamente deberás replicar la secuencia tambores que se iluminen</div>
-                            <div class="how-to-img"><img src="./media/tambor-ejemplo.png"></div>
+            <div class="settings-btn-container">
+                <div class="options-setting-btn-container">
+                    <div id="" class="options-setting-btn" onclick="exitGame()"><i class="fa-solid fa-right-from-bracket"></i></div>
+                    <div id="volume-btn" class="options-setting-btn" onclick="actionVolume()"><i class="fa-solid fa-volume-high"></i></div>
+                </div>
+                <div class="option-btn" onclick="actionSettings()"><i class="fa-solid fa-gear"></i></div>
+            </div>
+            <div class="modals-container">
+                <div class="modal fade" id="modal-howto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl">
+                        <div class="modal-content">
+                            <div class="how-to-title">INSTRUCCIONES</div>
+                            <div class="how-to-description">
+                                <div class="how-to-instruction">
+                                    <div class="how-to-text">Para comenzar deberás iniciar la partida, para ello, pulsa en este botón que encontrarás en el menú principal</div>
+                                    <div class="how-to-img"><img src="media/captura-btn-inicio.png" draggable="false"></div>
+                                </div>
+                                <div class="how-to-instruction">
+                                    <div class="how-to-text">En el juego, únicamente deberás replicar la secuencia de tambores que se iluminen</div>
+                                    <div class="how-to-img"><img src="./media/tambor-ejemplo.png" draggable="false"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-
+                </div>
+                <div class="modal fade" id="modal-error" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl">
+                        <div class="modal-content">
+                            <div id="btn-error-close-game" class="error-btns" data-bs-dismiss="modal" onclick="exitGame()"><i class="fa-solid fa-right-from-bracket"></i></i></div>
+                            <div id="btn-error-retry" class="error-btns" onclick="retry()" data-bs-dismiss="modal"><i class="fa-solid fa-arrow-rotate-right"></i></div>
+                            <div id="btn-error-back-to-menu" class="error-btns" onclick="backtoMenu()" data-bs-dismiss="modal"><i class="fa-solid fa-house"></i></div>
+    
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="audio-container">
-                <audio class="campire-audio" src="./media/audio/campire.mp3" loop></audio>
-                <audio class="forest-audio" src="./media/audio/forest.mp3" loop></audio>
-                <audio class="success-audio" src="./media/audio/success.mp3"></audio>
-                <audio class="error-audio" src="./media/audio/error.mp3"></audio>
-                <audio class="victory-audio" src="./media/audio/victory.mp3"></audio>
+            <div class="frame-effect">
+                <img class="confeti" src="./media/confeti.gif">
             </div>
-            <div class="frame-effect"></div>
         </div>
     </body>
 </html>

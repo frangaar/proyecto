@@ -8,24 +8,36 @@ body{
     margin: 0px;
 }
 
+/* .frame{
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    left: 0;
+} */
+
 .frame{
-    position: absolute;
     top: 4%;
     height: 91vh;
     width: 88%;
-    background-image: url(../media/fondo_original.gif);
+    left: 6%;
+}
+
+
+.frame{
+    position: absolute;
+    background-image: url('../media/fondo_original.gif');
     background-position: top;
     background-size: cover;
     transition: 1.5s;
-    left: 6%;
 }
 
 .frame-effect{
     position: absolute;
     top: 0;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     pointer-events: none;
+    transition: 1s;
 }
 
 
@@ -71,7 +83,7 @@ body{
     width: 100%;
     height: 100%;
     background-color: transparent;
-    background-image: url('../media/wood-btn.png');
+    background-image: url('../media/wood-btn-large.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -79,14 +91,14 @@ body{
     color: rgba(0,0,0,0.7);
     padding-bottom: 15px;
     cursor: pointer;
-    transition: 0.5s;
+    transition: 0.8s;
 }
-.titulo-btn-container > div:hover{
+.titulo-btn-container > div:hover, .error-btns:hover, .options-setting-btn-container div:hover, .option-btn:hover{
     filter: brightness(1.2);
 }
 
-.titulo-btn-container > div:active{
-    transform: scale(0.95);
+.titulo-btn-container > div:active, .error-btns:active, .options-setting-btn-container div:active, .option-btn:active{
+    transform: scale(0.95) !important;
     filter: brightness(0.8);
     transition: 0s;
 }
@@ -251,4 +263,87 @@ body{
 .how-to-img > img{
     width: 100%;
     object-fit: contain;
+}
+
+.img-efecto{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.error-btns{
+    color: rgba(0,0,0,0.7);
+    font-size: 80px;
+    padding-bottom: 15px;
+}
+
+#modal-error .modal-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.error-btns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    aspect-ratio: 1/1;
+    background-image: url('../media/wood-btn-png-cicle.png');
+    background-position: center;
+    background-size: contain;
+    transition: 0.5s;
+    cursor: pointer;
+    transform: scale(0);
+}
+
+
+.modal-backdrop{
+    background-color: transparent;
+}
+
+.confeti{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 1.2s;
+}
+
+.settings-btn-container{
+    position: absolute;
+    top: 2%;
+    width: 4%;
+    height: 100%;
+    color: rgba(0,0,0,0.7);
+    right: 1%;
+    font-size: 30px;
+}
+
+.option-btn, .options-setting-btn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../media/wood-btn-png-cicle.png');
+    background-position: center;
+    background-size: contain;
+    transition: 0.2s;
+    cursor: pointer;
+    font-weight: 900;
+    padding-bottom: 10%;
+}
+
+.options-setting-btn{
+    transform: scale(0);
+}
+
+.options-setting-btn.shown{
+    transform: scale(1);
 }
