@@ -14,6 +14,7 @@ let history = document.getElementById('showHistory')
 let laia = document.getElementById('laiaStory')
 let sesion1
 let gameCompleted = false 
+let landingText = document.getElementById('goingToTheLanding')
 
 var play = false
 let viewControls = false
@@ -75,7 +76,6 @@ function back_Menu() {
 }
 /** Función para salir del juego. */
 function exitGame() {
-    let landingText = document.getElementById('goingToTheLanding')
     let text = document.getElementById('informativeText')
     if (gameCompleted) {
         let recuperedDates = localStorage.getItem('Tiempo de partida'); 
@@ -85,7 +85,6 @@ function exitGame() {
         divButton.style.display = 'none'
         landingText.style.display = 'block'
         text.innerHTML = 'Cuidado, no te has pasado el juego, si te vas ahora no se guardará la partida.'
-        console.log(text.innerHTML);
         // window.location.href = '../action_page.php';
     }
 
@@ -94,7 +93,10 @@ function exitSureOption() {
     window.location.href = '../action_page.php';
 }
 function goBackInSureOption() {
-    window.location.href = 'http://localhost/proyecto/kenia/index.html'
+    botonAceptar.style.display = null
+    divButton.style.display = null
+    landingText.style.display = 'none'
+    // window.location.href = 'http://localhost/proyecto/kenia/index.html'
 }
 /** Funcion para mostrar todos los controles para jugar. */
 function showControls() {

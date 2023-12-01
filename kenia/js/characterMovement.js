@@ -408,7 +408,7 @@ function drawMap()
                 mapBlock1.style.position = 'absolute'
                 COLLIDABLE.push(mapBlock1)
                 // Quitado de momento para la prueba técnica
-                COLLIDABLE_ROWS.push(new ColisionablesObjects(fila * BLOCK_SIZE, columna * BLOCK_SIZE, width, height))
+                // COLLIDABLE_ROWS.push(new ColisionablesObjects(fila * BLOCK_SIZE, columna * BLOCK_SIZE, width, height))
 
             } else if (map[fila][columna] === 3) {
                 const mapBlock3 = document.createElement('div')
@@ -597,22 +597,22 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
         index++       
     } 
   // COLISION CABEZA BLOQUES
-    while (iLateralColider < COLLIDABLE_ROWS.length) {
-        // console.log(COLLIDABLE_ROWS[iLateralColider]);
-        if (
-            positionX + container.offsetWidth >= COLLIDABLE_ROWS[iLateralColider].x
-            && positionX <= COLLIDABLE_ROWS[iLateralColider].x + COLLIDABLE_ROWS[iLateralColider].width
-            // && positionY + character.offsetHeight >= COLLIDABLE_ROWS[iLateralColider].y
-            && positionY <= COLLIDABLE_ROWS[iLateralColider].y + COLLIDABLE_ROWS[iLateralColider].height
-            // && (PY_CONTAINER_HEIGHT_VELOCITY) >= (COLLIDABLE_ROWS[iLateralColider].y)
-            ) 
-            {
-                velocityY = 0
-                velocityX = 0
-                console.log('chocado'); 
-            } 
-        iLateralColider++
-    }
+    // while (iLateralColider < COLLIDABLE_ROWS.length) {
+    //     // console.log(COLLIDABLE_ROWS[iLateralColider]);
+    //     if (
+    //         positionX + container.offsetWidth >= COLLIDABLE_ROWS[iLateralColider].x
+    //         && positionX <= COLLIDABLE_ROWS[iLateralColider].x + COLLIDABLE_ROWS[iLateralColider].width
+    //         // && positionY + character.offsetHeight >= COLLIDABLE_ROWS[iLateralColider].y
+    //         && positionY <= COLLIDABLE_ROWS[iLateralColider].y + COLLIDABLE_ROWS[iLateralColider].height
+    //         // && (PY_CONTAINER_HEIGHT_VELOCITY) >= (COLLIDABLE_ROWS[iLateralColider].y)
+    //         ) 
+    //         {
+    //             velocityY = 0
+    //             velocityX = 0
+    //             console.log('chocado'); 
+    //         } 
+    //     iLateralColider++
+    // }
 
 }
 function checkBarrelColision()
