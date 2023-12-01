@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const closePostBienvenida = document.getElementById('close-post-bienvenida');
     let tiempoRestante = 120;  // 2 minutos en segundos
     const countdown = document.getElementById("countdown");
-
+    const botonSalir = document.querySelector('.botonSalir');
     
 /*----------------------------------TIMER----------------------------------------------*/
 
@@ -39,6 +39,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 1000);
     }    
+
+
+    botonSalir.addEventListener('click', function() {
+        // Redirige a la página especificada
+        window.location.href = '../action_page.php';
+    });
 
 /*----------------------------------Modals----------------------------------------------*/
 
