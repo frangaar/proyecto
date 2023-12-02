@@ -5,13 +5,12 @@ const PLAYER_WIDTH = 36
 const PLAYER_HEIGHT = 26
 // 10.3
 const PLAYER_VELOCITYJUMP = 8.3 
-const NUM_OF_BARRELS = 4
+
 // 2.9
 let enemyVelocity = 2.9
 let player_velocity = 2.9
-let player_life = 1
 //5
-let barrel_velocity = 3
+
 let final_del_mapa
 let final_nivel_1
 let final_nivel_2   
@@ -112,9 +111,7 @@ function draw ()
 // Loop de update para la gravedad y todo el movimiento.
 function update ()
 {
-    // console.log(dontTouchTheCOLLIDABLEWithTheHeadRight);
     draw()
-    // console.log(dontTouchTheCOLLIDABLEWithTheHeadRight);
     if (!pause && !level_1_finished) {
         // play = true
         positionY += velocityY
@@ -152,7 +149,7 @@ function update ()
             //Condicional para pared derecha y  pared izquierda
             if (keyLeftPressed) {
                 if (imgLeft === 1) {
-                    character.setAttribute('src', '../img/laiaDerechaCaminando.gif')
+                    character.setAttribute('src', imgCharacterWalking)
                     // character.setAttribute('src', '../kenia/img/char_running(2).gif')
                     imgLeft = 0
                 }
@@ -167,7 +164,7 @@ function update ()
                 } else {velocityX = 0; }
             } else if (keyRightPressed){
                 if (imgRight === 1) {
-                    character.setAttribute('src', '../img/laiaDerechaCaminando.gif')
+                    character.setAttribute('src', imgCharacterWalking)
 
                     // character.setAttribute('src', '../kenia/img/char_running(2).gif')
                     imgRight = 0
@@ -183,7 +180,7 @@ function update ()
             } else {
                 velocityX = 0
                 if (imgCrouch === 1 ) {
-                    character.setAttribute('src', '../img/laiaDerechaParada.png')
+                    character.setAttribute('src', imgCharacter)
 
                     // character.setAttribute('src', '../kenia/img/char_stand.png')
                 }
@@ -217,7 +214,7 @@ animate()
 window.setInterval(function()
 {
     if (!pause) {
-        if (index_counting_barrels <= NUM_OF_BARRELS) {
+        if (index_counting_barrels <= num_of_barrels) {
                 let barrilContainer = document.createElement('div');
                 document.querySelector('.barriles').appendChild(barrilContainer);
                 let nombreClasse = generarNombreConNumero('barril', index_counting_barrels)
@@ -464,7 +461,7 @@ function level1_FinishedAnimation()
     } else {velocityY = 0;  }
     audioEnemy.play()
     audioBackground.pause()
-    character.setAttribute('src', '../img/laiaDerechaParada.png')
+    character.setAttribute('src', imgCharacter)
     // character.setAttribute('src', '../kenia/img/char_stand.png')
     imgLeft = 1
     imgRight = 1
@@ -482,6 +479,7 @@ function level1_FinishedAnimation()
 }
 function displayDeathMenu()
 {
+
     audioBackground.pause()
     if (!characterDeathJump) {
         if (velocityY <= - (player_velocity)) {
@@ -524,17 +522,20 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
         if (keyUpPressed) {
                 characterTouchGround = 0
                 velocityY = - PLAYER_VELOCITYJUMP
-                // audioJump.play()
-                if (imgUp === 1 ) {
-                    // character.setAttribute('src', '../kenia/img/char_jump.png')
+                if (isMario) {
+                    audioWoho.play()
+                    audioJump.play()
+                    if (imgUp === 1 ) {
+                        character.setAttribute('src', imgJump)
+                    }
+                    setTimeout(() => {
+                        imgLeft = 1
+                        imgRight = 1
+                        imgStand = 1
+                        imgUp = 0
+                        imgCrouch = 1
+                    }, 540);  
                 }
-                setTimeout(() => {
-                    imgLeft = 1
-                    imgRight = 1
-                    imgStand = 1
-                    imgUp = 0
-                    imgCrouch = 1
-                }, 540);
                 /** Colision con el techo quitada por el momento */
                 // if ((positionY + container.offsetHeight) <= app.offsetTop) {
                 //     velocityY += (PLAYER_VELOCITYJUMP/2)
@@ -587,6 +588,9 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                         character.setAttribute('src', '../kenia/img/char_death.png')
                     }
                     if (character_is_dead) {
+                        if (isMario) {
+                            audioDie.play()
+                        }
                         audioFall.play()
                         audioBackground.pause()  
                     }

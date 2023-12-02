@@ -2,6 +2,14 @@
     var fileMarioFalling = audioMarioFallin.getAttribute('src');
     var audioFall = new Audio(fileMarioFalling);   
 
+    var audioMarioDiying = document.getElementById('audioMarioDiying')
+    var fileMarioDiying = audioMarioDiying.getAttribute('src');
+    var audioDie = new Audio(fileMarioDiying);  
+
+    var marioWoho = document.getElementById('marioWoho')
+    var fileMarioWoho = marioWoho.getAttribute('src');
+    var audioWoho = new Audio(fileMarioWoho);  
+
     var audioMarioJumping = document.getElementById('marioJump')
     var fileMarioJumping = audioMarioJumping.getAttribute('src')                 
     var audioJump = new Audio(fileMarioJumping);

@@ -35,33 +35,33 @@
     </div>
     <div id="buttonContinue">
         <div class="menu_de_inico">
-            <h1 class="titleMenu" id="title">Laia En Kenia</h1>
+            <h1 class="titleMenu" id="title">Laia A Kenia</h1>
             <div class="showLaia"></div>
             <ul id="buttonAceptar">
                 <li><span onclick="startGame()" id="playButton">Jugar</span></li>
-                <li id="controls"><span onclick="showControls()">Controles</span></li>
-                <li id="exitButton"><span id="credits/exit">Creditos</span></li>
-                <li id="exit"><span onclick="exitGame()">Salir al mapa</span></li>
+                <li id="controls"><span onclick="showControls()">Controls</span></li>
+                <li id="exitButton"><span id="credits/exit">Credites</span></li>
+                <li id="exit"><span onclick="exitGame()">Sortir al mapa</span></li>
             </ul>
         </div>
     </div>
     <div id="deathMenu">
-        <h1 class="titleMenu">Has Muerto</h1>
+        <h1 class="titleMenu">Has Perdut</h1>
         <div class="showLaia"></div>
         <ul id="buttonAceptar_Death">
-            <li id="playButton_Death"><span onclick="buttonDeath()">Volver a Jugar</span></li>
+            <li id="playButton_Death"><span onclick="buttonDeath()">Tornar a Jugar</span></li>
             <li id="exitButton_Death"><span>Salir</span></li>
         </ul>
     </div>
     <div id="showControls">
         <div class="container" id="containerControls">
-            <h1 id="controlsTitle">Como Jugar</h1>
+            <h1 id="controlsTitle">Com Jugar</h1>
             <img src="../kenia/img/keyboard_controls.png" alt="" class="imgKeyboard">
             <img src="../img/laiaDerechaCaminando.gif" alt="laia derecha" class="imagenControles" id="laiaRight">
             <img src="../img/laiaIzquierdaCaminando.gif" alt="Laia izquierda" class="imagenControles" id="laiaLeft">
             <img src="../img/laiaIzquierdaParada.png" alt="Laia Saltando" class="imagenControles" id="laiaStand">
             <img src="../kenia/img/esc_keyboard.png" alt="" class="imagenControles" id="esc_key">
-            <p id="esc_description">Presiona esta tecla cuando quieras entrar en el menú de pausa.</p>
+            <p id="esc_description">Pressiona aquesta tecla quan vulguis entrar al menú de pausa.</p>
             <li id="goMenu">
                 <span id="buttonGoMenu"></span>
             </li>
@@ -73,10 +73,10 @@
             <img src="" alt="laia quieta" id="laiaStory" class="storyImages">
             <div id="mensajeHistoria">
                 <img src="../img/escenarios/bocata.png" alt="" id="bocata_Story">
-                <p id="mensaje1">¡Bienvenidos a Kenia!. <br>
-                    Un país maravilloso lleno de fauna y buenas personas, como Malik. <br>
-                    Me ha contado que un científico loco ha apagado todo el sistema eléctrico del país.
-                    ¡Rápido, tenemos que llegar a la central eléctrica lo más rápido posible!.
+                <p id="mensaje1">¡Benvilguts a Kenia!. <br>                    
+                Un país meravellós ple de fauna i bones persones, com ara Malik. <br>
+                M'ha explicat que un científic boig ha apagat tot el sistema elèctric del país.
+                Ràpid, hem d'arribar a la central elèctrica el més ràpid possible!
                 </p>
             </div>
             <img src="../kenia/img/donkeyKong.gif" alt="donkey kong" id="donkey_history">
@@ -86,8 +86,8 @@
         <div class="container" id="containerMessageImportant">
             <p id="informativeText"></p>
             <ul id="buttonSureExit">
-                <li><span onclick="exitSureOption()" id="sureToExit">Ir al mapa</span></li>
-                <li><span onclick="goBackInSureOption()">Atras</span></li>
+                <li><span onclick="exitSureOption()" id="sureToExit">Sortir al mapa</span></li>
+                <li><span onclick="goBackInSureOption()">Enrere</span></li>
             </ul>
         </div>
     </div>
@@ -95,34 +95,38 @@
         <div class="container" id="containerLevelSelector">
             <p id="levelSelectorTitle"></p>
             <ul id="level_characterSelected">
-                <li class="lvl"><span value="1" id="diff1">Fácil</span></li>
-                <li class="lvl"><span value="2" id="diff2">Normal</span></li>
-                <li class="lvl"><span value="3" id="diff3">Difícil</span></li>
-                <li class="lvl"><span value="4" id="diff3">Experto</span></li>
+                <li class="lvl"><span id="diff1">Fácil</span></li>
+                <li class="lvl"><span id="diff2">Normal</span></li>
+                <li class="lvl"><span id="diff3">Difícil</span></li>
+                <li class="lvl"><span id="diff4">Experte</span></li>
             </ul>
+            <p id="lvlDescription"></p>
         </div>
     </div>
     <audio src="sound/character_Death.mp3" id="audioMarioFallin"></audio> 
-    <audio src="sound/" id="audioMarioDiying"></audio>
+    <audio src="sound/mario_falling.wav" id="audioMarioDiying"></audio>
     <audio src="sound/mario_jump.wav" id="marioJump"></audio>
     <audio src="sound/mario-bros-woo-hoo.mp3" id="marioJumpSound" ></audio>  
     <audio src="sound/music_Background3.mp3" id="backgroundTheme" ></audio>
     <audio src="sound/enemy_sound.mp3" id="enemySound"></audio>
+    <audio src="sound/mario-bros-woo-hoo.mp3" id="marioWoho"></audio>
     <script src="js/cinematics.js"></script>
     <script src="js/characterMovement.js"></script>
     <script src="js/audio.js"></script> 
-    <script>
-        document.addEventListener("keyup", function(event) {
-            if (event.code === 'Enter') {
-                if (!character_is_dead) 
-                {
-                    startGame()
-                } else 
-                {
-                    buttonDeath()
-                }
-            }
-        });
-    </script> 
+    <!-- <script>
+        // document.addEventListener("keyup", function(event) {
+        // // console.log(game_is_started);
+        //     if (event.code === 'Enter') {
+        //         if (!character_is_dead && !game) 
+        //         {
+        //             startGame(game)
+        //             game = true
+        //         } else 
+        //         {
+        //             buttonDeath()
+        //         }
+        //     }
+        // });
+    </script>  -->
 </body>
 </html>   
