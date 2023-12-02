@@ -183,7 +183,6 @@ function startGame() {
 }
 
 function selectDificult() {
-
     return new Promise((resolve) => {
         let difficult = false 
         divButton.style.pointerEvents = 'none'
