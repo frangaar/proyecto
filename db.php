@@ -5,8 +5,7 @@
 
         $servername = "localhost";
         $username = "root";
-        // $password = "mysql";
-        $password = "root";
+        $password = "mysql";
         $conn = null;
 
         try {
