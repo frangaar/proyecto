@@ -1005,7 +1005,8 @@ button.audio-close{
     font-size: 15px;
     padding: 5px;
     height: 181px;
-    background-color: white;
+    /* background-color: white; */
+    background-color: #e4faa7;
   }
 
   .carousel-inner{
@@ -1116,7 +1117,8 @@ button.audio-close{
     top: 9px;
     font-size: 17px;
     left: 10px;
-    background-color: white;
+    /* background-color: white; */
+    background-color: #e4faa7;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 15px;
