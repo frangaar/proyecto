@@ -1,4 +1,4 @@
-const numJugadas = 1;
+const numJugadas = 10;
 const efectosClick = [{img: 'effect-click-rojo', audio: 'audio-effect-rojo'}, {img: 'effect-click-amarillo', audio: 'audio-effect-amarillo'}, {img: 'effect-click-azul', audio: 'audio-effect-azul'}, {img: 'effect-click-verde', audio: 'audio-effect-verde'}, ]
 let orden, turnoJugador, jugada, turno, i, droped_settings, undroped_settings, settings_intervalid_id, settings_ondisplay, pagemuted, gameWin;
 
@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
     setAmbientAudio();
     addSettingsListener();
     addModalErrorListener();
+    setImgsNotDraggable();
+
+
+    //Quitar al final
+    document.getElementById('volume-btn').click();
 });
 
 function addSettingsListener(){
@@ -21,6 +26,12 @@ function addSettingsListener(){
             !isChild ? ocultarSettings() : null;
         }
     });
+}
+
+function setImgsNotDraggable(){
+    for (const img of document.getElementsByTagName('img')) {
+        img.draggable = false;
+    }
 }
 
 function addModalErrorListener(){
@@ -112,7 +123,7 @@ function controlInputjugador(num){
             if (turno !== jugada) {
                 turno++;
             } else {
-                if (jugada+1 !== numJugadas){
+                if (jugada + 1 !== numJugadas){
                     const success_audio  = document.querySelector('.success-audio');
                     success_audio.currentTime = 0;
                     success_audio.volume = 0.5
@@ -121,6 +132,7 @@ function controlInputjugador(num){
                     gameWin = true
                     document.querySelector('.victory-audio').play();
                     document.querySelector('.confeti').style.opacity = 1
+                    setTimeout(() => {new bootstrap.Modal(document.getElementById('modal-win')).show();}, 3000)
                 }
                 document.querySelector('.progress-bar').style.width = ((jugada + 1) / numJugadas) *100 + '%';
                 turnoJugador = false;
@@ -193,7 +205,7 @@ function ocultarSettings(){
         } else {
             clearInterval(settings_intervalid_id);
         }
-    }, 250)
+    }, 250);
 }
 
 function desplazarOcultarSettings() {
@@ -216,5 +228,7 @@ function actionVolume() {
     }
 }
 
-let tiempo = 100;
+let tiempo = 50;
 const exitGame = () => gameWin ? window.location.href='../save.php?nivel=4+&tiempo='+tiempo : window.location.href='../action_page.php';
+
+let puntuacion = 10000 / tiempo;

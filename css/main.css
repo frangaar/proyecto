@@ -859,7 +859,7 @@ button.audio-close{
     
   }
 
-  #fondo{
+#fondo{
     background-size: cover;
     /* background-image: url('../img/escenarios/fondo.png');
     width: 100%;
@@ -883,7 +883,7 @@ button.audio-close{
     background-size: 2208px;
     left: -144px;
     /* overflow: hidden; */
-  }
+}
 
   #containerRanking{
     position: absolute;
