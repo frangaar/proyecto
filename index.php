@@ -283,8 +283,8 @@
                             unset($_SESSION['error']); 
                             } ?>
                             <form action="./action_page.php" method="post">
-                                <div class="input-group mb-3">
-                                    <h1>Formulario de creación de usuario</h1>
+                                <div class="input-group mb-3 logo">
+                                    <img src="img/logo.jpg">
                                 </div>
                                 <div class="input-group mb-3">    
                                     <label for="nombre" class="form-label">Nombre</label>

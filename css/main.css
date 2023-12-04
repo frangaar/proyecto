@@ -201,11 +201,30 @@ form {
 }
 
 #login .modal-header,#registro .modal-header{
-    background-color: #6495ED;
+    /* background-color: #6495ED; */
+    border: none;
+    background-color: transparent;
+    padding-left: 55px;
+    padding-right: 45px;
+}
+
+#login .modal-header .btn-close,#registro .modal-header .btn-close{
+    font-size: 28px;
+    background-color: red;
+}
+
+#login .modal-body .input-group,#registro .modal-body .input-group{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#login .modal-footer,#registro .modal-footer{
+    border: none;
+    padding-right: 45px;
 }
 
 #login .modal-header .modal-title,#registro .modal-header .modal-title{
-    color: white;
+    font-size: 35px !important;
 }
 
 #registro .registro-form h1,#registro .registro-form label{
@@ -217,7 +236,7 @@ form {
     width: 430px;
 }
 
-#login .logo img{
+#login .logo img,#registro .logo img{
     margin: auto;
     width: 580px;
 }
@@ -1107,4 +1126,16 @@ button.audio-close{
     height: 71px;
     background-size: 190px;
     opacity: 0;
+  }
+
+  #login .modal-dialog,#registro .modal-dialog{
+    background-image: url(../img/form.png);
+    background-size: contain;
+    background-position-y: 90px;
+    background-repeat: no-repeat;
+  }
+
+  #login .modal-dialog .modal-content,#registro .modal-dialog .modal-content{
+    background-color: transparent;
+    border: none;
   }
