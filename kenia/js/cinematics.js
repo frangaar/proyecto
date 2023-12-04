@@ -90,7 +90,7 @@ function exitGame() {
     let text = document.getElementById('informativeText')
     if (gameCompleted) {
         let recuperedDates = localStorage.getItem('Tiempo de partida'); 
-        window.location.href = '../save.php?nivel=3+&tiempo=' + recuperedDates;
+        window.location.href = '../save.php?nivel=3&tiempo=' + recuperedDates;
     } else {
         botonAceptar.style.display = 'none'
         divButton.style.display = 'none'

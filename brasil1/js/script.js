@@ -8,10 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     addSettingsListener();
     addModalErrorListener();
     setImgsNotDraggable();
-
-
-    //Quitar al final
-    document.getElementById('volume-btn').click();
 });
 
 function addSettingsListener(){

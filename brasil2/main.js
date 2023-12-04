@@ -140,6 +140,6 @@ function musicaFons() {
 let volver = document.getElementById("tornar");
 
 volver.addEventListener("click", function () {
-  window.location.href='../save.php?nivel=5+&puntos='+puntsInicial;
+  window.location.href='../save.php?nivel=5&puntos='+puntsInicial;
 })
 

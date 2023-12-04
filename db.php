@@ -27,7 +27,6 @@
     function validarUsuario(){
 
         $conn=openDB();
-        
 
         if(!isset($_SESSION['id'])){
 
@@ -39,8 +38,7 @@
         }
 
             try{
-                $sql = "SELECT * FROM usuarios,roles where user='".$user."' and pass='".$pass."' and usuarios.rol=roles.id";
-
+                $sql = "SELECT usuarios.* FROM usuarios,roles where user='".$user."' and pass='".$pass."' and usuarios.rol=roles.id";
             
                 $selectAll = $conn->prepare($sql);
                 $selectAll->execute();
@@ -90,7 +88,7 @@
         
                     $url .= 'nivel1=completado';
                     $append = true;
-                }
+                }   
         
                 if($_SESSION['nivel'] >= 2){
         

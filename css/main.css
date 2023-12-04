@@ -415,8 +415,10 @@ button.audio-close{
 
 .custom-alert{
     position: absolute;
-    width: 100%;
+    width: 87%;
     z-index: 1000;
+    left: 131px;
+    top: 43px;
 }
 
 .personaje{
