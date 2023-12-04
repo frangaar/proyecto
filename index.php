@@ -208,21 +208,6 @@
                     
                     <div class="row align-items-end">
                         <div class="col">
-                        <?php if(isset($_SESSION['success']) == 1){ ?>
-                                <div class="alert alert-success alert-dismissible" role="alert">
-                                    <?php echo $_SESSION['success']; ?>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                            <?php
-                                unset($_SESSION['success']);
-                            }else  if(isset($_SESSION['error'])){ ?>
-                                <div class="alert alert-danger alert-dismissible" role="alert">
-                                    <?php echo $_SESSION['error']; ?>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                            <?php    
-                            unset($_SESSION['error']); 
-                            } ?>
                             <form action="./action_page.php" method="post">
                                 <div class="input-group mb-3 logo">
                                     <img src="img/logo.jpg">
@@ -267,21 +252,6 @@
                     
                     <div class="row align-items-end">
                         <div class="col">
-                        <?php if(isset($_SESSION['success']) == 1){ ?>
-                                <div class="alert alert-success alert-dismissible" role="alert">
-                                    <?php echo $_SESSION['success']; ?>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                            <?php
-                                unset($_SESSION['success']);
-                            }else  if(isset($_SESSION['error'])){ ?>
-                                <div class="alert alert-danger alert-dismissible" role="alert">
-                                    <?php echo $_SESSION['error']; ?>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                            <?php    
-                            unset($_SESSION['error']); 
-                            } ?>
                             <form action="./action_page.php" method="post">
                                 <div class="input-group mb-3 logo">
                                     <img src="img/logo.jpg">
