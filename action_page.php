@@ -55,9 +55,7 @@
     }else if((isset($_POST['login'])) || (isset($_SESSION['id']))){
         
         validarUsuario();
-        var_dump('volviendo');
-        die();
-    
+
     }
 
     
