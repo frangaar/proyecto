@@ -208,6 +208,10 @@ form {
     padding-right: 45px;
 }
 
+#login h1{
+    color: white;
+}
+
 #login .modal-header .btn-close,#registro .modal-header .btn-close{
     font-size: 28px;
     background-color: red;
@@ -225,6 +229,7 @@ form {
 
 #login .modal-header .modal-title,#registro .modal-header .modal-title{
     font-size: 35px !important;
+    color: black;
 }
 
 #registro .registro-form h1,#registro .registro-form label{

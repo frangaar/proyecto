@@ -39,7 +39,7 @@
                 } ?>
                 <form action="./action_page.php" method="post">
                     <div class="input-group mb-3">
-                        <h1>Formulario de creación usuario</h1>
+                        <h1>Crear jugador</h1>
                     </div>
                     <div class="input-group mb-3">    
                         <label for="nombre" class="form-label">Nombre</label>
