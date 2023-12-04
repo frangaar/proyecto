@@ -861,18 +861,6 @@ button.audio-close{
 
 #fondo{
     background-size: cover;
-    /* background-image: url('../img/escenarios/fondo.png');
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    z-index: 100;
-    pointer-events: none;
-    width: 109%;
-    height: 1821px;
-    top: -653px;
-    background-size: 2208px;
-    left: -133px; */
-
     position: fixed;
     z-index: 600;
     pointer-events: none;
