@@ -5,13 +5,9 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Russo+One&display=swap">
         <link rel="icon" href="https://politecnics.barcelona/wp-content/uploads/favicon-politecnics.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./style/bootstrap.min.css">
         <link rel="stylesheet" href="./style/style.css">
-        <link rel="stylesheet" href="../css/fontawesome/css/all.css">
         <link rel="stylesheet" href="../css/main.css">
-        <link rel="stylesheet" href="../css/botones.css">
         <script src="./js/bootstrap.bundle.min.js"></script>
         <script src="./js/script.js"></script>
     </head>
@@ -30,12 +26,12 @@
                     <div class="progress-bar-recorrido">
                         <div class="progress-bar"></div>
                     </div>
-                    <img src="./media/progress-bar-frame.png" draggable="false">
+                    <img src="./media/progress-bar-frame.png">
                 </div>
             </div>
             <div class="titulo">
                 <div class="titulo-img-container">
-                    <img src="./media/titulo.png" draggable="false">
+                    <img src="./media/titulo.png">
                 </div>
                 <div class="titulo-btn-container">
                     <div class="play" onclick="setInterface()"><i class="fa-solid fa-play"></i></div>
@@ -43,12 +39,12 @@
                 </div>
             </div>
             <div class="tambores">
-                <img class="img-tambores" src="./media/tambores.png" draggable="false">
+                <img class="img-tambores" src="./media/tambores.png">
                 <div class="efects">
-                    <img id="effect-click-rojo" class="img-efecto" src="./media/efecto-rojo.png" draggable="false">
-                    <img id="effect-click-amarillo" class="img-efecto" src="./media/efecto-amarillo.png" draggable="false">
-                    <img id="effect-click-azul" class="img-efecto" src="./media/efecto-azul.png" draggable="false">
-                    <img id="effect-click-verde" class="img-efecto" src="./media/efecto-verde.png" draggable="false">
+                    <img id="effect-click-rojo" class="img-efecto" src="./media/efecto-rojo.png">
+                    <img id="effect-click-amarillo" class="img-efecto" src="./media/efecto-amarillo.png">
+                    <img id="effect-click-azul" class="img-efecto" src="./media/efecto-azul.png">
+                    <img id="effect-click-verde" class="img-efecto" src="./media/efecto-verde.png">
                     <audio id="audio-effect-rojo" src="./media/audio/higher.mp3"></audio>
                     <audio id="audio-effect-amarillo" src="./media/audio/high.mp3"></audio>
                     <audio id="audio-effect-azul" src="./media/audio/low.mp3"></audio>
@@ -63,7 +59,7 @@
             </div>
             <div class="settings-btn-container">
                 <div class="options-setting-btn-container">
-                    <div id="" class="options-setting-btn" onclick="exitGame()"><i class="fa-solid fa-right-from-bracket"></i></div>
+                    <div id="exit-btn" class="options-setting-btn" onclick="exitGame()"><i class="fa-solid fa-right-from-bracket"></i></div>
                     <div id="volume-btn" class="options-setting-btn" onclick="actionVolume()"><i class="fa-solid fa-volume-high"></i></div>
                 </div>
                 <div class="option-btn" onclick="actionSettings()"><i class="fa-solid fa-gear"></i></div>
@@ -76,11 +72,11 @@
                             <div class="how-to-description">
                                 <div class="how-to-instruction">
                                     <div class="how-to-text">Para comenzar deberás iniciar la partida, para ello, pulsa en este botón que encontrarás en el menú principal</div>
-                                    <div class="how-to-img"><img src="media/captura-btn-inicio.png" draggable="false"></div>
+                                    <div class="how-to-img"><img src="media/captura-btn-inicio.png"></div>
                                 </div>
                                 <div class="how-to-instruction">
                                     <div class="how-to-text">En el juego, únicamente deberás replicar la secuencia de tambores que se iluminen</div>
-                                    <div class="how-to-img"><img src="./media/tambor-ejemplo.png" draggable="false"></div>
+                                    <div class="how-to-img"><img src="./media/tambor-ejemplo.png"></div>
                                 </div>
                             </div>
                         </div>
@@ -93,6 +89,47 @@
                             <div id="btn-error-retry" class="error-btns" onclick="retry()" data-bs-dismiss="modal"><i class="fa-solid fa-arrow-rotate-right"></i></div>
                             <div id="btn-error-back-to-menu" class="error-btns" onclick="backtoMenu()" data-bs-dismiss="modal"><i class="fa-solid fa-house"></i></div>
     
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="modal-win" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl">
+                        <div class="modal-content">
+                            <div class="win-title">!FELICIDADES, HAS GANADO!</div>
+                            <div class="win-description">
+                                <div class="win-recompensas-container">
+                                    <div class="recompensas-title">RECOMPENSAS</div>
+                                    <div class="recompensas-descripcion">
+                                        <img class="animacion-recompesa" src="./media/cable.png">
+                                        <img class="animacion-recompesa" src="./media/plug.png" style="animation-delay: 0.5s;">
+                                    </div>
+                                </div>
+                                <div class="win-estadisticas-container">
+                                    <div class="estadisticas-title">RESUMEN DE PARTIDA</div>
+                                    <div class="estadisticas-descripcion">
+                                        <div class="estadisticas-items">
+                                            <div>Tiempo:</div>
+                                            <div class="estadisticas-spacer"></div>
+            
+                                            <div>40s</div>
+                                        </div>
+                                        <div class="estadisticas-items">
+                                            <div>Errores:</div>
+                                            <div class="estadisticas-spacer"></div>
+            
+                                            <div>8</div>
+                                        </div>
+                                        <div class="estadisticas-items">
+                                            <div>Puntuación:</div>
+                                            <div class="estadisticas-spacer"></div>
+                                            <div>100pts</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="win-btn-container">
+                                <div onclick="exitGame()">CONTINÚA LA AVENTURA</div>
+                            </div>
                         </div>
                     </div>
                 </div>

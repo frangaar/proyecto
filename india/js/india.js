@@ -757,10 +757,12 @@ document.addEventListener('DOMContentLoaded',function(){
         let item2 = sessionStorage.getItem('taj');
         let item3 = sessionStorage.getItem('vaca');
 
+        window.location.href='../save.php?nivel=2&tiempo='+reloj;
+
         // Si consigue todos los objetos
         if(item1 == "true" && item2 == "true" && item3 == "true"){
 
-            window.location.href='../save.php?nivel=2+&tiempo='+reloj;            
+            window.location.href='../save.php?nivel=2&tiempo='+reloj;            
         }else{
             salirJuego.style.display = 'block';
 

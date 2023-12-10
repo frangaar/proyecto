@@ -54,7 +54,6 @@ try {
     $selectAll->execute();
 
     $result = $selectAll->fetch();
-
     
 
     if($result['nivel'] == $nivel-1){
@@ -66,9 +65,10 @@ try {
         $_SESSION['success'] = "Juego guardado correctamente.";
 
     }else if($result['nivel'] < $nivel-1){
-        $_SESSION['level'] = "Tienes que haber superado el nivel 1 para guardar el juego.";
+        $_SESSION['level'] = "Tienes que haber superado el nivel anterior para guardar el juego.";
+        
     }else{
-        $_SESSION['success'] = "Juego actualizada correctamente.";
+        $_SESSION['success'] = "Juego actualizado correctamente.";
     }   
 
     $conn->commit();

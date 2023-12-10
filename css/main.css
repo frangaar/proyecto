@@ -201,11 +201,35 @@ form {
 }
 
 #login .modal-header,#registro .modal-header{
-    background-color: #6495ED;
+    /* background-color: #6495ED; */
+    border: none;
+    background-color: transparent;
+    padding-left: 55px;
+    padding-right: 45px;
+}
+
+#login h1{
+    color: white;
+}
+
+#login .modal-header .btn-close,#registro .modal-header .btn-close{
+    font-size: 28px;
+    background-color: red;
+}
+
+#login .modal-body .input-group,#registro .modal-body .input-group{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#login .modal-footer,#registro .modal-footer{
+    border: none;
+    padding-right: 45px;
 }
 
 #login .modal-header .modal-title,#registro .modal-header .modal-title{
-    color: white;
+    font-size: 35px !important;
+    color: black;
 }
 
 #registro .registro-form h1,#registro .registro-form label{
@@ -217,7 +241,7 @@ form {
     width: 430px;
 }
 
-#login .logo img{
+#login .logo img,#registro .logo img{
     margin: auto;
     width: 580px;
 }
@@ -415,8 +439,10 @@ button.audio-close{
 
 .custom-alert{
     position: absolute;
-    width: 100%;
+    width: 87%;
     z-index: 1000;
+    left: 131px;
+    top: 43px;
 }
 
 .personaje{
@@ -859,20 +885,8 @@ button.audio-close{
     
   }
 
-  #fondo{
+#fondo{
     background-size: cover;
-    /* background-image: url('../img/escenarios/fondo.png');
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    z-index: 100;
-    pointer-events: none;
-    width: 109%;
-    height: 1821px;
-    top: -653px;
-    background-size: 2208px;
-    left: -133px; */
-
     position: fixed;
     z-index: 600;
     pointer-events: none;
@@ -883,7 +897,7 @@ button.audio-close{
     background-size: 2208px;
     left: -144px;
     /* overflow: hidden; */
-  }
+}
 
   #containerRanking{
     position: absolute;
@@ -991,7 +1005,8 @@ button.audio-close{
     font-size: 15px;
     padding: 5px;
     height: 181px;
-    background-color: white;
+    /* background-color: white; */
+    background-color: #e4faa7;
   }
 
   .carousel-inner{
@@ -1102,7 +1117,8 @@ button.audio-close{
     top: 9px;
     font-size: 17px;
     left: 10px;
-    background-color: white;
+    /* background-color: white; */
+    background-color: #e4faa7;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 15px;
@@ -1117,4 +1133,16 @@ button.audio-close{
     height: 71px;
     background-size: 190px;
     opacity: 0;
+  }
+
+  #login .modal-dialog,#registro .modal-dialog{
+    background-image: url(../img/form.png);
+    background-size: contain;
+    background-position-y: 90px;
+    background-repeat: no-repeat;
+  }
+
+  #login .modal-dialog .modal-content,#registro .modal-dialog .modal-content{
+    background-color: transparent;
+    border: none;
   }

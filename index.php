@@ -52,11 +52,11 @@
                 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                     <div class="col">
                       <div class="card h-100">
-                        <img src="img/game.jpg" class="card-img-top" alt="...">
+                        <img src="img/escenarios/spain_portada.png" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
                           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                          <span class="card-subtitle">Desarrollador: </span><span class="nombre"></span>
+                          <span class="card-subtitle">Desarrollador: </span><span class="nombre">David Neriz Bonet</span>
                         </div>
                       </div>
                     </div>
@@ -73,26 +73,6 @@
                       </div>
                     </div>
                     <div class="col">
-                      <div class="card h-100">
-                        <img src="img/game.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                          <span class="card-subtitle">Desarrollador: </span><span class="nombre"></span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="card h-100">
-                        <img src="img/game.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                          <span class="card-subtitle">Desarrollador: </span><span class="nombre"></span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
                         <div class="card h-100">
                           <img src="img/escenarios/kenia_portada.png" class="card-img-top" alt="...">
                           <div class="card-body">
@@ -101,6 +81,26 @@
                             <span class="card-subtitle">Desarrollador: </span><span class="nombre">Marc Pons Cabrera</span>
                           </div>
                         </div>
+                    </div>
+                    <div class="col">
+                      <div class="card h-100">
+                        <img src="img/escenarios/brasil1_portada.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                          <span class="card-subtitle">Desarrollador: </span><span class="nombre">Javier Diaz Neira</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card h-100">
+                        <img src="img/escenarios/brasil2_portada.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                          <span class="card-subtitle">Desarrollador: </span><span class="nombre">Jiajie Chen</span>
+                        </div>
+                      </div>
                     </div>
                 </div>
         </div>
@@ -148,8 +148,8 @@
                                 </div>
                                 <div class="col col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">JiaJie Chen</h5>
-                                    <p class="card-text">Email: <span class="email">jchen2223@politecnics.barcelona</span></p>
+                                    <h5 class="card-title">Marc Pons Cabrera</h5>
+                                    <p class="card-text">Email: <span class="email">mponsc2223@politecnics.barcelona</span></p>
                                     <p class="card-text"><a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a></p>
                                 </div>
                                 </div>
@@ -180,8 +180,8 @@
                                 </div>
                                 <div class="col col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">Marc Pons Cabrera</h5>
-                                    <p class="card-text">Email: <span class="email">mponsc2223@politecnics.barcelona</span></p>
+                                    <h5 class="card-title">JiaJie Chen</h5>
+                                    <p class="card-text">Email: <span class="email">jchen2223@politecnics.barcelona</span></p>
                                     <p class="card-text"><a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a></p>
                                 </div>
                                 </div>
@@ -208,21 +208,6 @@
                     
                     <div class="row align-items-end">
                         <div class="col">
-                        <?php if(isset($_SESSION['success']) == 1){ ?>
-                                <div class="alert alert-success alert-dismissible" role="alert">
-                                    <?php echo $_SESSION['success']; ?>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                            <?php
-                                unset($_SESSION['success']);
-                            }else  if(isset($_SESSION['error'])){ ?>
-                                <div class="alert alert-danger alert-dismissible" role="alert">
-                                    <?php echo $_SESSION['error']; ?>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                            <?php    
-                            unset($_SESSION['error']); 
-                            } ?>
                             <form action="./action_page.php" method="post">
                                 <div class="input-group mb-3 logo">
                                     <img src="img/logo.jpg">
@@ -258,7 +243,7 @@
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Registrarse en el juego</h1>
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Crear jugador</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -267,24 +252,9 @@
                     
                     <div class="row align-items-end">
                         <div class="col">
-                        <?php if(isset($_SESSION['success']) == 1){ ?>
-                                <div class="alert alert-success alert-dismissible" role="alert">
-                                    <?php echo $_SESSION['success']; ?>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                            <?php
-                                unset($_SESSION['success']);
-                            }else  if(isset($_SESSION['error'])){ ?>
-                                <div class="alert alert-danger alert-dismissible" role="alert">
-                                    <?php echo $_SESSION['error']; ?>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                            <?php    
-                            unset($_SESSION['error']); 
-                            } ?>
                             <form action="./action_page.php" method="post">
-                                <div class="input-group mb-3">
-                                    <h1>Formulario de creación de usuario</h1>
+                                <div class="input-group mb-3 logo">
+                                    <img src="img/logo.jpg">
                                 </div>
                                 <div class="input-group mb-3">    
                                     <label for="nombre" class="form-label">Nombre</label>

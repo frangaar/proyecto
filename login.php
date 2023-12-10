@@ -39,6 +39,9 @@
                     unset($_SESSION['error']); 
                     } ?>
                     <form action="./action_page.php" method="post">
+                        <div class="input-group mb-3">
+                            <h1>Conectarse al juego</h1>
+                        </div>
                         <div class="input-group mb-3 logo">
                             <img src="img/logo.jpg">
                         </div>

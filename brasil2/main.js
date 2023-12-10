@@ -49,10 +49,10 @@ function asomaTopos() {
 
       const numAleatorio = Math.random();
 
-      if (numAleatorio < 0.1) {
+      if (numAleatorio < 0.15) {
         const topoVerde = document.getElementById("imatge1" + num);
         topoVerde.style.display = "block";
-      } else if (numAleatorio < 0.4) {
+      } else if (numAleatorio < 0.35) {
         const topoRojo = document.getElementById("imatge2" + num);
         topoRojo.style.display = "block";
       } else {
@@ -140,6 +140,6 @@ function musicaFons() {
 let volver = document.getElementById("tornar");
 
 volver.addEventListener("click", function () {
-  window.location.href='../save.php?nivel=5+&puntos='+puntsInicial;
+  window.location.href='../save.php?nivel=5&puntos='+puntsInicial;
 })
 

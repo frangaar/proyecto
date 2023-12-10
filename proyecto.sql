@@ -36,7 +36,7 @@ insert into roles values(null,"admin");
 insert into roles values(null,"player");
 
 insert into usuarios values(null,"admin","admin",1,0);
-insert into usuarios values(null,"pepe","pepe",2,2);
+insert into usuarios values(null,"pepe","pepe",2,5);
 insert into usuarios values(null,"luis","luis",2,3);
 
 insert into ranking values(2,'2023-10-17',1,1000);

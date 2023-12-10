@@ -394,4 +394,6 @@ document.addEventListener('DOMContentLoaded',function(){
         btnApagar.classList.add('btnEncender');
     }
 
+    cat.click();
+
 });

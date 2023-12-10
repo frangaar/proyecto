@@ -34,7 +34,7 @@ body{
 .frame-effect{
     position: absolute;
     top: 0;
-    height: 100%;
+    height: 100vh;
     width: 100%;
     pointer-events: none;
     transition: 1s;
@@ -76,7 +76,7 @@ body{
     height: 100px;
 }
 
-.titulo-btn-container > div{
+.titulo-btn-container > div, .win-btn-container > div{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,11 +93,12 @@ body{
     cursor: pointer;
     transition: 0.8s;
 }
-.titulo-btn-container > div:hover, .error-btns:hover, .options-setting-btn-container div:hover, .option-btn:hover{
+
+.titulo-btn-container > div:hover, .error-btns:hover, .options-setting-btn-container div:hover, .option-btn:hover, .win-btn-container > div:hover{
     filter: brightness(1.2);
 }
 
-.titulo-btn-container > div:active, .error-btns:active, .options-setting-btn-container div:active, .option-btn:active{
+.titulo-btn-container > div:active, .error-btns:active, .options-setting-btn-container div:active, .option-btn:active, .win-btn-container > div:active{
     transform: scale(0.95) !important;
     filter: brightness(0.8);
     transition: 0s;
@@ -346,4 +347,119 @@ body{
 
 .options-setting-btn.shown{
     transform: scale(1);
+}
+
+#modal-win .modal-dialog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible !important;
+
+}
+
+#modal-win .modal-content{
+    height: 860px !important;
+    width: 860px !important;
+    background-image: url('../media/modal-bg-2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: visible !important;
+}
+
+.win-title{
+    position: absolute;
+    top: 9%;
+    left: 6%;
+    width: 86%;
+    height: 12%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 900;
+}
+
+.win-description{
+    position: absolute;
+    top: 21%;
+    left: 6%;
+    width: 86%;
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 30px;
+}
+
+.win-recompensas-container, .win-estadisticas-container{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+.recompensas-title, .estadisticas-title{
+    display: flex;
+    align-items: center;
+    width: 100% !important;
+    border-bottom: 2px solid rgb(0, 0, 0);
+    font-size: 30px;
+    font-weight: 800;
+    padding-left: 50px;
+}
+.recompensas-descripcion{
+    padding: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.recompensas-descripcion img{
+    height: 150px;
+    width: 200px;
+    object-fit: contain;
+}
+
+.win-btn-container{
+    position: absolute;
+    top: 88%;
+    left: 6%;
+    width: 86%;
+    height: 12%;
+}
+
+.estadisticas-descripcion{
+    display: flex;
+    flex-direction: column;
+    margin: 20px 75px;
+}
+
+.estadisticas-items{
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+}
+.estadisticas-items > div:nth-child(1){
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.anijmacion-recompesa{
+    animation: recompensaAnimacion;
+    animation-duration: 1s;
+}
+
+.win-btn-container > div{
+    font-size: 28px;
+    font-weight: 900;
+}
+
+@keyframes recompensaAnimacion {
+    0%{transform: scale(1.1) rotate(10deg);}
+    20%{transform: scale(1.1) rotate(-10deg);}
+    40%{transform: scale(1.1) rotate(10deg);}
+    60%{transform: scale(1.1) rotate(-10deg);}
+    90%{transform: scale(1.3)}
+    96%{transform: scale(0.8)}
+    100%{transform: scale(1);}
 }
