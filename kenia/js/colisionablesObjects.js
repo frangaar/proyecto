@@ -9,4 +9,17 @@ class ColisionablesObjects {
         this.width = width
         this.height = height
       }
+      get getX() {
+        return this.x
+      }
+      get getY() {
+        return this.y
+      }
+      get getWidth() {
+        return this.width
+      }
+      get getHeight() {
+        return this.height
+      }
+     
 }

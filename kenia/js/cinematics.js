@@ -113,7 +113,7 @@ function goBackInSureOption() {
 function showControls() {
     if (viewControls) {
         controlsTitle.innerHTML = 'Controls'
-        buttonGoMenu.innerHTML = 'Atras'
+        buttonGoMenu.innerHTML = 'Enrere'
         buttonGoMenu.setAttribute('onclick', 'buttonAccept()')
         showCtrl.style.zIndex = 500
         containerControls.style.width = '1008px'
@@ -181,7 +181,6 @@ function startGame() {
         }
     })
 }
-
 function selectDificult() {
     return new Promise((resolve) => {
         let difficult = false 
@@ -332,7 +331,13 @@ function selectCharacter() {
                     isMario = true
                 } 
                 characterSelected = true
-                container2.style.display = 'none'  
+                container2.style.display = 'none'
+                console.log(imgCharacter);
+                if (imgCharacter == null) {
+                    console.log('laia Por null');
+                    imgCharacter = '../img/laiaDerechaParada.png'
+                    imgCharacterWalking = '../img/laiaDerechaCaminando.gif'
+                }  
                 resolve(characterSelected)
               });
         }
@@ -395,4 +400,45 @@ function showStory() {
     })
     })
     
+}
+function transitionlvl1_to_lvl2() {
+   
+    clearInterval(timerBarrel)
+    let containerLvl1_to2 = document.getElementById('lvl1_lvl2');
+    containerLvl1_to2.style.display = 'block';
+    level1_Map.style.display = 'none';
+    let barrilesContainer = document.querySelector('.barriles');
+    barrilesContainer.style.display = 'none'
+    function handleClick() {
+        containerLvl1_to2.style.display = 'none';
+        level1_Map.style.display = 'block';
+        enemyContainer.style.left = '65px';
+        positionY = 762;
+        level_2_finished = true;
+        bossAnimation1 = false;
+        ARRAY_BARRELS.splice(0, ARRAY_BARRELS.length)
+        drawMap();
+        index_counting_barrels = 0
+        // barrilesContainer.style.display = null
+        startInterval()
+        spanlvl.removeEventListener('click', handleClick);
+        // starTimeoutEnemy()
+    }
+    let spanlvl = document.getElementById('spanNext_lvl');
+    // spanlvl.addEventListener('click', handleClick);
+    spanlvl.addEventListener('click', handleClick)
+        // containerLvl1_to2.style.display = 'none';
+        // level1_Map.style.display = 'block';
+        // enemyContainer.style.left = '65px';
+        // positionY = 762;
+        // level_2_finished = true;
+        // bossAnimation1 = false;
+        // ARRAY_BARRELS.splice(0, ARRAY_BARRELS.length)
+        // drawMap();
+        // index_counting_barrels = 0
+        // // barrilesContainer.style.display = null
+        // startInterval()
+        // spanlvl.removeEventListener('click', handleClick); 
+
+
 }

@@ -38,6 +38,7 @@
 }
 #controlsTitle {
     color: white;
+    
 }
 #deathMenu {
     display: none;
@@ -138,6 +139,32 @@
 }
 .selectorDeNivel {
     display: none;
+}
+#lvl1_lvl2 {
+   display: none;
+}
+#messagelvl1 {
+    left: 392px;
+    position: absolute;
+    font-size: 30px;
+    color: white;
+}
+li.lvl1 {
+    left: 492px;
+    top: 291px;
+}
+.showLaia#lvl1_to_2 {
+    position: absolute;
+    left: 492px;
+    top: 27%;
+}
+.container#containerlvl1_to_2{
+    position: absolute;
+    text-align: center;
+    left: 310px;
+    top: 119px;
+    width: 1296px;
+    height: 436px;
 }
 ul#level_characterSelected {
     /* display: flex; */
