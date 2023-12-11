@@ -1,23 +1,25 @@
 document.addEventListener('DOMContentLoaded',function(){
    
-    let landing = document.querySelector('.games-section #india');
-    let img1 = document.getElementById('india_static');
-    let img2 = document.getElementById('india_gif');
+    // let landing = document.querySelector('.games-section #india');
+    // let img1 = document.getElementById('india_static');
+    // let img2 = document.getElementById('india_gif');
+
+    
+
+    // landing.addEventListener('mouseover',function(){
+    //     img1.style.display = 'none';
+    //     img2.style.display = 'block';
+    // })
+    
+    // landing.addEventListener('mouseout',function(){
+    //     img1.style.display = 'block';
+    //     img2.style.display = 'none';
+    // })
 
     const imgs = this.getElementsByTagName('img');
     for (const img of imgs) {
         img.draggable = false;
     }
-
-    landing.addEventListener('mouseover',function(){
-        img1.style.display = 'none';
-        img2.style.display = 'block';
-    })
-    
-    landing.addEventListener('mouseout',function(){
-        img1.style.display = 'block';
-        img2.style.display = 'none';
-    })
 
     const idiomasLanding = [
         {
@@ -45,7 +47,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         "Desarrollador": "Desarrollador:"
                     },
                     {
-                        "Juego":"Ritmes Brasilers",
+                        "Juego":"Ritmos Brasileños",
                         "Descripcion":"¡Embárcate en un viaje musical por Brasil con 'Ritmes Brasilers'! Desafía tus sentidos tocando tambores en secuencias encantadoras, iluminando el ritmo de las vibrantes tradiciones brasileñas. Conviértete en el maestro del tambor y descubre la magia de la música brasileña en cada golpe.",
                         "Desarrollador": "Desarrollador: "
                     },
@@ -153,7 +155,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         "Desarrollador": "Developer:"
                     },
                     {
-                        "Juego": "Ritmes Brasilers",
+                        "Juego": "Brazilian Rythms",
                         "Descripcion": "Embark on a musical journey through Brazil with 'Ritmes Brasilers'! Challenge your senses by playing drums in enchanting sequences, illuminating the rhythm of vibrant Brazilian traditions. Become the master of the drum and discover the magic of Brazilian music with every beat.",
                         "Desarrollador": "Developer: "
                     },
