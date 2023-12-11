@@ -34,7 +34,7 @@ body{
 .frame-effect{
     position: absolute;
     top: 0;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     pointer-events: none;
     transition: 1s;
@@ -444,7 +444,7 @@ body{
     font-weight: 400;
 }
 
-.anijmacion-recompesa{
+.animacion-recompesa{
     animation: recompensaAnimacion;
     animation-duration: 1s;
 }
