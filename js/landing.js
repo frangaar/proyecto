@@ -1,23 +1,25 @@
 document.addEventListener('DOMContentLoaded',function(){
    
-    let landing = document.querySelector('.games-section #india');
-    let img1 = document.getElementById('india_static');
-    let img2 = document.getElementById('india_gif');
+    // let landing = document.querySelector('.games-section #india');
+    // let img1 = document.getElementById('india_static');
+    // let img2 = document.getElementById('india_gif');
+
+    
+
+    // landing.addEventListener('mouseover',function(){
+    //     img1.style.display = 'none';
+    //     img2.style.display = 'block';
+    // })
+    
+    // landing.addEventListener('mouseout',function(){
+    //     img1.style.display = 'block';
+    //     img2.style.display = 'none';
+    // })
 
     const imgs = this.getElementsByTagName('img');
     for (const img of imgs) {
         img.draggable = false;
     }
-
-    landing.addEventListener('mouseover',function(){
-        img1.style.display = 'none';
-        img2.style.display = 'block';
-    })
-    
-    landing.addEventListener('mouseout',function(){
-        img1.style.display = 'block';
-        img2.style.display = 'none';
-    })
 
     const idiomasLanding = [
         {
@@ -31,7 +33,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 "TituloJuegos":[   
                     {
                         "Juego":"EcoBarna",
-                        "Descripcion":"Descripcion 1",
+                        "Descripcion":"Laia, una ingeniera en Barcelona comprometida con la sostenibilidad, busca obtener fondos para viajar a países desfavorecidos y llevar energía sostenible a comunidades necesitadas en África, América Latina y Asia. Su objetivo es instalar sistemas de energía solar y eólica, pero necesita financiamiento para realizar estos proyectos transformadores.",
                         "Desarrollador": "Desarrollador: "
                     },
                     {
@@ -45,7 +47,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         "Desarrollador": "Desarrollador:"
                     },
                     {
-                        "Juego":"Ritmes Brasilers",
+                        "Juego":"Ritmos Brasileños",
                         "Descripcion":"¡Embárcate en un viaje musical por Brasil con 'Ritmes Brasilers'! Desafía tus sentidos tocando tambores en secuencias encantadoras, iluminando el ritmo de las vibrantes tradiciones brasileñas. Conviértete en el maestro del tambor y descubre la magia de la música brasileña en cada golpe.",
                         "Desarrollador": "Desarrollador: "
                     },
@@ -85,7 +87,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 "TituloJuegos":[   
                     {
                         "Juego":"EcoBarna",
-                        "Descripcion":"Descripcio 1",
+                        "Descripcion":"Laia, una enginyera a Barcelona compromesa amb la sostenibilitat, busca obtenir fons per viatjar a països desfavorits i portar energia sostenible a comunitats necessitades a l'Àfrica, Amèrica Llatina i Àsia. El seu objectiu és instal·lar sistemes d'energia solar i eòlica, però necessita finançament per dur a terme aquests projectes transformadors.",
                         "Desarrollador": "Desenvolupador: "
                     },
                     {
@@ -139,7 +141,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 "TituloJuegos":[   
                     {
                         "Juego": "EcoBarna",
-                        "Descripcion": "Description 1",
+                        "Descripcion": "Laia, an engineer based in Barcelona committed to sustainability, aims to secure funds to travel to disadvantaged countries and bring sustainable energy to needy communities in Africa, Latin America, and Asia. Her goal is to install solar and wind energy systems, but she needs funding to carry out these transformative projects.",
                         "Desarrollador": "Developer: "
                     },
                     {
@@ -153,7 +155,7 @@ document.addEventListener('DOMContentLoaded',function(){
                         "Desarrollador": "Developer:"
                     },
                     {
-                        "Juego": "Ritmes Brasilers",
+                        "Juego": "Brazilian Rythms",
                         "Descripcion": "Embark on a musical journey through Brazil with 'Ritmes Brasilers'! Challenge your senses by playing drums in enchanting sequences, illuminating the rhythm of vibrant Brazilian traditions. Become the master of the drum and discover the magic of Brazilian music with every beat.",
                         "Desarrollador": "Developer: "
                     },

@@ -290,10 +290,6 @@ form {
     box-shadow: 0px 2px 22px 10px rgba(81,171,199,0.75), 0px -192px 22px 10px rgba(4,92,44,0.75), 0px 200px 22px 10px rgba(81,171,199,0.75);
 }
 
-.landing-page .header-section{
-    backdrop-filter: blur(10px) saturate(70%);
-}
-
 .landing-page .header-section-intro{
     margin: auto;
 }
@@ -469,13 +465,20 @@ button.audio-close{
 }
 
 
-#india_static{
+.juegos-banner img{
     min-height: 189px
 }
 
-#india_gif{
+.juegos-banner img:nth-child(2){
     display: none;
-    min-height: 189px
+}
+
+.juegos-banner:hover img:nth-child(1){
+    display: none;
+}
+
+.juegos-banner:hover img:nth-child(2){
+    display: block;
 }
 
 .developer-img-container{
@@ -485,14 +488,22 @@ button.audio-close{
 
 .developers-img{
     border-radius: 55px;
-    height: 100px;
-    width: 100px;
-    margin-top: 5px;
+    height: 80px;
+    width: 80px;
+    margin-top: 20px;
+    margin-left: 20px;
 }
 
 .games-section{
     padding-bottom: 30px;
 }
+
+.games-section .card-body{
+    padding-left: 35px;
+    padding-top: 27px;
+    padding-right: 20px;
+}
+
 
 /* .games-section, .developers-section{
     padding-top: 40px;
@@ -517,8 +528,14 @@ button.audio-close{
     margin-bottom: 75px;
 }
 
+.games-section .landing-juegos, .developers-section .landing-developers h2{
+    background-color: #47cc35b8;
+    border-radius: 22px;
+    text-align: center;
+}
+
 .games-section h2, .developers-section h2{
-    color: white;
+    color: black;
 }
 
 .developers-section .card-text{
@@ -1160,7 +1177,33 @@ button.audio-close{
     width: 293px;
   }
 
-  /* #login .modal-dialog .modal-content,#registro .modal-dialog .modal-content{
+  .games-section .card-body{
     background-color: transparent;
     border: none;
-  } */
+    background-image: url(../img/info_juegos.png);
+    background-size: cover;
+    background-position-y: 0;
+    background-repeat: no-repeat;
+    background-size: 468px;
+  }
+
+  .developers-section .developers-fondo{
+    background-color: transparent;
+    border: none;
+    background-image: url(../img/info_developers.png);
+    background-size: contain;
+    background-position-y: 0;
+    background-repeat: no-repeat;
+    height: 130px;
+  }
+
+  .developers-section .developers-fondo .card{
+    background-color: transparent;
+    border: none;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .developers-section .card-body{
+    padding-top: 21px;
+  }
