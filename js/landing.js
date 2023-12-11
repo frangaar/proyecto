@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 "TituloJuegos":[   
                     {
                         "Juego":"EcoBarna",
-                        "Descripcion":"Descripcion 1",
+                        "Descripcion":"Laia, una ingeniera en Barcelona comprometida con la sostenibilidad, busca obtener fondos para viajar a países desfavorecidos y llevar energía sostenible a comunidades necesitadas en África, América Latina y Asia. Su objetivo es instalar sistemas de energía solar y eólica, pero necesita financiamiento para realizar estos proyectos transformadores.",
                         "Desarrollador": "Desarrollador: "
                     },
                     {
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 "TituloJuegos":[   
                     {
                         "Juego":"EcoBarna",
-                        "Descripcion":"Descripcio 1",
+                        "Descripcion":"Laia, una enginyera a Barcelona compromesa amb la sostenibilitat, busca obtenir fons per viatjar a països desfavorits i portar energia sostenible a comunitats necessitades a l'Àfrica, Amèrica Llatina i Àsia. El seu objectiu és instal·lar sistemes d'energia solar i eòlica, però necessita finançament per dur a terme aquests projectes transformadors.",
                         "Desarrollador": "Desenvolupador: "
                     },
                     {
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 "TituloJuegos":[   
                     {
                         "Juego": "EcoBarna",
-                        "Descripcion": "Description 1",
+                        "Descripcion": "Laia, an engineer based in Barcelona committed to sustainability, aims to secure funds to travel to disadvantaged countries and bring sustainable energy to needy communities in Africa, Latin America, and Asia. Her goal is to install solar and wind energy systems, but she needs funding to carry out these transformative projects.",
                         "Desarrollador": "Developer: "
                     },
                     {

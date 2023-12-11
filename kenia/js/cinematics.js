@@ -441,8 +441,37 @@ function transitionlvl1_to_lvl2() {
 
 
 }
-function finishTheGame() {
-    clearInterval(timerBarrel)
-    level1_Map.style.display = 'none';
-
-}
+// function finishTheGame() {
+//     let globalContainerFinishMode = document.getElementById('finishGameContainer')
+//     let containerFinish = document.getElementById('containerFinish')
+//     let laiaImgFinish = document.getElementById('laiaFinish')
+//     clearInterval(timerBarrel)
+//     // level1_Map.style.display = 'none';
+//     // globalContainerFinishMode.style.display = 'block'
+//     // // containerFinish.style.backgroundImage = 'url(../kenia/img/fondo2.png)'
+//     // // containerFinish.style.backgroundSize = 'cover'
+//     // laiaImgFinish.addEventListener('animationend', function() {
+//     //     laiaImgFinish.setAttribute('src', '../img/laiaDerechaParada.png')
+//     // })
+// }
+let globalContainerFinishMode = document.getElementById('finishGameContainer')
+let containerFinish = document.getElementById('containerFinish')
+let laiaImgFinish = document.getElementById('laiaFinish')
+let finalMessage = document.getElementById('mensajeFinal')
+let containerFinalMessage = document.getElementById('mensajeHistoriaFinal')
+laiaImgFinish.addEventListener('animationend', function() {
+    laiaImgFinish.setAttribute('src', '../img/laiaDerechaParada.png')
+    finalMessage.style.display = 'block'
+    containerFinalMessage.style.display = 'block'
+    setTimeout(() => {
+        containerFinalMessage.style.display = 'none'
+        laiaImgFinish.style.animation = 'moveAway 4s linear'
+        laiaImgFinish.addEventListener('animationend', function() {
+            laiaImgFinish.style.display = 'none'
+        })
+    //     finalMessage.innerHTML = `Oh no, hi ha un goril·la enfadat que no ens deixa passar!
+    //     Està fent barrils, hem de derrotar-lo per anar a la central i encendre l'electricitat.
+    //     <br>
+    //     Deixa que et doni un consell, ves amb compte, salta els barrils i arriba fins a ell, però sobretot, tingues molt cuidado, aquests barrils no tenen bona pinta.`
+    }, 10000);
+})

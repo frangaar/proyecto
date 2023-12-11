@@ -6,6 +6,14 @@
         left: 510px;
 	}
 }
+@keyframes movefinish {
+	0% {
+        left: 0px;
+	}
+	100% {
+        left: 510px;
+	}
+}
 @keyframes moveAway {
     0% {
         left: 510px;
@@ -107,14 +115,21 @@
     /* animation: move 3s linear;  */
     left: 510px;
 }
-#mensajeHistoria {
-    display: none;
+.mensajesHistoria {
     width: 358px;
     height: 180px;
     position: absolute;
     left: 625px;
     bottom: 383px;
     background-color: white;
+}
+#mensajeHistoria {
+    display: none;
+}
+#mensajeHistoriaFinal {
+    display: none;
+    width: 315px;
+    height: 211px;
 }
 #bocata_Story {
     font-size: 16px;
@@ -123,14 +138,26 @@
     margin-left: -2px;
     height: 216px;
 }
-#mensaje1 {
+.mensajes {
     font-size: 16px;
-    display: none;
     top: 11px;
     color: black !important;
     position: absolute;
     padding-left: 5px;
 }
+#mensaje1 {
+    display: none;
+}
+#mensajeFinal {
+    display: none;
+    padding: 0 30px 0px 40px;
+}
+#bocata_StoryFinal {
+    position: absolute;
+    left: -1px;
+    width: 320px;
+    height: 250px;
+} 
 #goingToTheLanding {
     display: none;
     width: 500px;
@@ -214,7 +241,24 @@ li.lvl{
     left: 585px;
     bottom: 210px;
 }
-
+#finishGameContainer {
+    /* display: none; */
+    /* position: absolute; */
+}
+.container#containerFinish {
+    position: absolute;
+    left: 291px;
+    border: 1px solid white;
+    border-image: none;
+    top: 50px;
+    background-image: url(../img/fondo2.png);
+    background-size: cover;
+    
+}
+#laiaFinish {
+    /* left: 0px; */
+    animation: movefinish 5s linear;  
+}
 .container {
     border: 20px solid transparent;
     border-image: url(../img/marco.png) 20 round;
