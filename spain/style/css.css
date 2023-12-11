@@ -8,6 +8,17 @@ html{
     font-family: pixel;
 }
 
+#presentacio{
+    z-index: 999;
+    top: 10px;
+}
+
+#laia-presentacion{
+    width: 200px;
+    height: 270px;
+    right: 20px;
+}
+
 #titulo-binvenida{
     font-size: xx-large;
 }
