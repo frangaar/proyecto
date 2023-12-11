@@ -1,6 +1,8 @@
-const numJugadas = 10;
-const efectosClick = [{img: 'effect-click-rojo', audio: 'audio-effect-rojo'}, {img: 'effect-click-amarillo', audio: 'audio-effect-amarillo'}, {img: 'effect-click-azul', audio: 'audio-effect-azul'}, {img: 'effect-click-verde', audio: 'audio-effect-verde'}, ]
-let orden, turnoJugador, jugada, turno, i, droped_settings, undroped_settings, settings_intervalid_id, settings_ondisplay, pagemuted, gameWin;
+const numJugadas = 3;
+const efectosClick = [{img: 'effect-click-rojo', audio: 'audio-effect-rojo'}, {img: 'effect-click-amarillo', audio: 'audio-effect-amarillo'}, {img: 'effect-click-azul', audio: 'audio-effect-azul'}, {img: 'effect-click-verde', audio: 'audio-effect-verde'}],
+    exitGame = () => gameWin ? window.location.href='../save.php?nivel=4+&tiempo='+tiempo : window.location.href='../action_page.php';
+let orden, turnoJugador, jugada, turno, i, droped_settings, undroped_settings, settings_intervalid_id, settings_ondisplay, pagemuted, gameWin, crono_interval, 
+    tiempo = errores = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
     setVariableValues();
@@ -67,17 +69,17 @@ function rellenarArrayOrden(){
 function setAmbientAudio(){
     const audioForest = document.querySelector('.forest-audio');
     const audiocampfire = document.querySelector('.campire-audio');
-    audioForest.volume = 1;
     audiocampfire.volume = 0.6;
     setTimeout(() => audiocampfire.play(), 500);
     setTimeout(() => audioForest.play(), 5000);
 }
 
 function setInterface(){
-    const frame = document.querySelector('.frame')
+    const frame = document.querySelector('.frame');
     frame.classList.add('starting-game');
     setTimeout(() => {
         frame.classList.add('interface-in')
+        startCrono();
         setTimeout(ejecutarMuestra, 1500);
     }, 1250)
 }
@@ -91,6 +93,7 @@ function backtoMenu(){
         frame.classList.remove('starting-game');
         document.querySelector('.progress-bar').style.width = '0%';
         setVariableValues();
+        clearInterval(crono_interval);
     }, 1250);
 }
 
@@ -125,10 +128,15 @@ function controlInputjugador(num){
                     success_audio.volume = 0.5
                     success_audio.play();
                 }else{
+                    const puntuacion = Math.round(10000/tiempo);
                     gameWin = true
+                    clearInterval(crono_interval);
                     document.querySelector('.victory-audio').play();
-                    document.querySelector('.confeti').style.opacity = 1
-                    setTimeout(() => {new bootstrap.Modal(document.getElementById('modal-win')).show();}, 3000)
+                    document.querySelector('.confeti').style.opacity = 1;
+                    document.querySelector('.tiempo-result').textContent = `${tiempo}s`;
+                    document.querySelector('.errores-result').textContent = `${errores} err.`;
+                    document.querySelector('.puntos-result').textContent = `${puntuacion}pts`;
+                    setTimeout(() => {new bootstrap.Modal(document.getElementById('modal-win')).show();}, 3000);
                 }
                 document.querySelector('.progress-bar').style.width = ((jugada + 1) / numJugadas) *100 + '%';
                 turnoJugador = false;
@@ -137,8 +145,9 @@ function controlInputjugador(num){
                 ejecutarMuestra();
             }
         }else{
+            errores++;
             const frame_effect = document.querySelector('.frame-effect');
-            frame_effect.style.transition = '0s';
+            frame_effect.style.transition = '0s';   
             frame_effect.style.boxShadow = 'inset 0px 0px 100px 0px rgb(255,0,0)';
             document.querySelector('.error-audio').play();
             new bootstrap.Modal(document.getElementById('modal-error')).show();
@@ -224,7 +233,17 @@ function actionVolume() {
     }
 }
 
-let tiempo = 50;
-const exitGame = () => gameWin ? window.location.href='../save.php?nivel=4+&tiempo='+tiempo : window.location.href='../action_page.php';
+function startCrono(){
+    crono_interval = setInterval(()=>{
+        tiempo++;
+    }, 1000);
+}
 
-let puntuacion = 10000 / tiempo;
+document.querySelector('.modal-win').addEventListener('shown.bs.modal', () => {
+    setTimeout(() => {
+        for (const recompensa of document.getElementsByClassName('animacion-recompesa')) {
+            recompensa.classList.add('animacion-recompesa')
+        }
+    }, 500)
+    
+})
