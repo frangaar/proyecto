@@ -206,6 +206,7 @@ form {
     background-color: transparent;
     padding-left: 55px;
     padding-right: 45px;
+    padding-top: 45px;
 }
 
 #login h1{
@@ -222,9 +223,14 @@ form {
     padding-right: 20px;
 }
 
+#login .modal-body, #registro .modal-body{
+    padding-bottom: 0px;
+}
+
 #login .modal-footer,#registro .modal-footer{
     border: none;
     padding-right: 45px;
+    padding-bottom: 55px;
 }
 
 #login .modal-header .modal-title,#registro .modal-header .modal-title{
@@ -234,6 +240,10 @@ form {
 
 #registro .registro-form h1,#registro .registro-form label{
     color: white;
+}
+
+#login .login-form h1, #registro .registro-form h1{
+    margin: auto;
 }
 
 .landing-page #login .logo{
@@ -1135,14 +1145,22 @@ button.audio-close{
     opacity: 0;
   }
 
-  #login .modal-dialog,#registro .modal-dialog{
-    background-image: url(../img/form.png);
-    background-size: contain;
-    background-position-y: 90px;
-    background-repeat: no-repeat;
-  }
-
-  #login .modal-dialog .modal-content,#registro .modal-dialog .modal-content{
+  #login .modal-content,#registro .modal-content{
     background-color: transparent;
     border: none;
+    background-image: url(../img/form.png);
+    background-size: cover;
+    background-position-y: 0;
+    box-shadow: 0px 0px 50px 0px wheat;
+    background-repeat: no-repeat;
+    height: 579px;
   }
+
+  #mainPage #login .logo img,#mainPage #registro .logo img{
+    width: 293px;
+  }
+
+  /* #login .modal-dialog .modal-content,#registro .modal-dialog .modal-content{
+    background-color: transparent;
+    border: none;
+  } */
