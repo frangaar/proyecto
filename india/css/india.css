@@ -777,24 +777,39 @@ button.audio-close{
   #mision .modal-content{
     width: 80%;
     height: 64%;
+    background-color: transparent;
+    border: none;
+    background-image: url(../img/info_jugar.png);
+    background-size: cover;
+    background-position-y: 0;
+    background-repeat: no-repeat;
   }
 
   #mision .carousel-item{
     height: 100%;
   }
 
-  #mision .instruccion1{
+  #mision .instruccion1,#mision .instruccion2,#mision .instruccion3{
     text-align: center;
     left: 300;
     font-size: 50px;
   }
 
   #mision .instruccion2{
+    padding-top: 100px;
+  }
+
+  #mision .instruccion4,#mision .instruccion5,#mision .instruccion6,#mision .instruccion7,#mision .instruccion6,#mision .instruccion8{
     text-align: center;
     font-size: 37px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
   }
+
+  #mision .instruccion6{
+    font-size: 29px;
+  }
+  
   
   #mision .carousel-item #teclas{
     position: absolute;
@@ -822,6 +837,31 @@ button.audio-close{
     left: 763px;
     top: 93px;
     width: 602px;
+  }
+
+  #mision #pruebas{
+    width: 782px;
+    margin: auto;
+  }
+  
+  #mision #objetos{
+    width: 650px;
+    margin: auto;
+  }
+  
+  #mision #validar{
+    width: 1263px;
+    margin: auto;
+  }
+  
+  #mision #colocar{
+    width: 1156px;
+    margin: auto;
+  }
+
+  #mision #completar{
+    width: 1321px;
+    margin: auto;
   }
 
   #mision .carousel-item #laiaUp{
