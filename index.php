@@ -60,7 +60,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col" id="india">
+                    <div class="col juegos-banner" id="india">
                       <div class="card h-100">
                         <img src="img/escenarios/india_portada.png" class="card-img-top" id="india_static" alt="">
                         <img src="img/landing_gifs/india.gif" class="card-img-top" id="india_gif" alt="">
@@ -72,7 +72,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col">
+                    <div class="col juegos-banner">
                         <div class="card h-100">
                           <img src="img/escenarios/kenia_portada.png" class="card-img-top" alt="...">
                           <div class="card-body">
@@ -82,9 +82,10 @@
                           </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col juegos-banner">
                       <div class="card h-100">
-                        <img src="img/escenarios/brasil1_portada.png" class="card-img-top" alt="...">
+                        <img src="img/escenarios/brasil1_portada.png" class="card-img-top" id="brasil1_static" alt="...">
+                        <img src="img/landing_gifs/ritmes-brasilers.gif" class="card-img-top" id="brasil1_gif" alt="">
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
                           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
@@ -92,7 +93,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col">
+                    <div class="col juegos-banner">
                       <div class="card h-100">
                         <img src="img/escenarios/brasil2_portada.png" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -105,10 +106,10 @@
                 </div>
         </div>
         <div class="developers-section">
-            <div class="col-12 ">
+            <div class="col-12 landing-developers">
                 <h2>Desarrolladores</h2>                
                 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
-                    <div class="col">
+                    <div class="col developers-fondo">
                         <div class="card mb-3 h-100">
                             <div class="row g-0">
                                 <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
@@ -124,7 +125,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col developers-fondo">
                         <div class="card mb-3 h-100">
                             <div class="row g-0">
                                 <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
@@ -140,7 +141,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col developers-fondo">
                         <div class="card mb-3 h-100">
                             <div class="row g-0">
                                 <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
@@ -156,7 +157,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col developers-fondo">
                         <div class="card mb-3 h-100">
                             <div class="row g-0">
                                 <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
@@ -172,7 +173,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col developers-fondo">
                         <div class="card mb-3 h-100">
                             <div class="row g-0">
                                 <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
