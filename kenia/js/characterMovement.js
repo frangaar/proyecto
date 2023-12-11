@@ -459,7 +459,7 @@ function starTimeoutEnemy() {
             } else level_2_finished = true
             if (level_1_finished && !level_2_finished) {
                 transitionlvl1_to_lvl2()
-            } else finishTheGame()
+            } else recollectedObjectes()
             bossAnimation1 = false
             // bossAnimation1 = true
         } 

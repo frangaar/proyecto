@@ -75,6 +75,7 @@
                     <div class="col juegos-banner">
                         <div class="card h-100">
                           <img src="img/escenarios/kenia_portada.png" class="card-img-top" alt="...">
+                            <img src="img/landing_gifs/kenia.gif" class="card-img-top" id="kenia_gif" alt="">
                           <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>

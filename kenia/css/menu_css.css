@@ -22,6 +22,14 @@
         left: 1460px;
     }
 }
+@keyframes moveAwayFinish {
+    0% {
+        left: 510px;
+    }
+    100% {
+        left: 1160px;
+    }
+}
 @keyframes donkyeAppareance {
     0% {
         transform: rotate(45deg);
@@ -180,6 +188,10 @@ li.lvl1 {
     left: 492px;
     top: 291px;
 }
+li.buttonObj {
+    left: 532px;
+    top: 311px;
+}
 .showLaia#lvl1_to_2 {
     position: absolute;
     left: 492px;
@@ -227,11 +239,14 @@ li.lvl{
     width: 1296px;
     height: 436px;
 }
-#informativeText {
+#informativeText, #titleObjectedsRecolected {
     padding: 0px 25px 0px 25px;
     position: absolute;
     font-size: 45px;
     color: white;
+}
+#titleObjectedsRecolected {
+    left: 410px;
 }
 #buttonSureExit {
     /* position: absolute;
@@ -241,8 +256,20 @@ li.lvl{
     left: 585px;
     bottom: 210px;
 }
+.container#containerObjectObtaineds {
+    display: none;
+    left: 310px;
+    top: 119px;
+    width: 1296px;
+    height: 436px;
+}
+.objectes {
+    top: 370px;
+    left: 710px;
+    position: absolute;
+}
 #finishGameContainer {
-    /* display: none; */
+    display: none;
     /* position: absolute; */
 }
 .container#containerFinish {
@@ -257,6 +284,7 @@ li.lvl{
 }
 #laiaFinish {
     /* left: 0px; */
+    left: 510px;
     animation: movefinish 5s linear;  
 }
 .container {
@@ -357,6 +385,7 @@ li {
     background-color: black;
     width: 100%;
     height: 100%;
+    /* display: grid; */
     display: grid;
     place-content: center;
     
