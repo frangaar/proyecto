@@ -202,9 +202,9 @@ function update ()
        
             // Condicional para que solo puedas saltar cuando hayas tocado el suelo
             checkColisionBetweenCharacterHeadAndBlockBottom()
-            if (!level_1_finished) {
-                finishLevel1()
-            }
+            // if (!level_1_finished) {
+            finishLevel1()
+            // } 
             // checkCloisionBetweenCharacterAndFile1()
         } else {
             displayDeathMenu()
@@ -227,7 +227,6 @@ animate()
 function startInterval() {
     timerBarrel = window.setInterval(function()
     {
-        console.log(index_counting_barrels);
         if (!pause) {
             if (index_counting_barrels <= num_of_barrels) {
                     let barrilContainer = document.createElement('div');
@@ -316,9 +315,8 @@ function drawMap()
     // && !level_2_finished
     if (!level_1_finished) {
         map = showMap1()
-    } else map = showMap2()
+    } else {map = showMap2(); COLLIDABLE_FINAL_LEVEL1.splice(0, COLLIDABLE_FINAL_LEVEL1.length)}
     // else map = showMap1()
-    
     // DIBUJAR MAPA.
     for (let fila = 0; fila < map.length; fila++) {
         for (let columna = 0; columna < map[fila].length; columna++) {
@@ -456,8 +454,12 @@ function starTimeoutEnemy() {
         } else {
             enemyPositionX = 0
             enemyContainer.style.display = 'none'
-            level_1_finished = true
-            transitionlvl1_to_lvl2()
+            if (!level_1_finished) {
+                level_1_finished = true
+            } else level_2_finished = true
+            if (level_1_finished && !level_2_finished) {
+                transitionlvl1_to_lvl2()
+            } else finishTheGame()
             bossAnimation1 = false
             // bossAnimation1 = true
         } 

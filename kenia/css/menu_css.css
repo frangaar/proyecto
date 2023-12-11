@@ -207,9 +207,12 @@ li.lvl{
     color: white;
 }
 #buttonSureExit {
-    position: absolute;
+    /* position: absolute;
     left: 385px;
-    bottom: 150px;
+    bottom: 150px; */
+    position: absolute;
+    left: 585px;
+    bottom: 210px;
 }
 
 .container {
@@ -226,6 +229,13 @@ li.lvl{
 .container#containerStory {
     border: 1px solid white;
     border-image: none;
+}
+.container#containerMessageImportant {
+    position: absolute;
+    top: 50px;
+    left: 250px;
+    width: 1396px;
+    height: 696px; 
 }
 .imgKeyboard {
     position: absolute;

@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 "Juegos":"Juegos",
                 "TituloJuegos":[   
                     {
-                        "Juego":"Juego 1",
+                        "Juego":"EcoBarna",
                         "Descripcion":"Descripcion 1",
                         "Desarrollador": "Desarrollador: "
                     },
@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded',function(){
                         "Desarrollador": "Desarrollador: "
                     },
                     {
-                        "Juego":"Juego 3",
-                        "Descripcion":"Descripcion 3",
+                        "Juego":"ElectroKong",
+                        "Descripcion":"En una aldea de Kenia con falta de energía, Laia, una valiente exploradora, se embarca en una misión para obtener un generador oculto en la jungla y llevar electricidad a la comunidad. Enfrenta desafíos creados por el Mono Kong, superándolos con astucia y conocimientos sobre electricidad. Al alcanzar el generador, el Mono Kong, impresionado, permite que Laia lo active, proporcionando finalmente electricidad a la aldea y llevando luz y esperanza a sus habitantes.",
                         "Desarrollador": "Desarrollador:"
                     },
                     {
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 "Juegos":"Jocs",
                 "TituloJuegos":[   
                     {
-                        "Juego":"Joc 1",
+                        "Juego":"EcoBarna",
                         "Descripcion":"Descripcio 1",
                         "Desarrollador": "Desenvolupador: "
                     },
@@ -94,8 +94,8 @@ document.addEventListener('DOMContentLoaded',function(){
                         "Desarrollador": "Desenvolupador: "
                     },
                     {
-                        "Juego":"Joc 3",
-                        "Descripcion":"Descripcio 3",
+                        "Juego":"ElectroKong",
+                        "Descripcion":"En un llogaret de Kenya amb falta d'energia, Laia, una valenta exploradora, s'embarca en una missió per obtenir un generador ocult a la jungla i portar electricitat a la comunitat. Enfronta desafiaments creats pel Mico Kong, superant-los amb astúcia i coneixements sobre electricitat. En assolir el generador, el Mico Kong, impressionat, permet que Laia ho activi, proporcionant finalment electricitat al llogaret i portant llum i esperança als seus habitants.",
                         "Desarrollador": "Desenvolupador: "
                     },
                     {
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 "Juegos": "Games",
                 "TituloJuegos":[   
                     {
-                        "Juego": "Game 1",
+                        "Juego": "EcoBarna",
                         "Descripcion": "Description 1",
                         "Desarrollador": "Developer: "
                     },
@@ -148,8 +148,8 @@ document.addEventListener('DOMContentLoaded',function(){
                         "Desarrollador": "Developer: "
                     },
                     {
-                        "Juego": "Game 3",
-                        "Descripcion": "Description 3",
+                        "Juego": "ElectroKong",
+                        "Descripcion": "In a Kenyan village lacking power, Laia, a brave explorer, embarks on a mission to obtain a generator hidden in the jungle and bring electricity to the community. Face challenges created by Monkey Kong, overcoming them with cunning and knowledge of electricity. Reaching the generator, the impressed Monkey Kong allows Laia to activate it, finally providing electricity to the village and bringing light and hope to its inhabitants.",
                         "Desarrollador": "Developer:"
                     },
                     {

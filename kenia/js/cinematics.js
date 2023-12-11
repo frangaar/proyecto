@@ -52,7 +52,7 @@ function buttonDeath() {
 /** Función para menú pausa. */
 function pausePulsed() {
     viewControls = true
-    character.setAttribute('src', '../img/laiaDerechaParada.png')
+    character.setAttribute('src', imgCharacter)
     imgLeft = 1
     imgRight = 1
     imgStand = 1
@@ -66,6 +66,7 @@ function pausePulsed() {
     level1_Map.style.filter = 'blur(2px)'
     title.innerHTML = 'Pause Mode'
     focusPlayButton.innerHTML = 'Tornar al joc'
+    focusPlayButton.setAttribute('onclick', 'buttonAccept()')
     exitButton.innerHTML = 'Ir al menu'
     exitButton.setAttribute('onclick', 'back_Menu()')
     pause = true
@@ -154,7 +155,6 @@ function startGame() {
     selectDificult().then((difficult) => {
         if (difficult) {
             selectCharacter().then((characterSelected) => {
-                console.log(player_life);
                 if (characterSelected) {
                     showControls()
                     divButton.style.pointerEvents = null
@@ -332,9 +332,7 @@ function selectCharacter() {
                 } 
                 characterSelected = true
                 container2.style.display = 'none'
-                console.log(imgCharacter);
                 if (imgCharacter == null) {
-                    console.log('laia Por null');
                     imgCharacter = '../img/laiaDerechaParada.png'
                     imgCharacterWalking = '../img/laiaDerechaCaminando.gif'
                 }  
@@ -413,6 +411,7 @@ function transitionlvl1_to_lvl2() {
         containerLvl1_to2.style.display = 'none';
         level1_Map.style.display = 'block';
         enemyContainer.style.left = '65px';
+        enemyContainer.style.display = null
         positionY = 762;
         level_2_finished = true;
         bossAnimation1 = false;
@@ -440,5 +439,10 @@ function transitionlvl1_to_lvl2() {
         // startInterval()
         // spanlvl.removeEventListener('click', handleClick); 
 
+
+}
+function finishTheGame() {
+    clearInterval(timerBarrel)
+    level1_Map.style.display = 'none';
 
 }
