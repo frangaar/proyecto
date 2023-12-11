@@ -88,7 +88,7 @@
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
                           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                          <span class="card-subtitle">Desarrollador: </span><span class="nombre">Javier Diaz Neira</span>
+                          <span class="card-subtitle">Desarrollador: </span><span class="nombre">Javier Díaz Neira</span>
                         </div>
                       </div>
                     </div>
@@ -160,11 +160,11 @@
                         <div class="card mb-3 h-100">
                             <div class="row g-0">
                                 <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
-                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
+                                <img src="img/desarrolladores/javi-foto.jpg" class="img-fluid developers-img" alt="...">
                                 </div>
                                 <div class="col col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">Javier Diaz Neira</h5>
+                                    <h5 class="card-title">Javier Díaz Neira</h5>
                                     <p class="card-text">Email: <span class="email">jdiazn2223@politecnics.barcelona</span></p>
                                     <p class="card-text"><a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a></p>
                                 </div>
