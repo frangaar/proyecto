@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded',function(){
                         "Desarrollador": "Desarrollador:"
                     },
                     {
-                        "Juego":"Juego 4",
-                        "Descripcion":"Descripcion 4",
+                        "Juego":"Ritmes Brasilers",
+                        "Descripcion":"¡Embárcate en un viaje musical por Brasil con 'Ritmes Brasilers'! Desafía tus sentidos tocando tambores en secuencias encantadoras, iluminando el ritmo de las vibrantes tradiciones brasileñas. Conviértete en el maestro del tambor y descubre la magia de la música brasileña en cada golpe.",
                         "Desarrollador": "Desarrollador: "
                     },
                     {
@@ -99,8 +99,8 @@ document.addEventListener('DOMContentLoaded',function(){
                         "Desarrollador": "Desenvolupador: "
                     },
                     {
-                        "Juego":"Joc 4",
-                        "Descripcion":"Descripcio 4",
+                        "Juego":"Ritmes Brasilers",
+                        "Descripcion":"Endinsa't en un viatge musical per Brasil amb 'Ritmes Brasilers'! Desafia els teus sentits tocant tambors en seqüències encantadores, il·luminant el ritme de les vibrants tradicions brasilianes. Converteix-te en el mestre del tambor i descobreix la màgia de la música brasilera a cada cop.",
                         "Desarrollador": "Desenvolupador: "
                     },
                     {
@@ -153,8 +153,8 @@ document.addEventListener('DOMContentLoaded',function(){
                         "Desarrollador": "Developer:"
                     },
                     {
-                        "Juego": "Game 4",
-                        "Descripcion": "Description 4",
+                        "Juego": "Ritmes Brasilers",
+                        "Descripcion": "Embark on a musical journey through Brazil with 'Ritmes Brasilers'! Challenge your senses by playing drums in enchanting sequences, illuminating the rhythm of vibrant Brazilian traditions. Become the master of the drum and discover the magic of Brazilian music with every beat.",
                         "Desarrollador": "Developer: "
                     },
                     {
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 "BocataTextos":[   
                     {
                         "Texto":"<p>In the exciting game <span style='font-weight:bold'>'Laia's Renewable Journey'</span>, you will immerse yourself in the exciting odyssey of a brave woman named Laia, whose mission is to bring renewable energy to a school through challenging tests around the world. Laia embarks on an epic journey that will take her through exotic destinations, such as vibrant India, wild Kenya and lush Brazil.</p>"
-                    },
+                    }, 
                     {
                         "Texto":"<p>Laia, gifted with a sharp mind and exceptional skills, will face logic, mathematics and geography challenges in each country, solving intricate puzzles to obtain essential pieces that will feed sustainable energy to the school. These pieces, infused with innovative renewable technologies, represent the key to a greener and more sustainable future.</p>"
                     },

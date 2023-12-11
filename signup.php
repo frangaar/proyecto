@@ -41,6 +41,9 @@
                     <div class="input-group mb-3">
                         <h1>Crear jugador</h1>
                     </div>
+                    <div class="input-group mb-3 logo">
+                        <img src="img/logo.jpg">
+                    </div>
                     <div class="input-group mb-3">    
                         <label for="nombre" class="form-label">Nombre</label>
                         <div class="col-sm-12">

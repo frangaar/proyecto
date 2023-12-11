@@ -22,7 +22,7 @@
             
             <div class="row align-items-end">
                 <div class="col"></div>
-                <div class="col">
+                <div class="col login-form">
                 <?php if(isset($_SESSION['success']) == 1){ ?>
                         <div class="alert alert-success alert-dismissible" role="alert">
                             <?php echo $_SESSION['success']; ?>

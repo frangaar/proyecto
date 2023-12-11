@@ -69,7 +69,7 @@
             <div class="bocadillo-cuadrado" id="bocadillo-cuadrado4">
                 <button type="button" id="audio-close4" class="btn-close audio-close"></button>
                 <div class="text">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. Mapmet, consectetur adipiscing elit. Map</p>
+                    <p>Endinsa't en un viatge musical per Brasil amb 'Ritmes Brasilers'! Desafia els teus sentits tocant tambors en seqüències encantadores, il·luminant el ritme de les vibrants tradicions brasilianes. Converteix-te en el mestre del tambor i descobreix la màgia de la música brasilera a cada cop.</p>
                 </div>
                 <button type="button" class="audio btn btn-primary" id="audio4" class="btn btn-primary"></button>
             </div>
