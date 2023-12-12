@@ -758,10 +758,10 @@ document.addEventListener('DOMContentLoaded',function(){
         let item3 = sessionStorage.getItem('vaca');
 
         // Si consigue todos los objetos
-        if(item1 == "true" && item2 == "true" && item3 == "true"){
+        // if(item1 == "true" && item2 == "true" && item3 == "true"){
 
-            window.location.href='../save.php?nivel=2&tiempo='+reloj;            
-        }else{
+        //     window.location.href='../save.php?nivel=2&tiempo='+reloj;            
+        // }else{
             salirJuego.style.display = 'block';
 
             let salirSi = document.querySelector('#salirJuego #si');
@@ -777,7 +777,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 salirJuego.style.display = 'none';
             });
 
-        }
+        // }
     
     });
     
@@ -829,6 +829,18 @@ document.addEventListener('DOMContentLoaded',function(){
 
     btnfinalJuego.addEventListener('click',function(){
         inicioJuego.style.display = "none";
+
+        let item1 = sessionStorage.getItem('ghandi');
+        let item2 = sessionStorage.getItem('taj');
+        let item3 = sessionStorage.getItem('vaca');
+
+        if(item1 == "true" && item2 == "true" && item3 == "true"){
+
+            window.location.href='../save.php?nivel=2&tiempo='+reloj;            
+        }else{
+
+            window.location.href='../action_page.php';
+        }
     })
 
 

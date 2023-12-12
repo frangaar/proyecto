@@ -51,6 +51,7 @@ btnGuardar.onclick = function(){
             let btnReintentar = document.querySelector('#superado #aceptar');  
 
             mensaje.innerHTML = "Enhorabona!!. Has respost correctament a les preguntes";
+            btnReintentar.innerHTML = 'Acceptar!!';
             
             superado.style.display = "block";
             superado.classList.remove('error');
