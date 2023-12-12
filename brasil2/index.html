@@ -23,7 +23,7 @@
             <h1 class="temps">Tiempo: <span id="temporitzador">1:00</span></h1>
         </div>
         <div class="tornar">
-            <button type="button" id="tornar" class="btn btn-primary botones">Volver</button>
+            <button type="button" id="tornarBoto" class="btn btn-primary botones">Volver</button>
         </div>
     </div>
 
@@ -81,6 +81,15 @@
             <img src="img/topo.png" class="imatge" id="imatge9" draggable="false">
             <img src="img/topoVerde.png" class="imatge" id="imatge19" draggable="false">
             <img src="img/topoRojo.png" class="imatge" id="imatge29" draggable="false">
+        </div>
+
+        <!-- Modal -->
+        <div id="confirmarSortida" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>El juego no ha terminado. ¿Seguro que quieres salir?</p>
+                <button id="confirmarSalir">Salir</button>
+            </div>
         </div>
 
         <div class="cursor"></div>

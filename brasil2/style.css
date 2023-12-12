@@ -21,35 +21,43 @@ body {
 
 .container-fluid {
     width: 100%;
+    height: 110px;
     display: flex;
-    margin-top: 30px;
+    margin-top: 24px;
     justify-content: space-between;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.733);
 }
 
 .punts {
     margin-left: 125px;
+    margin-top: 25px;
+    /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)); */
 }
 
 .temps-container {
     margin-right: 245px;
+    margin-top: 25px;
+
 }
 
 .tornar {
     margin-right: 125px;
+    margin-top: 25px;
+
 }
 .puntuacio {
-    color: aquamarine;
+    color: white;
     font-family: 'Pixelify Sans', sans-serif !important;
     padding-right: 50px;
-    font-size: 50px;
+    font-size: 40px;
     /* font-weight: bold; */
 }
 
 .temps {
-    color: deeppink;
+    color: white;
     font-family: 'Pixelify Sans', sans-serif !important;
-    font-size: 50px;
+    font-size: 40px;
     /* font-weight: bold; */
 }
 
