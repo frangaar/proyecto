@@ -201,7 +201,7 @@
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Conectarse al juego</h1>
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Conectar-se al joc</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -215,13 +215,13 @@
                                     <img src="img/logo.jpg">
                                 </div>
                                 <div class="input-group mb-3">    
-                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <label for="nombre" class="form-label">Nom</label>
                                     <div class="col-sm-12">
                                         <input type="text" id="nombreLogin" class="form-control" name="user" placeholder="Escribe aquí tu usuario" aria-label="Username">
                                     </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <label for="pass" class="form-label">Password</label>
+                                    <label for="pass" class="form-label">Clau</label>
                                     <div class="col-sm-12">
                                         <input type="password" class="form-control" name="pass" placeholder="Escribe aquí tu password" aria-label="Passvord">
                                     </div>    
@@ -259,13 +259,13 @@
                                     <img src="img/logo.jpg">
                                 </div>
                                 <div class="input-group mb-3">    
-                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <label for="nombre" class="form-label">Nom</label>
                                     <div class="col-sm-12">
                                         <input type="text" id="nombreRegistro" class="form-control" name="user" placeholder="Escribe aquí tu usuario" aria-label="Username">
                                     </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <label for="pass" class="form-label">Password</label>
+                                    <label for="pass" class="form-label">Clau</label>
                                     <div class="col-sm-12">
                                         <input type="password" class="form-control" name="pass" placeholder="Escribe aquí tu password" aria-label="Passvord">
                                     </div>    

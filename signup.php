@@ -16,7 +16,7 @@
     <div id="fondo"></div>
     <div class="container text-center margin-center" id="registro">
         <div class="text-end registro-top">
-            <a href="index.php"><input type="button" class="btn btn-primary cursor botones" value="Ir a inicio"></input></a>
+            <a href="index.php"><input type="button" class="btn btn-primary cursor botones" value="Tornar a l'inici"></input></a>
         </div>
         
         <div class="row align-items-end">
@@ -45,13 +45,13 @@
                         <img src="img/logo.jpg">
                     </div>
                     <div class="input-group mb-3">    
-                        <label for="nombre" class="form-label">Nombre</label>
+                        <label for="nombre" class="form-label">Nom</label>
                         <div class="col-sm-12">
                             <input type="text" id="nombre" class="form-control" name="user" placeholder="Escribe aquí tu usuario" aria-label="Username">
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <label for="pass" class="form-label">Password</label>
+                        <label for="pass" class="form-label">Clau</label>
                         <div class="col-sm-12">
                             <input type="password" class="form-control" name="pass" placeholder="Escribe aquí tu password" aria-label="Passvord">
                         </div>    

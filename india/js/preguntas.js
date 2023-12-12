@@ -5,12 +5,12 @@ document.addEventListener('DOMContentLoaded',function(){
     superado.classList.remove('error');
 
     preguntasJuego2 = [
-        ['Las vacas en India no simbolizan a la madre tierra, la naturaleza, la fertilidad y la abundancia',false],
-        ['Las vacas de la de India están en libertad y las podemos observar paseando a gusto, tanto en los pueblos como en las grandes ciudades',true],
-        ['En India las vacas son sagradas, pero está permitido consumir su carne',false],
-        ['Estos animales están protegidos por la ley que prohíbe y castiga su maltrato',true],
-        ['En diversas regiones es costumbre pintar sus cuernos de colores para embellecerlas y distinguirlas',true]
-        ];
+        ["Les vaques a l'Índia no simbolitzen a la mare terra, la naturalesa, la fertilitat i l'abundància",false],
+        ["Les vaques de l'Índia estan en llibertat i les podem observar passejant a gust, tant als pobles com en les grans ciutats",true],
+        ["A l'Índia les vaques són sagrades, però està permès consumir la seva carn",false],
+        ["Aquests animals estan protegits per la llei que prohibeix i castiga el seu maltractament",true],
+        ["En diverses regions és costum pintar les seves banyes de colors per a embellir-les i distingir-les",true]
+    ];
     
     
     let container = document.querySelector('#ejercicios2 #contenido2');
@@ -43,8 +43,18 @@ document.addEventListener('DOMContentLoaded',function(){
         
         aciertos = comprobarRespuestas();
         if(aciertos == 5){
-            
-            if(btnGuardar.innerHTML == "Guardar"){
+            if(btnGuardar.innerHTML == "Comprovar"){
+                
+                superado = document.getElementById('superado');                
+                let mensaje = document.querySelector('#superado .modal-content p');
+                let btnReintentar = document.querySelector('#superado #aceptar');  
+
+                mensaje.innerHTML = "Enhorabona!!. Has respost correctament a les preguntes";
+                
+                superado.style.display = "block";
+                superado.classList.remove('error');
+                superado.classList.add('success');
+                
                 sessionStorage.setItem("vaca",true);
                 let juego3 = document.getElementById("juego3");
                 juego3.style.display = "none";
@@ -53,21 +63,6 @@ document.addEventListener('DOMContentLoaded',function(){
 
                 item3.setAttribute('draggable','true');
                 item3.classList.add('item-visible');
-
-            }else{
-                // alert('Felicidades!. Todas tus respuestas son correctas.');
-                superado = document.getElementById('superado');                
-                let mensaje = document.querySelector('#superado .modal-content p');
-                let btnReintentar = document.querySelector('#superado #aceptar');  
-
-                mensaje.innerHTML = "Enhorabuena!!. Has respondido correctamente a las preguntas";
-                
-                superado.style.display = "block";
-                superado.classList.remove('error');
-                superado.classList.add('success');
-                btnReintentar.innerHTML = 'Aceptar!!';
-
-                btnGuardar.innerHTML = "Guardar";
             }            
         }else{
             //alert('Vaya, algunas de tus respuestas son incorrectas!. Por favor, vuelve a revisarlas.');
@@ -75,14 +70,14 @@ document.addEventListener('DOMContentLoaded',function(){
             let mensaje = document.querySelector('#superado .modal-content p');           
             let btnReintentar = document.querySelector('#superado #aceptar');  
 
-            mensaje.innerHTML = "Vaya, algunas de tus respuestas son incorrectas!. Por favor, vuelve a revisarlas.";
+            mensaje.innerHTML = "Vaja, algunes de les teves respostes són incorrectes!. Si us plau, torna a revisar-les.";
             btnReintentar.innerHTML = 'Reintentar!!';
             
             superado.style.display = "block";
             superado.classList.remove('success');
             superado.classList.add('error');
 
-            btnGuardar.innerHTML = "Comprobar";
+            btnGuardar.innerHTML = "Comprovar";
         }
         
     };
