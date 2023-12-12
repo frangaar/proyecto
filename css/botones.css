@@ -57,17 +57,17 @@
 @media (min-width: 1200px){
 
     .botones{
-        width: 125px;
-        height: 47px;
-        background-size: 125px;
+        width: 133px;
+    height: 50px;
+    background-size: 134px;
     }
 }
 
 @media (min-width: 1400px) and (max-width: 1399px){
 
     .botones{
-        width: 125px;
-        height: 47px;
-        background-size: 125px;
+        width: 133px;
+    height: 50px;
+    background-size: 134px;
     }
 }

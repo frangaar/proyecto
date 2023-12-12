@@ -236,6 +236,12 @@ body {
 
 }
 
+.clave{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+   }
+
 .persona2 {
     width: 100%;
     height: 100%;
@@ -261,5 +267,100 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;     
-    
+}
+
+.persona-extra4 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+}
+
+.persona-extra5 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+}
+
+.persona-extra6 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+}
+
+.persona-extra7 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+}
+
+.persona-extra8 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+}
+
+.persona-extra9 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+}
+
+.persona-extra10 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+}
+
+.persona-extra11 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+}
+
+.persona-extra12 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+}
+
+.persona-extra13 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+}
+
+.persona-extra14 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+}
+
+.persona-extra15 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+}
+
+.persona-extra16 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+}
+
+.persona-extra17 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+}
+
+.persona-extra18 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+}
+
+.persona-extra19 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
 }

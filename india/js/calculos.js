@@ -5,11 +5,11 @@ superado.classList.remove('success');
 superado.classList.remove('error');
 
 preguntasJuego1 = [
-    ['1) Escribe con cifras estos números: Seiscientos setenta y siete mil trescientos siete:',677307],
-    ['2) Ramón tiene tres álbumes de sellos. En uno tiene <i>287</i> sellos; en otro, <i>28</i> sellos más, y en el tercero, <i>24</i> sellos menos que en el segundo. ¿Cuántos sellos tiene en total?',913],
-    ['3) Un camión transporta <i>325</i> cajas de botellas de aceite. Cada caja contiene <i>25</i> botellas de un litro de aceite. El precio del litro de aceite es de <i>4 €</i>. ¿Cuál es el coste total de la carga que transporta el camión?',32500],
-    ['4) ¿Cuántos litros de agua caben en ocho botellas de tres cuartos de litro?',6],
-    ['5) Realiza esta operación: <i>24.498,21</i> + <i>31.754,1</i> + <i>66.151</i> - <i>804</i>',121599.31]
+    ["1) Escriu amb xifres aquests números: Sis-cents setanta-set mil tres-cents set:",677307],
+    ["2) En Ramón té tres àlbums de segells. En un té <i>287</i> segells; en un altre, <i>28</i> segells més, i en el tercer, <i>24</i> segells menys que en el segon. Quants segells té en total?",893],
+    ["3) Un camió transporta <i>325</i> caixes d'ampolles d'oli. Cada caixa conté <i>25</i> ampolles d'un litre d'oli. El preu del litre d'oli és de <i>4 €</i>. Quin és el cost total de la càrrega que transporta el camió?",32500],
+    ["4) Quants litres d'aigua caben en vuit ampolles de tres quarts de litre?",6],
+    ["5) Realitza aquesta operació: <i>24.498,21</i> + <i>31.754,1</i> + <i>66.151</i> - <i>804</i>",121599.31]
     ];
 
 
@@ -21,7 +21,7 @@ for (let index = 0; index < preguntasJuego1.length; index++) {
     html += '<p>'+preguntasJuego1[index][0]+'</p>';
     html += '</div>';
     html += '<div class="col-3">';
-    html += '<input class="form-control form-control-sm respuestasTaj preguntas" placeholder="Escribe tu respuesta" type="number">';
+    html += '<input class="form-control form-control-sm respuestasTaj preguntas" placeholder="Escriu la teva respuesta" type="number">';
     html += '</div>';
     html += '</div>';
     tmpDiv.innerHTML = html;
@@ -43,7 +43,19 @@ btnGuardar.onclick = function(){
     
     aciertos = comprobarRespuestas();
     if(aciertos == 5){
-        if(btnGuardar.innerHTML == "Guardar"){
+        
+        if(btnGuardar.innerHTML == "Comprovar"){
+            
+            superado = document.getElementById('superado');                
+            let mensaje = document.querySelector('#superado .modal-content p');
+            let btnReintentar = document.querySelector('#superado #aceptar');  
+
+            mensaje.innerHTML = "Enhorabona!!. Has respost correctament a les preguntes";
+            
+            superado.style.display = "block";
+            superado.classList.remove('error');
+            superado.classList.add('success');
+
             sessionStorage.setItem("taj",true);
             let juego2 = document.getElementById("juego2");
             juego2.style.display = "none";
@@ -52,35 +64,21 @@ btnGuardar.onclick = function(){
             
             item2.setAttribute('draggable','true');
             item2.classList.add('item-visible');
-        }else{
-            //alert('Felicidades!. Todas tus respuestas son correctas.');
-            superado = document.getElementById('superado');                
-            let mensaje = document.querySelector('#superado .modal-content p');
-            let btnReintentar = document.querySelector('#superado #aceptar');  
-
-            mensaje.innerHTML = "Enhorabuena!!. Has respondido correctamente a las preguntas";
-            
-            superado.style.display = "block";
-            superado.classList.remove('error');
-            superado.classList.add('success');
-            btnReintentar.innerHTML = 'Aceptar!!';
-            
-            btnGuardar.innerHTML = "Guardar";
         }
     }else{
-        //alert('Vaya, algunas de tus respuestas son incorrectas!. Por favor, vuelve a revisarlas.');
+        
         superado = document.getElementById('superado');                
         let mensaje = document.querySelector('#superado .modal-content p');       
         let btnReintentar = document.querySelector('#superado #aceptar');  
 
-        mensaje.innerHTML = "Vaya, algunas de tus respuestas son incorrectas!. Por favor, vuelve a revisarlas.";
+        mensaje.innerHTML = "Vaja, algunes de les teves respostes són incorrectes!. Si us plau, torna a revisar-les.";
         btnReintentar.innerHTML = 'Reintentar!!';
         
         superado.style.display = "block";
         superado.classList.remove('success');
         superado.classList.add('error');
 
-        btnGuardar.innerHTML = "Comprobar";
+        btnGuardar.innerHTML = "Comprovar";
     }
     
 };
