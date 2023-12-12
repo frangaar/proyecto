@@ -1,6 +1,12 @@
-const numJugadas = 3;
+const NUM_JUGADAS = 10, NUM_TAMBORES = 4;
 const efectosClick = [{img: 'effect-click-rojo', audio: 'audio-effect-rojo'}, {img: 'effect-click-amarillo', audio: 'audio-effect-amarillo'}, {img: 'effect-click-azul', audio: 'audio-effect-azul'}, {img: 'effect-click-verde', audio: 'audio-effect-verde'}],
-    exitGame = () => gameWin ? window.location.href='../save.php?nivel=4+&tiempo='+tiempo : window.location.href='../action_page.php';
+    exitGame = () => gameWin ? window.location.href = `../save.php?nivel=4+&tiempo=${tiempo}` : window.location.href = '../action_page.php',
+    rellenarArrayOrden = () => Array.from({length: NUM_JUGADAS}, () => Math.floor(Math.random() * NUM_TAMBORES)),
+    setImgsNotDraggable = () => document.getElementsByTagName('img').forEach(img => img.draggable = false),
+    startCrono = () => crono_interval = setInterval(() => tiempo++, 100),
+    addAnimacionRecompensa = () => document.getElementsByClassName('recompensa-items').forEach(img => img.classList.add('animacion-recompensa')),
+    addModalWinEvent = () => document.querySelector('.modal-win').addEventListener('shown.bs.modal', () => setTimeout(addAnimacionRecompensa, 500));
+
 let orden, turnoJugador, jugada, turno, i, droped_settings, undroped_settings, settings_intervalid_id, settings_ondisplay, pagemuted, gameWin, crono_interval, 
     tiempo = errores = 0;
 
@@ -10,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addSettingsListener();
     addModalErrorListener();
     setImgsNotDraggable();
+    addModalWinEvent()
 });
 
 function addSettingsListener(){
@@ -26,44 +33,26 @@ function addSettingsListener(){
     });
 }
 
-function setImgsNotDraggable(){
-    for (const img of document.getElementsByTagName('img')) {
-        img.draggable = false;
-    }
-}
-
 function addModalErrorListener(){
     const modal_error = document.getElementById('modal-error')
     modal_error.addEventListener('shown.bs.modal', () =>{
         setTimeout(()=> {
             document.getElementById('btn-error-retry').style.transform = 'scale(1)';
             setTimeout(()=> {
-                document.getElementById('btn-error-close-game').style.transform = 'scale(1)';
+                document.getElementById('btn-error-close-game').style.transform = 'scale(1)'; 
                 document.getElementById('btn-error-back-to-menu').style.transform = 'scale(1)';
             }, 250);
         }, 300);
     });
-    modal_error.addEventListener('hide.bs.modal', () => {
-        for (const modal_error_child of modal_error.querySelector('.modal-content').children) {
-            modal_error_child.style.transform = 'scale(0)';
-        }
-    });
+    modal_error.addEventListener('hide.bs.modal', () => {modal_error.querySelector('.modal-content').children.forEach(btns => btns.style.transform = 'scale(0)')});
 }
 
 function setVariableValues(){
-    orden = rellenarArrayOrden(numJugadas);
+    orden = rellenarArrayOrden(NUM_JUGADAS);
     jugada = turno = i = 0;
-    turnoJugador = settings_ondisplay = pagemuted = gameWin = false
+    turnoJugador = settings_ondisplay = pagemuted = gameWin = false;
     droped_settings = [];
     undroped_settings = Array.from(document.getElementsByClassName('options-setting-btn'));
-}
-
-function rellenarArrayOrden(){
-    let array = [];
-    for (let i = 0; i < numJugadas; i++) {
-        array.push(Math.round(Math.random() * 3));
-    }
-    return array;
 }
 
 function setAmbientAudio(){
@@ -100,7 +89,7 @@ function backtoMenu(){
 
 function ejecutarMuestra(){
     setTimeout(() =>{
-        if (jugada != numJugadas) {
+        if (jugada != NUM_JUGADAS) {
             const intervalId = setInterval(() => {
                 if (i <= jugada) {
                     animarClick(orden[i]);
@@ -122,7 +111,7 @@ function controlInputjugador(num){
             if (turno !== jugada) {
                 turno++;
             } else {
-                if (jugada + 1 !== numJugadas){
+                if (jugada + 1 !== NUM_JUGADAS){
                     const success_audio  = document.querySelector('.success-audio');
                     success_audio.currentTime = 0;
                     success_audio.volume = 0.5
@@ -138,7 +127,7 @@ function controlInputjugador(num){
                     document.querySelector('.puntos-result').textContent = `${puntuacion}pts`;
                     setTimeout(() => {new bootstrap.Modal(document.getElementById('modal-win')).show();}, 3000);
                 }
-                document.querySelector('.progress-bar').style.width = ((jugada + 1) / numJugadas) *100 + '%';
+                document.querySelector('.progress-bar').style.width = ((jugada + 1) / NUM_JUGADAS) *100 + '%';
                 turnoJugador = false;
                 jugada++;
                 turno = 0;
@@ -232,18 +221,3 @@ function actionVolume() {
         audio.muted = !audio.muted;
     }
 }
-
-function startCrono(){
-    crono_interval = setInterval(()=>{
-        tiempo++;
-    }, 1000);
-}
-
-document.querySelector('.modal-win').addEventListener('shown.bs.modal', () => {
-    setTimeout(() => {
-        for (const recompensa of document.getElementsByClassName('animacion-recompesa')) {
-            recompensa.classList.add('animacion-recompesa')
-        }
-    }, 500)
-    
-})
