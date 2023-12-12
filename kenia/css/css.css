@@ -2,7 +2,19 @@
     font-family: pixel;
     src: url(../img/DS-TERM.TTF);
 }
-
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
 html , body{
     /* cursor:  url(../img/cursorMano.png), auto; */
     cursor: grab;
@@ -37,6 +49,23 @@ html , body{
     display: none;
     /* position: absolute; */
     left: 316px;
+}
+.vidas {
+    position: absolute;
+}
+.heartImgs {
+    width: 40px;
+    position: absolute;
+}
+#heart1 {
+    left: 1218px;
+    top: 45px;
+    /* display: none; */
+}
+#heart2 {
+    left: 1256px;
+    top: 45px;
+    /* display: none; */
 }
 .bloques {
     position: absolute;

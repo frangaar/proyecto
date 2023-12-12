@@ -7,8 +7,23 @@ var imgCharacterWalking
 var imgJump
 var isMario = false
 
+// Local storage de que no salga los controles cada vez que muera
+let storagePlayTimes
+let sesion1
+let stringS1 = 'Tiempo de partida'
+let playTimes = 0
+let stringS2 = 'Veces jugadas'
+
 var botonAceptar = document.getElementById('buttonAceptar')
 var divButton = document.getElementById('buttonContinue')
+
+// Heart images
+let heart1 = document.getElementById('heart1')
+let heart2 = document.getElementById('heart2')
+heart1.style.display = 'none'
+heart2.style.display = 'none'
+let twoLifes = false
+
 let focusPlayButton = document.getElementById('playButton')
 let exitButton = document.getElementById('credits/exit')
 let exitMenuButton = document.getElementById('exitButton')
@@ -21,7 +36,7 @@ let controlsTitle = document.getElementById('controlsTitle')
 let containerControls = document.getElementById('containerControls')
 let history = document.getElementById('showHistory')
 let laia = document.getElementById('laiaStory')
-let sesion1
+let start_menu = document.getElementById('menu_de_inicio')
 let gameCompleted = false 
 let landingText = document.getElementById('goingToTheLanding')
 let game = false
@@ -32,6 +47,14 @@ var game_is_started = false
 
 /** Función para empezar el juego.*/
 function buttonAccept() {
+    if (heart1.style.display == 'none') {
+        heart2.style.display = 'block'
+        if (player_life === 2) 
+        {
+            twoLifes = true
+            heart1.style.display = 'block'
+        }    
+    }
     history.style.display = 'none'
     var level1_Map = document.getElementById('level1')              
     /** Cuando empieza el juego */
@@ -51,6 +74,11 @@ function buttonDeath() {
 }
 /** Función para menú pausa. */
 function pausePulsed() {
+    start_menu.style.backgroundImage = 'url(../kenia/img/menu_pause.png)'
+    start_menu.style.backgroundSize = 'cover'
+    start_menu.style.width = '700px'
+    start_menu.style.height = '500px'
+
     viewControls = true
     character.setAttribute('src', imgCharacter)
     imgLeft = 1
@@ -60,7 +88,10 @@ function pausePulsed() {
     imgCrouch = 1
     play = false
     audioBackground.pause()
+    exitMenuButton.style.display = 'block'
     botonAceptar.style.display = 'block'
+    exit.style.display = 'none'
+    divButton.style.pointerEvents = null
     divButton.style.display = 'grid'
     divButton.style.backgroundColor = 'transparent'
     level1_Map.style.filter = 'blur(2px)'
@@ -82,16 +113,21 @@ function pausePulsed() {
 /** Función para volver al menú. */
 function back_Menu() {
     if (gameCompleted) {
-        sesion1 = localStorage.setItem('Tiempo de partida',timerCount)
+        sesion1 = localStorage.setItem(stringS1, timerCount)
     }
-    window.location.href = 'http://localhost/proyecto/kenia/index.html' 
+    window.location.href = 'http://localhost/proyecto/kenia/index.html'
+    // localStorage.removeItem(stringS1)
+    // localStorage.removeItem(stringS2)
 }
 /** Función para salir del juego. */
 function exitGame() {
     let text = document.getElementById('informativeText')
     if (gameCompleted) {
-        let recuperedDates = localStorage.getItem('Tiempo de partida'); 
+        sesion1 = localStorage.setItem(stringS1, timerCount)
+        localStorage.removeItem(stringS2)
+        let recuperedDates = localStorage.getItem(stringS1); 
         window.location.href = '../save.php?nivel=3&tiempo=' + recuperedDates;
+        localStorage.removeItem(stringS1)
     } else {
         botonAceptar.style.display = 'none'
         divButton.style.display = 'none'
@@ -99,9 +135,10 @@ function exitGame() {
         text.innerHTML = "Compte, no t'has passat el joc, si te'n vas ara no es guardarà la partida."
         // window.location.href = '../action_page.php';
     }
-
 }
 function exitSureOption() {
+    localStorage.removeItem(stringS1)
+    localStorage.removeItem(stringS2)
     window.location.href = '../action_page.php';
 }
 function goBackInSureOption() {
@@ -152,10 +189,15 @@ function showControls() {
   let char3 = false
   let char4 = false
 function startGame() {
+    // storagePlayTimes = localStorage.setItem('Veces jugadas', playTimes)
+    let playTimesRecupered = localStorage.getItem(stringS2); 
     selectDificult().then((difficult) => {
         if (difficult) {
             selectCharacter().then((characterSelected) => {
-                if (characterSelected) {
+                if (
+                    characterSelected && playTimesRecupered == 0
+                    || characterSelected && playTimesRecupered == null
+                    ) {
                     showControls()
                     divButton.style.pointerEvents = null
                     divButton.style.display = 'none'
@@ -176,7 +218,7 @@ function startGame() {
                             }
                         }
                     });
-                }
+                } else buttonAccept()
             })  
         }
     })
@@ -394,13 +436,16 @@ function showStory() {
         donkey.addEventListener('animationend', function() {
         donkey.style.display = 'none'
         game_is_started = true
+        // Inicializar la local storage para saber que ha jugado una vez
+        playTimes++
+        storagePlayTimes = localStorage.setItem(stringS2, playTimes)
         buttonAccept()
     })
     })
     
 }
 function transitionlvl1_to_lvl2() {
-   
+    clearInterval(timerInterval)
     clearInterval(timerBarrel)
     let containerLvl1_to2 = document.getElementById('lvl1_lvl2');
     containerLvl1_to2.style.display = 'block';
@@ -420,6 +465,7 @@ function transitionlvl1_to_lvl2() {
         index_counting_barrels = 0
         // barrilesContainer.style.display = null
         startInterval()
+        startTimerIntervalFunc()
         spanlvl.removeEventListener('click', handleClick);
         // starTimeoutEnemy()
     }
@@ -490,6 +536,9 @@ function finishTheGame() {
             laiaImgFinish.addEventListener('animationend', function() {
                 laiaImgFinish.style.display = 'none'
                 containerFinalMessage.style.display = 'none'
+                exitGame()
+                // window.location.href = '../save.php?nivel=3&tiempo=' + timerCount;
+                // back_Menu()
             })
         }, 100);
         // containerFinalMessage.style.display = 'none'
@@ -507,6 +556,7 @@ function recollectedObjectes() {
     function goToStory() {
         finishContainer.style.display = 'none';
         level_2_finished = true
+        gameCompleted = true
         finishTheGame()
         spanFinish.removeEventListener('click', goToStory);
     }
