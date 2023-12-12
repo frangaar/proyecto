@@ -51,11 +51,10 @@ function habilitaBotonGuardar(){
     let imagen = document.querySelector('#juego1 .imagen img');
 
     if(acierto==total){
-        //alert('Felicidades!. Has completado el puzzle.');
 
         let superado = document.getElementById('superado');                
         let mensaje = document.querySelector('#superado .modal-content p');
-        mensaje.innerHTML = "Enhorabuena!!, has completado el puzzle";
+        mensaje.innerHTML = "Enhorabona!!. Has respost correctament a les preguntes";
         
         superado.style.display = "block";
         superado.classList.add('success');

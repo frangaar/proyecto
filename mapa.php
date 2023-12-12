@@ -42,7 +42,7 @@
             <div class="bocadillo-cuadrado" id="bocadillo-cuadrado1">
                 <button type="button" id="audio-close1" class="btn-close audio-close"></button>
                 <div class="text">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. Mapmet, consectetur adipiscing elit. Map</p>
+                    <p>Laia, una enginyera a Barcelona compromesa amb la sostenibilitat, busca obtenir fons per viatjar a països desfavorits i portar energia sostenible a comunitats necessitades a l'Àfrica, Amèrica Llatina i Àsia. El seu objectiu és instal·lar sistemes d'energia solar i eòlica, però necessita finançament per dur a terme aquests projectes transformadors.</p>
                 </div>
                 <button type="button" class="audio btn btn-primary" id="audio1" class="btn btn-primary"></button>
             </div>
@@ -51,7 +51,7 @@
             <div class="bocadillo-cuadrado" id="bocadillo-cuadrado2">
                 <button type="button" id="audio-close2" class="btn-close audio-close"></button>
                 <div class="text">
-                <p><span>Bienvenid@s a la India!!.</span><br>Imaginad un desafío increíble en "Luz Sostenible". Vuestra misión: iluminar nuestro colegio con energía renovable. Pero esperad, ¡hay tres piezas por descubrir! Preparaos para enfrentaros a desafíos matemáticos, resolver rompecabezas y hasta descifrar preguntas sobre las vacas en la India.</p>
+                <p>Imagineu un desafiament increïble a 'Llum Sostenible'. La vostra missió: il·luminar el nostre col·legi amb energia renovable. Però espereu, hi ha tres peces per descobrir! Prepareu-vos per a enfrontar-vos a desafiaments matemàtics, resoldre trencaclosques i fins a desxifrar preguntes sobre les vaques a l'Índia.</p>
                 </div>
                 <button type="button" class="audio btn btn-primary" id="audio2" class="btn btn-primary"></button>
             </div>

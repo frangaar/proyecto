@@ -23,14 +23,14 @@ $anyos=obtenerAnyos();
     <div class="container ranking" id="containerRanking">
         
         <div class="col-12 cerrar-sesion">
-            <a href="index.php"><input type="button" class="btn btn-primary cursor botones" value="Ir a inicio"></input></a>
+            <a href="index.php"><input type="button" class="btn btn-primary cursor botones" value="Tornar a l'inici"></input></a>
         </div>
         
             <form action="./action_page.php" method="post">
                 <div class="row align-items-start">
                     <div class="col">
                         <select class="form-select" name="fecha" aria-label="Default select example">
-                            <option selected value="">Selecciona fecha</option>
+                            <option selected value="">Selecciona data</option>
                             <?php foreach ($anyos as $anyo){ ?>
                             <option value="<?php echo $anyo['fecha'] ?>"><?php echo $anyo['fecha'] ?></option>
                             <?php } ?>
@@ -38,7 +38,7 @@ $anyos=obtenerAnyos();
                     </div>
                     <div class="col">
                         <select class="form-select" name="nivel" aria-label="Default select example">
-                            <option selected value="">Selecciona nivel</option>
+                            <option selected value="">Selecciona nivell</option>
                             <option value="1">Nivel 1</option>
                             <option value="2">Nivel 2</option>
                             <option value="3">Nivel 3</option>
@@ -70,20 +70,20 @@ $anyos=obtenerAnyos();
 
         <?php if(count($ranking) == 0){ ?>
             <div class="alert alert-warning" role="alert">
-                No hay información disponible para los filtros seleccionados
+                No hi ha informació disponible per als filtres seleccionats
             </div>
         <?php } ?>
         <div class="col-12 listado-usuarios-title mt-5">
-            <h2>Listado de usuarios</h2>
+            <h2>Llistat d'usuaris</h2>
         </div>
             <table id="tabla-ranking" class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">Fecha</th>
+                        <th scope="col">Data</th>
                         <th scope="col">UID</th>
-                        <th scope="col">Usuario</th>
-                        <th scope="col">Puntuación</th>
-                        <th scope="col">Nivel</th>
+                        <th scope="col">Usuari</th>
+                        <th scope="col">Puntuació</th>
+                        <th scope="col">Nivell</th>
                         
                     </tr>
                 </thead>
