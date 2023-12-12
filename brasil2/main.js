@@ -5,6 +5,7 @@ let tempsRestant = minutsInicial * 60;
 const temps = document.getElementById("temporitzador");
 let interval = setInterval(compteEnrere, 1000);
 let puntsInicial = 0;
+let volver = document.getElementById("tornarBoto");
 
 sumarPunts();
 imatgeCursor();
@@ -42,14 +43,14 @@ function asomaTopos() {
     for (let i = 0; i < numTopos; i++) {
       let num;
       // do {
-        num = Math.floor(Math.random() * 9) + 1;
+      num = Math.floor(Math.random() * 9) + 1;
       // } while (
       //   document.getElementById("imatge" + num).style.display === "block"
       // );
 
       const numAleatorio = Math.random();
-
-      if (numAleatorio < 0.15) {
+      console.log(numAleatorio);
+      if (numAleatorio < 0.1) {
         const topoVerde = document.getElementById("imatge1" + num);
         topoVerde.style.display = "block";
       } else if (numAleatorio < 0.35) {
@@ -64,7 +65,6 @@ function asomaTopos() {
     setTimeout(asomaTopos, 1300);
   }
 }
-
 
 function compteEnrere() {
   const minuts = Math.floor(tempsRestant / 60);
@@ -81,7 +81,6 @@ function compteEnrere() {
 }
 
 function sumarPunts() {
-  
   for (let i = 1; i <= 9; i++) {
     const topo = document.getElementById("imatge" + i);
     const topoVerde = document.getElementById("imatge1" + i);
@@ -92,7 +91,7 @@ function sumarPunts() {
         puntsInicial += 10;
         const punts = document.getElementById("puntuacio");
         punts.innerHTML = `${puntsInicial}`;
-        topo.src = "img/topo-golpeado.png"
+        topo.src = "img/topo-golpeado.png";
         setTimeout(() => {
           topo.style.display = "none";
           topo.src = "img/topo.png";
@@ -105,7 +104,7 @@ function sumarPunts() {
         puntsInicial += 20;
         const punts = document.getElementById("puntuacio");
         punts.innerHTML = `${puntsInicial}`;
-        topoVerde.src = "img/topo-golpeado-verde.png"
+        topoVerde.src = "img/topo-golpeado-verde.png";
         setTimeout(() => {
           topoVerde.style.display = "none";
           topoVerde.src = "img/topoVerde.png";
@@ -118,7 +117,7 @@ function sumarPunts() {
         puntsInicial -= 10;
         const punts = document.getElementById("puntuacio");
         punts.innerHTML = `${puntsInicial}`;
-        topoRojo.src = "img/topo-golpeado-rojo.png"
+        topoRojo.src = "img/topo-golpeado-rojo.png";
         setTimeout(() => {
           topoRojo.style.display = "none";
           topoRojo.src = "img/topoRojo.png";
@@ -137,9 +136,45 @@ function musicaFons() {
   audio.play();
 }
 
-let volver = document.getElementById("tornar");
+function jocAcabat() {
+  if (tempsRestant > 0) {
+    console.log("Joc Acabat");
+  }
+}
+jocAcabat();
 
-volver.addEventListener("click", function () {
-  window.location.href='../save.php?nivel=5&puntos='+puntsInicial;
-})
+function sortidaJoc() {
+  volver.addEventListener("click", function () {
+    if (tempsRestant < 0) {
+      window.location.href = "../save.php?nivel=5&puntos=" + puntsInicial;
+    } else {
 
+      const modal = document.getElementById("confirmarSortida");
+      var confirmarSalirBtn = document.getElementById("confirmarSalir");
+      var cerrarModalBtn = document.getElementsByClassName("close")[0];
+
+      // Muestra el modal
+      modal.style.display = "block";
+
+      // Cuando el usuario hace clic en "Salir" dentro del modal
+      confirmarSalirBtn.onclick = function() {
+        window.location.href = "../save.php?nivel=5&puntos=" + puntsInicial;
+      }
+
+      // Cuando el usuario hace clic en la 'x' para cerrar el modal
+      cerrarModalBtn.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      // Cuando el usuario hace clic en cualquier lugar fuera del modal, ciérralo
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    }
+  });
+}
+
+
+sortidaJoc();

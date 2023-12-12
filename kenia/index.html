@@ -16,6 +16,10 @@
 <body id="body">
     <div id="fondo"></div>
     <div class="app" id="level1">
+        <div class="vidas">
+            <img src="../kenia/img/heart_full.png" alt="" class="heartImgs" id="heart1">
+            <img src="../kenia/img/heart_full.png" alt="" class="heartImgs" id="heart2">
+        </div>
         <div class="character" id="character-Container" >
             <img src="" alt=""  id="character">
         </div>
@@ -36,7 +40,7 @@
         <div class="barrileslvl2"></div>   
     </div>
     <div id="buttonContinue">
-        <div class="menu_de_inico">
+        <div class="menu_de_inico" id="menu_de_inicio">
             <h1 class="titleMenu" id="title">Laia A Kenia</h1>
             <div class="showLaia"></div>
             <ul id="buttonAceptar">
@@ -51,8 +55,8 @@
         <h1 class="titleMenu">Has Perdut</h1>
         <div class="showLaia"></div>
         <ul id="buttonAceptar_Death">
-            <li id="playButton_Death"><span onclick="buttonDeath()">Tornar a Jugar</span></li>
-            <li id="exitButton_Death"><span>Salir</span></li>
+            <!-- <li id="playButton_Death"><span onclick="buttonAccept()">Tornar a Jugar</span></li> -->
+            <li id="exitButton_Death"><span onclick="buttonDeath()">Sortir al menu</span></li>
         </ul>
     </div>
     <div id="showControls">
@@ -118,7 +122,7 @@
         <div class="objectes">
             <img src="../kenia/img/generator.png" alt="generator.img" width="180px">
             <img src="../kenia/img/cable.png" alt="cable.img" width="170px">
-            <img src="../kenia/img/general_key.png" alt="key.img" width="77px">
+            <img src="../kenia/img/general_key.png" alt="key.img" width="70px">
         </div>
         <ul id="buttonCollect">
             <li class="buttonObj"><span id="spanFinishingTheGame">Seguent</span></li>
@@ -136,6 +140,11 @@
             </div>
             <img src="../kenia/img/donkeyKong.gif" alt="donkey kong" id="donkey_history">
         </div>
+        <!-- <div class="container">
+            <ul id="buttonCollect">
+                <li class="buttonObj" id=""><span id="spanGoingMapWhenGameIsFinished" onclick="back_Menu()">Sortir al menu</span></li>
+            </ul>
+        </div> -->
     </div>
     <audio src="sound/character_Death.mp3" id="audioMarioFallin"></audio> 
     <audio src="sound/mario_falling.wav" id="audioMarioDiying"></audio>

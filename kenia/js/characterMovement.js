@@ -11,6 +11,7 @@ let enemyVelocity = 2.9
 // 2.9
 let player_velocity = 2.9
 //5
+let timerInterval
 let timerBarrel
 let timerEnemy
 let final_del_mapa
@@ -72,7 +73,6 @@ let imgCharacterStand
 drawMap()
 
 // for (let index = 0; index < COLLIDABLE_ROWS.length; index++) {
-//     console.log(COLLIDABLE_ROWS[index].x);
 // }
 // Variables de la posicion del personaje.
 let positionX = 0
@@ -91,19 +91,20 @@ let b1 = new Barrel()
 let f1 = new ColisionablesObjects()
 const elementosFila2 = document.querySelectorAll('.fila2');
 function timer () {
-    if (play) {
+    if (play && !gameCompleted) {
         timerCount++
     }
 }
-setInterval(() => {
-    timer()
-}, 1000);
+function startTimerIntervalFunc() {
+    timerInterval = setInterval(() => {
+        timer()
+    }, 1000);
+}
+startTimerIntervalFunc()
 function draw () 
 {
     container.style.left = positionX + 'px'
     container.style.top = positionY + 'px'
-    // level_1_finished
-    // bossAnimation1
     if (bossAnimation1) {
         enemyContainer.style.left = enemyPositionX + 'px'
     }
@@ -118,11 +119,7 @@ function draw ()
 function update ()
 {
     draw()
-    // bossAnimation1
-    // level_1_finished
-    // console.log(bossAnimation1);
     if (!pause && !bossAnimation1) {
-        // play = true
         positionY += velocityY
         positionX += velocityX
         if (ARRAY_BARRELS[numberOfBarrels]!= null) {
@@ -563,13 +560,26 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                     // Barril colisionado
                     ARRAY_BARRELS[index2].vY = 0
                     if (player_life > 0) {
-                    
                         player_life -= 1
                         colisionEfect_betweenCharacter_and_barrel()
                         velocityY -= 5
                         ARRAY_BARRELS[index2].x = 0
                         ARRAY_BARRELS[index2].y = 0
                         ARRAY_BARRELS[index2].barrelColisionRight = false
+                        if (twoLifes) 
+                        {
+                            heart1.style.animation = 'shake 0.5s linear'
+                            heart1.addEventListener('animationend', function() {
+                                heart1.setAttribute('src', '../kenia/img/heart_empty.png');  
+                            })
+                        } else 
+                        {
+                            heart2.style.animation = 'shake 0.5s linear'
+                            heart2.addEventListener('animationend', function() {
+                                heart2.setAttribute('src', '../kenia/img/heart_empty.png');  
+                            })
+                        }
+                        twoLifes = false
                     }
                     if (player_life <= 0) {
                         character_is_dead = true
