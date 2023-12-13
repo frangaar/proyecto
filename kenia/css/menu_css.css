@@ -52,6 +52,136 @@
         left: 1460px;
     }
 }
+@keyframes animationMenuExit {
+    0% {
+        transform: scale(1);
+        margin-top: 0px;
+    }
+    100% {
+        transform: scale(2.3);
+        margin-top: 664px;
+    }
+}
+@keyframes animationMenuExit2 {
+    0% {
+        transform: scale(2.3);
+        margin-top: 664px;
+    }
+    100% {
+        transform: scale(1);
+        margin-top: 0px;
+    }
+}
+@keyframes animationMenu {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+/* @keyframes animationMenuDifficult {
+    0% {
+        width: 100%;
+    }
+    100% {
+        width: 200%;
+    }
+} */
+@keyframes animationMenuDifficult {
+    0% {
+        transform: scale(1);
+        margin-left: 0px;
+    }
+    100% {
+        transform: scale(2.3);
+        margin-left: 1371px;
+    }
+}
+@keyframes animationMenuDifficult2 {
+    0% {
+        transform: scale(2.3);
+        margin-left: 1371px;
+    }
+    100% {
+        transform: scale(1.3);
+        margin-left: 0px;
+    }
+}
+@keyframes animationMenuCharacter {
+    0% {
+        /* margin-left: 0px; */
+        transform: scale(1.3);
+        /* width: 100%; */
+        margin-left: 0;
+    }
+    100% {
+        /* margin-left: -1972px;
+        width: 200%; */
+        transform: scale(2.3);
+        /* margin-left: -1972px; */
+        margin-left: -1370px ;
+    }
+}
+.spans  {
+    position: absolute;
+    height: 119px;
+    width: 177px;
+}
+.spans.diff {
+    height: 69px;
+    width: 117px;
+    top: 32px;
+    color: white;
+    font-size: 27px;
+    /* background-image: url(../img/diff-boton.png); */
+    background-image: url("");
+
+}
+.diff#diff1 {
+    left: 70px;
+}
+.diff#diff2 {
+    left: 190px;
+}
+.diff#diff3 {
+    left: 310px;
+}
+.diff#diff4 {
+    left: 428px;
+}
+
+.diff#char1 {
+    left: 70px;
+}
+.diff#char2 {
+    left: 190px;
+}
+.diff#char3 {
+    left: 310px;
+}
+.diff#char4 {
+    left: 428px;
+}
+
+.spans#playButton {
+    left: 795px;
+    top: 496px;
+}
+.spans#idSpanExit {
+    left: 986px;
+    top: 496px;
+    background-image: url(../img/exit-boton.png);
+}
+.spans#sureToExit {
+    left: 130px;
+    background-image: url(../img/map-boton.png);
+}
+.spans#goMenuBack {
+    width: 110px;
+    left: -47px;
+    background-image: url(../img/home-boton.PNG);
+}
 #controlsTitle {
     color: white;
     
@@ -83,18 +213,18 @@
     font-family: 'Pixelify Sans', sans-serif;
 }
 #lvlDescription {
-    width: 601px;
-    top: 140px;
-    right: 140px;
+    width: 441px;
+    top: 190px;
+    right: 52px;
     position: absolute;
     color: white;
-    font-size: 25px;
+    font-size: 24px;
 }
 #imgDescription {
     z-index: 1000;
-    width: 145px;
-    top: 232px;
-    right: 727px;
+    width: 65px;
+    top: 322px;
+    left: 565px;
     position: absolute;
 }
 #showHistory {
@@ -216,11 +346,21 @@ ul#level_characterSelected {
 li.lvl{
     margin-right: 50px !important;
 }
-#levelSelectorTitle {
-    left: 23px;
+.levelSkull {
+    /* width: 180px; */
+    width: 50px;
+    left: 193px;
     position: absolute;
-    font-size: 30px;
-    color: white;
+    top: 77px;
+}
+.levelSkull#skull2 {
+    left: 239px;
+}
+.levelSkull#skull3 {
+    left: 285px;
+}
+.levelSkull#skull4 {
+    left: 331px;
 }
 #containerMessageImportant #containerLevelSelector{
     top: 34% !important;
@@ -236,13 +376,18 @@ li.lvl{
     text-align: center;
     left: 310px;
     top: 119px;
-    width: 1296px;
-    height: 436px;
+    height: 408px;
+    width: 560px;
 }
 #informativeText, #titleObjectedsRecolected {
-    padding: 0px 25px 0px 25px;
+    /* padding: 0px 25px 0px 25px;
     position: absolute;
     font-size: 45px;
+    color: white; */
+    top: 140px;
+    padding: 0px 25px 0px 25px;
+    position: absolute;
+    font-size: 25px;
     color: white;
 }
 #titleObjectedsRecolected {
@@ -250,11 +395,11 @@ li.lvl{
 }
 #buttonSureExit {
     /* position: absolute;
-    left: 385px;
-    bottom: 150px; */
-    position: absolute;
     left: 585px;
-    bottom: 210px;
+    bottom: 210px; */
+    position: absolute;
+    left: 275px;
+    bottom: 150px;
 }
 .container#containerObjectObtaineds {
     display: none;
@@ -288,13 +433,14 @@ li.lvl{
     animation: movefinish 5s linear;  
 }
 .container {
-    border: 20px solid transparent;
-    border-image: url(../img/marco.png) 20 round;
-    /* border: 1px solid white; */
-    border-radius: 15px;
+    /* border: 20px solid transparent; */
+    /* border-image: url(../img/marco.png) 20 round; */
+    /* border-radius: 15px; */
     width: 1296px;
     height: 836px;
-    background-color: #383681;    /* background-color: rgba(255, 255, 255, 0.241); */
+    background-image: url(../img/menu-inicio.png);
+    background-size: cover;
+    /* background-color: #383681;     */
 
     text-align: center;
 }
@@ -304,10 +450,10 @@ li.lvl{
 }
 .container#containerMessageImportant {
     position: absolute;
-    top: 50px;
-    left: 250px;
-    width: 1396px;
-    height: 696px; 
+    top: 150px;
+    left: 560px;
+    width: 756px;
+    height: 556px;
 }
 .imgKeyboard {
     position: absolute;
@@ -349,15 +495,20 @@ li#goMenu {
     /* animation: float 4s ease-in-out infinite; */
 }
 .showLaia{
+    position: absolute;
     /* border: 1px solid white; */
     margin-left: 80px;
     width: 120px;
     /* position: absolute; */
     height: 120px;
-    left: 45%;
-    top: 20%;
+    left: 44%;
+    top: 38%;
     background-image: url(../img/laia.png);
     background-size: cover;  
+}
+.showLaia#laia {
+    top: 390px;
+    left: 847px;
 }
 ul {
     bottom: 50%;
@@ -366,13 +517,12 @@ ul {
 }
 
 li {
-    font-size: 20px;
+    /* font-size: 20px; */
     width: 9em;
     height: 3em;
-    color: white;
-    /* color: green; */
-    border-left: 0.08em solid;
-    position: relative;
+    /* color: white; */
+    /* border-left: 0.08em solid; */
+    /* position: relative; */
     margin-top: 0.8em;
     cursor: pointer;
 }
@@ -393,7 +543,9 @@ li {
     
 }
 .menu_de_inico {
-
+    animation: animationMenu 2.3s linear;
+    height: 370px;
+    width: 530px;
     background-image: url("../img/menu-inicio.png");
     background-size: cover;
     /* position: absolute; */
@@ -401,7 +553,7 @@ li {
     text-align: center;
     /* height: 00px; */
 }
-li::before,
+/* li::before,
 li::after
  {
     content: '';
@@ -409,7 +561,7 @@ li::after
     width: inherit;
     border-left: inherit;
     z-index: -1;
-}
+} */
 
 li::before {
     height: 80%;
@@ -422,16 +574,16 @@ li::after {
     height: 60%;
     top: 20%;
     left: calc(-0.15em * 2 - 0.08em * 3);
-    filter: brightness(0.6);
+    /* filter: brightness(0.6); */
 }
 
 li span {
-    text-shadow: -2px -2px 1px #000, 2px 2px 1px #000, -2px 2px 1px #000, 2px -2px 1px #000;
-    font-weight: bold;
-    position: relative;
+    /* text-shadow: -2px -2px 1px #000, 2px 2px 1px #000, -2px 2px 1px #000, 2px -2px 1px #000; */
+    /* font-weight: bold; */
+    /* position: relative; */
     height: 120%;
     top: -10%;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     /* border: 0.08em solid; */
     /* background-color: black; */
     background-image: url(../img/boton.png);
@@ -439,10 +591,10 @@ li span {
     /* background-position:bottom; */
 
     /* background-color: #333; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Pixelify Sans', sans-serif ;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* font-family: 'Pixelify Sans', sans-serif ; */
     /* text-transform: capitalize; */
     transform: translateX(calc(-0.15em * 3 - 0.08em * 2));
     transition: 0.3s;
