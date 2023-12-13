@@ -129,12 +129,12 @@ body {
     display: none;
     justify-content: center;
     align-items: center;
-    position: fixed; /* Cambiado a fixed para asegurar que esté centrado en la página */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Añadido un fondo semitransparente */
+    background-color: rgba(0, 0, 0, 0.5); 
 }
 
 .modal-content {
@@ -175,7 +175,7 @@ body {
     text-align: center;
 }
 
-#confirmarSalir{
+#si{
     width: 100%;
     background-color: green;
     border-color: green;

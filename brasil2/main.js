@@ -1,15 +1,19 @@
-document.addEventListener("DOMContentLoaded", asomaTopos);
-document.addEventListener("DOMContentLoaded", musicaFons);
-const minutsInicial = 0.1;
+const minutsInicial = 1;
 let tempsRestant = minutsInicial * 60;
 const temps = document.getElementById("temporitzador");
 let interval = setInterval(compteEnrere, 1000);
 let aparicion = true;
 let puntsInicial = 0;
 let volver = document.getElementById("tornarBoto");
-const modal = document.getElementById("confirmarSortida");
-const botonCerrar = document.getElementById("no");
+const modalAviso = document.getElementById("confirmarSortida");
+const botonNo = document.getElementById("no");
+const botonSi = document.getElementById("si");
+let audio = new Audio("./audios/minecraft4.mp3");
 
+document.addEventListener("DOMContentLoaded", asomaTopos);
+document.addEventListener('click', musicaFons)
+volver.addEventListener("click", botoSortidaJoc);
+botonSi.addEventListener("click",sortirSenseAcabarJoc); 
 sumarPunts();
 imatgeCursor();
 
@@ -42,7 +46,7 @@ function asomaTopos() {
     }
 
     if (tempsRestant > 0) {
-      const numTopos = Math.floor(Math.random() * 4) + 1;
+      const numTopos = Math.floor(Math.random() * 3) + 1;
 
       for (let i = 0; i < numTopos; i++) {
         let num;
@@ -54,19 +58,19 @@ function asomaTopos() {
 
         const numAleatorio = Math.random();
         console.log(numAleatorio);
-        if (numAleatorio < 0.1) {
-          const topoVerde = document.getElementById("imatge1" + num);
+        if (numAleatorio <= 0.02) {
+          topoVerde = document.getElementById("imatge1" + num);
           topoVerde.style.display = "block";
-        } else if (numAleatorio < 0.35) {
-          const topoRojo = document.getElementById("imatge2" + num);
+        } else if (numAleatorio <= 0.08) {
+          topoRojo = document.getElementById("imatge2" + num);
           topoRojo.style.display = "block";
         } else {
-          const topo = document.getElementById("imatge" + num);
+          topo = document.getElementById("imatge" + num);
           topo.style.display = "block";
         }
       }
 
-      setTimeout(asomaTopos, 1300);
+      setTimeout(asomaTopos, 1000);
     }
   }
 }
@@ -100,7 +104,7 @@ function sumarPunts() {
         setTimeout(() => {
           topo.style.display = "none";
           topo.src = "img/topo.png";
-        }, 200);
+        }, 100);
       }
     });
 
@@ -113,7 +117,7 @@ function sumarPunts() {
         setTimeout(() => {
           topoVerde.style.display = "none";
           topoVerde.src = "img/topoVerde.png";
-        }, 200);
+        }, 100);
       }
     });
 
@@ -126,14 +130,13 @@ function sumarPunts() {
         setTimeout(() => {
           topoRojo.style.display = "none";
           topoRojo.src = "img/topoRojo.png";
-        }, 200);
+        }, 100);
       }
     });
   }
 }
 
 function musicaFons() {
-  let audio = new Audio("./audios/minecraft4.mp3");
 
   audio.volume = 1;
   audio.loop = true;
@@ -142,34 +145,36 @@ function musicaFons() {
 }
 
 function jocAcabat() {
-  if (tempsRestant > 0) {
+  if (tempsRestant < 0) {
     console.log("Joc Acabat");
   }
 }
 jocAcabat();
 
-function sortidaJoc() {
-  volver.addEventListener("click", function () {
+function botoSortidaJoc() {
     if (tempsRestant < 0) {
       window.location.href = "../save.php?nivel=5&puntos=" + puntsInicial;
     } else {
       aparicion = false;
       clearInterval(interval);
 
-      modal.style.display = "flex";
-      botonCerrar.addEventListener("click", tancarModal)
-    }
-  });
+      modalAviso.style.display = "flex";
+      botonNo.addEventListener("click", tancarModal);
+    };
 }
 
-sortidaJoc();
-
 function tancarModal() {
-  modal.style.display = "none";
+  modalAviso.style.display = "none";
   aparicion = true;
 
   interval = setInterval(compteEnrere, 1000);
   asomaTopos();
 
-  botonCerrar.removeEventListener("click", tancarModal);
+  botonNo.removeEventListener("click", tancarModal);
+}
+
+function sortirSenseAcabarJoc() {
+  if (tempsRestant > 0) {
+    modalAviso.style.display = "none";
+  }
 }
