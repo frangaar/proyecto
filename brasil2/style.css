@@ -123,3 +123,18 @@ body {
 .cursor.click {
     transform: translate(-45%, -30%) rotate(-55deg);
 }
+
+.modal {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    position: absolute;
+    top: 100px;
+    left: 400px;
+}
+
+.modal-content {
+    text-align: center;
+    height: 300px;
+}
