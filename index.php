@@ -203,7 +203,7 @@
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Conectar-se al joc</h1>
+            <h1 class="modal-title fs-5 lblTituloLogin" id="staticBackdropLabel">Conectar-se al joc</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -247,7 +247,7 @@
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Crear jugador</h1>
+            <h1 class="modal-title fs-5 lblTituloRegistro" id="staticBackdropLabel">Crear jugador</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

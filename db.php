@@ -38,12 +38,13 @@
         }
 
             try{
-                $sql = "SELECT usuarios.* FROM usuarios,roles where user='".$user."' and pass='".$pass."' and usuarios.rol=roles.id";
+                $sql = "SELECT usuarios.*, roles.rol as rolData FROM usuarios,roles where user='".$user."' and pass='".$pass."' and usuarios.rol=roles.id";
             
                 $selectAll = $conn->prepare($sql);
                 $selectAll->execute();
 
                 $result = $selectAll->fetch();
+
             }catch(PDOException $e){
                 $_SESSION['error'] =  $e->errorInfo[1] . ' - ' . $e->errorInfo[2];
             }
@@ -60,6 +61,7 @@
             }else{
                 $_SESSION['id']=$result['id'];
                 $_SESSION['rol']=$result['rol'];
+                $_SESSION['rolData']=$result['rolData'];
                 $_SESSION['user']=$result['user'];
                 $_SESSION['pass']=$result['pass'];
                 $_SESSION['nivel']=$result['nivel'];
@@ -68,8 +70,9 @@
 
         
         if(isset($_SESSION['id'])){
+            
         
-            if (strcmp($_SESSION['rol'], "admin") == 0) {
+            if (strcmp($_SESSION['rolData'], "admin") == 0) {
         
                 header("Location: admin.php");
             }else{

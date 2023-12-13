@@ -1,11 +1,14 @@
 document.addEventListener("DOMContentLoaded", asomaTopos);
-window.addEventListener("DOMContentLoaded", musicaFons);
-const minutsInicial = 1;
+document.addEventListener("DOMContentLoaded", musicaFons);
+const minutsInicial = 0.1;
 let tempsRestant = minutsInicial * 60;
 const temps = document.getElementById("temporitzador");
 let interval = setInterval(compteEnrere, 1000);
+let aparicion = true;
 let puntsInicial = 0;
 let volver = document.getElementById("tornarBoto");
+const modal = document.getElementById("confirmarSortida");
+const botonCerrar = document.getElementById("no");
 
 sumarPunts();
 imatgeCursor();
@@ -27,42 +30,44 @@ function imatgeCursor() {
 }
 
 function asomaTopos() {
-  for (let i = 1; i <= 9; i++) {
-    const topo = document.getElementById("imatge" + i);
-    const topoVerde = document.getElementById("imatge1" + i);
-    const topoRojo = document.getElementById("imatge2" + i);
+  if (aparicion) {
+    for (let i = 1; i <= 9; i++) {
+      const topo = document.getElementById("imatge" + i);
+      const topoVerde = document.getElementById("imatge1" + i);
+      const topoRojo = document.getElementById("imatge2" + i);
 
-    topo.style.display = "none";
-    topoVerde.style.display = "none";
-    topoRojo.style.display = "none";
-  }
-
-  if (tempsRestant > 0) {
-    const numTopos = Math.floor(Math.random() * 4) + 1;
-
-    for (let i = 0; i < numTopos; i++) {
-      let num;
-      // do {
-      num = Math.floor(Math.random() * 9) + 1;
-      // } while (
-      //   document.getElementById("imatge" + num).style.display === "block"
-      // );
-
-      const numAleatorio = Math.random();
-      console.log(numAleatorio);
-      if (numAleatorio < 0.1) {
-        const topoVerde = document.getElementById("imatge1" + num);
-        topoVerde.style.display = "block";
-      } else if (numAleatorio < 0.35) {
-        const topoRojo = document.getElementById("imatge2" + num);
-        topoRojo.style.display = "block";
-      } else {
-        const topo = document.getElementById("imatge" + num);
-        topo.style.display = "block";
-      }
+      topo.style.display = "none";
+      topoVerde.style.display = "none";
+      topoRojo.style.display = "none";
     }
 
-    setTimeout(asomaTopos, 1300);
+    if (tempsRestant > 0) {
+      const numTopos = Math.floor(Math.random() * 4) + 1;
+
+      for (let i = 0; i < numTopos; i++) {
+        let num;
+        // do {
+        num = Math.floor(Math.random() * 9) + 1;
+        // } while (
+        //   document.getElementById("imatge" + num).style.display === "block"
+        // );
+
+        const numAleatorio = Math.random();
+        console.log(numAleatorio);
+        if (numAleatorio < 0.1) {
+          const topoVerde = document.getElementById("imatge1" + num);
+          topoVerde.style.display = "block";
+        } else if (numAleatorio < 0.35) {
+          const topoRojo = document.getElementById("imatge2" + num);
+          topoRojo.style.display = "block";
+        } else {
+          const topo = document.getElementById("imatge" + num);
+          topo.style.display = "block";
+        }
+      }
+
+      setTimeout(asomaTopos, 1300);
+    }
   }
 }
 
@@ -148,33 +153,23 @@ function sortidaJoc() {
     if (tempsRestant < 0) {
       window.location.href = "../save.php?nivel=5&puntos=" + puntsInicial;
     } else {
+      aparicion = false;
+      clearInterval(interval);
 
-      const modal = document.getElementById("confirmarSortida");
-      var confirmarSalirBtn = document.getElementById("confirmarSalir");
-      var cerrarModalBtn = document.getElementsByClassName("close")[0];
-
-      // Muestra el modal
-      modal.style.display = "block";
-
-      // Cuando el usuario hace clic en "Salir" dentro del modal
-      confirmarSalirBtn.onclick = function() {
-        window.location.href = "../save.php?nivel=5&puntos=" + puntsInicial;
-      }
-
-      // Cuando el usuario hace clic en la 'x' para cerrar el modal
-      cerrarModalBtn.onclick = function() {
-        modal.style.display = "none";
-      }
-
-      // Cuando el usuario hace clic en cualquier lugar fuera del modal, ciérralo
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
+      modal.style.display = "flex";
+      botonCerrar.addEventListener("click", tancarModal)
     }
   });
 }
 
-
 sortidaJoc();
+
+function tancarModal() {
+  modal.style.display = "none";
+  aparicion = true;
+
+  interval = setInterval(compteEnrere, 1000);
+  asomaTopos();
+
+  botonCerrar.removeEventListener("click", tancarModal);
+}

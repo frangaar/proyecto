@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded',function(){
             "Castellano":
             {
                 "Nombre":"Nombre",
+                "TituloLogin":"Conectarse al juego",
+                "TituloRegistro":"Crear jugador",
                 "Titulo":"El Viaje Renovable de Laia",
                 "Banner":"<p>En el apasionante juego <span style='font-weight:bold'>'El Viaje Renovable de Laia'</span>, te sumergirás en la emocionante odisea de una valiente mujer llamada Laia, cuya misión es llevar energía renovable a una escuela mediante desafiantes pruebas alrededor del mundo. Laia se embarca en un viaje épico que la llevará a través de exóticos destinos, como la vibrante India, la salvaje Kenia y la exuberante Brasil.</p><p>Laia, dotada de una mente aguda y habilidades excepcionales, enfrentará desafíos de lógica, matemáticas y geografía en cada país, resolviendo intrincados acertijos para obtener piezas esenciales que alimentarán de energía sostenible a la escuela. Estas piezas, impregnadas de tecnologías renovables innovadoras, representan la clave para un futuro más verde y sostenible.</p>                <p>Para financiar su viaje, Laia se sumerge en la bulliciosa ciudad de Barcelona, donde realiza encargos que le permiten ganar el dinero necesario. La ciudad se convierte en su patio de juegos, mientras Laia equilibra el trabajo, la vida cotidiana y la emocionante búsqueda de las piezas que transformarán vidas.</p>                <p>A medida que avanzas en el juego, descubrirás la riqueza cultural y la diversidad de los destinos, mientras Laia supera desafíos que van más allá de las pruebas mentales, enfrentándose a situaciones inesperadas y forjando amistades que la ayudarán en su noble causa.</p><p>En <span style='font-weight:bold'>'El Viaje Renovable de Laia'</span>, únete a Laia en su emocionante travesía por el mundo, donde cada paso la acerca más a la meta de iluminar el futuro con energía limpia y sostenible. ¿Tienes lo necesario para superar los desafíos y ayudar a Laia a cumplir su misión?</p><p style='font-weight:bold'>¡El destino del planeta está en tus manos!</p>",
                 "Registro":"Registro",
@@ -53,8 +55,8 @@ document.addEventListener('DOMContentLoaded',function(){
                         "Desarrollador": "Desarrollador: "
                     },
                     {
-                        "Juego":"Juego 5",
-                        "Descripcion":"Descripcion 5",
+                        "Juego":"Invasión De Los Topos",
+                        "Descripcion":"En la última etapa del viaje de Laia, se encuentra con que para tener unas buenas instalaciones eléctricas, debe enfrentarse a unos topos. Con un martillo y buenos reflejos, intenta deshacerte de suficientes topos para que abandonen la zona y pueda proporcionar la electricidad necesaria a los habitantes de la zona.",
                         "Desarrollador": "Desarrollador: "
                     }
                 ],
@@ -82,6 +84,8 @@ document.addEventListener('DOMContentLoaded',function(){
             "Catalan":
             {
                 "Nombre":"Nom",
+                "TituloLogin":"Conectar-se al joc",
+                "TituloRegistro":"Crear jugador",
                 "Titulo":"El Viatge Renovable de Laia",
                 "Registro":"Registre",
                 "MasInfo":"Clica aquí si vols saber més!!",
@@ -108,8 +112,8 @@ document.addEventListener('DOMContentLoaded',function(){
                         "Desarrollador": "Desenvolupador: "
                     },
                     {
-                        "Juego":"Joc 5",
-                        "Descripcion":"Descripcio 5",
+                        "Juego":"Invasió Dels Talps",
+                        "Descripcion":"A l'última etapa del viatge de la Laia es troba que per poder tindre unes bones instal·lacions elèctriques s'ha d'enfrentar amb uns talps. Amb un martell i bons reflexos, intenta desfer-te de suficients talps per a que abandonin la zona i poder proporcionar la electricitat necessària als habitants de la zona.",
                         "Desarrollador": "Desenvolupador: "
                     }
                 ],
@@ -137,6 +141,8 @@ document.addEventListener('DOMContentLoaded',function(){
             "Ingles":
             {
                 "Nombre":"Name",
+                "TituloLogin":"Game connection",
+                "TituloRegistro":"Create player",
                 "Titulo":"Laia's Renewable Journey",
                 "Registro": "Registration",
                 "MasInfo":"Click here if you want to know more!!",
@@ -163,8 +169,8 @@ document.addEventListener('DOMContentLoaded',function(){
                         "Desarrollador": "Developer: "
                     },
                     {
-                        "Juego": "Game 5",
-                        "Descripcion": "Description 5",
+                        "Juego": "Mole Invasion",
+                        "Descripcion": "In the last stage of Laia's journey, she finds that in order to have good electrical facilities, she must face some moles. With a hammer and quick reflexes, try to get rid of enough moles so that they leave the area, allowing her to provide the necessary electricity to the inhabitants of the area.",
                         "Desarrollador": "Developer: "
                     }
                 ],
@@ -196,6 +202,8 @@ document.addEventListener('DOMContentLoaded',function(){
 
     let lblNombreLogin = document.getElementById('lblNombreLogin');
     let lblNombreRegistro = document.getElementById('lblNombreRegistro');
+    let lblTituloLogin = document.getElementsByClassName('lblTituloLogin');
+    let lblTituloRegistro = document.getElementsByClassName('lblTituloRegistro');
     let btnRegistro = document.getElementById('btnLandingRegistro');
     let lblTitulo = document.querySelector('.landing-page #titulo');
     let juegosHeader = document.querySelector('.games-section .landing-juegos h2');
@@ -215,6 +223,8 @@ document.addEventListener('DOMContentLoaded',function(){
         juegosHeader.innerHTML = idiomasLanding[0]['Castellano'].Juegos;
         lblNombreLogin.innerHTML = idiomasLanding[0]['Castellano'].Nombre;
         lblNombreRegistro.innerHTML = idiomasLanding[0]['Castellano'].Nombre;
+        lblTituloLogin[0].innerHTML = idiomasLanding[0]['Castellano'].TituloLogin;
+        lblTituloRegistro[0].innerHTML = idiomasLanding[0]['Castellano'].TituloRegistro;
 
         for (let index = 0; index < tituloJuegos.length; index++) {
             
@@ -239,6 +249,8 @@ document.addEventListener('DOMContentLoaded',function(){
         juegosHeader.innerHTML = idiomasLanding[1]['Catalan'].Juegos;
         lblNombreLogin.innerHTML = idiomasLanding[1]['Catalan'].Nombre;
         lblNombreRegistro.innerHTML = idiomasLanding[1]['Catalan'].Nombre;
+        lblTituloLogin[0].innerHTML = idiomasLanding[1]['Catalan'].TituloLogin;
+        lblTituloRegistro[0].innerHTML = idiomasLanding[1]['Catalan'].TituloRegistro;
 
         for (let index = 0; index < tituloJuegos.length; index++) {
             
@@ -263,6 +275,8 @@ document.addEventListener('DOMContentLoaded',function(){
         juegosHeader.innerHTML = idiomasLanding[2]['Ingles'].Juegos;
         lblNombreLogin.innerHTML = idiomasLanding[2]['Ingles'].Nombre;
         lblNombreRegistro.innerHTML = idiomasLanding[2]['Ingles'].Nombre;
+        lblTituloLogin[0].innerHTML = idiomasLanding[2]['Ingles'].TituloLogin;
+        lblTituloRegistro[0].innerHTML = idiomasLanding[2]['Ingles'].TituloRegistro;
 
         for (let index = 0; index < tituloJuegos.length; index++) {
             

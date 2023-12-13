@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let currentRow = 6;
-    let currentCol = 3;
+    let currentRow = 5;
+    let currentCol = 16;
     const numRows = 21;
     const numCols = 33;
     let missio1 = false;
@@ -19,31 +19,37 @@ document.addEventListener('DOMContentLoaded', function() {
     const botonSalir = document.querySelector('.botonSalir');
     
 /*----------------------------------TIMER----------------------------------------------*/
-    let tiempoRestante = 0; // Inicia el contador en 0 segundos
+    let tiempoRestante = 0;
+    let intervaloTemporizador;
 
-    // Función para actualizar el temporizador y el contador de segundos
     function actualizarTemporizador() {
         const minutos = Math.floor(tiempoRestante / 60);
         const segundos = tiempoRestante % 60;
 
         // Actualiza el temporizador
-        var countdown = document.getElementById("countdown");
+        const countdown = document.getElementById("countdown");
         countdown.textContent = minutos + ":" + (segundos < 10 ? '0' : '') + segundos;
 
         // Actualiza el contador de segundos
-        var segundosElement = document.getElementById("segundos");
+        const segundosElement = document.getElementById("segundos");
         segundosElement.textContent = tiempoRestante;
+
+        // Si missio3 es true, detener el temporizador
+        if (missio3) {
+            clearInterval(intervaloTemporizador);
+            // Calcular el número total de segundos y mostrarlo
+            const totalSegundos = minutos * 60 + segundos;
+            console.log("Número total de segundos:", totalSegundos);
+        }
     }
 
-    // Función de inicio del temporizador
-    function iniciarTemporizador() {
+function iniciarTemporizador() {
+    actualizarTemporizador();
+    intervaloTemporizador = setInterval(function () {
+        tiempoRestante++;
         actualizarTemporizador();
-        const intervaloTemporizador = setInterval(function () {
-            tiempoRestante++;
-            actualizarTemporizador();
-        }, 1000);
-    }
-
+    }, 1000);
+}
 
     botonSalir.addEventListener('click', function() {
         // Redirige a la página especificada
@@ -281,42 +287,39 @@ document.addEventListener('keydown', function(event) {
                 if (hasClave) {
                     hasClave = false;
                     missio3 = true;
-    
+                    hideAllElements();
+
                     // Hide the characters first
                     document.querySelectorAll('.persona3').forEach(function(element) {
-                        element.style.display = 'none';
-                    });
-                    
-                    document.querySelectorAll('.persona-extra').forEach(function(element) {
-                        element.style.display = 'none';
-                    });
-                    document.querySelectorAll('.persona-extra2').forEach(function(element) {
-                        element.style.display = 'none';
-                    });
-                    document.querySelectorAll('.persona-extra3').forEach(function(element) {
                         element.style.display = 'none';
                     });
                     
                     document.querySelectorAll('.clave').forEach(function(element) {
                         element.style.display = 'none';
                     });
-                    
+
+                    clearMap3(); 
                     clearInterval(intervaloTemporizador);
 
-                    // Calcular el número total de segundos y mostrarlo
-                    const minutos = Math.floor(tiempoRestante / 60);
-                    const segundos = tiempoRestante % 60;
-                    const totalSegundos = minutos * 60 + segundos;
-                    console.log("Número total de segundos:", totalSegundos);
-                    // Clear the map
-                    // clearMap2();
+                    if (misio3) {
+                        // Muestra el modal de fin de juego y no permite movimientos
+                        mostrarModal();
+                        return;
+                    }
+                
+                    function mostrarModal() {
+                        // Obtén la referencia al modal y a la capa de fondo
+                        var modal = document.getElementById('finJuegoModal');
+                        var modalBackdrop = document.getElementById('modalBackdrop');
                     
-                    // Display a modal with the next task
-                    // const nextTaskContent = "Porta la pilota al noi de la samarreta blava.";
-                    // reemplazarElementos(gameMap, gameMap2);
-                    // displayNextTask(nextTaskContent);
-                    // showAllElements();
-                    // encarrec2
+                        // Muestra el modal y la capa de fondo
+                        modal.style.display = 'block';
+                        modalBackdrop.style.display = 'block';
+                    
+                        // Desactiva la capacidad de mover
+                        // Puedes agregar aquí tu lógica para desactivar el movimiento
+                    }
+
                 } else {
                     alert("No tens la pilota per entregarla!!");
                 }
@@ -341,6 +344,8 @@ document.addEventListener('keydown', function(event) {
         }
     }
 
+    
+
 /*----------------------------------FUNCIONS MAPA----------------------------------------------*/
 
     function clearMap() {
@@ -357,6 +362,16 @@ document.addEventListener('keydown', function(event) {
         for (let i = 0; i < gameMap.length; i++) {
             for (let j = 0; j < gameMap[i].length; j++) {
                 if (gameMap[i][j] == 5 || gameMap[i][j] == 7) {
+                    gameMap[i][j] = 0;
+                }
+            }
+        }
+    } 
+
+    function clearMap3() {
+        for (let i = 0; i < gameMap.length; i++) {
+            for (let j = 0; j < gameMap[i].length; j++) {
+                if (gameMap[i][j] !== 1 || gameMap[i][j] !== 0) {
                     gameMap[i][j] = 0;
                 }
             }
@@ -425,6 +440,77 @@ document.addEventListener('keydown', function(event) {
         });
     }
     
+    function hideAllElements(){
+        document.querySelectorAll(".persona-extra").forEach(function (element) {
+            element.style.display = 'none'; // o 'inline' según el estilo original
+        });
+        
+        document.querySelectorAll(".persona-extra2").forEach(function (element) {
+            element.style.display = 'none'; // o 'inline' según el estilo original
+        });
+
+        document.querySelectorAll(".persona-extra3").forEach(function (element) {
+            element.style.display = 'none'; // o 'inline' según el estilo original
+        });
+        document.querySelectorAll(".persona-extra4").forEach(function (element) {
+            element.style.display = 'none'; // o 'inline' según el estilo original
+        });
+        
+        document.querySelectorAll(".persona-extra5").forEach(function (element) {
+            element.style.display = 'none'; // o 'inline' según el estilo original
+        });
+
+        document.querySelectorAll(".persona-extra6").forEach(function (element) {
+            element.style.display = 'none'; // o 'inline' según el estilo original
+        });
+        document.querySelectorAll(".persona-extra7").forEach(function (element) {
+            element.style.display = 'none'; // o 'inline' según el estilo original
+        });
+        
+        document.querySelectorAll(".persona-extra8").forEach(function (element) {
+            element.style.display = 'none'; // o 'inline' según el estilo original
+        });
+
+        document.querySelectorAll(".persona-extra9").forEach(function (element) {
+            element.style.display = 'none'; // o 'inline' según el estilo original
+        });
+
+        document.querySelectorAll(".persona-extra10").forEach(function (element) {
+            element.style.display = 'none'; // o 'inline' según el estilo original
+        });
+        
+        document.querySelectorAll(".persona-extra11").forEach(function (element) {
+            element.style.display = 'none'; // o 'inline' según el estilo original
+        });
+        
+        document.querySelectorAll(".persona-extra12").forEach(function (element) {
+            element.style.display = 'none'; // o 'inline' según el estilo original
+        });
+        
+        document.querySelectorAll(".persona-extra13").forEach(function (element) {
+            element.style.display = 'none'; // o 'inline' según el estilo original
+        });
+        
+        document.querySelectorAll(".persona-extra14").forEach(function (element) {
+            element.style.display = 'none'; // o 'inline' según el estilo original
+        });
+        
+        document.querySelectorAll(".persona-extra15").forEach(function (element) {
+            element.style.display = 'none'; // o 'inline' según el estilo original
+        });
+
+        document.querySelectorAll(".persona-extra16").forEach(function (element) {
+            element.style.display = 'none'; // o 'inline' según el estilo original
+        });
+        
+        document.querySelectorAll(".persona-extra17").forEach(function (element) {
+            element.style.display = 'none'; // o 'inline' según el estilo original
+        });
+        
+        document.querySelectorAll(".persona-extra18").forEach(function (element) {
+            element.style.display = 'none'; // o 'inline' según el estilo original
+        });
+    }
 
 
 
@@ -464,13 +550,13 @@ document.addEventListener('keydown', function(event) {
     /* 4-6-9 (personas extra) / 3-5-8 (personas) / 2-7-10 (objectes)*/
     let gameMap = [
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1,20, 1, 1, 1, 1, 1,21, 1, 1, 1, 1,22, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 0, 0,19, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
+        [1, 1, 0, 1, 1, 1, 1, 1, 0, 0,19, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 9, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
         [1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1,10, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1,23, 1, 1],
         [1, 1, 0, 0, 7, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 3, 0, 0, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1,12, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 9, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
+        [1,12, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 5, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1,16, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1,24, 1, 1],
@@ -671,21 +757,6 @@ document.addEventListener('keydown', function(event) {
             gridContainer.appendChild(gridCell);
         }
     }   
-
-    function hideAllElements() {
-        document.querySelectorAll('.persona2').forEach(function(element) {
-            element.style.display = 'block'; // o el valor que corresponda a tu diseño
-        });
-        
-        document.querySelectorAll('.persona-extra2').forEach(function(element) {
-            element.style.display = 'block'; // o el valor que corresponda a tu diseño
-        });
-        
-        document.querySelectorAll('.libro').forEach(function(element) {
-            element.style.display = 'block'; // o el valor que corresponda a tu diseño
-        });
-        // Agregar aquí cualquier otro elemento que debas mostrar
-    }
 
 /*----------------------------------CAMBIAR MATRIU----------------------------------------------*/
 
