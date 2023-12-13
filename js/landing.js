@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded',function(){
                         "Desarrollador": "Desarrollador: "
                     },
                     {
-                        "Juego":"Juego 5",
-                        "Descripcion":"Descripcion 5",
+                        "Juego":"Invasión De Los Topos",
+                        "Descripcion":"En la última etapa del viaje de Laia, se encuentra con que para tener unas buenas instalaciones eléctricas, debe enfrentarse a unos topos. Con un martillo y buenos reflejos, intenta deshacerte de suficientes topos para que abandonen la zona y pueda proporcionar la electricidad necesaria a los habitantes de la zona.",
                         "Desarrollador": "Desarrollador: "
                     }
                 ],
@@ -108,8 +108,8 @@ document.addEventListener('DOMContentLoaded',function(){
                         "Desarrollador": "Desenvolupador: "
                     },
                     {
-                        "Juego":"Joc 5",
-                        "Descripcion":"Descripcio 5",
+                        "Juego":"Invasió Dels Talps",
+                        "Descripcion":"A l'última etapa del viatge de la Laia es troba que per poder tindre unes bones instal·lacions elèctriques s'ha d'enfrentar amb uns talps. Amb un martell i bons reflexos, intenta desfer-te de suficients talps per a que abandonin la zona i poder proporcionar la electricitat necessària als habitants de la zona.",
                         "Desarrollador": "Desenvolupador: "
                     }
                 ],
@@ -163,8 +163,8 @@ document.addEventListener('DOMContentLoaded',function(){
                         "Desarrollador": "Developer: "
                     },
                     {
-                        "Juego": "Game 5",
-                        "Descripcion": "Description 5",
+                        "Juego": "Mole Invasion",
+                        "Descripcion": "In the last stage of Laia's journey, she finds that in order to have good electrical facilities, she must face some moles. With a hammer and quick reflexes, try to get rid of enough moles so that they leave the area, allowing her to provide the necessary electricity to the inhabitants of the area.",
                         "Desarrollador": "Developer: "
                     }
                 ],
