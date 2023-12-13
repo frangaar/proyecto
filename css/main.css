@@ -381,7 +381,17 @@ div.text {
     left: 27%;
     z-index: 1000;
     display: none;
+    background-color: #D8261A;
+    color: white;
 }
+
+#bocadillo-cuadrado1:before{
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-top-color: #D8261A;
+}
+
 #bocadillo-cuadrado2{
     top: -24%;
     left: 49%;
@@ -401,7 +411,17 @@ div.text {
     top: -13%;
     left: 37%;
     z-index: 1000;
+    background-color: #c67131;
+    color: white;
 }
+
+#bocadillo-cuadrado3:before{
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-top-color: #c67131
+}
+
 #bocadillo-cuadrado4{
     top: -2%;
     left: 14%;
@@ -422,6 +442,14 @@ div.text {
     top: -10%;
     left: 10%;
     z-index: 1000;
+    background-color: #F6D900;
+}
+
+#bocadillo-cuadrado5:before{
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-top-color: #F6D900;
 }
 /* Bocadillo */
 
@@ -1264,4 +1292,8 @@ button.audio-close{
 
   #felicitacion > h1{
     font-size: 55px;
+  }
+
+  .fa-linkedin:hover{
+    cursor: pointer;
   }

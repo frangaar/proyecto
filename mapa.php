@@ -60,11 +60,11 @@
             <div class="bocadillo-cuadrado" id="bocadillo-cuadrado3">
                 <button type="button" id="audio-close3" class="btn-close audio-close"></button>
                 <div class="text">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. Mapmet, consectetur adipiscing elit. Map</p>
+                    <p>En un llogaret de Kenya amb falta d'energia, Laia, una valenta exploradora, s'embarca en una missió per obtenir un generador ocult a la jungla i portar electricitat a la comunitat. Enfronta desafiaments creats pel Mico Kong, superant-los amb astúcia i coneixements sobre electricitat. En assolir el generador, el Mico Kong, impressionat, permet que Laia ho activi, proporcionant finalment electricitat al llogaret i portant llum i esperança als seus habitants</p>
                 </div>
                 <button type="button" class="audio btn btn-primary" id="audio3" class="btn btn-primary"></button>
             </div>
-            <img src="img/punto.png" data-audio="audio/india.mp3" id="nivel3" class="nivel" name="kenia" data-status="noCompletado" data-jugable="false">
+            <img src="img/punto.png" data-audio="audio/kenia.mp3" id="nivel3" class="nivel" name="kenia" data-status="noCompletado" data-jugable="false">
             <img src="img/personajes/malik.png" id="malik" class="personaje" name="malik">
             <div class="bocadillo-cuadrado" id="bocadillo-cuadrado4">
                 <button type="button" id="audio-close4" class="btn-close audio-close"></button>

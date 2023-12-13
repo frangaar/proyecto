@@ -68,8 +68,9 @@
 
         
         if(isset($_SESSION['id'])){
+            
         
-            if (strcmp($_SESSION['rol'], "admin") == 0) {
+            if (strcmp($_SESSION['rol'], "1") == 0) {
         
                 header("Location: admin.php");
             }else{
