@@ -1,11 +1,12 @@
-const NUM_JUGADAS = 10, NUM_TAMBORES = 4;
-const efectosClick = [{img: 'effect-click-rojo', audio: 'audio-effect-rojo'}, {img: 'effect-click-amarillo', audio: 'audio-effect-amarillo'}, {img: 'effect-click-azul', audio: 'audio-effect-azul'}, {img: 'effect-click-verde', audio: 'audio-effect-verde'}],
+const NUM_JUGADAS = 10, NUM_TAMBORES = 4,
+    efectosClick = [{img: 'effect-click-rojo', audio: 'audio-effect-rojo'}, {img: 'effect-click-amarillo', audio: 'audio-effect-amarillo'}, {img: 'effect-click-azul', audio: 'audio-effect-azul'}, {img: 'effect-click-verde', audio: 'audio-effect-verde'}],
     exitGame = () => gameWin ? window.location.href = `../save.php?nivel=4+&tiempo=${tiempo}` : window.location.href = '../action_page.php',
     rellenarArrayOrden = () => Array.from({length: NUM_JUGADAS}, () => Math.floor(Math.random() * NUM_TAMBORES)),
     setImgsNotDraggable = () => document.getElementsByTagName('img').forEach(img => img.draggable = false),
-    startCrono = () => crono_interval = setInterval(() => tiempo++, 100),
+    startCrono = () => crono_interval = setInterval(() => tiempo++, 1000),
     addAnimacionRecompensa = () => document.getElementsByClassName('recompensa-items').forEach(img => img.classList.add('animacion-recompensa')),
-    addModalWinEvent = () => document.querySelector('.modal-win').addEventListener('shown.bs.modal', () => setTimeout(addAnimacionRecompensa, 500));
+    addModalWinEvent = () => document.querySelector('.modal-win').addEventListener('shown.bs.modal', () => setTimeout(addAnimacionRecompensa, 500)),
+    addSettingsListener = () => document.addEventListener('mousedown', e => settings_ondisplay ? !document.getElementsByClassName('option-btns').some(btn => btn.contains(e.target)) ? ocultarSettings(): null : null);
 
 let orden, turnoJugador, jugada, turno, i, droped_settings, undroped_settings, settings_intervalid_id, settings_ondisplay, pagemuted, gameWin, crono_interval, 
     tiempo = errores = 0;
@@ -19,29 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
     addModalWinEvent()
 });
 
-function addSettingsListener(){
-    document.addEventListener('mousedown', e => {
-        if (settings_ondisplay){
-            const btns = Array.from(document.getElementsByClassName('options-setting-btn'));
-            btns.push(document.querySelector('.option-btn'));
-            let i = 0, isChild = false;
-            while (!isChild && i < btns.length){
-                btns[i].contains(e.target) ? isChild = true : i++;
-            }
-            !isChild ? ocultarSettings() : null;
-        }
-    });
-}
-
 function addModalErrorListener(){
     const modal_error = document.getElementById('modal-error')
     modal_error.addEventListener('shown.bs.modal', () =>{
         setTimeout(()=> {
             document.getElementById('btn-error-retry').style.transform = 'scale(1)';
-            setTimeout(()=> {
-                document.getElementById('btn-error-close-game').style.transform = 'scale(1)'; 
-                document.getElementById('btn-error-back-to-menu').style.transform = 'scale(1)';
-            }, 250);
+            setTimeout(() => ['btn-error-close-game', 'btn-error-back-to-menu'].forEach(id => document.getElementById(id).style.transform = 'scale(1)'), 250);
         }, 300);
     });
     modal_error.addEventListener('hide.bs.modal', () => {modal_error.querySelector('.modal-content').children.forEach(btns => btns.style.transform = 'scale(0)')});
@@ -63,29 +47,32 @@ function setAmbientAudio(){
     setTimeout(() => audioForest.play(), 5000);
 }
 
-function setInterface(){
+function changeInterface(interfaceIn){
     const frame = document.querySelector('.frame');
-    frame.classList.add('starting-game');
+    const [firstClass, secondClass] = interfaceIn ? ['starting-game', 'interface-in'] : ['interface-in', 'starting-game'];
+    frame.classList.toggle(firstClass);
+    resetGame();
     setTimeout(() => {
-        frame.classList.add('interface-in')
-        startCrono();
-        setTimeout(ejecutarMuestra, 1500);
-    }, 1250)
-}
-
-function backtoMenu(){
-    const frame = document.querySelector('.frame');
-    const frame_effect = document.querySelector('.frame-effect');
-    frame.classList.remove('interface-in')
-    frame_effect.removeAttribute('style');
-    setTimeout(() => {
-        frame.classList.remove('starting-game');
-        document.querySelector('.progress-bar').style.width = '0%';
-        setVariableValues();
-        clearInterval(crono_interval);
+        frame.classList.toggle(secondClass);
+        interfaceIn ? actionInterfaceIn() : clearInterval(crono_interval);
     }, 1250);
 }
 
+function actionInterfaceIn(){
+    startCrono();
+    setTimeout(ejecutarMuestra, 1500);
+}
+
+function resetGame(){
+    document.querySelector('.frame-effect').removeAttribute('style');
+    document.querySelector('.progress-bar').style.width = '0%';
+    setVariableValues();
+}
+
+function retry(){
+    resetGame();
+    ejecutarMuestra();
+}
 
 function ejecutarMuestra(){
     setTimeout(() =>{
@@ -93,7 +80,7 @@ function ejecutarMuestra(){
             const intervalId = setInterval(() => {
                 if (i <= jugada) {
                     animarClick(orden[i]);
-                    i++;                    
+                    i++;               
                 } else {
                     clearInterval(intervalId);
                     turnoJugador = true;
@@ -142,15 +129,6 @@ function controlInputjugador(num){
             new bootstrap.Modal(document.getElementById('modal-error')).show();
         }
     }
-}
-
-
-function retry(){
-    const frame_effect = document.querySelector('.frame-effect');
-    frame_effect.removeAttribute('style');
-    document.querySelector('.progress-bar').style.width = '0%';
-    setVariableValues();
-    ejecutarMuestra();
 }
 
 function animarClick(num){
