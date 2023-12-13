@@ -28,7 +28,7 @@ html{
 }
 
 .botonSalir{
-    right: 180px;
+    right: 165px;
     font-family: pixel;
     text-align: center;
     z-index: 999;
@@ -43,6 +43,12 @@ html{
     top: 85px;
     border: solid black 1px;
     border-radius: 5px;
+}
+
+:hover.botonSalir{
+    transition: 0.5s;
+    width: 110px;
+    height: 70px;
 }
 
 /* Estilo para el temporizador */
@@ -75,7 +81,7 @@ html{
 /*----------------------------------MODALS----------------------------------------------*/
 
 .modal {
-    background-color: #33333360;
+    background-color: #000000a5;
     display: none;
     position: fixed; /* Cambiar a absolute */
     top: 0;
@@ -86,6 +92,8 @@ html{
     height: 100%;
     z-index: 999;
 }
+
+
 
 .modal-content {
     font-family: pixel;
