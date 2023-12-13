@@ -86,9 +86,23 @@
         <!-- Modal -->
         <div id="confirmarSortida" class="modal">
             <div class="modal-content">
-                <span class="close">&times;</span>
-                <p>El juego no ha terminado. ¿Seguro que quieres salir?</p>
-                <button id="confirmarSalir">Salir</button>
+                <div class="modal-body">
+                    <p>El juego no ha terminado. <br>¿Seguro que quieres salir?<br> Si sales tendrás que volver a empezar.</p>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="boton-si">
+                                <button type="button" id="confirmarSalir" class="btn btn-primary">Sí</button>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="boton-no">
+                                <button type="button" id="no" class="btn btn-primary">No</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
