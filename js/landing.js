@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded',function(){
         {
             "Castellano":
             {
+                "Nombre":"Nombre",
                 "Titulo":"El Viaje Renovable de Laia",
                 "Banner":"<p>En el apasionante juego <span style='font-weight:bold'>'El Viaje Renovable de Laia'</span>, te sumergirás en la emocionante odisea de una valiente mujer llamada Laia, cuya misión es llevar energía renovable a una escuela mediante desafiantes pruebas alrededor del mundo. Laia se embarca en un viaje épico que la llevará a través de exóticos destinos, como la vibrante India, la salvaje Kenia y la exuberante Brasil.</p><p>Laia, dotada de una mente aguda y habilidades excepcionales, enfrentará desafíos de lógica, matemáticas y geografía en cada país, resolviendo intrincados acertijos para obtener piezas esenciales que alimentarán de energía sostenible a la escuela. Estas piezas, impregnadas de tecnologías renovables innovadoras, representan la clave para un futuro más verde y sostenible.</p>                <p>Para financiar su viaje, Laia se sumerge en la bulliciosa ciudad de Barcelona, donde realiza encargos que le permiten ganar el dinero necesario. La ciudad se convierte en su patio de juegos, mientras Laia equilibra el trabajo, la vida cotidiana y la emocionante búsqueda de las piezas que transformarán vidas.</p>                <p>A medida que avanzas en el juego, descubrirás la riqueza cultural y la diversidad de los destinos, mientras Laia supera desafíos que van más allá de las pruebas mentales, enfrentándose a situaciones inesperadas y forjando amistades que la ayudarán en su noble causa.</p><p>En <span style='font-weight:bold'>'El Viaje Renovable de Laia'</span>, únete a Laia en su emocionante travesía por el mundo, donde cada paso la acerca más a la meta de iluminar el futuro con energía limpia y sostenible. ¿Tienes lo necesario para superar los desafíos y ayudar a Laia a cumplir su misión?</p><p style='font-weight:bold'>¡El destino del planeta está en tus manos!</p>",
                 "Registro":"Registro",
@@ -80,6 +81,7 @@ document.addEventListener('DOMContentLoaded',function(){
         {
             "Catalan":
             {
+                "Nombre":"Nom",
                 "Titulo":"El Viatge Renovable de Laia",
                 "Registro":"Registre",
                 "MasInfo":"Clica aquí si vols saber més!!",
@@ -134,6 +136,7 @@ document.addEventListener('DOMContentLoaded',function(){
         {
             "Ingles":
             {
+                "Nombre":"Name",
                 "Titulo":"Laia's Renewable Journey",
                 "Registro": "Registration",
                 "MasInfo":"Click here if you want to know more!!",
@@ -191,6 +194,8 @@ document.addEventListener('DOMContentLoaded',function(){
     let esp = document.getElementById('esp');
     let ing = document.getElementById('ing');
 
+    let lblNombreLogin = document.getElementById('lblNombreLogin');
+    let lblNombreRegistro = document.getElementById('lblNombreRegistro');
     let btnRegistro = document.getElementById('btnLandingRegistro');
     let lblTitulo = document.querySelector('.landing-page #titulo');
     let juegosHeader = document.querySelector('.games-section .landing-juegos h2');
@@ -204,11 +209,12 @@ document.addEventListener('DOMContentLoaded',function(){
 
     esp.addEventListener('click', function cambiarIdioma(event){
 
-        // headerSectionIntro.innerHTML = idiomasLanding[0]['Castellano'].Banner;
         lblTitulo.innerHTML = idiomasLanding[0]['Castellano'].Titulo;
         btnRegistro.value = idiomasLanding[0]['Castellano'].Registro;
         bocataSaberMasParrafo.innerHTML = idiomasLanding[0]['Castellano'].MasInfo;
         juegosHeader.innerHTML = idiomasLanding[0]['Castellano'].Juegos;
+        lblNombreLogin.innerHTML = idiomasLanding[0]['Castellano'].Nombre;
+        lblNombreRegistro.innerHTML = idiomasLanding[0]['Castellano'].Nombre;
 
         for (let index = 0; index < tituloJuegos.length; index++) {
             
@@ -227,11 +233,12 @@ document.addEventListener('DOMContentLoaded',function(){
 
     cat.addEventListener('click', function cambiarIdioma(event){
 
-        // headerSectionIntro.innerHTML = idiomasLanding[1]['Catalan'].Banner;
         lblTitulo.innerHTML = idiomasLanding[1]['Catalan'].Titulo;
         btnRegistro.value = idiomasLanding[1]['Catalan'].Registro;
         bocataSaberMasParrafo.innerHTML = idiomasLanding[1]['Catalan'].MasInfo;
         juegosHeader.innerHTML = idiomasLanding[1]['Catalan'].Juegos;
+        lblNombreLogin.innerHTML = idiomasLanding[1]['Catalan'].Nombre;
+        lblNombreRegistro.innerHTML = idiomasLanding[1]['Catalan'].Nombre;
 
         for (let index = 0; index < tituloJuegos.length; index++) {
             
@@ -250,11 +257,12 @@ document.addEventListener('DOMContentLoaded',function(){
     
     ing.addEventListener('click', function cambiarIdioma(event){
 
-        // headerSectionIntro.innerHTML = idiomasLanding[1]['Catalan'].Banner;
         lblTitulo.innerHTML = idiomasLanding[2]['Ingles'].Titulo;
         btnRegistro.value = idiomasLanding[2]['Ingles'].Registro;
         bocataSaberMasParrafo.innerHTML = idiomasLanding[2]['Ingles'].MasInfo;
         juegosHeader.innerHTML = idiomasLanding[2]['Ingles'].Juegos;
+        lblNombreLogin.innerHTML = idiomasLanding[2]['Ingles'].Nombre;
+        lblNombreRegistro.innerHTML = idiomasLanding[2]['Ingles'].Nombre;
 
         for (let index = 0; index < tituloJuegos.length; index++) {
             

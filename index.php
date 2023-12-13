@@ -50,9 +50,10 @@
                 <!-- <a href="ranking.php"><input type="button" id="btnRanking" class="btn btn-primary cursor botones" value="Ranking"></input></a> -->
             </div>
                 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
-                    <div class="col">
+                    <div class="col juegos-banner">
                       <div class="card h-100">
-                        <img src="img/escenarios/spain_portada.png" class="card-img-top" alt="...">
+                        <img src="img/escenarios/spain_portada.png" class="card-img-top" id="spain_static" alt="...">
+                        <img src="img/landing_gifs/spain.gif" class="card-img-top" id="spain_gif" alt="">
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
                           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
@@ -62,7 +63,7 @@
                     </div>
                     <div class="col juegos-banner" id="india">
                       <div class="card h-100">
-                        <img src="img/escenarios/india_portada.png" class="card-img-top" id="india_static" alt="">
+                        <img src="img/escenarios/india_portada.png" class="card-img-top" alt="">
                         <img src="img/landing_gifs/india.gif" class="card-img-top" id="india_gif" alt="">
                         <div class="card-body">
                           <h5 class="card-title">Luz Sostenible</h5>
@@ -97,6 +98,7 @@
                     <div class="col juegos-banner">
                       <div class="card h-100">
                         <img src="img/escenarios/brasil2_portada.png" class="card-img-top" alt="...">
+                        <img src="img/landing_gifs/brasil2.gif" class="card-img-top" id="brasil2_gif" alt="">
                         <div class="card-body">
                           <h5 class="card-title">Card title</h5>
                           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
@@ -215,13 +217,13 @@
                                     <img src="img/logo.jpg">
                                 </div>
                                 <div class="input-group mb-3">    
-                                    <label for="nombre" class="form-label">Nom</label>
+                                    <label for="nombre" class="form-label" id="lblNombreLogin">Nom</label>
                                     <div class="col-sm-12">
                                         <input type="text" id="nombreLogin" class="form-control" name="user" placeholder="Escribe aquí tu usuario" aria-label="Username">
                                     </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <label for="pass" class="form-label">Clau</label>
+                                    <label for="pass" class="form-label">Password</label>
                                     <div class="col-sm-12">
                                         <input type="password" class="form-control" name="pass" placeholder="Escribe aquí tu password" aria-label="Passvord">
                                     </div>    
@@ -259,13 +261,13 @@
                                     <img src="img/logo.jpg">
                                 </div>
                                 <div class="input-group mb-3">    
-                                    <label for="nombre" class="form-label">Nom</label>
+                                    <label for="nombre" class="form-label" id="lblNombreRegistro">Nom</label>
                                     <div class="col-sm-12">
                                         <input type="text" id="nombreRegistro" class="form-control" name="user" placeholder="Escribe aquí tu usuario" aria-label="Username">
                                     </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <label for="pass" class="form-label">Clau</label>
+                                    <label for="pass" class="form-label">Password</label>
                                     <div class="col-sm-12">
                                         <input type="password" class="form-control" name="pass" placeholder="Escribe aquí tu password" aria-label="Passvord">
                                     </div>    

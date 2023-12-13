@@ -178,8 +178,8 @@
             $conn->commit();
 
         }catch (Exception $e) {
-        
-            $_SESSION['error'] = "Error al crear el usuario";
+            
+            mensajeError($e);
             $conn->rollBack();
         }
 
@@ -382,4 +382,19 @@
         return $anyos;
     }
 
+
+    function mensajeError($e){
+
+        switch ($e->errorInfo[1]) {
+            case '1062':
+                    $_SESSION['error'] = "El nombre de usuario ya existe";
+                break;
+            
+            case '1048':
+                $_SESSION['error'] = "El nombre/password no puede estar vacio";
+            break;
+            
+        }
+
+    }
 ?>
