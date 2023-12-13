@@ -22,7 +22,6 @@ body{
     left: 6%;
 }
 
-
 .frame{
     position: absolute;
     background-image: url('../media/fondo_original.gif');
@@ -40,11 +39,18 @@ body{
     transition: 1s;
 }
 
+.frame-effect.frame-effect-error{
+    box-shadow: inset 0px 0px 100px 0px rgb(255,0,0);
+    transition: 0s;
+}
+
+.frame-effect.frame-effect-win .confeti{
+    opacity: 1;
+}
 
 .starting-game.frame{
     background-position: bottom;
 }
-
 
 .titulo{
     position: absolute;
@@ -58,7 +64,6 @@ body{
 .starting-game .titulo{
     top: -100%;    
 }
-
 
 .titulo img{
     width: 100%;
@@ -103,7 +108,6 @@ body{
     filter: brightness(0.8);
     transition: 0s;
 }
-
 
 .tambores{
     position: absolute;
@@ -197,7 +201,6 @@ body{
     font-family: 'Permanent Marker', cursive;
 }
 
-
 #modal-howto .modal-content{
     height: 860px !important;
     background-image: url('../media/modal-bg.png');
@@ -274,10 +277,9 @@ body{
     height: 100%;
 }
 
-.error-btns{
-    color: rgba(0,0,0,0.7);
-    font-size: 80px;
-    padding-bottom: 15px;
+.img-efecto.img-efecto-shown{
+    opacity: 1;
+    transition: 0s;
 }
 
 #modal-error .modal-content{
@@ -299,8 +301,14 @@ body{
     transition: 0.5s;
     cursor: pointer;
     transform: scale(0);
+    color: rgba(0,0,0,0.7);
+    font-size: 80px;
+    padding-bottom: 15px;
 }
 
+.error-btns.error-btns-shown{
+    transform: scale(1);
+}
 
 .modal-backdrop{
     background-color: transparent;
@@ -345,7 +353,7 @@ body{
     transform: scale(0);
 }
 
-.options-setting-btn.shown{
+.options-setting-btn.opt_btn_shown{
     transform: scale(1);
 }
 
@@ -444,7 +452,7 @@ body{
     font-weight: 400;
 }
 
-.animacion-recompesa{
+.animacion-recompensa{
     animation: recompensaAnimacion;
     animation-duration: 1s;
 }

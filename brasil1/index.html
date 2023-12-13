@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ca">
     <head>
-        <title>Prototipo Proyecto</title>
+        <title>Ritmes Brasilers - El viatge Renobable de Laia</title>
         <meta charset="utf-8">  
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Russo+One&display=swap">
         <link rel="icon" href="https://politecnics.barcelona/wp-content/uploads/favicon-politecnics.png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" href="./style/bootstrap.min.css">
         <link rel="stylesheet" href="./style/style.css">
         <link rel="stylesheet" href="../css/main.css">
@@ -16,11 +16,11 @@
         <div id="fondo"></div>
         <div class="frame">
             <div class="audio-container">
-                <audio class="campire-audio" src="./media/audio/campire.mp3" loop></audio>
-                <audio class="forest-audio" src="./media/audio/forest.mp3" loop></audio>
-                <audio class="success-audio" src="./media/audio/success.mp3"></audio>
-                <audio class="error-audio" src="./media/audio/error.mp3"></audio>
-                <audio class="victory-audio" src="./media/audio/victory.mp3"></audio>
+                <audio class="campfire-audio" src="./media/audio/campfire.mp3" volume="0.6" loop></audio>
+                <audio class="forest-audio" src="./media/audio/forest.mp3" volume="1" loop></audio>
+                <audio class="success-audio" src="./media/audio/success.mp3" volume="1"></audio>
+                <audio class="error-audio" src="./media/audio/error.mp3" volume="1"></audio>
+                <audio class="victory-audio" src="./media/audio/victory.mp3" volume="1"></audio>
             </div>
             <div class="progress-bar-container">
                 <div class="progress-bar-frame">
@@ -52,10 +52,10 @@
                     <audio id="audio-effect-verde" src="./media/audio/lower.mp3"></audio>
                 </div>
                 <div class="hitboxes">
-                    <div class="hitbox" onmousedown="controlInputjugador(0)"></div>
-                    <div class="hitbox" onmousedown="controlInputjugador(1)"></div>
-                    <div class="hitbox" onmousedown="controlInputjugador(2)"></div>
-                    <div class="hitbox" onmousedown="controlInputjugador(3)"></div>
+                    <div class="hitbox" onmousedown="controlTurnoJugador(0)"></div>
+                    <div class="hitbox" onmousedown="controlTurnoJugador(1)"></div>
+                    <div class="hitbox" onmousedown="controlTurnoJugador(2)"></div>
+                    <div class="hitbox" onmousedown="controlTurnoJugador(3)"></div>
                 </div>
             </div>
             <div class="settings-btn-container">
@@ -63,7 +63,7 @@
                     <div id="exit-btn" class="options-setting-btn option-btns" onclick="exitGame()"><i class="fa-solid fa-right-from-bracket"></i></div>
                     <div id="volume-btn" class="options-setting-btn option-btns" onclick="actionVolume()"><i class="fa-solid fa-volume-high"></i></div>
                 </div>
-                <div class="option-btn option-btns" onclick="actionSettings()"><i class="fa-solid fa-gear"></i></div>
+                <div class="option-btn option-btns" onclick="toggleSettings()"><i class="fa-solid fa-gear"></i></div>
             </div>
             <div class="modals-container">
                 <div class="modal fade" id="modal-howto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -102,7 +102,7 @@
                                     <div class="recompensas-title">RECOMPENSAS</div>
                                     <div class="recompensas-descripcion">
                                         <img class="recompensa-items" src="./media/cable.png">
-                                        <img class="recompensa-items" src="./media/plug.png" style="animation-delay: 0.5s;">
+                                        <img class="recompensa-items" src="./media/plug.png" style="animation-delay: 1s;">
                                     </div>
                                 </div>  
                                 <div class="win-estadisticas-container">
@@ -110,20 +110,15 @@
                                     <div class="estadisticas-descripcion">
                                         <div class="estadisticas-items">
                                             <div>Tiempo:</div>
-                                            <div class="estadisticas-spacer"></div>
-            
-                                            <div class="tiempo-result">40s</div>
+                                            <div class="tiempo-result"></div>
                                         </div>
                                         <div class="estadisticas-items">
-                                            <div>Errores:</div>
-                                            <div class="estadisticas-spacer"></div>
-            
-                                            <div class="errores-result">8</div>
+                                            <div>Errores:</div>            
+                                            <div class="errores-result"></div>
                                         </div>
                                         <div class="estadisticas-items">
                                             <div>Puntuación:</div>
-                                            <div class="estadisticas-spacer"></div>
-                                            <div class="puntos-result">100pts</div>
+                                            <div class="puntos-result"></div>
                                         </div>
                                     </div>
                                 </div>
