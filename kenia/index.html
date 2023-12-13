@@ -41,13 +41,15 @@
     </div>
     <div id="buttonContinue">
         <div class="menu_de_inico" id="menu_de_inicio">
-            <h1 class="titleMenu" id="title">Laia A Kenia</h1>
-            <div class="showLaia"></div>
+            <!-- <h1 class="titleMenu" id="title">Laia A Kenia</h1> -->
+            <div class="showLaia" id="laia"></div>
             <ul id="buttonAceptar">
-                <li><span onclick="startGame()" id="playButton">Jugar</span></li>
-                <li id="controls"><span onclick="showControls()">Controls</span></li>
-                <li id="exitButton"><span id="credits/exit">Credites</span></li>
-                <li id="exit"><span onclick="exitGame()">Sortir al mapa</span></li>
+                <li>
+                    <span onclick="startGame()" id="playButton" class="spans"></span>
+                </li>
+                <li id="controls"><span onclick="showControls()"></span></li>
+                <li id="exitButton"><span id="credits/exit"></span></li>
+                <li id="exit"><span onclick="exitGame()" id="idSpanExit" class="spans"></span></li>
             </ul>
         </div>
     </div>
@@ -91,21 +93,26 @@
         <div class="container" id="containerMessageImportant">
             <p id="informativeText"></p>
             <ul id="buttonSureExit">
-                <li><span onclick="exitSureOption()" id="sureToExit">Sortir al mapa</span></li>
-                <li><span onclick="goBackInSureOption()">Enrere</span></li>
+                <li><span onclick="exitSureOption()" id="sureToExit" class="spans"></span></li>
+                <li><span onclick="goBackInSureOption()" id="goMenuBack" class="spans"></span></li>
             </ul>
         </div>
     </div>
     <div class="selectorDeNivel" id="selectorDeNivel">
         <div class="container" id="containerLevelSelector">
-            <p id="levelSelectorTitle"></p>
+            <div class="skulls">
+                <img src="../kenia/img/skull-diff.png" alt="" class="levelSkull" id="skull1">
+                <img src="../kenia/img/skull-diff.png" alt="" class="levelSkull" id="skull2">
+                <img src="../kenia/img/skull-diff.png" alt="" class="levelSkull" id="skull3">
+                <img src="../kenia/img/skull-diff.png" alt="" class="levelSkull" id="skull4">
+            </div>
             <ul id="level_characterSelected">
-                <li class="lvl"><span id="diff1">Fácil</span></li>
-                <li class="lvl"><span id="diff2">Normal</span></li>
-                <li class="lvl"><span id="diff3">Difícil</span></li>
-                <li class="lvl"><span id="diff4">Expert</span></li>
+                <li class="lvl"><span id="diff1" class="spans diff">Fácil</span></li>
+                <li class="lvl"><span id="diff2" class="spans diff">Normal</span></li>
+                <li class="lvl"><span id="diff3" class="spans diff">Difícil</span></li>
+                <li class="lvl"><span id="diff4" class="spans diff">Experte</span></li>
             </ul>
-            <p id="lvlDescription"></p>
+            <p id="lvlDescription">Escull la dificultad a la que vols Jugar</p>
         </div>
     </div>
     <div id="lvl1_lvl2">

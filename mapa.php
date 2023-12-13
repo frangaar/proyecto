@@ -60,29 +60,29 @@
             <div class="bocadillo-cuadrado" id="bocadillo-cuadrado3">
                 <button type="button" id="audio-close3" class="btn-close audio-close"></button>
                 <div class="text">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. Mapmet, consectetur adipiscing elit. Map</p>
+                    <p>En un llogaret de Kenya amb falta d'energia, Laia, una valenta exploradora, s'embarca en una missió per obtenir un generador ocult a la jungla i portar electricitat a la comunitat. Enfronta desafiaments creats pel Mico Kong, superant-los amb astúcia i coneixements sobre electricitat. En assolir el generador, el Mico Kong, impressionat, permet que Laia ho activi, proporcionant finalment electricitat al llogaret i portant llum i esperança als seus habitants</p>
                 </div>
                 <button type="button" class="audio btn btn-primary" id="audio3" class="btn btn-primary"></button>
             </div>
-            <img src="img/punto.png" data-audio="audio/india.mp3" id="nivel3" class="nivel" name="kenia" data-status="noCompletado" data-jugable="false">
+            <img src="img/punto.png" data-audio="audio/kenia.mp3" id="nivel3" class="nivel" name="kenia" data-status="noCompletado" data-jugable="false">
             <img src="img/personajes/malik.png" id="malik" class="personaje" name="malik">
             <div class="bocadillo-cuadrado" id="bocadillo-cuadrado4">
                 <button type="button" id="audio-close4" class="btn-close audio-close"></button>
                 <div class="text">
-                    <p>Endinsa't en un viatge musical per Brasil amb 'Ritmes Brasilers'! Desafia els teus sentits tocant tambors en seqüències encantadores, il·luminant el ritme de les vibrants tradicions brasilianes. Converteix-te en el mestre del tambor i descobreix la màgia de la música brasilera a cada cop.</p>
+                    <p>Endinsa't en un viatge musical per Brasil amb 'Ritmes Brasilers'! Desafia els teus sentits tocant tambors en seqüències encantadores, il·luminant el ritme de les vibrants tradicions brasileres. Converteix-te en el mestre del tambor i descobreix la màgia de la música brasilera a cada cop.</p>
                 </div>
                 <button type="button" class="audio btn btn-primary" id="audio4" class="btn btn-primary"></button>
             </div>
-            <img src="img/punto.png" data-audio="audio/india.mp3" id="nivel4" class="nivel" name="brasil1" data-status="noCompletado" data-jugable="false">
+            <img src="img/punto.png" data-audio="audio/brasil1.mp3" id="nivel4" class="nivel" name="brasil1" data-status="noCompletado" data-jugable="false">
             <img src="img/personajes/cauan.png" id="cauan" class="personaje" name="cauan">
             <div class="bocadillo-cuadrado" id="bocadillo-cuadrado5">
                 <button type="button" id="audio-close5" class="btn-close audio-close"></button>
                 <div class="text">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. Mapmet, consectetur adipiscing elit. Map</p>
+                    <p>A l'última etapa del viatge de la Laia es troba que per poder tindre unes bones instal·lacions elèctriques s'ha d'enfrentar amb uns talps. Amb un martell i bons reflexos, intenta desfer-te de suficients talps per a que abandonin la zona i poder proporcionar la electricitat necessària als habitants de la zona</p>
                 </div>
                 <button type="button" class="audio btn btn-primary" id="audio5" class="btn btn-primary"></button>
             </div>
-            <img src="img/punto.png" data-audio="audio/india.mp3" id="nivel5" class="nivel" name="brasil2" data-status="noCompletado" data-jugable="false">  
+            <img src="img/punto.png" data-audio="audio/brasil2.mp3" id="nivel5" class="nivel" name="brasil2" data-status="noCompletado" data-jugable="false">  
             <div id="linea1" class="linea"></div>
             <div id="linea2" class="linea"></div>
             <div id="linea3" class="linea"></div>
@@ -91,5 +91,15 @@
         </div>
     </div>
 
+    <div id="mensajeFinalContainer">
+        <img src="img/pergamino.png" id="pergamino">
+        <div id="felicitacion">
+            <h1>¡Enhorabuena <?php echo $_SESSION['user'] ?>, eres un aventurero/a incansable!</h1>
+            <h2>Has superado "El Viaje Renovable de Laia" con destreza sin igual.</h2>
+            <h2>Con objetos y energías renovables, iluminaste el camino,
+                Tu dedicación y habilidad brillan como la luz que has traído. ¡Felicidades, campeón/a! </h2>
+        </div>
+    </div>
+    
 </body>
 </html>

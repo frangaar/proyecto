@@ -25,6 +25,9 @@ heart2.style.display = 'none'
 let twoLifes = false
 
 let focusPlayButton = document.getElementById('playButton')
+let spanExit = document.getElementById('idSpanExit')
+// let spanClass = document.querySelectorAll('.spans');
+
 let exitButton = document.getElementById('credits/exit')
 let exitMenuButton = document.getElementById('exitButton')
 let exit = document.getElementById('exit')
@@ -39,11 +42,24 @@ let laia = document.getElementById('laiaStory')
 let start_menu = document.getElementById('menu_de_inicio')
 let gameCompleted = false 
 let landingText = document.getElementById('goingToTheLanding')
+let laiaDiv  = document.getElementById('laia')
 let game = false
 
 var play = false
 let viewControls = false
 var game_is_started = false
+
+/** Animacion entrada */
+divButton.addEventListener('animationstart', function () {
+    laiaDiv.style.display = 'none'
+    spanExit.style.display = 'none'
+    focusPlayButton.style.display = 'none'
+})
+divButton.addEventListener('animationend', function () {
+    laiaDiv.style.display = null
+    spanExit.style.display = 'block'
+    focusPlayButton.style.display = 'block'
+})
 
 /** Función para empezar el juego.*/
 function buttonAccept() {
@@ -129,11 +145,16 @@ function exitGame() {
         window.location.href = '../save.php?nivel=3&tiempo=' + recuperedDates;
         localStorage.removeItem(stringS1)
     } else {
-        botonAceptar.style.display = 'none'
-        divButton.style.display = 'none'
-        landingText.style.display = 'block'
-        text.innerHTML = "Compte, no t'has passat el joc, si te'n vas ara no es guardarà la partida."
-        // window.location.href = '../action_page.php';
+        divButton.style.animation = 'animationMenuExit 2s linear'
+        divButton.addEventListener('animationend', function () {
+            divButton.style.transform = 'scale(2.3)'
+            divButton.style.marginTop = '664px'
+            botonAceptar.style.display = 'none'
+            // divButton.style.display = 'none'
+            landingText.style.display = 'block'
+            text.innerHTML = "Compte, no t'has passat el joc, si te'n vas ara no es guardarà la partida."
+            // window.location.href = '../action_page.php';   
+        })
     }
 }
 function exitSureOption() {
@@ -143,9 +164,18 @@ function exitSureOption() {
 }
 function goBackInSureOption() {
     botonAceptar.style.display = null
-    divButton.style.display = null
+    // divButton.style.display = null
     landingText.style.display = 'none'
-    // window.location.href = 'http://localhost/proyecto/kenia/index.html'
+    divButton.style.animation = 'animationMenuExit2 2s linear'
+    divButton.addEventListener('animationend', function (){
+        divButton.style = 'scale(1)'
+        divButton.style.marginTop = '0px'
+        botonAceptar.style.display = null
+        // divButton.style.display = null
+        landingText.style.display = 'none'
+        // window.location.href = 'http://localhost/proyecto/kenia/index.html'
+    })
+    
 }
 /** Funcion para mostrar todos los controles para jugar. */
 function showControls() {
@@ -176,7 +206,6 @@ function showControls() {
  */
   let container2 = document.getElementById('selectorDeNivel')
   let level = document.getElementById('level_characterSelected')
-  let title2 = document.getElementById('levelSelectorTitle')
   let lvlDescription = document.getElementById('lvlDescription')
   let span = document.getElementsByTagName('span')
   let dif1 = false
@@ -225,69 +254,92 @@ function startGame() {
 }
 function selectDificult() {
     return new Promise((resolve) => {
-        let difficult = false 
-        divButton.style.pointerEvents = 'none'
-        container2.style.display = 'block'
-        title2.innerHTML = 'Escull la dificultat a la que vols jugar'
-        for (const spans of span) {
-            spans.addEventListener('mouseenter', function() {
-                lvlDescription.style.display = null
-                if (spans.id === 'diff1') {
-                    lvlDescription.innerHTML = 'Si vols jugar sense cap mena de dificultat, hi haurà cuatre barrils únicament, i es mouran a una velocitat lenta, tindràs dues vides.'
-                    dif1 = true
-                    dif2 = false
-                    dif3 = false
-                    dif4 = false
-                } else if (spans.id === 'diff2') {
-                    lvlDescription.innerHTML = "Per si vols disfrutar de l'historia amb una miqueta de dificultat, hi haurà cuatre barrils i es mouran a una velocitat més ràpida en comparació al nivell fàcil, tindràs una vida."
-                    dif1 = false
-                    dif2 = true
-                    dif3 = false
-                    dif4 = false
-                } else if (spans.id === 'diff3') {
-                    lvlDescription.innerHTML = 'Per si vols una experiència difícil, hi haurà cinc barrils i es mouran a una velocitat molt més ràpida en comparació al nivell mitjà, tindràs una vida.'
-                    dif1 = false
-                    dif2 = false
-                    dif3 = true
-                    dif4 = false
-                } else if (spans.id === 'diff4') {
-                    lvlDescription.innerHTML = 'Per als més experts, hi haurà set barrils i es mouran a una velocitat super ràpida, tindràs una vida. '
-                    dif1 = false
-                    dif2 = false
-                    dif3 = false
-                    dif4 = true
-                }
-              });
-              spans.addEventListener('mouseleave', function () {
-                lvlDescription.style.display = 'none'
-              })
-              spans.addEventListener('click', function() {
-                if (dif1) 
-                {
-                    player_life = 2
-                    barrel_velocity = 3
-                    num_of_barrels = 4
-                } else if (dif2)
-                {
-                    player_life = 1
-                    barrel_velocity = 4
-                    num_of_barrels = 4
-
-                } else if (dif3) 
-                {
-                    player_life = 1
-                    barrel_velocity = 5
-                    num_of_barrels = 5
-
-                } else if (dif4){
-                    player_life = 1
-                    barrel_velocity = 8
-                    num_of_barrels = 7
-                }
-                difficult = true
-                resolve(difficult)
-              });
-        }
+        divButton.style.animation = 'animationMenuDifficult 2s linear'
+        divButton.addEventListener('animationend', function () {
+            // divButton.style.width = '200%'
+            divButton.style.transform = 'scale(2.3)'
+            divButton.style.marginLeft = '1371px'
+            // start_menu.style.display = 'none'
+            let difficult = false 
+            divButton.style.pointerEvents = 'none'
+            container2.style.display = 'block'
+            let skull1 = document.getElementById('skull1')
+            let skull2 = document.getElementById('skull2')
+            let skull3 = document.getElementById('skull3')
+            let skull4 = document.getElementById('skull4')
+            const skulls = [skull1, skull2, skull3, skull4];
+            for (const spans of span) {
+                spans.addEventListener('mouseenter', function() {
+                    lvlDescription.style.display = null
+                    if (spans.id === 'diff1') {
+                        lvlDescription.innerHTML = 'Si vols jugar sense cap mena de dificultat, hi haurà cuatre barrils únicament, i es mouran a una velocitat lenta, tindràs dues vides.'
+                        dif1 = true
+                        dif2 = false
+                        dif3 = false
+                        dif4 = false
+                        for (let i = 0; i < skulls.length; i++) {
+                            skulls[i].style.display = i === 0 ? 'block' : 'none';
+                          }
+                    } else if (spans.id === 'diff2') {
+                        lvlDescription.innerHTML = "Per si vols disfrutar de l'historia amb una miqueta de dificultat, hi haurà cuatre barrils i es mouran a una velocitat més ràpida en comparació al nivell fàcil, tindràs una vida."
+                        dif1 = false
+                        dif2 = true
+                        dif3 = false
+                        dif4 = false
+                        for (let i = 0; i < skulls.length; i++) {
+                            skulls[i].style.display = i === 0 || i === 1  ? 'block' : 'none';
+                          }
+                    } else if (spans.id === 'diff3') {
+                        lvlDescription.innerHTML = 'Per si vols una experiència difícil, hi haurà cinc barrils i es mouran a una velocitat molt més ràpida en comparació al nivell mitjà, tindràs una vida.'
+                        dif1 = false
+                        dif2 = false
+                        dif3 = true
+                        dif4 = false
+                        for (let i = 0; i < skulls.length; i++) {
+                            skulls[i].style.display = i === 0 || i === 1 ||i === 2 ? 'block' : 'none';
+                          }
+                    } else if (spans.id === 'diff4') {
+                        lvlDescription.innerHTML = 'Per als més experts, hi haurà set barrils i es mouran a una velocitat super ràpida, tindràs una vida. '
+                        dif1 = false
+                        dif2 = false
+                        dif3 = false
+                        dif4 = true
+                        for (let i = 0; i < skulls.length; i++) {
+                            skulls[i].style.display = i === 0 || i === 1 ||i === 2 || i === 3 ? 'block' : 'none';
+                          }
+                    }
+                  });
+                  spans.addEventListener('mouseleave', function () {
+                    lvlDescription.innerHTML = 'Escull la dificultat a la que vols jugar'
+                  })
+                  spans.addEventListener('click', function() {
+                    if (dif1) 
+                    {
+                        player_life = 2
+                        barrel_velocity = 3
+                        num_of_barrels = 4
+                    } else if (dif2)
+                    {
+                        player_life = 1
+                        barrel_velocity = 4
+                        num_of_barrels = 4
+    
+                    } else if (dif3) 
+                    {
+                        player_life = 1
+                        barrel_velocity = 5
+                        num_of_barrels = 5
+    
+                    } else if (dif4){
+                        player_life = 1
+                        barrel_velocity = 8
+                        num_of_barrels = 7
+                    }
+                    difficult = true
+                    resolve(difficult)
+                  });
+            } 
+        })
     })
 }
 function selectCharacter() {
@@ -305,11 +357,31 @@ function selectCharacter() {
     c4.innerHTML = 'Mario Bross'
     let img = document.createElement('img')
     img.setAttribute('id', 'imgDescription')
+    let containerLevelSelector = document.getElementById('containerLevelSelector')
     lvlDescription.remove()
     container2.appendChild(img)
     return new Promise((resolve) => {
+        // start_menu.style.display = 'block'
+        containerLevelSelector.style.display = 'none'
+        divButton.style.animation = 'animationMenuDifficult2 1.2s linear'
+        divButton.addEventListener('animationend', function () {
+            // divButton.style.width = '100%'
+            laiaDiv.style.display = 'none'
+            spanExit.style.display = 'none'
+            focusPlayButton.style.display = 'none'
+            divButton.style.transform = 'scale(1.3)'
+            divButton.style.marginLeft = '0'
+            divButton.style.animation = 'animationMenuCharacter 2s linear'
+            divButton.addEventListener('animationend', function () {
+                containerLevelSelector.style.display = null
+                // divButton.style.width = '200%'
+                divButton.style.transform = 'scale(2.3)'
+                // divButton.style.marginLeft = '-1972px'
+                divButton.style.marginLeft = '-1370px'
+                // start_menu.style.display = 'none'
+            })
+        })
         let characterSelected = false
-        title2.innerHTML = 'Escull el personatge que vols utilitzar'
         for (const spans of span) {
             spans.addEventListener('mouseenter', function() {
                 img.style.display = null

@@ -963,7 +963,7 @@ function lightOn(){
         let alturaModal = document.querySelector('#jugar .modal-content');
         let mensaje = document.querySelector('#jugar .modal-content p');
         let rayos = document.getElementById('rayos');
-        mensaje.innerHTML = "Enhorabuena!!, has completado el juego y el colegio ya tiene luz. Puedes pasar al siguiente nivel";
+        mensaje.innerHTML = "Enhorabona!!, has completat el joc i el col·legi ja té llum. Pots passar al següent joc";
 
         btnIniciarJuego.style.display = "none";
         btnFinJuego.style.display = "block";
