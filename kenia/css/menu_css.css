@@ -382,7 +382,9 @@ li {
     /* top: 20%; */
     /* left: 25%; */
     position: fixed;
-    background-color: black;
+    background-image: url("../img/kenia-jungle(2).gif");
+    background-size: cover;
+    /* background-color: black; */
     width: 100%;
     height: 100%;
     /* display: grid; */
@@ -392,6 +394,8 @@ li {
 }
 .menu_de_inico {
 
+    background-image: url("../img/menu-inicio.png");
+    background-size: cover;
     /* position: absolute; */
     padding-top: 20px;
     text-align: center;
