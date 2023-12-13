@@ -35,7 +35,7 @@
                     <img src="./media/titulo.png">
                 </div>
                 <div class="titulo-btn-container">
-                    <div class="play" onclick="setInterface()"><i class="fa-solid fa-play"></i></div>
+                    <div class="play" onclick="changeInterface(true)"><i class="fa-solid fa-play"></i></div>
                     <div class="how-to-play" data-bs-toggle="modal" data-bs-target="#modal-howto"><i class="fa-solid fa-question"></i></div>
                 </div>
             </div>
@@ -60,10 +60,10 @@
             </div>
             <div class="settings-btn-container">
                 <div class="options-setting-btn-container">
-                    <div id="exit-btn" class="options-setting-btn" onclick="exitGame()"><i class="fa-solid fa-right-from-bracket"></i></div>
-                    <div id="volume-btn" class="options-setting-btn" onclick="actionVolume()"><i class="fa-solid fa-volume-high"></i></div>
+                    <div id="exit-btn" class="options-setting-btn option-btns" onclick="exitGame()"><i class="fa-solid fa-right-from-bracket"></i></div>
+                    <div id="volume-btn" class="options-setting-btn option-btns" onclick="actionVolume()"><i class="fa-solid fa-volume-high"></i></div>
                 </div>
-                <div class="option-btn" onclick="actionSettings()"><i class="fa-solid fa-gear"></i></div>
+                <div class="option-btn option-btns" onclick="actionSettings()"><i class="fa-solid fa-gear"></i></div>
             </div>
             <div class="modals-container">
                 <div class="modal fade" id="modal-howto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -88,7 +88,7 @@
                         <div class="modal-content">
                             <div id="btn-error-close-game" class="error-btns" data-bs-dismiss="modal" onclick="exitGame()"><i class="fa-solid fa-right-from-bracket"></i></i></div>
                             <div id="btn-error-retry" class="error-btns" onclick="retry()" data-bs-dismiss="modal"><i class="fa-solid fa-arrow-rotate-right"></i></div>
-                            <div id="btn-error-back-to-menu" class="error-btns" onclick="backtoMenu()" data-bs-dismiss="modal"><i class="fa-solid fa-house"></i></div>
+                            <div id="btn-error-back-to-menu" class="error-btns" onclick="changeInterface(false)" data-bs-dismiss="modal"><i class="fa-solid fa-house"></i></div>
     
                         </div>
                     </div>
