@@ -78,11 +78,11 @@
             <div class="bocadillo-cuadrado" id="bocadillo-cuadrado5">
                 <button type="button" id="audio-close5" class="btn-close audio-close"></button>
                 <div class="text">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. MapLorem ipsum dolor sit amet, consectetur adipiscing elit. Mapmet, consectetur adipiscing elit. Map</p>
+                    <p>A l'última etapa del viatge de la Laia es troba que per poder tindre unes bones instal·lacions elèctriques s'ha d'enfrentar amb uns talps. Amb un martell i bons reflexos, intenta desfer-te de suficients talps per a que abandonin la zona i poder proporcionar la electricitat necessària als habitants de la zona</p>
                 </div>
                 <button type="button" class="audio btn btn-primary" id="audio5" class="btn btn-primary"></button>
             </div>
-            <img src="img/punto.png" data-audio="audio/india.mp3" id="nivel5" class="nivel" name="brasil2" data-status="noCompletado" data-jugable="false">  
+            <img src="img/punto.png" data-audio="audio/brasil2.mp3" id="nivel5" class="nivel" name="brasil2" data-status="noCompletado" data-jugable="false">  
             <div id="linea1" class="linea"></div>
             <div id="linea2" class="linea"></div>
             <div id="linea3" class="linea"></div>
