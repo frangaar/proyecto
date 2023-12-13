@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <label for="pass" class="form-label">Clau</label>
+                        <label for="pass" class="form-label">Password</label>
                         <div class="col-sm-12">
                             <input type="password" class="form-control" name="pass" placeholder="Escribe aquí tu password" aria-label="Passvord">
                         </div>    
