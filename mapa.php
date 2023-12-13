@@ -69,11 +69,11 @@
             <div class="bocadillo-cuadrado" id="bocadillo-cuadrado4">
                 <button type="button" id="audio-close4" class="btn-close audio-close"></button>
                 <div class="text">
-                    <p>Endinsa't en un viatge musical per Brasil amb 'Ritmes Brasilers'! Desafia els teus sentits tocant tambors en seqüències encantadores, il·luminant el ritme de les vibrants tradicions brasilianes. Converteix-te en el mestre del tambor i descobreix la màgia de la música brasilera a cada cop.</p>
+                    <p>Endinsa't en un viatge musical per Brasil amb 'Ritmes Brasilers'! Desafia els teus sentits tocant tambors en seqüències encantadores, il·luminant el ritme de les vibrants tradicions brasileres. Converteix-te en el mestre del tambor i descobreix la màgia de la música brasilera a cada cop.</p>
                 </div>
                 <button type="button" class="audio btn btn-primary" id="audio4" class="btn btn-primary"></button>
             </div>
-            <img src="img/punto.png" data-audio="audio/india.mp3" id="nivel4" class="nivel" name="brasil1" data-status="noCompletado" data-jugable="false">
+            <img src="img/punto.png" data-audio="audio/brasil1.mp3" id="nivel4" class="nivel" name="brasil1" data-status="noCompletado" data-jugable="false">
             <img src="img/personajes/cauan.png" id="cauan" class="personaje" name="cauan">
             <div class="bocadillo-cuadrado" id="bocadillo-cuadrado5">
                 <button type="button" id="audio-close5" class="btn-close audio-close"></button>
@@ -91,5 +91,15 @@
         </div>
     </div>
 
+    <div id="mensajeFinalContainer">
+        <img src="img/pergamino.png" id="pergamino">
+        <div id="felicitacion">
+            <h1>¡Enhorabuena <?php echo $_SESSION['user'] ?>, eres un aventurero/a incansable!</h1>
+            <h2>Has superado "El Viaje Renovable de Laia" con destreza sin igual.</h2>
+            <h2>Con objetos y energías renovables, iluminaste el camino,
+                Tu dedicación y habilidad brillan como la luz que has traído. ¡Felicidades, campeón/a! </h2>
+        </div>
+    </div>
+    
 </body>
 </html>
