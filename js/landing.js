@@ -209,7 +209,6 @@ document.addEventListener('DOMContentLoaded',function(){
 
     esp.addEventListener('click', function cambiarIdioma(event){
 
-        // headerSectionIntro.innerHTML = idiomasLanding[0]['Castellano'].Banner;
         lblTitulo.innerHTML = idiomasLanding[0]['Castellano'].Titulo;
         btnRegistro.value = idiomasLanding[0]['Castellano'].Registro;
         bocataSaberMasParrafo.innerHTML = idiomasLanding[0]['Castellano'].MasInfo;
@@ -234,7 +233,6 @@ document.addEventListener('DOMContentLoaded',function(){
 
     cat.addEventListener('click', function cambiarIdioma(event){
 
-        // headerSectionIntro.innerHTML = idiomasLanding[1]['Catalan'].Banner;
         lblTitulo.innerHTML = idiomasLanding[1]['Catalan'].Titulo;
         btnRegistro.value = idiomasLanding[1]['Catalan'].Registro;
         bocataSaberMasParrafo.innerHTML = idiomasLanding[1]['Catalan'].MasInfo;
@@ -259,7 +257,6 @@ document.addEventListener('DOMContentLoaded',function(){
     
     ing.addEventListener('click', function cambiarIdioma(event){
 
-        // headerSectionIntro.innerHTML = idiomasLanding[1]['Catalan'].Banner;
         lblTitulo.innerHTML = idiomasLanding[2]['Ingles'].Titulo;
         btnRegistro.value = idiomasLanding[2]['Ingles'].Registro;
         bocataSaberMasParrafo.innerHTML = idiomasLanding[2]['Ingles'].MasInfo;
