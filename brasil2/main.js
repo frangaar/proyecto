@@ -1,4 +1,4 @@
-const minutsInicial = 0.1;
+const minutsInicial = 1;
 let tempsRestant = minutsInicial * 60;
 const temps = document.getElementById("temporitzador");
 let interval = setInterval(compteEnrere, 1000);
@@ -64,7 +64,7 @@ function asomaTopos() {
         if (numAleatorio <= 0.02) {
           topoVerde = document.getElementById("imatge1" + num);
           topoVerde.style.display = "block";
-        } else if (numAleatorio <= 0.08) {
+        } else if (numAleatorio <= 0.05) {
           topoRojo = document.getElementById("imatge2" + num);
           topoRojo.style.display = "block";
         } else {
@@ -73,7 +73,7 @@ function asomaTopos() {
         }
       }
 
-      setInterval(asomaTopos, 2000);
+      setTimeout(asomaTopos, 1000);
     }
   }
 }
@@ -114,7 +114,7 @@ function sumarPunts() {
 
     topoVerde.addEventListener("click", () => {
       if (tempsRestant > 0) {
-        puntsInicial += 20;
+        puntsInicial += 15;
         const punts = document.getElementById("puntuacio");
         punts.innerHTML = `${puntsInicial}`;
         topoVerde.src = "img/topo-golpeado-verde.png";
@@ -127,7 +127,7 @@ function sumarPunts() {
 
     topoRojo.addEventListener("click", () => {
       if (tempsRestant > 0) {
-        puntsInicial -= 10;
+        puntsInicial -= 20;
         const punts = document.getElementById("puntuacio");
         punts.innerHTML = `${puntsInicial}`;
         topoRojo.src = "img/topo-golpeado-rojo.png";
@@ -150,7 +150,7 @@ function musicaFons() {
 function jocAcabat() {
     console.log("Joc Acabat");
     audio.pause();
-    if (puntsInicial >= 20) {
+    if (puntsInicial >= 150) {
       victoria();
     }
 }
