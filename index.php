@@ -116,7 +116,7 @@
                         <div class="card mb-3 h-100">
                             <div class="row g-0">
                                 <div class="col-1 col-sm-2 col-md-4 mt-2 developer-img-container">
-                                <img src="img/game.jpg" class="img-fluid developers-img" alt="...">
+                                <img src="img/desarrolladores/david-foto.jpg" class="img-fluid developers-img" alt="...">
                                 </div>
                                 <div class="col col-md-8">
                                 <div class="card-body">
