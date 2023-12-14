@@ -85,18 +85,41 @@ function buttonAccept() {
 } 
 /** Funcion menú para cuando muera el jugador. */  
 function buttonDeath() {
-    back_Menu()
-    // window.location.href = 'http://localhost/proyecto/kenia/index.html'
+    // Container
+    start_menu.style.backgroundImage = 'url(../kenia/img/menu-muerte.png)'
+    // Laia 
+    laiaDiv.style.display = null
+
+    // DivButon
+    divButton.style.width = '100%'
+    divButton.style.pointerEvents = null
+    divButton.style.animation = 'none'
+    divButton.style.display = 'grid'
+    divButton.style.backgroundImage = 'none'
+    divButton.style.backgroundColor = 'transparent'
+    divButton.style.transform = 'none'
+    divButton.style.margin = '0'
+    
+    // Playing and Exit
+    botonAceptar.style.display = null
+    focusPlayButton.style.display = 'none'
+    spanExit.style.display = null
+    spanExit.addEventListener('click', back_Menu)
+    // spanExit.setAttribute('onclick', 'back_Menu()')
+    spanExit.style.backgroundImage = 'url(../kenia/img/home-boton.png)'
+    spanExit.style.left = '920px'
+    spanExit.style.top = '516px'
+    spanExit.className = 'spansPause'
+    // spanExit.setAttribute('class', 'spansPause')
+    exit.style.display = 'block'
+
+    audioBackground.pause()
+    level1_Map.style.filter = 'blur(2px)'
 }
 /** Función para menú pausa. */
 function pausePulsed() {
-    // start_menu.style.backgroundImage = 'url(../kenia/img/menu_pause.png)'
-    // start_menu.style.backgroundSize = 'cover'
-    // pauseMenu.style.display = 'block'
-    let spans = document.getElementsByClassName('.spans')
-    start_menu.style.width = '700px'
-    start_menu.style.height = '500px'
-    // viewControls = true
+    // Container
+    start_menu.style.backgroundImage = 'url(../kenia/img/menu-pause.png)'
     character.setAttribute('src', imgCharacter)
     imgLeft = 1
     imgRight = 1
@@ -107,10 +130,6 @@ function pausePulsed() {
 
     // Laia 
     laiaDiv.style.display = null
-
-    // spans
-    // spans.style.height = '109px'
-    // spans.style.width = '117px'
 
     // DivButon
     divButton.style.width = '100%'
@@ -125,24 +144,25 @@ function pausePulsed() {
     // Continue Playing and Exit
     botonAceptar.style.display = null
     focusPlayButton.style.display = null
-    focusPlayButton.setAttribute('onclick', 'buttonAccept()')
+    focusPlayButton.addEventListener('click', buttonAccept)
+    // focusPlayButton.setAttribute('onclick', 'buttonAccept()')
     focusPlayButton.style.backgroundImage = 'url(../kenia/img/returnGame-boton.png)'
-    focusPlayButton.style.left = '795px'
+    focusPlayButton.style.left = '832px'
     focusPlayButton.style.top = '516px'
-    focusPlayButton.setAttribute('class', 'spansPause')
+    focusPlayButton.className = 'spansPause'
+    // focusPlayButton.setAttribute('class', 'spansPause')
 
     spanExit.style.display = null
-    spanExit.setAttribute('onclick', 'back_Menu()')
+    spanExit.addEventListener('click', back_Menu)
+    // spanExit.setAttribute('onclick', 'back_Menu()')
     spanExit.style.backgroundImage = 'url(../kenia/img/home-boton.png)'
-    spanExit.style.left = '983px'
+    spanExit.style.left = '1008px'
     spanExit.style.top = '516px'
-    spanExit.setAttribute('class', 'spansPause')
+    spanExit.className = 'spansPause'
+    // spanExit.setAttribute('class', 'spansPause')
     exit.style.display = 'block'
 
     audioBackground.pause()
-    // buttonAcceptPause.style.display = 'block'
-    // exit.style.display = 'none'
-
     level1_Map.style.filter = 'blur(2px)'
     // title.innerHTML = 'Pause Mode'
     pause = true
@@ -161,8 +181,6 @@ function back_Menu() {
         sesion1 = localStorage.setItem(stringS1, timerCount)
     }
     window.location.href = 'http://localhost/proyecto/kenia/index.html'
-    // localStorage.removeItem(stringS1)
-    // localStorage.removeItem(stringS2)
 }
 /** Función para salir del juego. */
 function exitGame() {
@@ -179,10 +197,8 @@ function exitGame() {
             divButton.style.transform = 'scale(2.3)'
             divButton.style.marginTop = '664px'
             botonAceptar.style.display = 'none'
-            // divButton.style.display = 'none'
             landingText.style.display = 'block'
             text.innerHTML = "Compte, no t'has passat el joc, si te'n vas ara no es guardarà la partida."
-            // window.location.href = '../action_page.php';   
         })
     }
 }
@@ -193,16 +209,13 @@ function exitSureOption() {
 }
 function goBackInSureOption() {
     botonAceptar.style.display = null
-    // divButton.style.display = null
     landingText.style.display = 'none'
     divButton.style.animation = 'animationMenuExit2 2s linear'
     divButton.addEventListener('animationend', function (){
         divButton.style = 'scale(1)'
         divButton.style.marginTop = '0px'
         botonAceptar.style.display = null
-        // divButton.style.display = null
         landingText.style.display = 'none'
-        // window.location.href = 'http://localhost/proyecto/kenia/index.html'
     })
     
 }
@@ -211,7 +224,8 @@ function showControls() {
     if (viewControls) {
         controlsTitle.innerHTML = 'Controls'
         buttonGoMenu.innerHTML = 'Enrere'
-        buttonGoMenu.setAttribute('onclick', 'buttonAccept()')
+        buttonGoMenu.addEventListener('click', buttonAccept)
+        // buttonGoMenu.setAttribute('onclick', 'buttonAccept()')
         showCtrl.style.zIndex = 500
         containerControls.style.width = '1008px'
         containerControls.style.width = '836px'
@@ -220,14 +234,17 @@ function showControls() {
         containerGoMenu.style.top = '68px'
     } else {
         buttonGoMenu.innerHTML = 'Menu'
-        buttonGoMenu.setAttribute('onclick', 'buttonDeath()')
+        // buttonGoMenu.setAttribute('onclick', 'buttonDeath()')
+        buttonGoMenu.addEventListener('click', buttonDeath)
         level1_Map.style.display = 'none'
         botonAceptar.style.display = 'none'
         divButton.style.display = 'none'
     }
     showCtrl.style.display = 'block'
-    buttonGoMenu.style.left = '5px'
-    buttonGoMenu.style.top = '-40px'
+    buttonGoMenu.style.left = '57px'
+    buttonGoMenu.style.top = '59px'
+    // left: 57px;
+    // top: 59px;
     viewControls = false
 }
 /** Función para empezar el juego, aqui uso promesas para una condicional, las promesas son para manejar operaciones asíncronas, en este caso uso el boleano de dificult, el cual le hago return en la función de 
@@ -285,10 +302,8 @@ function selectDificult() {
     return new Promise((resolve) => {
         divButton.style.animation = 'animationMenuDifficult 2s linear'
         divButton.addEventListener('animationend', function () {
-            // divButton.style.width = '200%'
             divButton.style.transform = 'scale(2.3)'
             divButton.style.marginLeft = '1371px'
-            // start_menu.style.display = 'none'
             let difficult = false 
             divButton.style.pointerEvents = 'none'
             container2.style.display = 'block'
@@ -308,7 +323,7 @@ function selectDificult() {
                         dif4 = false
                         for (let i = 0; i < skulls.length; i++) {
                             skulls[i].style.display = i === 0 ? 'block' : 'none';
-                            skulls[i].setAttribute('src', '../kenia/img/skull-diff.png')
+                            skulls[i].src = '../kenia/img/skull-diff.png'
                           }
                     } else if (spans.id === 'diff2') {
                         lvlDescription.innerHTML = "Per si vols disfrutar de l'historia amb una miqueta de dificultat, hi haurà cuatre barrils i es mouran a una velocitat més ràpida en comparació al nivell fàcil, tindràs una vida."
@@ -318,7 +333,7 @@ function selectDificult() {
                         dif4 = false
                         for (let i = 0; i < skulls.length; i++) {
                             skulls[i].style.display = i === 0 || i === 1  ? 'block' : 'none';
-                            skulls[i].setAttribute('src', '../kenia/img/skull-diff.png')
+                            skulls[i].src = '../kenia/img/skull-diff.png'
                           }
                     } else if (spans.id === 'diff3') {
                         lvlDescription.innerHTML = 'Per si vols una experiència difícil, hi haurà cinc barrils i es mouran a una velocitat molt més ràpida en comparació al nivell mitjà, tindràs una vida.'
@@ -328,7 +343,7 @@ function selectDificult() {
                         dif4 = false
                         for (let i = 0; i < skulls.length; i++) {
                             skulls[i].style.display = i === 0 || i === 1 ||i === 2 ? 'block' : 'none';
-                            skulls[i].setAttribute('src', '../kenia/img/skull-diff-danger.png')
+                            skulls[i].src = '../kenia/img/skull-diff-danger.png'
                           }
                     } else if (spans.id === 'diff4') {
                         lvlDescription.innerHTML = 'Per als més experts, hi haurà set barrils i es mouran a una velocitat super ràpida, tindràs una vida. '
@@ -338,7 +353,8 @@ function selectDificult() {
                         dif4 = true
                         for (let i = 0; i < skulls.length; i++) {
                             skulls[i].style.display = 'block'
-                            skulls[i].setAttribute('src', '../kenia/img/skull-diff-danger.png')
+                            skulls[i].src = '../kenia/img/skull-diff-danger.png'
+                            // skulls[i].setAttribute('src', '../kenia/img/skull-diff-danger.png')
                           }
                     }
                   });
@@ -351,6 +367,7 @@ function selectDificult() {
                         player_life = 2
                         barrel_velocity = 3
                         num_of_barrels = 4
+
                     } else if (dif2)
                     {
                         player_life = 1
@@ -364,6 +381,7 @@ function selectDificult() {
                         num_of_barrels = 5
     
                     } else if (dif4){
+
                         player_life = 1
                         barrel_velocity = 8
                         num_of_barrels = 7
@@ -392,16 +410,15 @@ function selectCharacter() {
     c4.id = 'char4'
     c4.innerHTML = 'Mario Bross'
     let img = document.createElement('img')
-    img.setAttribute('id', 'imgDescription')
+    img.id = 'imgDescription'
+    // img.setAttribute('id', 'imgDescription')
     let containerLevelSelector = document.getElementById('containerLevelSelector')
     lvlDescription.remove()
     container2.appendChild(img)
     return new Promise((resolve) => {
-        // start_menu.style.display = 'block'
         containerLevelSelector.style.display = 'none'
         divButton.style.animation = 'animationMenuDifficult2 1.2s linear'
         divButton.addEventListener('animationend', function () {
-            // divButton.style.width = '100%'
             laiaDiv.style.display = 'none'
             spanExit.style.display = 'none'
             focusPlayButton.style.display = 'none'
@@ -410,11 +427,8 @@ function selectCharacter() {
             divButton.style.animation = 'animationMenuCharacter 2s linear'
             divButton.addEventListener('animationend', function () {
                 containerLevelSelector.style.display = null
-                // divButton.style.width = '200%'
                 divButton.style.transform = 'scale(2.3)'
-                // divButton.style.marginLeft = '-1972px'
                 divButton.style.marginLeft = '-1370px'
-                // start_menu.style.display = 'none'
             })
         })
         let characterSelected = false
@@ -423,28 +437,32 @@ function selectCharacter() {
                 img.style.display = null
                 if (spans.id === 'char1') 
                 {
-                    img.setAttribute('src', '../img/laiaDerechaParada.png')
+                    img.src = '../img/laiaDerechaParada.png'
+                    // img.setAttribute('src', '../img/laiaDerechaParada.png')
                     char1 = true
                     char2 = false
                     char3 = false
                     char4 = false
                 } else if (spans.id === 'char2') 
                 {
-                    img.setAttribute('src', '../img/personajes/malik.png')
+                    img.src = '../img/personajes/malik.png'
+                    // img.setAttribute('src', '../img/personajes/malik.png')
                     char1 = false
                     char2 = true
                     char3 = false
                     char4 = false
                 } else if (spans.id === 'char3') 
                 {
-                    img.setAttribute('src', '../img/personajes/laia.png')
+                    img.src = '../img/personajes/laia.png'
+                    // img.setAttribute('src', '../img/personajes/laia.png')
                     char1 = false
                     char2 = false
                     char3 = true
                     char4 = false
                 } else if (spans.id === 'char4') 
                 {
-                    img.setAttribute('src', '../kenia/img/char_stand.png')
+                    img.src = '../kenia/img/char_stand.png'
+                    // img.setAttribute('src', '../kenia/img/char_stand.png')
                     char1 = false
                     char2 = false
                     char3 = false
@@ -504,12 +522,14 @@ function showStory() {
     controlsButton.style.display = 'block'
     exitMenuButton.style.display = 'block'
     exit.style.display = 'none'
-    laia.setAttribute('src', '../img/laiaDerechaCaminando.gif')
+    laia.src = '../img/laiaDerechaCaminando.gif'
+    // laia.setAttribute('src', '../img/laiaDerechaCaminando.gif')
     history.style.display = 'block'
     showCtrl.style.display = 'none'
     laia.style.animation = 'move 3s linear'
     laia.addEventListener('animationend', function() {
-        laia.setAttribute('src', '../img/laiaDerechaParada.png')
+        laia.src = '../img/laiaDerechaParada.png'
+        // laia.setAttribute('src', '../img/laiaDerechaParada.png')
         mensajeHistoria.style.display = 'block'
         bocata.style.display = 'block'
         mensaje1.style.display = 'block'
@@ -522,7 +542,8 @@ function showStory() {
                 bocata.style.display = 'none'
                 mensaje1.style.display = 'none'
                 mensajeHistoria.style.display = 'none'
-                laia.setAttribute('src', '../img/laiaDerechaCaminando.gif')
+                laia.src = '../img/laiaDerechaCaminando.gif'
+                // laia.setAttribute('src', '../img/laiaDerechaCaminando.gif')
                 laia.style.animation = 'moveAway 4s linear'
                 laia.addEventListener('animationend', function() {
                     laia.style.display = 'none'
@@ -571,13 +592,12 @@ function transitionlvl1_to_lvl2() {
         ARRAY_BARRELS.splice(0, ARRAY_BARRELS.length)
         drawMap();
         index_counting_barrels = 0
-        // barrilesContainer.style.display = null
         startInterval()
         startTimerIntervalFunc()
         spanlvl.removeEventListener('click', handleClick);
-        // starTimeoutEnemy()
     }
     let spanlvl = document.getElementById('spanNext_lvl');
+    // spanlvl.style.backgroundImage = 'url(../kenia/img/siguienteNivel-boton.png)'
     // spanlvl.addEventListener('click', handleClick);
     spanlvl.addEventListener('click', handleClick)
         // containerLvl1_to2.style.display = 'none';
@@ -634,33 +654,51 @@ function finishTheGame() {
     let containerFinalMessage = document.getElementById('mensajeHistoriaFinal')
     globalContainerFinishMode.style.display = 'block'
     laiaImgFinish.addEventListener('animationend', function() {
-        laiaImgFinish.setAttribute('src', '../img/laiaDerechaParada.png')
+        laiaImgFinish.src = '../img/laiaDerechaParada.png'
+        // laiaImgFinish.setAttribute('src', '../img/laiaDerechaParada.png')
         finalMessage.style.display = 'block'
         containerFinalMessage.style.display = 'block'
         setTimeout(() => {
             containerFinalMessage.style.display = 'none'
-            laiaImgFinish.setAttribute('src', '../img/laiaDerechaCaminando.gif')
+            laiaImgFinish.src = '../img/laiaDerechaCaminando.gif'
+            // laiaImgFinish.setAttribute('src', '../img/laiaDerechaCaminando.gif')
             laiaImgFinish.style.animation = 'moveAwayFinish 4s linear'
             laiaImgFinish.addEventListener('animationend', function() {
                 laiaImgFinish.style.display = 'none'
                 containerFinalMessage.style.display = 'none'
                 exitGame()
-                // window.location.href = '../save.php?nivel=3&tiempo=' + timerCount;
-                // back_Menu()
             })
         }, 100);
-        // containerFinalMessage.style.display = 'none'
     })
 }
 // Funcion de objetos conseguidos
-function recollectedObjectes() {
+function recollectedObjectes() 
+{
     clearInterval(timerBarrel)
     level1_Map.style.display = 'none'
     let text = document.getElementById('titleObjectedsRecolected')
     let spanFinish = document.getElementById('spanFinishingTheGame')
     let finishContainer = document.getElementById('containerObjectObtaineds')
+    let gen = document.getElementById('gen')
+    let cab = document.getElementById('cab')
+    let key = document.getElementById('key')
     finishContainer.style.display = 'block'
     text.innerHTML = 'Enhorabona! Has aconseguit aquests objectes.'
+    setTimeout(() => {
+        gen.style.display = 'inline'
+        gen.style.animation = 'shake 1s linear'
+        gen.addEventListener('animationend', function () {
+            cab.style.display = 'inline'
+            cab.style.animation = 'shake 1s linear'
+            cab.addEventListener('animationend', function () {
+                key.style.display = 'inline'
+                key.style.animation = 'shake 1s linear'
+                key.addEventListener('animationend', function () {
+                    console.log('hola');
+                })
+            })
+        })
+    }, 1000);
     function goToStory() {
         finishContainer.style.display = 'none';
         level_2_finished = true

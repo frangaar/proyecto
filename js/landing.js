@@ -420,4 +420,16 @@ document.addEventListener('DOMContentLoaded',function(){
 
     cat.click();
 
+    let btnModalLogin = document.getElementById('btnModalLogin');
+    
+    btnModalLogin.addEventListener('click',function(){
+        localStorage.removeItem('mostrarVictoria');
+    });
+
+    let btnLogin = document.getElementById('btnLogin');
+
+    btnLogin.addEventListener('click',function(){
+        localStorage.removeItem('mostrarVictoria');
+    });
+
 });

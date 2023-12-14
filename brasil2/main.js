@@ -8,12 +8,15 @@ let volver = document.getElementById("tornarBoto");
 const modalAviso = document.getElementById("confirmarSortida");
 const botonNo = document.getElementById("no");
 const botonSi = document.getElementById("si");
-let audio = new Audio("./audios/minecraft4.mp3");
+let victoriaModal = document.getElementById("victoriaModal");
+let audio = new Audio("./audios/audio-fondo.mp3");
+let puntsFinal = document.getElementById("puntsFinal");
+const botonVictoria = document.getElementById("tornarBoto2");
 
 document.addEventListener("DOMContentLoaded", asomaTopos);
-document.addEventListener('click', musicaFons)
+document.addEventListener("click", musicaFons);
 volver.addEventListener("click", botoSortidaJoc);
-botonSi.addEventListener("click",sortirSenseAcabarJoc); 
+botonSi.addEventListener("click", sortirSenseAcabarJoc);
 sumarPunts();
 imatgeCursor();
 
@@ -61,7 +64,7 @@ function asomaTopos() {
         if (numAleatorio <= 0.02) {
           topoVerde = document.getElementById("imatge1" + num);
           topoVerde.style.display = "block";
-        } else if (numAleatorio <= 0.08) {
+        } else if (numAleatorio <= 0.05) {
           topoRojo = document.getElementById("imatge2" + num);
           topoRojo.style.display = "block";
         } else {
@@ -86,6 +89,7 @@ function compteEnrere() {
 
   if (tempsRestant < 0) {
     clearInterval(interval);
+    jocAcabat();
   }
 }
 
@@ -110,7 +114,7 @@ function sumarPunts() {
 
     topoVerde.addEventListener("click", () => {
       if (tempsRestant > 0) {
-        puntsInicial += 20;
+        puntsInicial += 15;
         const punts = document.getElementById("puntuacio");
         punts.innerHTML = `${puntsInicial}`;
         topoVerde.src = "img/topo-golpeado-verde.png";
@@ -123,7 +127,7 @@ function sumarPunts() {
 
     topoRojo.addEventListener("click", () => {
       if (tempsRestant > 0) {
-        puntsInicial -= 10;
+        puntsInicial -= 20;
         const punts = document.getElementById("puntuacio");
         punts.innerHTML = `${puntsInicial}`;
         topoRojo.src = "img/topo-golpeado-rojo.png";
@@ -137,30 +141,30 @@ function sumarPunts() {
 }
 
 function musicaFons() {
-
-  audio.volume = 1;
+  audio.volume = 0.05;
   audio.loop = true;
-  audio.playbackRate = 1.5;
+  audio.playbackRate = 1;
   audio.play();
 }
 
 function jocAcabat() {
-  if (tempsRestant < 0) {
     console.log("Joc Acabat");
-  }
+    audio.pause();
+    if (puntsInicial >= 150) {
+      victoria();
+    }
 }
-jocAcabat();
 
 function botoSortidaJoc() {
-    if (tempsRestant < 0) {
-      window.location.href = "../save.php?nivel=5&puntos=" + puntsInicial;
-    } else {
-      aparicion = false;
-      clearInterval(interval);
+  if (tempsRestant < 0) {
+    window.location.href = "../save.php?nivel=5&puntos=" + puntsInicial;
+  } else {
+    aparicion = false;
+    clearInterval(interval);
 
-      modalAviso.style.display = "flex";
-      botonNo.addEventListener("click", tancarModal);
-    };
+    modalAviso.style.display = "flex";
+    botonNo.addEventListener("click", tancarModal);
+  }
 }
 
 function tancarModal() {
@@ -176,5 +180,17 @@ function tancarModal() {
 function sortirSenseAcabarJoc() {
   if (tempsRestant > 0) {
     modalAviso.style.display = "none";
+    window.location.href='../action_page.php';
   }
+}
+
+
+function victoria() {
+    puntsFinal.innerHTML = `${puntsInicial}`;
+    victoriaModal.style.display = "block";
+    botonVictoria.addEventListener("click", sortirModalVictoria);
+}
+
+function sortirModalVictoria () {
+  window.location.href = "../save.php?nivel=5&puntos=" + puntsInicial;
 }

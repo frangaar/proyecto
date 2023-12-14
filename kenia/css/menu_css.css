@@ -150,6 +150,25 @@
     /* top: 70px;
     transform: scale(0.3); */
 }
+.spans#spanNext_lvl {
+    left: 490px;
+    top: 310px;
+    height: 107px;
+    width: 107px;
+    background-image: url(../img/siguienteNivel-boton.png);
+}
+.spans#spanFinishingTheGame {
+    left: 1160px;
+    top: 580px;
+    height: 107px;
+    width: 107px;
+    background-image: url(../img/siguienteNivel-boton.png);
+}
+.spans#buttonGoMenu {
+    height: 107px;
+    width: 107px;
+    background-image: url(../img/siguienteNivel-boton.png);  
+}
 .diff#diff1 {
     left: 70px;
 }
@@ -250,8 +269,6 @@
     display: none;
 }
 #showControls {
-    background-image: url(../img/controls-back2.png);
-    background-size: cover;
     display: none;
 }
 #donkey_history {
@@ -324,7 +341,8 @@
    display: none;
 }
 #messagelvl1 {
-    left: 392px;
+    top: 110px;
+    left: 132px;
     position: absolute;
     font-size: 30px;
     color: white;
@@ -339,16 +357,16 @@ li.buttonObj {
 }
 .showLaia#lvl1_to_2 {
     position: absolute;
-    left: 492px;
-    top: 27%;
+    left: 222px;
+    top: 37%;
 }
 .container#containerlvl1_to_2{
     position: absolute;
     text-align: center;
-    left: 310px;
-    top: 119px;
-    width: 1296px;
-    height: 436px;
+    left: 610px;
+    top: 199px;
+    width: 696px;
+    height: 508px;
 }
 ul#level_characterSelected {
     /* display: flex; */
@@ -407,7 +425,8 @@ li.lvl{
     color: white;
 }
 #titleObjectedsRecolected {
-    left: 410px;
+    top: 338px !important;
+    left: 655px;
 }
 #buttonSureExit {
     /* position: absolute;
@@ -421,24 +440,39 @@ li.lvl{
     display: none;
     left: 310px;
     top: 119px;
-    width: 1296px;
-    height: 436px;
+    width: 796px;
+    height: 576px;
+    /* background-image: url(../img/cartel.png); */
 }
 .objectes {
-    top: 370px;
+    animation: shake 0.5s linear;
+    top: 411px;
     left: 710px;
     position: absolute;
 }
+#gen {
+    display: none;
+}
+#cab {
+    display: none;
+}
+#key {
+    display: none;
+}
+/* #gen, #cab, #key {
+    display: none;
+} */
 #finishGameContainer {
     display: none;
     /* position: absolute; */
 }
 .container#containerFinish {
     position: absolute;
-    left: 291px;
+    left: 351px;
+    /* left: 291px; */
     border: 1px solid white;
     border-image: none;
-    top: 50px;
+    top: 39px;
     background-image: url(../img/fondo2.png);
     background-size: cover;
     
@@ -449,11 +483,10 @@ li.lvl{
     animation: movefinish 5s linear;  
 }
 .container {
-    /* border: 20px solid transparent; */
-    /* border-image: url(../img/marco.png) 20 round; */
-    /* border-radius: 15px; */
-    width: 1296px;
-    height: 836px;
+    /* width: 1166px;
+    height: 836px; */
+    width: 1206px;
+    height: 876px;
     background-image: url(../img/menu-inicio.png);
     background-size: cover;
     /* background-color: #383681;     */
@@ -461,8 +494,7 @@ li.lvl{
     text-align: center;
 }
 .container#containerStory {
-    border: 1px solid white;
-    border-image: none;
+    border: 1 solid white;
 }
 .container#containerMessageImportant {
     position: absolute;
