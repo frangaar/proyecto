@@ -110,16 +110,11 @@
 }
 @keyframes animationMenuCharacter {
     0% {
-        /* margin-left: 0px; */
         transform: scale(1.3);
-        /* width: 100%; */
         margin-left: 0;
     }
     100% {
-        /* margin-left: -1972px;
-        width: 200%; */
         transform: scale(2.3);
-        /* margin-left: -1972px; */
         margin-left: -1370px ;
     }
 }
@@ -127,6 +122,11 @@
     position: absolute;
     height: 119px;
     width: 177px;
+}
+.spansPause {
+    position: absolute;
+    height: 109px;
+    width: 117px;
 }
 .spans.diff {
     height: 69px;
@@ -137,6 +137,18 @@
     /* background-image: url(../img/diff-boton.png); */
     background-image: url("");
 
+}
+.spans.pause {
+    top: 496px;
+    /* top: 220px; */
+    transform: scale(0.7);
+}
+.spans#continue_game {
+    left: 795px;
+    
+    /* left: 80px; */
+    /* top: 70px;
+    transform: scale(0.3); */
 }
 .diff#diff1 {
     left: 70px;
@@ -182,6 +194,7 @@
     left: -47px;
     background-image: url(../img/home-boton.PNG);
 }
+
 #controlsTitle {
     color: white;
     
@@ -237,6 +250,8 @@
     display: none;
 }
 #showControls {
+    background-image: url(../img/controls-back2.png);
+    background-size: cover;
     display: none;
 }
 #donkey_history {
@@ -371,6 +386,7 @@ li.lvl{
     background-size: cover;
 }
 .container#containerLevelSelector {
+    transform: scale(1.1);
     position: absolute;
     z-index: 1;
     text-align: center;
@@ -510,6 +526,10 @@ li#goMenu {
     top: 390px;
     left: 847px;
 }
+.showLaia#laiaPause {
+    top: 90px;
+    left: 130px;
+}
 ul {
     bottom: 50%;
     list-style-type: none;
@@ -543,7 +563,7 @@ li {
     
 }
 .menu_de_inico {
-    animation: animationMenu 2.3s linear;
+    /* animation: animationMenu 2.3s linear; */
     height: 370px;
     width: 530px;
     background-image: url("../img/menu-inicio.png");
@@ -552,6 +572,35 @@ li {
     padding-top: 20px;
     text-align: center;
     /* height: 00px; */
+}
+#pauseMenu {
+    display: none;
+}
+.menu_de_pause {
+    /* background-image: url("../img/menu-inicio.png");
+    background-size: cover;
+    top: 350px;
+    position: absolute;
+    left: 1430px;
+    width: 260px;
+    height: 170px; */
+
+    /** EL BUENO */
+    /* background-image: url(../img/menu-inicio.png);
+    background-size: cover;
+    top: 160px;
+    position: absolute;
+    left: 630px;
+    width: 590px;
+    height: 430px; */
+
+    height: 370px;
+    width: 530px;
+    background-image: url(../img/menu-inicio.png);
+    background-size: cover;
+    /* position: absolute; */
+    padding-top: 20px;
+    text-align: center;
 }
 /* li::before,
 li::after

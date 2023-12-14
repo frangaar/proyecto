@@ -90,12 +90,13 @@ function buttonDeath() {
 }
 /** Función para menú pausa. */
 function pausePulsed() {
-    start_menu.style.backgroundImage = 'url(../kenia/img/menu_pause.png)'
-    start_menu.style.backgroundSize = 'cover'
+    // start_menu.style.backgroundImage = 'url(../kenia/img/menu_pause.png)'
+    // start_menu.style.backgroundSize = 'cover'
+    // pauseMenu.style.display = 'block'
+    let spans = document.getElementsByClassName('.spans')
     start_menu.style.width = '700px'
     start_menu.style.height = '500px'
-
-    viewControls = true
+    // viewControls = true
     character.setAttribute('src', imgCharacter)
     imgLeft = 1
     imgRight = 1
@@ -103,19 +104,47 @@ function pausePulsed() {
     imgUp = 1
     imgCrouch = 1
     play = false
-    audioBackground.pause()
-    exitMenuButton.style.display = 'block'
-    botonAceptar.style.display = 'block'
-    exit.style.display = 'none'
+
+    // Laia 
+    laiaDiv.style.display = null
+
+    // spans
+    // spans.style.height = '109px'
+    // spans.style.width = '117px'
+
+    // DivButon
+    divButton.style.width = '100%'
     divButton.style.pointerEvents = null
+    divButton.style.animation = 'none'
     divButton.style.display = 'grid'
+    divButton.style.backgroundImage = 'none'
     divButton.style.backgroundColor = 'transparent'
-    level1_Map.style.filter = 'blur(2px)'
-    title.innerHTML = 'Pause Mode'
-    focusPlayButton.innerHTML = 'Tornar al joc'
+    divButton.style.transform = 'none'
+    divButton.style.margin = '0'
+    
+    // Continue Playing and Exit
+    botonAceptar.style.display = null
+    focusPlayButton.style.display = null
     focusPlayButton.setAttribute('onclick', 'buttonAccept()')
-    exitButton.innerHTML = 'Ir al menu'
-    exitButton.setAttribute('onclick', 'back_Menu()')
+    focusPlayButton.style.backgroundImage = 'url(../kenia/img/returnGame-boton.png)'
+    focusPlayButton.style.left = '795px'
+    focusPlayButton.style.top = '516px'
+    focusPlayButton.setAttribute('class', 'spansPause')
+
+    spanExit.style.display = null
+    spanExit.setAttribute('onclick', 'back_Menu()')
+    spanExit.style.backgroundImage = 'url(../kenia/img/home-boton.png)'
+    spanExit.style.left = '983px'
+    spanExit.style.top = '516px'
+    spanExit.setAttribute('class', 'spansPause')
+    exit.style.display = 'block'
+
+    audioBackground.pause()
+    // buttonAcceptPause.style.display = 'block'
+    // exit.style.display = 'none'
+
+    level1_Map.style.filter = 'blur(2px)'
+    // title.innerHTML = 'Pause Mode'
     pause = true
     document.addEventListener("keyup", function(event) {
         if (event.code === 'Enter') {
@@ -236,7 +265,7 @@ function startGame() {
                     setTimeout(() => {
                         buttonGoMenu.style.display = 'flex'
                         containerGoMenu.style.display = null
-                        buttonGoMenu.innerHTML = 'Siguiente'
+                        buttonGoMenu.innerHTML = ''
                         buttonGoMenu.setAttribute('onclick', 'showStory()')  
                     }, 3000);
                     document.addEventListener("keyup", function(event) {
@@ -279,6 +308,7 @@ function selectDificult() {
                         dif4 = false
                         for (let i = 0; i < skulls.length; i++) {
                             skulls[i].style.display = i === 0 ? 'block' : 'none';
+                            skulls[i].setAttribute('src', '../kenia/img/skull-diff.png')
                           }
                     } else if (spans.id === 'diff2') {
                         lvlDescription.innerHTML = "Per si vols disfrutar de l'historia amb una miqueta de dificultat, hi haurà cuatre barrils i es mouran a una velocitat més ràpida en comparació al nivell fàcil, tindràs una vida."
@@ -288,6 +318,7 @@ function selectDificult() {
                         dif4 = false
                         for (let i = 0; i < skulls.length; i++) {
                             skulls[i].style.display = i === 0 || i === 1  ? 'block' : 'none';
+                            skulls[i].setAttribute('src', '../kenia/img/skull-diff.png')
                           }
                     } else if (spans.id === 'diff3') {
                         lvlDescription.innerHTML = 'Per si vols una experiència difícil, hi haurà cinc barrils i es mouran a una velocitat molt més ràpida en comparació al nivell mitjà, tindràs una vida.'
@@ -297,6 +328,7 @@ function selectDificult() {
                         dif4 = false
                         for (let i = 0; i < skulls.length; i++) {
                             skulls[i].style.display = i === 0 || i === 1 ||i === 2 ? 'block' : 'none';
+                            skulls[i].setAttribute('src', '../kenia/img/skull-diff-danger.png')
                           }
                     } else if (spans.id === 'diff4') {
                         lvlDescription.innerHTML = 'Per als més experts, hi haurà set barrils i es mouran a una velocitat super ràpida, tindràs una vida. '
@@ -305,7 +337,8 @@ function selectDificult() {
                         dif3 = false
                         dif4 = true
                         for (let i = 0; i < skulls.length; i++) {
-                            skulls[i].style.display = i === 0 || i === 1 ||i === 2 || i === 3 ? 'block' : 'none';
+                            skulls[i].style.display = 'block'
+                            skulls[i].setAttribute('src', '../kenia/img/skull-diff-danger.png')
                           }
                     }
                   });
@@ -335,6 +368,9 @@ function selectDificult() {
                         barrel_velocity = 8
                         num_of_barrels = 7
                     }
+                    for (let i = 0; i < skulls.length; i++) {
+                        skulls[i].style.display = 'none'
+                      }
                     difficult = true
                     resolve(difficult)
                   });
