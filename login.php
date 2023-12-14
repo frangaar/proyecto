@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/botones.css">
+    <script src="js/landing.js"></script>
     <title>Document</title>
 </head>
 <?php

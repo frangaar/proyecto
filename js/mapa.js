@@ -105,8 +105,7 @@ document.addEventListener('DOMContentLoaded',function(){
     let btcCerrarSesion = document.getElementById('btnCierraSesion');
 
     btcCerrarSesion.addEventListener('click',function(){
-        // localStorage.setItem('mostrarVictoria',true);
-        localStorage.removeItem('mostrarVictoria')
+        localStorage.removeItem('mostrarVictoria');
     });
 
     const pergaminoContainer = document.getElementById('mensajeFinalContainer');
