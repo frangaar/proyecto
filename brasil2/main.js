@@ -1,4 +1,4 @@
-const minutsInicial = 1;
+const minutsInicial = 0.1;
 let tempsRestant = minutsInicial * 60;
 const temps = document.getElementById("temporitzador");
 let interval = setInterval(compteEnrere, 1000);
@@ -8,12 +8,15 @@ let volver = document.getElementById("tornarBoto");
 const modalAviso = document.getElementById("confirmarSortida");
 const botonNo = document.getElementById("no");
 const botonSi = document.getElementById("si");
-let audio = new Audio("./audios/minecraft4.mp3");
+let victoriaModal = document.getElementById("victoriaModal");
+let audio = new Audio("./audios/audio-fondo.mp3");
+let puntsFinal = document.getElementById("puntsFinal");
+const botonVictoria = document.getElementById("tornarBoto2");
 
 document.addEventListener("DOMContentLoaded", asomaTopos);
-document.addEventListener('click', musicaFons)
+document.addEventListener("click", musicaFons);
 volver.addEventListener("click", botoSortidaJoc);
-botonSi.addEventListener("click",sortirSenseAcabarJoc); 
+botonSi.addEventListener("click", sortirSenseAcabarJoc);
 sumarPunts();
 imatgeCursor();
 
@@ -70,7 +73,7 @@ function asomaTopos() {
         }
       }
 
-      setTimeout(asomaTopos, 1000);
+      setInterval(asomaTopos, 2000);
     }
   }
 }
@@ -86,6 +89,7 @@ function compteEnrere() {
 
   if (tempsRestant < 0) {
     clearInterval(interval);
+    jocAcabat();
   }
 }
 
@@ -137,30 +141,30 @@ function sumarPunts() {
 }
 
 function musicaFons() {
-
-  audio.volume = 1;
+  audio.volume = 0.05;
   audio.loop = true;
-  audio.playbackRate = 1.5;
+  audio.playbackRate = 1;
   audio.play();
 }
 
 function jocAcabat() {
-  if (tempsRestant < 0) {
     console.log("Joc Acabat");
-  }
+    audio.pause();
+    if (puntsInicial >= 20) {
+      victoria();
+    }
 }
-jocAcabat();
 
 function botoSortidaJoc() {
-    if (tempsRestant < 0) {
-      window.location.href = "../save.php?nivel=5&puntos=" + puntsInicial;
-    } else {
-      aparicion = false;
-      clearInterval(interval);
+  if (tempsRestant < 0) {
+    window.location.href = "../save.php?nivel=5&puntos=" + puntsInicial;
+  } else {
+    aparicion = false;
+    clearInterval(interval);
 
-      modalAviso.style.display = "flex";
-      botonNo.addEventListener("click", tancarModal);
-    };
+    modalAviso.style.display = "flex";
+    botonNo.addEventListener("click", tancarModal);
+  }
 }
 
 function tancarModal() {
@@ -176,5 +180,18 @@ function tancarModal() {
 function sortirSenseAcabarJoc() {
   if (tempsRestant > 0) {
     modalAviso.style.display = "none";
+    window.location.href =
+      "../mapa.php?nivel1=completado&nivel2=completado&nivel3=completado&nivel4=completado";
   }
+}
+
+
+function victoria() {
+    puntsFinal.innerHTML = `${puntsInicial}`;
+    victoriaModal.style.display = "block";
+    botonVictoria.addEventListener("click", sortirModalVictoria);
+}
+
+function sortirModalVictoria () {
+  window.location.href = "../save.php?nivel=5&puntos=" + puntsInicial;
 }
