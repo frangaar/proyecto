@@ -476,10 +476,11 @@ function displayDeathMenu()
     if (container.offsetTop <= 1000) {
         velocityY += gravity
     }
-    button_Death.style.display = 'block'
-    menu_death.style.display = 'grid'
-    menu_death.style.backgroundColor = 'transparent'
-    level1_Map.style.filter = 'blur(2px)'
+    buttonDeath()
+    // button_Death.style.display = 'block'
+    // menu_death.style.display = 'grid'
+    // menu_death.style.backgroundColor = 'transparent'
+    // level1_Map.style.filter = 'blur(2px)'
 }
 /** Función que contiene una condicion del personaje colisionando con diferentes objetos, como el barril, las filas del mapa, y las condiciones de salto y agacharse, junto con la condición de muerte. */
 function checkColisionBetweenCharacterHeadAndBlockBottom()

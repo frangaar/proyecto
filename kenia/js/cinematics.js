@@ -85,17 +85,50 @@ function buttonAccept() {
 } 
 /** Funcion menú para cuando muera el jugador. */  
 function buttonDeath() {
-    back_Menu()
+    // Container
+    start_menu.style.backgroundImage = 'url(../kenia/img/menu-muerte.png)'
+    // Laia 
+    laiaDiv.style.display = null
+
+    // DivButon
+    divButton.style.width = '100%'
+    divButton.style.pointerEvents = null
+    divButton.style.animation = 'none'
+    divButton.style.display = 'grid'
+    divButton.style.backgroundImage = 'none'
+    divButton.style.backgroundColor = 'transparent'
+    divButton.style.transform = 'none'
+    divButton.style.margin = '0'
+    
+    // Playing and Exit
+    botonAceptar.style.display = null
+    focusPlayButton.style.display = 'none'
+    spanExit.style.display = null
+    spanExit.setAttribute('onclick', 'back_Menu()')
+    spanExit.style.backgroundImage = 'url(../kenia/img/home-boton.png)'
+    spanExit.style.left = '920px'
+    spanExit.style.top = '516px'
+    spanExit.setAttribute('class', 'spansPause')
+    exit.style.display = 'block'
+
+    audioBackground.pause()
+    level1_Map.style.filter = 'blur(2px)'
+    // title.innerHTML = 'Pause Mode'
+    // pause = true
+    // document.addEventListener("keyup", function(event) {
+    //     if (event.code === 'Enter') {
+    //         back_Menu() 
+    //     }
+    // });
     // window.location.href = 'http://localhost/proyecto/kenia/index.html'
 }
 /** Función para menú pausa. */
 function pausePulsed() {
-    // start_menu.style.backgroundImage = 'url(../kenia/img/menu_pause.png)'
-    // start_menu.style.backgroundSize = 'cover'
-    // pauseMenu.style.display = 'block'
-    let spans = document.getElementsByClassName('.spans')
-    start_menu.style.width = '700px'
-    start_menu.style.height = '500px'
+    // Container
+    start_menu.style.backgroundImage = 'url(../kenia/img/menu-pause.png)'
+    // // pauseMenu.style.display = 'block'
+    // start_menu.style.width = '700px'
+    // start_menu.style.height = '500px'
     // viewControls = true
     character.setAttribute('src', imgCharacter)
     imgLeft = 1
@@ -127,22 +160,19 @@ function pausePulsed() {
     focusPlayButton.style.display = null
     focusPlayButton.setAttribute('onclick', 'buttonAccept()')
     focusPlayButton.style.backgroundImage = 'url(../kenia/img/returnGame-boton.png)'
-    focusPlayButton.style.left = '795px'
+    focusPlayButton.style.left = '832px'
     focusPlayButton.style.top = '516px'
     focusPlayButton.setAttribute('class', 'spansPause')
 
     spanExit.style.display = null
     spanExit.setAttribute('onclick', 'back_Menu()')
     spanExit.style.backgroundImage = 'url(../kenia/img/home-boton.png)'
-    spanExit.style.left = '983px'
+    spanExit.style.left = '1008px'
     spanExit.style.top = '516px'
     spanExit.setAttribute('class', 'spansPause')
     exit.style.display = 'block'
 
     audioBackground.pause()
-    // buttonAcceptPause.style.display = 'block'
-    // exit.style.display = 'none'
-
     level1_Map.style.filter = 'blur(2px)'
     // title.innerHTML = 'Pause Mode'
     pause = true
@@ -226,8 +256,10 @@ function showControls() {
         divButton.style.display = 'none'
     }
     showCtrl.style.display = 'block'
-    buttonGoMenu.style.left = '5px'
-    buttonGoMenu.style.top = '-40px'
+    buttonGoMenu.style.left = '57px'
+    buttonGoMenu.style.top = '59px'
+    // left: 57px;
+    // top: 59px;
     viewControls = false
 }
 /** Función para empezar el juego, aqui uso promesas para una condicional, las promesas son para manejar operaciones asíncronas, en este caso uso el boleano de dificult, el cual le hago return en la función de 
@@ -571,13 +603,12 @@ function transitionlvl1_to_lvl2() {
         ARRAY_BARRELS.splice(0, ARRAY_BARRELS.length)
         drawMap();
         index_counting_barrels = 0
-        // barrilesContainer.style.display = null
         startInterval()
         startTimerIntervalFunc()
         spanlvl.removeEventListener('click', handleClick);
-        // starTimeoutEnemy()
     }
     let spanlvl = document.getElementById('spanNext_lvl');
+    // spanlvl.style.backgroundImage = 'url(../kenia/img/siguienteNivel-boton.png)'
     // spanlvl.addEventListener('click', handleClick);
     spanlvl.addEventListener('click', handleClick)
         // containerLvl1_to2.style.display = 'none';
@@ -659,8 +690,29 @@ function recollectedObjectes() {
     let text = document.getElementById('titleObjectedsRecolected')
     let spanFinish = document.getElementById('spanFinishingTheGame')
     let finishContainer = document.getElementById('containerObjectObtaineds')
+    let gen = document.getElementById('gen')
+    let cab = document.getElementById('cab')
+    let key = document.getElementById('key')
+    // gen.style.display = 'none'
+    // cab.style.display = 'none'
+    // key.style.display = 'none'
     finishContainer.style.display = 'block'
     text.innerHTML = 'Enhorabona! Has aconseguit aquests objectes.'
+    setTimeout(() => {
+        gen.style.display = 'inline'
+        gen.style.animation = 'shake 1s linear'
+        gen.addEventListener('animationend', function () {
+            cab.style.display = 'inline'
+            cab.style.animation = 'shake 1s linear'
+            cab.addEventListener('animationend', function () {
+                key.style.display = 'inline'
+                key.style.animation = 'shake 1s linear'
+                key.addEventListener('animationend', function () {
+                    console.log('hola');
+                })
+            })
+        })
+    }, 1000);
     function goToStory() {
         finishContainer.style.display = 'none';
         level_2_finished = true
