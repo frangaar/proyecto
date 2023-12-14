@@ -186,7 +186,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">JiaJie Chen</h5>
                                     <p class="card-text">Email: <span class="email">jchen2223@politecnics.barcelona</span></p>
-                                    <p class="card-text"><a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a></p>
+                                    <p class="card-text"><a href="https://www.linkedin.com/in/jiajie-chen-9b5600292/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></p>
                                 </div>
                                 </div>
                             </div>
