@@ -25,8 +25,23 @@
     width: 149px;
     height: 58px;
     background-size: 152px;
+}
+
+.map-container #btnCierraSesion{
+    width: 149px;
+    height: 58px;
+    background-size: 152px;
     position: relative;
-    left: 90px;
+    left: 150px;
+    color: transparent;
+}
+.map-container #btnRanking{
+    width: 149px;
+    height: 58px;
+    background-size: 152px;
+    position: relative;
+    right: 1137px;
+    color: transparent;
 }
 
 
@@ -60,8 +75,14 @@
 
     .botones{
         width: 133px;
-    height: 50px;
-    background-size: 134px;
+        height: 50px;
+        background-size: 134px;
+    }
+
+    #btnRanking{
+        width: 133px;
+        height: 50px;
+        background-size: 134px;
     }
 }
 
@@ -69,7 +90,13 @@
 
     .botones{
         width: 133px;
-    height: 50px;
-    background-size: 134px;
+        height: 50px;
+        background-size: 134px;
+    }
+
+    #btnRanking{
+        width: 133px;
+        height: 50px;
+        background-size: 134px;
     }
 }

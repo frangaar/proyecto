@@ -1176,6 +1176,15 @@ button.audio-close{
     left: 7px;
     z-index: 500;
   }
+  
+  .map-container #corona{
+    position: absolute;
+    width: 35px;
+    transform: rotate(-20deg);
+    top: -2px;
+    left: -1121px;
+    z-index: 500;
+  }
 
   #bocataSaberMas{
     position: relative;
@@ -1220,7 +1229,7 @@ button.audio-close{
     background-image: url(../img/form.png);
     background-size: cover;
     background-position-y: 0;
-    box-shadow: 0px 0px 50px 0px wheat;
+    box-shadow: 0px 0px 50px 0px white;
     background-repeat: no-repeat;
     height: 579px;
   }
@@ -1264,16 +1273,18 @@ button.audio-close{
     display: none;
     position: relative;
     top: -914px;
-    left: 375px;
+    left: 318px;
     z-index: 5000;
-    width: 1174px;
+    width: 1294px;
     height: 830px;
+    backdrop-filter: blur(5px);
   }
 
   #pergamino{
     position: absolute;
     z-index: 5000;
     width: 1174px;
+    left: 55px;
   }
 
   .mostrarPergamino{
@@ -1283,9 +1294,9 @@ button.audio-close{
 
   #felicitacion{
     position: absolute;
-    top: 340px;
-    padding-left: 65px;
-    padding-right: 55px;
+    top: 350px;
+    padding-left: 75px;
+    padding-right: 140px;
     z-index: 5001;
     text-align: center;
   }
