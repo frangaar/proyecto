@@ -180,8 +180,7 @@ function tancarModal() {
 function sortirSenseAcabarJoc() {
   if (tempsRestant > 0) {
     modalAviso.style.display = "none";
-    window.location.href =
-      "../mapa.php?nivel1=completado&nivel2=completado&nivel3=completado&nivel4=completado";
+    window.location.href='../action_page.php';
   }
 }
 
