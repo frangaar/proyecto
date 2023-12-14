@@ -98,9 +98,9 @@ document.addEventListener('DOMContentLoaded',function(){
         pergamino.classList.add('mostrarPergamino');
     }
 
-    const pergamino = document.getElementById('mensajeFinalContainer');
+    const pergaminoContainer = document.getElementById('mensajeFinalContainer');
     document.addEventListener('mousedown', function (e) {
-        !pergamino.contains(e.target) ? pergamino.classList.remove('mostrarPergamino') : null
+        !pergaminoContainer.contains(e.target) ? pergaminoContainer.classList.remove('mostrarPergamino') : null
     });
     
 });
