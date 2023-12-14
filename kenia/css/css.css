@@ -15,6 +15,11 @@
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
   }
+@keyframes blink-animation {
+to {
+    visibility: hidden;
+}
+}
 html , body{
     /* cursor:  url(../img/cursorMano.png), auto; */
     cursor: grab;
@@ -39,17 +44,13 @@ html , body{
     position: absolute;
 }
 .app {
-    /* box-shadow: white 1px 1px 3px 4px; */
     margin: 0;
     padding: 0;
-    /* top: 20%;  */
     left: 20%; 
-    /* width: 60%; */
-    /* height: 80%; */
     position: fixed;
     display: none;
-    /* position: absolute; */
-    left: 316px;
+    left: 126px;
+    /* left: 316px; */
 }
 .vidas {
     position: absolute;
@@ -59,12 +60,12 @@ html , body{
     position: absolute;
 }
 #heart1 {
-    left: 1218px;
+    left: 1586px;
     top: 45px;
     /* display: none; */
 }
 #heart2 {
-    left: 1256px;
+    left: 1626px;
     top: 45px;
     /* display: none; */
 }
@@ -96,6 +97,11 @@ html , body{
 .barrilesHeight{
     height: 32px;
 }
-/* .fila1 {
-    border: 1px solid white;
-} */
+.powerUps {
+    left: 450px;
+    top: 525px;
+    position: absolute;
+}
+#powerUp {
+    width: 50px;
+}

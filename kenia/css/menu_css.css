@@ -468,10 +468,11 @@ li.lvl{
 }
 .container#containerFinish {
     position: absolute;
-    left: 291px;
+    left: 351px;
+    /* left: 291px; */
     border: 1px solid white;
     border-image: none;
-    top: 50px;
+    top: 39px;
     background-image: url(../img/fondo2.png);
     background-size: cover;
     
@@ -482,10 +483,10 @@ li.lvl{
     animation: movefinish 5s linear;  
 }
 .container {
-    /* width: 1296px;
+    /* width: 1166px;
     height: 836px; */
-    width: 1166px;
-    height: 836px;
+    width: 1206px;
+    height: 876px;
     background-image: url(../img/menu-inicio.png);
     background-size: cover;
     /* background-color: #383681;     */
@@ -493,8 +494,7 @@ li.lvl{
     text-align: center;
 }
 .container#containerStory {
-    border: 1px solid white;
-    border-image: none;
+    border: 1 solid white;
 }
 .container#containerMessageImportant {
     position: absolute;
