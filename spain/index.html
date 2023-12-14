@@ -15,13 +15,19 @@
     <div id="timer">Tiempo: <br><span id="countdown">0:00</span></div>
     <div id="contadorSegundos">Segundos: <span id="segundos">0</span></div>
     <div id="salir"><button class="botonSalir">SALIR</button></div>
+    <div id="instrucciones">
+        <div id="modalInstrucciones">Instrucciones</div> 
+        <img  src="./media/flechas.png" alt="" id="flechas">     
+        <div><h5>Utilitza las fletxes per moure a la Laia</h5></div>  
+    </div>
     <div id="div-presentacio">
         <div id="modal-bienvenida" class="modal">
             <div class="modal-content">
                 <span class="close" id="close-bienvenida">&times;</span>
-                <p id="titulo-binvenida">Benvingut/da a Barcelona</p>
+                <p id="titulo-binvenida">Benvingut/da a Barcelona!!</p>
                 <p id="texto-presentacion">En aquest joc hauràs de seguir uns certs encàrrecs per poder recollir els diners necessaris perque la Laia pugui començar aquesta aventura,
                     a partir d'ara tindras 10 segons per memoritzar la tasca que s'assginara.<br>Enrecordat be!</p> 
+                <p>Presiona la tecla de la imatge un cop li donguis a la creu</p><img src="./media/keyup.png" alt="" id="keyup">
             </div>
         </div>
     </div>
@@ -30,7 +36,7 @@
         <div class="modal-content-missio">
             <span class="close" id="close-post-bienvenida">&times;</span>
             <h2>Primer encàrrec!</h2>
-            <p>Porta la pilota de futbol al nen vestit amb una samarreta vermella pantalo blau.</p>
+            <p>Porta la pilota de futbol al nen vestit amb una samarreta vermella i pantalo blau.</p>
         </div>
     </div>
     <div id="modal-post-bienvenida" class="modal">
@@ -48,7 +54,7 @@
     </div>
     <div id="modal-next-task" class="modal">
         <div class="modal-content-missio2">
-            <h2>Siguiente tarea</h2>
+            <h2>Seguent Tasca</h2>
             <p id="next-task-content"></p>
         </div>
     </div>    
@@ -56,17 +62,14 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Fin del Juego</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <h1 class="modal-title">Final del Joc</h1>
         </div>
         <div class="modal-body">
-          <p>¡El juego ha terminado!</p>
+          <h2>Felicitats!<br> Has aconseguit els diners suficients per que la Laia pugui viatjar i aconseguir que tothom tingui electricitat</h2>
           <!-- Puedes personalizar este contenido según tus necesidades -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="botonFinal" class="botonFinal">Seguent joc</button>
         </div>
       </div>
     </div>

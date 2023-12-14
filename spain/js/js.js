@@ -17,7 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const closePostBienvenida = document.getElementById('close-post-bienvenida');
     const countdown = document.getElementById("countdown");
     const botonSalir = document.querySelector('.botonSalir');
-    
+    const botonFinal = document.querySelector('.botonSalir');
+    const modalFinal = document.getElementById('finJuegoModal');
+    modalFinal.style.display = 'none';
 /*----------------------------------TIMER----------------------------------------------*/
     let tiempoRestante = 0;
     let intervaloTemporizador;
@@ -50,6 +52,11 @@ function iniciarTemporizador() {
         actualizarTemporizador();
     }, 1000);
 }
+
+    botonSalir.addEventListener('click', function() {
+        // Redirige a la página especificada
+        window.location.href = '../action_page.php';
+    });
 
     botonSalir.addEventListener('click', function() {
         // Redirige a la página especificada
@@ -92,25 +99,27 @@ function iniciarTemporizador() {
     };
 
 /*----------------------------------MOVIMENT----------------------------------------------*/
+    if (!missio3) {
+        document.addEventListener('keydown', function(event) {
+        switch (event.key) {
+            case 'ArrowUp':
+                moveCharacterUp();
+                break;
+            case 'ArrowLeft':
+                moveCharacterLeft();
+                break;
 
-document.addEventListener('keydown', function(event) {
-    switch (event.key) {
-        case 'ArrowUp':
-            moveCharacterUp();
-            break;
-        case 'ArrowLeft':
-            moveCharacterLeft();
-            break;
+            case 'ArrowRight':
+                moveCharacterRight();
+                break;
 
-        case 'ArrowRight':
-            moveCharacterRight();
-            break;
-
-        case 'ArrowDown':
-            moveCharacterDown();
-            break;
+            case 'ArrowDown':
+                moveCharacterDown();
+                break;
+        }
+    });
     }
-});
+
 
     function moveCharacterUp() {
         if (postBienvenidaModalOpen) {
@@ -164,7 +173,7 @@ document.addEventListener('keydown', function(event) {
         } else if(!missio2){
             handleMovement2(newRow, currentCol);
         }else{
-            handleMovement3(newRow, currentCol);
+            handleMovement3(newRow, currentCol, modalFinal);
         }
         
     }
@@ -198,11 +207,12 @@ document.addEventListener('keydown', function(event) {
                     clearMap();
                      
                     // Display a modal with the next task
-                    const nextTaskContent = "Porta la pilota al noi de la samarreta blava.";
+                    const nextTaskContent = "Porta el rellotge al nen de la samarreta groga i pantalo blau.";
                     // reemplazarElementos(gameMap, gameMap2);
                     displayNextTask(nextTaskContent);
                     showAllElements();
                     handleMovement2(newRow,newCol);
+                    
                 } else {
                     alert("No tens la pilota per entregarla!!");
                 }
@@ -224,7 +234,7 @@ document.addEventListener('keydown', function(event) {
             currentRow = newRow;
             currentCol = newCol;
             updateCharacterPosition();
-        }
+        }return missio3;
     }
 
     function handleMovement2(newRow,newCol){
@@ -252,7 +262,7 @@ document.addEventListener('keydown', function(event) {
                     clearMap2();
                     
                     // Display a modal with the next task
-                    const nextTaskContent = "Porta la pilota al noi de la samarreta blava.";
+                    const nextTaskContent = "Porta la pilota al noi de la samarreta verda i pantalo blau.";
                     // reemplazarElementos(gameMap, gameMap2);
                     displayNextTask(nextTaskContent);
                     showAllElements2();
@@ -281,7 +291,7 @@ document.addEventListener('keydown', function(event) {
         }
     }
 
-    function handleMovement3(newRow,newCol){
+    function handleMovement3(newRow,newCol,modalFinal){
         if (isValidMove(newRow, newCol)) {
             if (gameMap[newRow][newCol] === 8) {
                 if (hasClave) {
@@ -301,6 +311,8 @@ document.addEventListener('keydown', function(event) {
                     clearMap3(); 
                     clearInterval(intervaloTemporizador);
 
+                    modalFinal.style.display = 'block';
+
                     if (misio3) {
                         // Muestra el modal de fin de juego y no permite movimientos
                         mostrarModal();
@@ -317,8 +329,13 @@ document.addEventListener('keydown', function(event) {
                         modalBackdrop.style.display = 'block';
                     
                         // Desactiva la capacidad de mover
-                        // Puedes agregar aquí tu lógica para desactivar el movimiento
+                        document.removeEventListener('keydown', handleKeyDown);
                     }
+
+                    
+                    
+                    // Agrega el nuevo manejador de eventos de teclado
+                    document.addEventListener('keydown', handleKeyDown);
 
                 } else {
                     alert("No tens la pilota per entregarla!!");
@@ -553,12 +570,12 @@ document.addEventListener('keydown', function(event) {
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 0,19, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 9, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
         [1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1,10, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1,23, 1, 1],
-        [1, 1, 0, 0, 7, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 3, 0, 0, 0, 1, 1],
+        [1, 1, 0, 0, 5, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 3, 0, 0, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1,12, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
+        [1,12, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 7, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 5, 1, 1, 1, 1, 1, 0, 1, 1],
+        [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1,16, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1,24, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1,11, 0, 1, 1, 1, 1, 1, 0, 0,18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
@@ -567,7 +584,7 @@ document.addEventListener('keydown', function(event) {
         [1, 1, 0, 0, 0,14, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 1,13, 1, 1, 1, 1, 1,15, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 1, 1, 1, 1, 1, 0,17, 0, 2, 0, 0, 0, 0, 8, 0, 0, 0,25, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
+        [1, 0, 0, 1, 1, 1, 1, 1, 0,17, 0, 0, 0, 0, 2, 0, 8, 0, 0, 0,25, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1],
         [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ];
@@ -757,51 +774,6 @@ document.addEventListener('keydown', function(event) {
             gridContainer.appendChild(gridCell);
         }
     }   
-
-/*----------------------------------CAMBIAR MATRIU----------------------------------------------*/
-
-    // function reemplazarElementos(gameMap, gameMap2) {
-    //     // Verifica que ambas matrices tengan las mismas dimensiones
-    //     if (gameMap.length === gameMap2.length && gameMap[0].length === gameMap2[0].length) {
-    //         // Recorre las filas
-    //         for (let i = 0; i < gameMap.length; i++) {
-    //             // Recorre las columnas
-    //             for (let j = 0; j < gameMap[i].length; j++) {
-    //                 // Reemplaza el elemento de matrizOriginal con el correspondiente de nuevaMatriz
-    //                 gameMap[i][j] = gameMap2[i][j];
-    //                 if (gameMap[i][j] === 1) {
-    //                     gridCell.className = "wall";
-    //                 } else if (gameMap[i][j] === 2) {
-    //                     let pelota = document.createElement("img");
-    //                     pelota.src = "../spain/media/pelota.png";
-    //                     pelota.className = "pelota";
-    //                     gridCell.appendChild(pelota);
-    //                     pelota.addEventListener("click", function () {
-    //                     });
-    //                 } else if (gameMap[i][j] === 3) {
-    //                     let persona = document.createElement("img");
-    //                     persona.src = "../spain/media/persona1.png";
-    //                     persona.className = "persona";
-    //                     gridCell.appendChild(persona);
-    //                     persona.addEventListener("click", function () {
-    //                     });
-    //                 } else if (gameMap[i][j] === 4) {
-    //                     let personaExtra = document.createElement("img");
-    //                     personaExtra.src = "../spain/media/persona-extra1.png";
-    //                     personaExtra.className = "persona-extra";
-    //                     gridCell.appendChild(personaExtra);
-    //                     personaExtra.addEventListener("click", function () {
-    //                     });
-    //                 } else {
-    //                     gridCell.className = "empty";
-    //                 }
-    //             }
-    //         }
-
-    //     } else {
-    //         console.error("Las matrices tienen dimensiones diferentes.");
-    //     }
-    // }
 
 /*----------------------------------CREACIO OBJECTES----------------------------------------------*/
 
