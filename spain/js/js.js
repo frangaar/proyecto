@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const closePostBienvenida = document.getElementById('close-post-bienvenida');
     const countdown = document.getElementById("countdown");
     const botonSalir = document.querySelector('.botonSalir');
-    const botonFinal = document.querySelector('.botonSalir');
+    const botonFinal = document.querySelector('.botonFinal');
     const modalFinal = document.getElementById('finJuegoModal');
     modalFinal.style.display = 'none';
 /*----------------------------------TIMER----------------------------------------------*/
@@ -58,9 +58,9 @@ function iniciarTemporizador() {
         window.location.href = '../action_page.php';
     });
 
-    botonSalir.addEventListener('click', function() {
+    botonFinal.addEventListener('click', function() {
         // Redirige a la página especificada
-        window.location.href = '../action_page.php';
+        window.location.href='../save.php?nivel=1+&tiempo='+totalSegundos;
     });
 
 /*----------------------------------Modals----------------------------------------------*/
