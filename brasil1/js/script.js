@@ -6,42 +6,47 @@ const NUM_JUGADAS = 10, NUM_TAMBORES = 4,
     startCrono = () => crono_interval = setInterval(() => tiempo++, 1000),
     addAnimacionRecompensa = () => document.querySelectorAll('.recompensa-items').forEach(img => img.classList.add('animacion-recompensa')),
     addModalWinEvent = () => document.getElementById('modal-win').addEventListener('shown.bs.modal', () => setTimeout(addAnimacionRecompensa, 200)),
-    addSettingsListener = () => document.addEventListener('mousedown', e => settings_ondisplay ? !Array.from(document.getElementsByClassName('option-btns')).some(btn => btn.contains(e.target)) ? ocultarSettings() : null : null),
+    addSettingsListener = () => document.addEventListener('mousedown', e => settings_ondisplay && (Array.from(document.getElementsByClassName('option-btns')).some(btn => btn.contains(e.target)) || toggleSettings())),
     setAmbientAudio = () => [{ classname: 'campfire-audio', ms: 750 }, { classname: 'forest-audio', ms: 5000 }].forEach(obj => setTimeout(() => document.querySelector(`.${obj.classname}`).play().catch(e => console.log('Error en reproduccion de sonido')), obj.ms)),
-    ejecutarMuestra = () => setTimeout(() => jugada != NUM_JUGADAS ? muestra_interval = setInterval(() => iterador_muestra <= jugada ? animarClick(orden[iterador_muestra++]) : setFinMuestra(), 600) : null, 600),
+    ejecutarMuestra = () => setTimeout(() => jugada == NUM_JUGADAS || (muestra_interval = setInterval(() => iterador_muestra <= jugada ? animarClick(orden[iterador_muestra++]) : setFinMuestra(), 600)), 600),
     setFinMuestra = () => (clearInterval(muestra_interval), turnoJugador = true, iterador_muestra = 0),
     rellenarEstadisticasModalWin = () => [{ classname: 'tiempo-result', txt: `${tiempo}s` }, { classname: 'errores-result', txt: `${errores} err.` }, { classname: 'puntos-result', txt: `${Math.round(10000 / tiempo)}pts` }].forEach(obj => document.querySelector(`.${obj.classname}`).textContent = obj.txt),
-    controlTurnoJugador = num => turnoJugador ? actionInputJugador(num) : null;
-
-let orden, turnoJugador, jugada, turno, iterador_muestra, settings_ondisplay, droped_settings, undroped_settings, gameWin, crono_interval, muestra_interval, settings_intervalid,
-    tiempo = errores = 0;
+    controlTurnoJugador = num_tambor => turnoJugador && actionInputJugador(num_tambor),
+    actionInputJugador = num_tambor => num_tambor === orden[turno] ? optionsSuccess(num_tambor) : actionError(),
+    showModal = id => new bootstrap.Modal(document.getElementById(id)).show();
+let orden, turnoJugador, jugada, turno, iterador_muestra, settings_ondisplay, droped_settings, undroped_settings, gameWin, tiempo, errores, crono_interval, muestra_interval, settings_intervalid;
 
 document.addEventListener('DOMContentLoaded', () => {
+    setUniqueVariableValues();
     setVariableValues();
     setAmbientAudio();
     addSettingsListener();
     addModalErrorListener();
     disableDraggableImages();
-    addModalWinEvent()
+    addModalWinEvent();
 });
 
 function addModalErrorListener() {
-    const modal_error = document.getElementById('modal-error')
+    const modal_error = document.getElementById('modal-error');
     modal_error.addEventListener('shown.bs.modal', () => {
         setTimeout(() => {
             document.getElementById('btn-error-retry').classList.add('error-btns-shown');
             setTimeout(() => ['btn-error-close-game', 'btn-error-back-to-menu'].forEach(id => document.getElementById(id).classList.add('error-btns-shown')), 250);
         }, 300);
     });
-    modal_error.addEventListener('hide.bs.modal', () => { modal_error.querySelector('.modal-content').children.forEach(btns => btns.classList.remove('error-btns-shown')) });
+    modal_error.addEventListener('hide.bs.modal', () => { Array.from(modal_error.querySelector('.modal-content').children).forEach(btns => btns.classList.remove('error-btns-shown')) });
+}
+
+function setUniqueVariableValues(){
+    tiempo = errores = 0;
+    droped_settings = [];
+    undroped_settings = Array.from(document.getElementsByClassName('options-setting-btn'));
 }
 
 function setVariableValues() {
     orden = rellenarArrayOrden(NUM_JUGADAS);
-    jugada = turno = i = 0;
+    jugada = turno = iterador_muestra = 0;
     turnoJugador = settings_ondisplay = gameWin = false;
-    droped_settings = [];
-    undroped_settings = Array.from(document.getElementsByClassName('options-setting-btn'));
 }
 
 function changeInterface(interfaceIn) {
@@ -71,20 +76,18 @@ function retry() {
     ejecutarMuestra();
 }
 
-function animarClick(num) {
-    const {img, audio} = efectosClick[num];
+function animarClick(num_tambor) {
+    const {img, audio} = efectosClick[num_tambor];
     const img_efecto = document.getElementById(img);
-    img_efecto.classList.add('img-efecto-shown');
     const audio_efecto = document.getElementById(audio);
+    img_efecto.classList.add('img-efecto-shown');
     audio_efecto.currentTime = 0;
     audio_efecto.play();
     setTimeout(() => img_efecto.classList.remove('img-efecto-shown'), 100);
 }
 
 function actionVolume() {
-    const btn_icon = document.getElementById('volume-btn').querySelector('i');
-    btn_icon.classList.toggle('fa-volume-high');
-    btn_icon.classList.toggle('fa-volume-xmark');
+    ['fa-volume-high', 'fa-volume-xmark'].forEach(icon_classname => document.getElementById('volume-btn').querySelector('i').classList.toggle(icon_classname))
     document.querySelectorAll('audio').forEach(audio => audio.muted = !audio.muted);
 }
 
@@ -107,21 +110,9 @@ function desplazarSettings() {
     [droped_settings, undroped_settings] = settings_ondisplay ? [filling_array, emptying_array] : [emptying_array, filling_array];
 }
 
-function actionInputJugador(num) {
-    if (num === orden[turno]) {
-        animarClick(num);
-        turno !== jugada ? turno++ : (jugada + 1 !== NUM_JUGADAS ? actionCorrectDrum() : actionWin(), actionCorrectSecuence());
-    } else {
-        actionError();
-    }
-}
-
-function actionCorrectSecuence() {
-    document.querySelector('.progress-bar').style.width = `${((jugada + 1) / NUM_JUGADAS) * 100}%`;
-    turnoJugador = false;
-    jugada++;
-    turno = 0;
-    ejecutarMuestra();
+function optionsSuccess(num_tambor){
+    animarClick(num_tambor);
+    turno !== jugada ? turno++ : (jugada + 1 !== NUM_JUGADAS ? actionCorrectDrum() : actionWin(), actionCorrectSecuence());
 }
 
 function actionCorrectDrum() {
@@ -130,11 +121,18 @@ function actionCorrectDrum() {
     success_audio.play();
 }
 
+function actionCorrectSecuence() {
+    turnoJugador = false;
+    turno = 0;
+    document.querySelector('.progress-bar').style.width = `${((++jugada) / NUM_JUGADAS) * 100}%`;
+    ejecutarMuestra();
+}
+
 function actionError() {
     errores++;
     document.querySelector('.frame-effect').classList.add('frame-effect-error');
     document.querySelector('.error-audio').play();
-    new bootstrap.Modal(document.getElementById('modal-error')).show();
+    showModal('modal-error');
 }
 
 function actionWin() {
@@ -143,5 +141,5 @@ function actionWin() {
     document.querySelector('.frame-effect').classList.add('frame-effect-win');
     document.querySelector('.victory-audio').play();
     rellenarEstadisticasModalWin();
-    setTimeout(() => new bootstrap.Modal(document.getElementById('modal-win')).show(), 2500);
+    setTimeout(() => showModal('modal-win'), 2500);
 }

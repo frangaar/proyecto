@@ -8,6 +8,13 @@ body{
     margin: 0px;
 }
 
+.frame{
+    top: 4%;
+    height: 91vh;
+    width: 88%;
+    left: 6%;
+}
+
 /* .frame{
     top: 0;
     height: 100vh;
@@ -15,12 +22,6 @@ body{
     left: 0;
 } */
 
-.frame{
-    top: 4%;
-    height: 91vh;
-    width: 88%;
-    left: 6%;
-}
 
 .frame{
     position: absolute;
