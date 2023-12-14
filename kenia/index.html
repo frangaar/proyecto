@@ -53,7 +53,7 @@
             </ul>
         </div>
     </div>
-    <div id="pauseMenu">
+    <!-- <div id="pauseMenu">
         <div class="menu_de_pause" id="menu_de_pause">
             <div class="showLaia" id="laiaPause"></div>
             <ul id="buttonAceptar_Pause">
@@ -61,23 +61,24 @@
                 <li id="exit"><span id="close_the_game" class="spans pause"></span></li>
             </ul>
         </div>
-    </div>
-    <div id="deathMenu">
+    </div> -->
+    <!-- <div id="deathMenu">
         <h1 class="titleMenu">Has Perdut</h1>
         <div class="showLaia"></div>
         <ul id="buttonAceptar_Death">
-            <!-- <li id="playButton_Death"><span onclick="buttonAccept()">Tornar a Jugar</span></li> -->
-            <li id="exitButton_Death"><span onclick="buttonDeath()">Sortir al menu</span></li>
+            <li id="exitButton_Death"><span onclick="buttonDeath()" class="spans"></span></li>
         </ul>
-    </div>
+    </div> -->
     <div id="showControls">
         <div class="container" id="containerControls">
             <h1 id="controlsTitle">Com Jugar</h1>
-            <img src="../kenia/img/keyboard_controls.png" alt="" class="imgKeyboard">
-            <img src="../img/laiaDerechaCaminando.gif" alt="laia derecha" class="imagenControles" id="laiaRight">
-            <img src="../img/laiaIzquierdaCaminando.gif" alt="Laia izquierda" class="imagenControles" id="laiaLeft">
-            <img src="../img/laiaIzquierdaParada.png" alt="Laia Saltando" class="imagenControles" id="laiaStand">
-            <img src="../kenia/img/esc_keyboard.png" alt="" class="imagenControles" id="esc_key">
+            <div class="imgsCtrl">
+                <img src="../kenia/img/keyboard_controls.png" alt="" class="imgKeyboard">
+                <img src="../img/laiaDerechaCaminando.gif" alt="laia derecha" class="imagenControles" id="laiaRight">
+                <img src="../img/laiaIzquierdaCaminando.gif" alt="Laia izquierda" class="imagenControles" id="laiaLeft">
+                <img src="../img/laiaIzquierdaParada.png" alt="Laia Saltando" class="imagenControles" id="laiaStand">
+                <img src="../kenia/img/esc_keyboard.png" alt="" class="imagenControles" id="esc_key">
+            </div>
             <p id="esc_description">Pressiona aquesta tecla quan vulguis entrar al menú de pausa.</p>
             <li id="goMenu">
                 <span id="buttonGoMenu" class="spans"></span>
@@ -129,19 +130,19 @@
             <p id="messagelvl1">Preparat per el seguent nivell?</p>
             <div class="showLaia" id="lvl1_to_2"></div>
             <ul id="buttonlvl1_to_2">
-                <li class="lvl1"><span id="spanNext_lvl">Seguent Nivell</span></li>
+                <li class="lvl1"><span id="spanNext_lvl" class="spans"></span></li>
             </ul>
         </div>
     </div>
     <div id="containerObjectObtaineds" class="container">
         <p id="titleObjectedsRecolected"></p>
         <div class="objectes">
-            <img src="../kenia/img/generator.png" alt="generator.img" width="180px">
-            <img src="../kenia/img/cable.png" alt="cable.img" width="170px">
-            <img src="../kenia/img/general_key.png" alt="key.img" width="70px">
+            <img src="../kenia/img/generator.png" alt="generator.img" width="180px" id="gen">
+            <img src="../kenia/img/cable.png" alt="cable.img" width="170px" id="cab">
+            <img src="../kenia/img/general_key.png" alt="key.img" width="70px" id="key">
         </div>
         <ul id="buttonCollect">
-            <li class="buttonObj"><span id="spanFinishingTheGame">Seguent</span></li>
+            <li class="buttonObj"><span id="spanFinishingTheGame" class="spans"></span></li>
         </ul>
     </div>
     <div id="finishGameContainer">

@@ -29,7 +29,8 @@ html , body{
     display: grid;
     place-content: center;
     /* background-image: url(../img/background.jpg); */
-    background-color: black;
+    /* background-color: black; */
+    background-image: url(../img/kenia-jungle\(2\).gif) !important;
     background-size: cover;
     overflow: hidden;
 }
