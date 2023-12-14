@@ -129,31 +129,6 @@ document.addEventListener('DOMContentLoaded',function(){
                         bocadillo.style.display="block";
                         juego.style.zIndex=1001;
                     }
-
-                    /* displayStory();
-
-                    
-                    let character = 0;
-                    
-
-                    function displayStory(){
-                        
-                        clearInterval(id);
-                        id = setInterval(frame, 50);
-                    }
-
-                    
-                    function frame() {
-                        let textHeight = texto.offsetHeight;
-                        if (textHeight > 140) {
-                        clearInterval(id);
-                        } else {
-                            character++; 
-                            texto.style.height = character + 'px';
-                        }
-                    } */
-                    
-                    
                     
         
                     this.addEventListener('mouseout', function(){

@@ -1039,7 +1039,7 @@ button.audio-close{
         top: -1524px;
     }
     100% {
-        top: -714px;
+        top: -914px;
     }
   }
 
@@ -1263,11 +1263,11 @@ button.audio-close{
   #mensajeFinalContainer{
     display: none;
     position: relative;
-    top: -714px;
+    top: -914px;
     left: 375px;
     z-index: 5000;
     width: 1150px;
-    height: 600px;
+    height: 830px;
   }
 
   #pergamino{
@@ -1283,7 +1283,7 @@ button.audio-close{
 
   #felicitacion{
     position: absolute;
-    top: 60px;
+    top: 340px;
     padding-left: 65px;
     padding-right: 55px;
     z-index: 5001;
