@@ -1,10 +1,10 @@
-
-
-
-
 document.addEventListener('DOMContentLoaded',function(){
 
 
+    if(localStorage.getItem('mostrarVictoria') == false || localStorage.getItem('mostrarVictoria') == null){
+        localStorage.setItem('mostrarVictoria',true);
+    }
+    
     localStorage.setItem('primerInicio',true);
     let nivelActual = 0;
 
@@ -92,15 +92,25 @@ document.addEventListener('DOMContentLoaded',function(){
     
     }
 
-    if(nivelActual > 5){
-        let pergamino = document.getElementById('mensajeFinalContainer');
+    if(localStorage.getItem('mostrarVictoria') == 'true'){
 
-        pergamino.classList.add('mostrarPergamino');
+        if(nivelActual > 5){
+            let pergamino = document.getElementById('mensajeFinalContainer');
+    
+            pergamino.classList.add('mostrarPergamino');
+            localStorage.setItem('mostrarVictoria',false);
+        }
     }
 
-    const pergamino = document.getElementById('mensajeFinalContainer');
+    let btcCerrarSesion = document.getElementById('btnCierraSesion');
+
+    btcCerrarSesion.addEventListener('click',function(){
+        localStorage.removeItem('mostrarVictoria');
+    });
+
+    const pergaminoContainer = document.getElementById('mensajeFinalContainer');
     document.addEventListener('mousedown', function (e) {
-        !pergamino.contains(e.target) ? pergamino.classList.remove('mostrarPergamino') : null
+        !pergaminoContainer.contains(e.target) ? pergaminoContainer.classList.remove('mostrarPergamino') : null
     });
     
 });
