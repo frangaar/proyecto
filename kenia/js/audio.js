@@ -25,3 +25,15 @@
     var backgroundTheme = document.getElementById('backgroundTheme')
     var fileBackgroundTheme = backgroundTheme.getAttribute('src')                 
     var audioBackground = new Audio(fileBackgroundTheme)
+
+    var select = document.getElementById('selectAudio')
+    var fileAudioSelect = select.getAttribute('src')
+    var audioSelect = new Audio(fileAudioSelect)
+    
+    var active = document.getElementById('activeAudio')
+    var fileAudioActive = active.getAttribute('src')
+    var audioActive = new Audio(fileAudioActive)
+
+    var puA = document.getElementById('powerupAudio')
+    var filePu = puA.getAttribute('src')
+    var puAudio = new Audio(filePu)

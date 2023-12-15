@@ -48,31 +48,13 @@
             <!-- <h1 class="titleMenu" id="title">Laia A Kenia</h1> -->
             <div class="showLaia" id="laia"></div>
             <ul id="buttonAceptar">
-                <li>
-                    <span onclick="startGame()" id="playButton" class="spans"></span>
-                </li>
+                <li><span onclick="startGame()" id="playButton" class="spans"></span></li>
                 <li id="controls"><span onclick="showControls()"></span></li>
                 <li id="exitButton"><span id="credits/exit"></span></li>
                 <li id="exit"><span onclick="exitGame()" id="idSpanExit" class="spans"></span></li>
             </ul>
         </div>
     </div>
-    <!-- <div id="pauseMenu">
-        <div class="menu_de_pause" id="menu_de_pause">
-            <div class="showLaia" id="laiaPause"></div>
-            <ul id="buttonAceptar_Pause">
-                <li><span id="continue_game" class="spans pause"></span></li>
-                <li id="exit"><span id="close_the_game" class="spans pause"></span></li>
-            </ul>
-        </div>
-    </div> -->
-    <!-- <div id="deathMenu">
-        <h1 class="titleMenu">Has Perdut</h1>
-        <div class="showLaia"></div>
-        <ul id="buttonAceptar_Death">
-            <li id="exitButton_Death"><span onclick="buttonDeath()" class="spans"></span></li>
-        </ul>
-    </div> -->
     <div id="showControls">
         <div class="container" id="containerControls">
             <h1 id="controlsTitle">Com Jugar</h1>
@@ -82,7 +64,9 @@
                 <img src="../img/laiaIzquierdaCaminando.gif" alt="Laia izquierda" class="imagenControles" id="laiaLeft">
                 <img src="../img/laiaIzquierdaParada.png" alt="Laia Saltando" class="imagenControles" id="laiaStand">
                 <img src="../kenia/img/esc_keyboard.png" alt="" class="imagenControles" id="esc_key">
+                <img src="../kenia/img/powerUp.gif" alt="" class="imagenControles" id="pu">
             </div>
+            <p id="pu_description">Això és un objecte que et fa invencible als barrils durant 10 segons, pero et farà més lent.</p>
             <p id="esc_description">Pressiona aquesta tecla quan vulguis entrar al menú de pausa.</p>
             <li id="goMenu">
                 <span id="buttonGoMenu" class="spans"></span>
@@ -167,6 +151,9 @@
             </ul>
         </div> -->
     </div>
+    <audio src="sound/powerUp.mp3" id="powerupAudio"></audio> 
+    <audio src="sound/active_sound.wav" id="activeAudio"></audio> 
+    <audio src="sound/select_sound.mp3" id="selectAudio"></audio> 
     <audio src="sound/character_Death.mp3" id="audioMarioFallin"></audio> 
     <audio src="sound/mario_falling.wav" id="audioMarioDiying"></audio>
     <audio src="sound/mario_jump.wav" id="marioJump"></audio>
@@ -177,20 +164,12 @@
     <script src="js/cinematics.js"></script>
     <script src="js/characterMovement.js"></script>
     <script src="js/audio.js"></script> 
-    <!-- <script>
-        // document.addEventListener("keyup", function(event) {
-        // // console.log(game_is_started);
-        //     if (event.code === 'Enter') {
-        //         if (!character_is_dead && !game) 
-        //         {
-        //             startGame(game)
-        //             game = true
-        //         } else 
-        //         {
-        //             buttonDeath()
-        //         }
-        //     }
-        // });
-    </script>   -->
+    <script>
+        let allSpans = document.getElementsByTagName('span')
+        for (const span of allSpans) {
+            span.addEventListener('mouseenter', () => audioSelect.play())
+            span.addEventListener('click', () => audioActive.play()) 
+        }
+    </script>
 </body>
 </html>   

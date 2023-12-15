@@ -536,6 +536,18 @@ li.lvl{
     top: 77%;
     left: 35%;
 }
+#pu {
+    left: 562px;
+    top: 610px;
+}
+#pu_description {
+    width: 720px;
+    position: absolute;
+    font-size: 20px;
+    color: white;
+    left: 651px;
+    top: 626px;
+}
 li#goMenu {
     position: absolute;
     left: 1352px;

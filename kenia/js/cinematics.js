@@ -63,6 +63,7 @@ divButton.addEventListener('animationend', function () {
 
 /** Función para empezar el juego.*/
 function buttonAccept() {
+    start_menu.style.display = 'block'
     if (heart1.style.display == 'none') {
         heart2.style.display = 'block'
         if (player_life === 2) 
@@ -73,7 +74,6 @@ function buttonAccept() {
     }
     history.style.display = 'none'
     var level1_Map = document.getElementById('level1')              
-    /** Cuando empieza el juego */
     level1_Map.style.display= 'block'
     showCtrl.style.display = 'none'
     pause = false
@@ -225,7 +225,6 @@ function showControls() {
         controlsTitle.innerHTML = 'Controls'
         buttonGoMenu.innerHTML = 'Enrere'
         buttonGoMenu.addEventListener('click', buttonAccept)
-        // buttonGoMenu.setAttribute('onclick', 'buttonAccept()')
         showCtrl.style.zIndex = 500
         containerControls.style.width = '1008px'
         containerControls.style.width = '836px'
@@ -234,17 +233,15 @@ function showControls() {
         containerGoMenu.style.top = '68px'
     } else {
         buttonGoMenu.innerHTML = 'Menu'
-        // buttonGoMenu.setAttribute('onclick', 'buttonDeath()')
         buttonGoMenu.addEventListener('click', buttonDeath)
         level1_Map.style.display = 'none'
         botonAceptar.style.display = 'none'
         divButton.style.display = 'none'
     }
+    start_menu.style.display = 'none'
     showCtrl.style.display = 'block'
     buttonGoMenu.style.left = '57px'
     buttonGoMenu.style.top = '59px'
-    // left: 57px;
-    // top: 59px;
     viewControls = false
 }
 /** Función para empezar el juego, aqui uso promesas para una condicional, las promesas son para manejar operaciones asíncronas, en este caso uso el boleano de dificult, el cual le hago return en la función de 
@@ -346,7 +343,7 @@ function selectDificult() {
                             skulls[i].src = '../kenia/img/skull-diff-danger.png'
                           }
                     } else if (spans.id === 'diff4') {
-                        lvlDescription.innerHTML = 'Per als més experts, hi haurà set barrils i es mouran a una velocitat super ràpida, tindràs una vida. '
+                        lvlDescription.innerHTML = 'Per als més experts, hi haurà sis barrils i es mouran a una velocitat super ràpida, tindràs una vida. '
                         dif1 = false
                         dif2 = false
                         dif3 = false
@@ -384,7 +381,7 @@ function selectDificult() {
 
                         player_life = 1
                         barrel_velocity = 8
-                        num_of_barrels = 7
+                        num_of_barrels = 6
                     }
                     for (let i = 0; i < skulls.length; i++) {
                         skulls[i].style.display = 'none'
@@ -554,9 +551,9 @@ function showStory() {
                     donkey.style.animation = 'donkyeAppareance 1s linear'
                     donkey.style.transform = 'rotate(0)'
                 })
-            }, 200);
+            }, 20000);
 
-        }, 200);
+        }, 20000);
     })   
     donkey.addEventListener('animationend', function() {
         audioEnemy.play()
@@ -597,55 +594,8 @@ function transitionlvl1_to_lvl2() {
         spanlvl.removeEventListener('click', handleClick);
     }
     let spanlvl = document.getElementById('spanNext_lvl');
-    // spanlvl.style.backgroundImage = 'url(../kenia/img/siguienteNivel-boton.png)'
-    // spanlvl.addEventListener('click', handleClick);
     spanlvl.addEventListener('click', handleClick)
-        // containerLvl1_to2.style.display = 'none';
-        // level1_Map.style.display = 'block';
-        // enemyContainer.style.left = '65px';
-        // positionY = 762;
-        // level_2_finished = true;
-        // bossAnimation1 = false;
-        // ARRAY_BARRELS.splice(0, ARRAY_BARRELS.length)
-        // drawMap();
-        // index_counting_barrels = 0
-        // // barrilesContainer.style.display = null
-        // startInterval()
-        // spanlvl.removeEventListener('click', handleClick); 
-
-
 }
-// function finishTheGame() {
-//     let globalContainerFinishMode = document.getElementById('finishGameContainer')
-//     let containerFinish = document.getElementById('containerFinish')
-//     let laiaImgFinish = document.getElementById('laiaFinish')
-//     let finalMessage = document.getElementById('mensajeFinal')
-//     let containerFinalMessage = document.getElementById('mensajeHistoriaFinal')
-//     globalContainerFinishMode.style.display = 'block'
-//     
-//     laiaImgFinish.addEventListener('animationend', function() {
-//         laiaImgFinish.setAttribute('src', '../img/laiaDerechaParada.png')
-//         finalMessage.style.display = 'block'
-//         containerFinalMessage.style.display = 'block'
-//         setTimeout(() => {
-//             containerFinalMessage.style.display = 'none'
-//             laiaImgFinish.style.animation = 'moveAway 4s linear'
-//             laiaImgFinish.addEventListener('animationend', function() {
-//                 laiaImgFinish.style.display = 'none'
-//             })
-//         //     finalMessage.innerHTML = `Oh no, hi ha un goril·la enfadat que no ens deixa passar!
-//         //     Està fent barrils, hem de derrotar-lo per anar a la central i encendre l'electricitat.
-//         //     <br>
-//         //     Deixa que et doni un consell, ves amb compte, salta els barrils i arriba fins a ell, però sobretot, tingues molt cuidado, aquests barrils no tenen bona pinta.`
-//         }, 20000);
-//     })
-//     // containerFinalMessage.style.display = 'none'
-//     // // containerFinish.style.backgroundImage = 'url(../kenia/img/fondo2.png)'
-//     // // containerFinish.style.backgroundSize = 'cover'
-//     // laiaImgFinish.addEventListener('animationend', function() {
-//     //     laiaImgFinish.setAttribute('src', '../img/laiaDerechaParada.png')
-//     // })
-// }
 function finishTheGame() {
     let globalContainerFinishMode = document.getElementById('finishGameContainer')
     let containerFinish = document.getElementById('containerFinish')
@@ -668,7 +618,7 @@ function finishTheGame() {
                 containerFinalMessage.style.display = 'none'
                 exitGame()
             })
-        }, 100);
+        }, 10000);
     })
 }
 // Funcion de objetos conseguidos
