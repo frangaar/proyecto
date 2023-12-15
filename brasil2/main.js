@@ -1,4 +1,4 @@
-const minutsInicial = 0.1;
+const minutsInicial = 1;
 let tempsRestant = minutsInicial * 60;
 const temps = document.getElementById("temporitzador");
 let interval;
@@ -13,11 +13,13 @@ const botonSi = document.getElementById("si");
 let victoriaModal = document.getElementById("victoriaModal");
 let derrotaModal = document.getElementById("derrotaModal");
 let audio = new Audio("./audios/audio-fondo.mp3");
-let puntsFinal = document.getElementById("puntsFinal");
+let puntsFinal1 = document.getElementById("puntsFinal1");
+let puntsFinal2 = document.getElementById("puntsFinal2");
 const botonVictoria = document.getElementById("tornarBoto2");
 const botonDerrota = document.getElementById("botoDerrota");
-inici();
-// document.addEventListener("DOMContentLoaded", asomaTopos);
+
+document.addEventListener('DOMContentLoaded',inici);
+botonInicio.addEventListener("click", musicaFons);
 volver.addEventListener("click", botoSortidaJoc);
 botonSi.addEventListener("click", sortirSenseAcabarJoc);
 
@@ -25,7 +27,6 @@ function inici() {
   botonInicio.addEventListener("click", function () {
     modalInicio.style.display = "none";
     asomaTopos();
-    document.addEventListener("click", musicaFons);
     sumarPunts();
     imatgeCursor();
     interval = setInterval(compteEnrere, 1000);
@@ -159,16 +160,6 @@ function musicaFons() {
   audio.play();
 }
 
-function jocAcabat() {
-  console.log("Joc Acabat");
-  audio.pause();
-  if (puntsInicial >= 350) {
-    victoria();
-  } else {
-    derrota();
-  }
-}
-
 function botoSortidaJoc() {
   if (tempsRestant < 0) {
     window.location.href = "../save.php?nivel=5&puntos=" + puntsInicial;
@@ -178,6 +169,7 @@ function botoSortidaJoc() {
 
     modalAviso.style.display = "flex";
     botonNo.addEventListener("click", tancarModal);
+    audio.pause()
   }
 }
 
@@ -187,8 +179,18 @@ function tancarModal() {
 
   interval = setInterval(compteEnrere, 1000);
   asomaTopos();
-
+  audio.play();
   botonNo.removeEventListener("click", tancarModal);
+}
+
+function jocAcabat() {
+  console.log("Joc Acabat");
+  audio.pause();
+  if (puntsInicial >= 300) {
+    victoria();
+  } else {
+    derrota();
+  }
 }
 
 function sortirSenseAcabarJoc() {
@@ -199,7 +201,7 @@ function sortirSenseAcabarJoc() {
 }
 
 function victoria() {
-  puntsFinal.innerHTML = `${puntsInicial}`;
+  puntsFinal1.innerHTML = `${puntsInicial}`;
   victoriaModal.style.display = "block";
   botonVictoria.addEventListener("click", sortirModalVictoria);
 }
@@ -209,7 +211,7 @@ function sortirModalVictoria() {
 }
 
 function derrota () {
-  puntsFinal.innerHTML = `${puntsInicial}`;
+  puntsFinal2.innerHTML = `${puntsInicial}`;
   derrotaModal.style.display = "block";
   botonDerrota.addEventListener("click", sortirModalDerrota);
 }

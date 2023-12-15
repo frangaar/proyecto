@@ -32,7 +32,6 @@ body {
 .punts {
     margin-left: 125px;
     margin-top: 25px;
-    /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)); */
 }
 
 .temps-container {
@@ -51,17 +50,13 @@ body {
     font-family: 'Pixelify Sans', sans-serif !important;
     padding-right: 50px;
     font-size: 40px;
-    /* font-weight: bold; */
 }
 
 .temps {
     color: white;
     font-family: 'Pixelify Sans', sans-serif !important;
     font-size: 40px;
-    /* font-weight: bold; */
 }
-
-
 
 .container {
     width: 1100px;
