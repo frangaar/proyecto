@@ -1,24 +1,36 @@
-const minutsInicial = 1;
+const minutsInicial = 0.1;
 let tempsRestant = minutsInicial * 60;
 const temps = document.getElementById("temporitzador");
-let interval = setInterval(compteEnrere, 1000);
+let interval;
 let aparicion = true;
 let puntsInicial = 0;
 let volver = document.getElementById("tornarBoto");
-const modalAviso = document.getElementById("confirmarSortida");
+let modalInicio = document.getElementById("inicio");
+const botonInicio = document.getElementById("iniciarJoc");
+let modalAviso = document.getElementById("confirmarSortida");
 const botonNo = document.getElementById("no");
 const botonSi = document.getElementById("si");
 let victoriaModal = document.getElementById("victoriaModal");
+let derrotaModal = document.getElementById("derrotaModal");
 let audio = new Audio("./audios/audio-fondo.mp3");
 let puntsFinal = document.getElementById("puntsFinal");
 const botonVictoria = document.getElementById("tornarBoto2");
-
-document.addEventListener("DOMContentLoaded", asomaTopos);
-document.addEventListener("click", musicaFons);
+const botonDerrota = document.getElementById("botoDerrota");
+inici();
+// document.addEventListener("DOMContentLoaded", asomaTopos);
 volver.addEventListener("click", botoSortidaJoc);
 botonSi.addEventListener("click", sortirSenseAcabarJoc);
-sumarPunts();
-imatgeCursor();
+
+function inici() {
+  botonInicio.addEventListener("click", function () {
+    modalInicio.style.display = "none";
+    asomaTopos();
+    document.addEventListener("click", musicaFons);
+    sumarPunts();
+    imatgeCursor();
+    interval = setInterval(compteEnrere, 1000);
+  });
+}
 
 function imatgeCursor() {
   const cursor = document.querySelector(".cursor");
@@ -61,10 +73,10 @@ function asomaTopos() {
 
         const numAleatorio = Math.random();
         console.log(numAleatorio);
-        if (numAleatorio <= 0.02) {
+        if (numAleatorio <= 0.04) {
           topoVerde = document.getElementById("imatge1" + num);
           topoVerde.style.display = "block";
-        } else if (numAleatorio <= 0.05) {
+        } else if (numAleatorio <= 0.1) {
           topoRojo = document.getElementById("imatge2" + num);
           topoRojo.style.display = "block";
         } else {
@@ -148,11 +160,13 @@ function musicaFons() {
 }
 
 function jocAcabat() {
-    console.log("Joc Acabat");
-    audio.pause();
-    if (puntsInicial >= 150) {
-      victoria();
-    }
+  console.log("Joc Acabat");
+  audio.pause();
+  if (puntsInicial >= 350) {
+    victoria();
+  } else {
+    derrota();
+  }
 }
 
 function botoSortidaJoc() {
@@ -180,17 +194,26 @@ function tancarModal() {
 function sortirSenseAcabarJoc() {
   if (tempsRestant > 0) {
     modalAviso.style.display = "none";
-    window.location.href='../action_page.php';
+    window.location.href = "../action_page.php";
   }
 }
 
-
 function victoria() {
-    puntsFinal.innerHTML = `${puntsInicial}`;
-    victoriaModal.style.display = "block";
-    botonVictoria.addEventListener("click", sortirModalVictoria);
+  puntsFinal.innerHTML = `${puntsInicial}`;
+  victoriaModal.style.display = "block";
+  botonVictoria.addEventListener("click", sortirModalVictoria);
 }
 
-function sortirModalVictoria () {
+function sortirModalVictoria() {
   window.location.href = "../save.php?nivel=5&puntos=" + puntsInicial;
+}
+
+function derrota () {
+  puntsFinal.innerHTML = `${puntsInicial}`;
+  derrotaModal.style.display = "block";
+  botonDerrota.addEventListener("click", sortirModalDerrota);
+}
+
+function sortirModalDerrota() {
+  window.location.href = "../action_page.php";
 }
