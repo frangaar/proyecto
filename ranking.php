@@ -17,6 +17,7 @@ include_once('db.php');
 
 $ranking=obtenerRanking();
 $anyos=obtenerAnyos();
+$niveles=obtenerNiveles();
 ?>
 
 <body>
@@ -40,11 +41,9 @@ $anyos=obtenerAnyos();
                     <div class="col">
                         <select class="form-select" name="nivel" aria-label="Default select example">
                             <option selected value="">Selecciona nivell</option>
-                            <option value="1">Nivel 1</option>
-                            <option value="2">Nivel 2</option>
-                            <option value="3">Nivel 3</option>
-                            <option value="4">Nivel 4</option>
-                            <option value="5">Nivel 5</option>
+                            <?php foreach ($niveles as $nivel){ ?>
+                            <option value="<?php echo $nivel['nivel'] ?>"><?php echo $nivel['nombre'] ?></option>
+                            <?php } ?> 
                         </select>
                     </div>
                     <div class="col">
@@ -81,21 +80,20 @@ $anyos=obtenerAnyos();
                 <thead>
                     <tr>
                         <th scope="col">Data</th>
-                        <th scope="col">UID</th>
                         <th scope="col">Usuari</th>
                         <th scope="col">Puntuació</th>
                         <th scope="col">Nivell</th>
-                        
+                        <th scope="col">Descripció</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($ranking as $value) { ?>
                     <tr>
                         <td><?php echo $value['fecha'] ?></td>
-                        <td><?php echo $value['uid'] ?></td>
                         <td><?php echo $value['user'] ?></td>
                         <td><?php echo $value['puntuacion'] ?></td>
                         <td><?php echo $value['nivel'] ?></td>
+                        <td><?php echo $value['nombre'] ?></td>
                     <?php } ?>
                     </tr>
                 </tbody>
