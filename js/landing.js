@@ -1,21 +1,5 @@
 document.addEventListener('DOMContentLoaded',function(){
    
-    // let landing = document.querySelector('.games-section #india');
-    // let img1 = document.getElementById('india_static');
-    // let img2 = document.getElementById('india_gif');
-
-    
-
-    // landing.addEventListener('mouseover',function(){
-    //     img1.style.display = 'none';
-    //     img2.style.display = 'block';
-    // })
-    
-    // landing.addEventListener('mouseout',function(){
-    //     img1.style.display = 'block';
-    //     img2.style.display = 'none';
-    // })
-
     const imgs = this.getElementsByTagName('img');
     for (const img of imgs) {
         img.draggable = false;
@@ -423,12 +407,6 @@ document.addEventListener('DOMContentLoaded',function(){
     let btnModalLogin = document.getElementById('btnModalLogin');
     
     btnModalLogin.addEventListener('click',function(){
-        localStorage.removeItem('mostrarVictoria');
-    });
-
-    let btnLogin = document.getElementById('btnLogin');
-
-    btnLogin.addEventListener('click',function(){
         localStorage.removeItem('mostrarVictoria');
     });
 
