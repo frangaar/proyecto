@@ -24,6 +24,16 @@ document.addEventListener('DOMContentLoaded', function() {
     let tiempoRestante = 0;
     let intervaloTemporizador;
 
+    var backgroundTheme = document.getElementById('backgroundTheme');
+    var message = document.getElementById('message');
+
+    // Iniciar la música cuando el usuario hace clic en cualquier lugar
+    document.body.addEventListener('click', function() {
+        backgroundTheme.play();
+        // Ocultar el mensaje después de iniciar la reproducción
+        message.style.display = 'none';
+    });
+
     function actualizarTemporizador() {
         const minutos = Math.floor(tiempoRestante / 60);
         const segundos = tiempoRestante % 60;
@@ -58,11 +68,7 @@ function iniciarTemporizador() {
         window.location.href = '../action_page.php';
     });
 
-    botonFinal.addEventListener('click', function() {
-        // Redirige a la página especificada
-        window.location.href='../save.php?nivel=1+&tiempo='+totalSegundos;
-    });
-
+    
 /*----------------------------------Modals----------------------------------------------*/
 
     modalBienvenida.style.display = 'block';
@@ -291,7 +297,7 @@ function iniciarTemporizador() {
         }
     }
 
-    function handleMovement3(newRow,newCol,modalFinal){
+    function handleMovement3(newRow,newCol,modalFinal,missio3,botonFinal){
         if (isValidMove(newRow, newCol)) {
             if (gameMap[newRow][newCol] === 8) {
                 if (hasClave) {
@@ -332,10 +338,10 @@ function iniciarTemporizador() {
                         document.removeEventListener('keydown', handleKeyDown);
                     }
 
-                    
-                    
-                    // Agrega el nuevo manejador de eventos de teclado
-                    document.addEventListener('keydown', handleKeyDown);
+                    botonFinal.addEventListener('click', function() {
+                        // Redirige a la página especificada
+                        window.location.href='../save.php?nivel=1+&tiempo='+totalSegundos;
+                    });
 
                 } else {
                     alert("No tens la pilota per entregarla!!");
@@ -794,5 +800,7 @@ function iniciarTemporizador() {
             personaje.style.top = maxTop + "px";
         }
     });
+
+    
     
 });
