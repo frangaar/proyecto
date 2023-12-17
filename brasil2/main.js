@@ -18,6 +18,8 @@ let puntsFinal2 = document.getElementById("puntsFinal2");
 const botonVictoria = document.getElementById("tornarBoto2");
 const botonDerrota = document.getElementById("botoDerrota");
 const golpe = new Audio("./audios/golpe.mp3");
+golpe.volume = 0.1;
+golpe.playbackRate = 2;
 
 document.addEventListener('DOMContentLoaded',inici);
 botonInicio.addEventListener("click", musicaFons);
