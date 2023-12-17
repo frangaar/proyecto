@@ -17,6 +17,7 @@ let puntsFinal1 = document.getElementById("puntsFinal1");
 let puntsFinal2 = document.getElementById("puntsFinal2");
 const botonVictoria = document.getElementById("tornarBoto2");
 const botonDerrota = document.getElementById("botoDerrota");
+const golpe = new Audio("./audios/golpe.mp3");
 
 document.addEventListener('DOMContentLoaded',inici);
 botonInicio.addEventListener("click", musicaFons);
@@ -115,6 +116,7 @@ function sumarPunts() {
     topo.addEventListener("click", () => {
       if (tempsRestant > 0) {
         puntsInicial += 10;
+        golpe.play();
         const punts = document.getElementById("puntuacio");
         punts.innerHTML = `${puntsInicial}`;
         topo.src = "img/topo-golpeado.png";
@@ -128,6 +130,7 @@ function sumarPunts() {
     topoVerde.addEventListener("click", () => {
       if (tempsRestant > 0) {
         puntsInicial += 15;
+        golpe.play();
         const punts = document.getElementById("puntuacio");
         punts.innerHTML = `${puntsInicial}`;
         topoVerde.src = "img/topo-golpeado-verde.png";
@@ -141,6 +144,7 @@ function sumarPunts() {
     topoRojo.addEventListener("click", () => {
       if (tempsRestant > 0) {
         puntsInicial -= 20;
+        golpe.play();
         const punts = document.getElementById("puntuacio");
         punts.innerHTML = `${puntsInicial}`;
         topoRojo.src = "img/topo-golpeado-rojo.png";
@@ -154,7 +158,7 @@ function sumarPunts() {
 }
 
 function musicaFons() {
-  audio.volume = 0.05;
+  audio.volume = 0.02;
   audio.loop = true;
   audio.playbackRate = 1;
   audio.play();
