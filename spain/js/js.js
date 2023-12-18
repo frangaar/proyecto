@@ -297,7 +297,7 @@ function iniciarTemporizador() {
         }
     }
 
-    function handleMovement3(newRow,newCol,modalFinal,missio3,botonFinal){
+    function handleMovement3(newRow,newCol,modalFinal,missio3,botonFinal,totalSegundos){
         if (isValidMove(newRow, newCol)) {
             if (gameMap[newRow][newCol] === 8) {
                 if (hasClave) {
