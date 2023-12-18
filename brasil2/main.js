@@ -18,7 +18,7 @@ let puntsFinal2 = document.getElementById("puntsFinal2");
 const botonVictoria = document.getElementById("tornarBoto2");
 const botonDerrota = document.getElementById("botoDerrota");
 const golpe = new Audio("./audios/golpe.mp3");
-golpe.volume = 0.1;
+golpe.volume = 1;
 golpe.playbackRate = 2;
 
 document.addEventListener('DOMContentLoaded',inici);
@@ -160,7 +160,7 @@ function sumarPunts() {
 }
 
 function musicaFons() {
-  audio.volume = 0.02;
+  audio.volume = 0.5;
   audio.loop = true;
   audio.playbackRate = 1;
   audio.play();
@@ -192,7 +192,7 @@ function tancarModal() {
 function jocAcabat() {
   console.log("Joc Acabat");
   audio.pause();
-  if (puntsInicial >= 300) {
+  if (puntsInicial >= 350) {
     victoria();
   } else {
     derrota();
