@@ -15,28 +15,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeBienvenida = document.getElementById('close-bienvenida');
     const modalPostBienvenida = document.getElementById('modal-post-bienvenida');
     const closePostBienvenida = document.getElementById('close-post-bienvenida');
-    const countdown = document.getElementById("countdown");
+    // const countdown = document.getElementById("countdown");
     const botonSalir = document.querySelector('.botonSalir');
-    const botonFinal = document.querySelector('.botonFinal');
+    const botonFinal = document.getElementById('botonFinal')
     const modalFinal = document.getElementById('finJuegoModal');
+    let minutos = 0
+    let segundos = 0
     modalFinal.style.display = 'none';
 /*----------------------------------TIMER----------------------------------------------*/
     let tiempoRestante = 0;
     let intervaloTemporizador;
 
     var backgroundTheme = document.getElementById('backgroundTheme');
-    var message = document.getElementById('message');
 
     // Iniciar la música cuando el usuario hace clic en cualquier lugar
     document.body.addEventListener('click', function() {
         backgroundTheme.play();
         // Ocultar el mensaje después de iniciar la reproducción
-        message.style.display = 'none';
     });
 
     function actualizarTemporizador() {
-        const minutos = Math.floor(tiempoRestante / 60);
-        const segundos = tiempoRestante % 60;
+        minutos = Math.floor(tiempoRestante / 60);
+        segundos = tiempoRestante % 60;
 
         // Actualiza el temporizador
         const countdown = document.getElementById("countdown");
@@ -47,12 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         segundosElement.textContent = tiempoRestante;
 
         // Si missio3 es true, detener el temporizador
-        if (missio3) {
-            clearInterval(intervaloTemporizador);
-            // Calcular el número total de segundos y mostrarlo
-            const totalSegundos = minutos * 60 + segundos;
-            console.log("Número total de segundos:", totalSegundos);
-        }
+        
     }
 
 function iniciarTemporizador() {
@@ -272,7 +267,7 @@ function iniciarTemporizador() {
                     // reemplazarElementos(gameMap, gameMap2);
                     displayNextTask(nextTaskContent);
                     showAllElements2();
-                    handleMovement3(newRow,newCol);
+                    handleMovement3(newRow,newCol,modalFinal,missio3);
                 } else {
                     alert("No tens la pilota per entregarla!!");
                 }
@@ -297,7 +292,7 @@ function iniciarTemporizador() {
         }
     }
 
-    function handleMovement3(newRow,newCol,modalFinal,missio3,botonFinal,totalSegundos){
+    function handleMovement3(newRow,newCol,modalFinal,missio3){
         if (isValidMove(newRow, newCol)) {
             if (gameMap[newRow][newCol] === 8) {
                 if (hasClave) {
@@ -319,29 +314,7 @@ function iniciarTemporizador() {
 
                     modalFinal.style.display = 'block';
 
-                    if (missio3) {
-                        // Muestra el modal de fin de juego y no permite movimientos
-                        mostrarModal();
-                        return;
-                    }
-                
-                    function mostrarModal() {
-                        // Obtén la referencia al modal y a la capa de fondo
-                        var modal = document.getElementById('finJuegoModal');
-                        var modalBackdrop = document.getElementById('modalBackdrop');
-                    
-                        // Muestra el modal y la capa de fondo
-                        modal.style.display = 'block';
-                        modalBackdrop.style.display = 'block';
-                    
-                        // Desactiva la capacidad de mover
-                        document.removeEventListener('keydown', handleKeyDown);
-                    }
-
-                    botonFinal.addEventListener('click', function() {
-                        // Redirige a la página especificada
-                        window.location.href='../save.php?nivel=1+&tiempo='+totalSegundos;
-                    });
+                    mostrarModal(minutos,segundos);
 
                 } else {
                     alert("No tens la pilota per entregarla!!");
@@ -367,6 +340,25 @@ function iniciarTemporizador() {
         }
     }
 
+    function mostrarModal() {
+        // Obtén la referencia al modal y a la capa de fondo
+        var modal = document.getElementById('finJuegoModal');
+    
+        // Muestra el modal y la capa de fondo
+        modal.style.display = 'block';
+    
+        // Desactiva la capacidad de mover
+        botonFinal.addEventListener('click', function() {
+            // if (missio3) {
+            clearInterval(intervaloTemporizador);
+            // Calcular el número total de segundos y mostrarlo
+            const totalSegundos2 = minutos * 60 + segundos;
+            // }
+            // Redirige a la página especificada
+            window.location.href='../save.php?nivel=1+&tiempo='+totalSegundos2;
+        });
+    }
+    
     
 
 /*----------------------------------FUNCIONS MAPA----------------------------------------------*/
