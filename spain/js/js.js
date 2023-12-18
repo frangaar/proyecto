@@ -319,7 +319,7 @@ function iniciarTemporizador() {
 
                     modalFinal.style.display = 'block';
 
-                    if (misio3) {
+                    if (missio3) {
                         // Muestra el modal de fin de juego y no permite movimientos
                         mostrarModal();
                         return;
