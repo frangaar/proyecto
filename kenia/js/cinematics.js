@@ -191,6 +191,7 @@ function back_Menu() {
         window.location.href = 'http://localhost/proyecto/kenia/index.html'
         console.log('mayor');
     }
+
 }
 /** Función para salir del juego. */
 function exitGame() {

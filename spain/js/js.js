@@ -263,7 +263,7 @@ function iniciarTemporizador() {
                     clearMap2();
                     
                     // Display a modal with the next task
-                    const nextTaskContent = "Porta la pilota al noi de la samarreta verda i pantalo blau.";
+                    const nextTaskContent = "Porta la clau anglesa al noi de la samarreta verda i pantalo vermell.";
                     // reemplazarElementos(gameMap, gameMap2);
                     displayNextTask(nextTaskContent);
                     showAllElements2();
