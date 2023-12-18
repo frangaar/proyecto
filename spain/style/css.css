@@ -44,7 +44,9 @@ html{
     border: solid black 1px;
     border-radius: 5px;
 }
-
+#botonFinal:hover {
+    cursor: pointer;
+}
 .botonSalir{
     right: 165px;
     font-family: pixel;
