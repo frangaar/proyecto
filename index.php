@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/botones.css">
     <script src="js/landing.js"></script>
-    <title>Document</title>
+    <title>El Viatge Renovable de Laia</title>
 </head>
 <?php
     session_start();
