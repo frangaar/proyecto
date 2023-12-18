@@ -180,7 +180,7 @@ function back_Menu() {
     if (gameCompleted) {
         sesion1 = localStorage.setItem(stringS1, timerCount)
     }
-    window.location.href = 'http://localhost/proyecto/kenia/index.html'
+    window.location.href = '../kenia/index.html'
 }
 /** Función para salir del juego. */
 function exitGame() {
