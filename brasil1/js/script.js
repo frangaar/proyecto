@@ -1,4 +1,4 @@
-const NUM_JUGADAS = 10, NUM_TAMBORES = 4,
+const NUM_JUGADAS = 11, NUM_TAMBORES = 4,
     efectosClick = [{ img: 'effect-click-rojo', audio: 'audio-effect-rojo' }, { img: 'effect-click-amarillo', audio: 'audio-effect-amarillo' }, { img: 'effect-click-azul', audio: 'audio-effect-azul' }, { img: 'effect-click-verde', audio: 'audio-effect-verde' }],
     exitGame = () => gameWin ? window.location.href = `../save.php?nivel=4+&tiempo=${tiempo}` : window.location.href = '../action_page.php',
     rellenarArrayOrden = () => Array.from({ length: NUM_JUGADAS }, () => Math.floor(Math.random() * NUM_TAMBORES)),
