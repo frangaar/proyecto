@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/fontawesome/css/all.css">
     <link rel="stylesheet" href="css/main.css">
-    <title>Document</title>
+    <title>El Viatge Renovable de Laia</title>
 </head>
 <?php 
 include_once('db.php');

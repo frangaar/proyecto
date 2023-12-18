@@ -181,15 +181,14 @@ function back_Menu() {
         sesion1 = localStorage.setItem(stringS1, timerCount)
     }
     let currentDate = new Date().toLocaleDateString('es-ES');
-    //let endDate = new Date('19/12/2023')
+    
+    // Fecha para las presentaciones públicas
     const endDate = new Date('2023', '11', '19').toLocaleDateString('es-ES'); 
-    console.log(endDate);
+    
     if (currentDate < endDate) {
         window.location.href = '../kenia/index.html'    
-        console.log('menor')
     }else{
         window.location.href = 'http://localhost/proyecto/kenia/index.html'
-        console.log('mayor');
     }
 
 }
