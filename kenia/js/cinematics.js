@@ -180,7 +180,17 @@ function back_Menu() {
     if (gameCompleted) {
         sesion1 = localStorage.setItem(stringS1, timerCount)
     }
-    window.location.href = 'http://localhost/proyecto/kenia/index.html'
+    let currentDate = new Date().toLocaleDateString('es-ES');
+    //let endDate = new Date('19/12/2023')
+    const endDate = new Date('2023', '11', '19').toLocaleDateString('es-ES'); 
+    console.log(endDate);
+    if (currentDate < endDate) {
+        window.location.href = '../kenia/index.html'    
+        console.log('menor')
+    }else{
+        window.location.href = 'http://localhost/proyecto/kenia/index.html'
+        console.log('mayor');
+    }
 }
 /** Función para salir del juego. */
 function exitGame() {
@@ -551,9 +561,9 @@ function showStory() {
                     donkey.style.animation = 'donkyeAppareance 1s linear'
                     donkey.style.transform = 'rotate(0)'
                 })
-            }, 20000);
+            }, 2000);
 
-        }, 20000);
+        }, 2000);
     })   
     donkey.addEventListener('animationend', function() {
         audioEnemy.play()
