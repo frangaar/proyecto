@@ -879,19 +879,19 @@ document.addEventListener('DOMContentLoaded',function(){
 
     btnConseguido.addEventListener('click',function (){
 
-        let imgError = document.querySelector('#superado .modal-footer #img_notis');
+        // let imgError = document.querySelector('#superado');
 
         modalSuperado.style.display = "none";
-        imgError.classList.remove('error');
+        modalSuperado.classList.remove('error');
         modalSuperado.classList.remove('success');
     });
 
     btnAspa.addEventListener('click',function (){
 
-        let imgError = document.querySelector('#superado .modal-footer #img_notis');
+        // let imgError = document.querySelector('#superado');
 
         modalSuperado.style.display = "none";
-        imgError.classList.remove('error');
+        modalSuperado.classList.remove('error');
         modalSuperado.classList.remove('success');
     });
 

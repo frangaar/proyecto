@@ -442,7 +442,7 @@ img[name="muroDown"] {
   }
 
   #jugar .modal-content{
-    height: 475px;
+    height: 515px;
     background-color: #7db585;
     box-shadow: 0px 1px 5px 5px rgba(255,255,255,0.75);
   }
@@ -476,9 +476,10 @@ img[name="muroDown"] {
   }
 
   #juego2 .modal-content{
-    background-image: url('../img/fondo_form2.png');
+    /* background-image: url('../img/fondo_form2.png'); */
+    background-image: url('../img/fondo_form3.png');
     width: 60%;
-    height: 640px;
+    height: 650px;
     margin-bottom: 70px;
   }
 
@@ -802,9 +803,14 @@ button.audio-close{
     padding-left: 50px;
     padding-right: 50px;
   }
+  
 
   #mision .instruccion4,#mision .instruccion6{
     font-size: 29px;
+  }
+  
+  #mision .instruccion8{
+    font-size: 34px;
   }
   
   
@@ -848,12 +854,12 @@ button.audio-close{
   }
   
   #mision #validar{
-    width: 611px;
+    width: 601px;
     margin: auto;
   }
   
   #mision #colocar{
-    width: 1156px;
+    width: 1137px;
     margin: auto;
   }
 

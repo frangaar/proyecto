@@ -99,9 +99,10 @@ document.addEventListener('DOMContentLoaded',function(){
     });
 
 
-    let btnGuardar = document.getElementById('guardarGhandi');
+    let btnConseguido = document.querySelector('#superado #aceptar');
+    // let btnGuardar = document.getElementById('guardarGhandi');
 
-    btnGuardar.onclick = function(){
+    btnConseguido.onclick = function(){
     
         sessionStorage.setItem("ghandi",true);
         let modal = document.getElementById("juego1");
