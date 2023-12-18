@@ -324,7 +324,7 @@ function selectDificult() {
                 spans.addEventListener('mouseenter', function() {
                     lvlDescription.style.display = null
                     if (spans.id === 'diff1') {
-                        lvlDescription.innerHTML = 'Si vols jugar sense cap mena de dificultat, hi haurà cuatre barrils únicament, i es mouran a una velocitat lenta, tindràs dues vides.'
+                        lvlDescription.innerHTML = 'Si vols jugar sense cap mena de dificultat, hi haurà tres barrils únicament, i es mouran a una velocitat lenta, tindràs dues vides.'
                         dif1 = true
                         dif2 = false
                         dif3 = false
@@ -334,7 +334,7 @@ function selectDificult() {
                             skulls[i].src = '../kenia/img/skull-diff.png'
                           }
                     } else if (spans.id === 'diff2') {
-                        lvlDescription.innerHTML = "Per si vols disfrutar de l'historia amb una miqueta de dificultat, hi haurà cuatre barrils i es mouran a una velocitat més ràpida en comparació al nivell fàcil, tindràs una vida."
+                        lvlDescription.innerHTML = "Per si vols disfrutar de l'historia amb una miqueta de dificultat, hi haurà tres barrils i es mouran a una velocitat més ràpida en comparació al nivell fàcil, tindràs dos vida."
                         dif1 = false
                         dif2 = true
                         dif3 = false
@@ -344,7 +344,7 @@ function selectDificult() {
                             skulls[i].src = '../kenia/img/skull-diff.png'
                           }
                     } else if (spans.id === 'diff3') {
-                        lvlDescription.innerHTML = 'Per si vols una experiència difícil, hi haurà cinc barrils i es mouran a una velocitat molt més ràpida en comparació al nivell mitjà, tindràs una vida.'
+                        lvlDescription.innerHTML = 'Per si vols una experiència difícil, hi haurà tres barrils i es mouran a una velocitat molt més ràpida en comparació al nivell mitjà, tindràs una vida.'
                         dif1 = false
                         dif2 = false
                         dif3 = true
@@ -354,7 +354,7 @@ function selectDificult() {
                             skulls[i].src = '../kenia/img/skull-diff-danger.png'
                           }
                     } else if (spans.id === 'diff4') {
-                        lvlDescription.innerHTML = 'Per als més experts, hi haurà sis barrils i es mouran a una velocitat super ràpida, tindràs una vida. '
+                        lvlDescription.innerHTML = 'Per als més experts, hi haurà cuatre barrils i es mouran a una velocitat super ràpida, tindràs una vida. '
                         dif1 = false
                         dif2 = false
                         dif3 = false
@@ -374,25 +374,25 @@ function selectDificult() {
                     {
                         player_life = 2
                         barrel_velocity = 3
-                        num_of_barrels = 4
+                        num_of_barrels = 3
 
                     } else if (dif2)
                     {
-                        player_life = 1
+                        player_life = 2
                         barrel_velocity = 4
-                        num_of_barrels = 4
+                        num_of_barrels = 3
     
                     } else if (dif3) 
                     {
                         player_life = 1
                         barrel_velocity = 5
-                        num_of_barrels = 5
+                        num_of_barrels = 3
     
                     } else if (dif4){
 
                         player_life = 1
                         barrel_velocity = 8
-                        num_of_barrels = 6
+                        num_of_barrels = 4
                     }
                     for (let i = 0; i < skulls.length; i++) {
                         skulls[i].style.display = 'none'

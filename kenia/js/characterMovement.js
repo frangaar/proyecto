@@ -2,6 +2,7 @@ let body = document.getElementById('body')
 const BLOCK_SIZE = 36
 const PLAYER_WIDTH = 47
 const PLAYER_HEIGHT = 26
+// 8.3
 const PLAYER_VELOCITYJUMP = 8.3
 const barrelCreatedTiming = 3000
 let enemyVelocity = 2.9
