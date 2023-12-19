@@ -29,8 +29,8 @@ html{
 
 #botonFinal {
     font-family: pixel;
-    right: 160px;
-    bottom: 60px;
+    right: 170px;
+    bottom: 40px;
     text-align: center;
     z-index: 999;
     width: 160px;
@@ -71,7 +71,7 @@ html{
     text-align: center;
     z-index: 999;
     width: 160px;
-    height: 240px;
+    height: 260px;
     font-size: 24px;
     font-weight: bold;
     color: #7100bd; /* Color del texto */
@@ -171,7 +171,7 @@ html{
     transform: translate(-50%, -50%); /* Centrar vertical y horizontalmente */
     z-index: 999;
     width: 450px;
-    height: 370px;
+    height: 330px;
     background-color: white;
     padding: 20px;
     text-align: center;
