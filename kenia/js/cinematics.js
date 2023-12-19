@@ -180,16 +180,16 @@ function back_Menu() {
     if (gameCompleted) {
         sesion1 = localStorage.setItem(stringS1, timerCount)
     }
-    let currentDate = new Date().toLocaleDateString('es-ES');
+    // let currentDate = new Date().toLocaleDateString('es-ES');
     
     // Fecha para las presentaciones públicas
-    const endDate = new Date('2023', '11', '18').toLocaleDateString('es-ES'); 
+    // const endDate = new Date('2023', '11', '18').toLocaleDateString('es-ES'); 
     
-    if (currentDate < endDate) {
+    // if (currentDate < endDate) {
         window.location.href = '../kenia/index.html'    
-    }else{
-        window.location.href = 'http://localhost/proyecto/kenia/index.html'
-    }
+    // }else{
+    //     window.location.href = 'http://localhost/proyecto/kenia/index.html'
+    // }
 
 }
 /** Función para salir del juego. */
