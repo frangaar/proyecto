@@ -192,7 +192,7 @@ function tancarModal() {
 function jocAcabat() {
   console.log("Joc Acabat");
   audio.pause();
-  if (puntsInicial >= 350) {
+  if (puntsInicial >= 250) {
     victoria();
   } else {
     derrota();

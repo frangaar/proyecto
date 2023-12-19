@@ -6,10 +6,10 @@ superado.classList.remove('error');
 
 preguntasJuego1 = [
     ["1) Escriu amb xifres aquests números: Sis-cents setanta-set mil tres-cents set:",677307],
-    ["2) En Ramón té tres àlbums de segells. En un té <i>287</i> segells; en un altre, <i>28</i> segells més, i en el tercer, <i>24</i> segells menys que en el segon. Quants segells té en total?",893],
+    ["2) En Ramón té tres àlbums de segells. En un té <i>100</i> segells; en un altre, <i>28</i> segells més, i en el tercer, <i>24</i> segells menys que en el segon. Quants segells té en total?",332],
     ["3) Un camió transporta <i>325</i> caixes d'ampolles d'oli. Cada caixa conté <i>25</i> ampolles d'un litre d'oli. El preu del litre d'oli és de <i>4 €</i>. Quin és el cost total de la càrrega que transporta el camió?",32500],
     ["4) Quants litres d'aigua caben en vuit ampolles de tres quarts de litre?",6],
-    ["5) Realitza aquesta operació: <i>24.498,21</i> + <i>31.754,1</i> + <i>66.151</i> - <i>804</i>",121599.31]
+    ["5) Realitza aquesta operació: <i>1500,21</i> + <i>200,1</i> + <i>51</i> - <i>80</i>",1671.31]
     ];
 
 
@@ -25,21 +25,21 @@ for (let index = 0; index < preguntasJuego1.length; index++) {
         case 1:
                 html += '<div class="col-3 valores">';
                 html += `<div class="form-check">
-                        <input class="form-check-input" type="radio" value="913" id="radio1Resp1" name="respuesta${index}" checked>
+                        <input class="form-check-input" type="radio" value="330" id="radio1Resp1" name="respuesta${index}" checked>
                         <label class="form-check-label" for="radio1Resp1">
-                        913
+                        330
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" value="890" id="radio2Resp1" name="respuesta${index}">
+                        <input class="form-check-input" type="radio" value="351" id="radio2Resp1" name="respuesta${index}">
                         <label class="form-check-label" for="radio2Resp1">
-                        890
+                        351
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" value="893" id="radio3Resp1" name="respuesta${index}">
+                        <input class="form-check-input" type="radio" value="332" id="radio3Resp1" name="respuesta${index}">
                         <label class="form-check-label" for="radio3Resp1">
-                        893
+                        332
                         </label>
                     </div>`
                 html += '</div>';
@@ -71,21 +71,21 @@ for (let index = 0; index < preguntasJuego1.length; index++) {
             case 4:
                 html += '<div class="col-3 valores">';
                 html += `<div class="form-check">
-                        <input class="form-check-input" type="radio" value="135300.31" id="radio1Resp4" name="respuesta${index}" checked>
+                        <input class="form-check-input" type="radio" value="1678.31" id="radio1Resp4" name="respuesta${index}" checked>
                         <label class="form-check-label" for="radio1Resp4">
-                        135.300,31
+                        1678.31
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" value="125590.31" id="radio2Resp4" name="respuesta${index}">
+                        <input class="form-check-input" type="radio" value="1771.31" id="radio2Resp4" name="respuesta${index}">
                         <label class="form-check-label" for="radio2Resp4">
-                        125.590,31
+                        1771.31
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" value="121599.31" id="radio3Resp4" name="respuesta${index}">
+                        <input class="form-check-input" type="radio" value="1671.31" id="radio3Resp4" name="respuesta${index}">
                         <label class="form-check-label" for="radio3Resp4">
-                        121.599,31
+                        1671.31
                         </label>
                     </div>`
                 html += '</div>';
