@@ -1,3 +1,15 @@
 #ejercicios p{
     font-size: 16px;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#contenido1 .form-check{
+    font-size: 16px;
+    font-weight: 500;
+    /* display: inline-block; */
+}

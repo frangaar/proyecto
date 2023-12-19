@@ -373,7 +373,7 @@ function selectDificult() {
                     {
                         player_life = 2
                         barrel_velocity = 3
-                        num_of_barrels = 3
+                        num_of_barrels = 2
 
                     } else if (dif2)
                     {
@@ -561,9 +561,9 @@ function showStory() {
                     donkey.style.animation = 'donkyeAppareance 1s linear'
                     donkey.style.transform = 'rotate(0)'
                 })
-            }, 2000);
+            }, 10000);
 
-        }, 2000);
+        }, 10000);
     })   
     donkey.addEventListener('animationend', function() {
         audioEnemy.play()

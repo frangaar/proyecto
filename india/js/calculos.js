@@ -20,10 +20,86 @@ for (let index = 0; index < preguntasJuego1.length; index++) {
     let html = '<div class="col-9">';
     html += '<p>'+preguntasJuego1[index][0]+'</p>';
     html += '</div>';
-    html += '<div class="col-3">';
-    html += '<input class="form-control form-control-sm respuestasTaj preguntas" placeholder="Escriu la teva respuesta" type="number">';
-    html += '</div>';
-    html += '</div>';
+
+    switch(index){
+        case 1:
+                html += '<div class="col-3 valores">';
+                html += `<div class="form-check">
+                        <input class="form-check-input" type="radio" value="913" id="radio1Resp1" name="respuesta${index}" checked>
+                        <label class="form-check-label" for="radio1Resp1">
+                        913
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="890" id="radio2Resp1" name="respuesta${index}">
+                        <label class="form-check-label" for="radio2Resp1">
+                        890
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="893" id="radio3Resp1" name="respuesta${index}">
+                        <label class="form-check-label" for="radio3Resp1">
+                        893
+                        </label>
+                    </div>`
+                html += '</div>';
+                break;
+
+        case 2:
+            html += '<div class="col-3 valores">';
+            html += `<div class="form-check">
+                    <input class="form-check-input" type="radio" value=32500" id="radio1Resp2" name="respuesta${index}" checked>
+                    <label class="form-check-label" for="radio1Resp2">
+                    32500
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="33000" id="radio2Resp2" name="respuesta${index}">
+                    <label class="form-check-label" for="radio2Resp2">
+                    33000
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="32300" id="radio2Resp3" name="respuesta${index}">
+                    <label class="form-check-label" for="radio2Resp3">
+                    32300
+                    </label>
+                </div>`
+            html += '</div>';
+            break;
+
+            case 4:
+                html += '<div class="col-3 valores">';
+                html += `<div class="form-check">
+                        <input class="form-check-input" type="radio" value="135300.31" id="radio1Resp4" name="respuesta${index}" checked>
+                        <label class="form-check-label" for="radio1Resp4">
+                        135.300,31
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="125590.31" id="radio2Resp4" name="respuesta${index}">
+                        <label class="form-check-label" for="radio2Resp4">
+                        125.590,31
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="121599.31" id="radio3Resp4" name="respuesta${index}">
+                        <label class="form-check-label" for="radio3Resp4">
+                        121.599,31
+                        </label>
+                    </div>`
+                html += '</div>';
+                break;
+
+        default:
+                html += '<div class="col-3 valores">';
+                html += `<input class="form-control form-control-sm respuestasTaj preguntas" name="respuesta${index}" placeholder="Escriu la teva respuesta" type="number">`;
+                html += '</div>';
+                html += '</div>';
+                break;
+    }
+
+    
     tmpDiv.innerHTML = html;
     container.appendChild(tmpDiv);
 }
@@ -86,23 +162,68 @@ btnGuardar.onclick = function(){
 
 
 function comprobarRespuestas(){
-    let respuestas = document.getElementsByClassName('respuestasTaj');
+    // let respuestas = document.getElementsByClassName('respuestasTaj');
+    let respuestas = document.getElementsByClassName('valores');
+    let respuesta = '';
     let aciertos = 0;
 
     for (let index = 0; index < respuestas.length; index++) {
         
         // Convertimos el . en ,
-        let respuesta = respuestas[index].value.replace(/,/g, '.');
+        // let respuesta = respuestas[index].value.replace(/,/g, '.');
+
+        
+        
+
+        switch(index){
+            case 1:
+                // Borramos todos los errores de los radiobuttons actuales
+                eliminaErroresRadioButtons(respuestas[index],index);
+                respuesta = parseInt(respuestas[index].querySelector(`input[name="respuesta${index}"]:checked`).value);
+                break;
+            case 2:
+                // Borramos todos los errores de los radiobuttons actuales
+                eliminaErroresRadioButtons(respuestas[index],index);
+                respuesta = parseInt(respuestas[index].querySelector(`input[name="respuesta${index}"]:checked`).value);
+                break;
+            case 4:
+                // Borramos todos los errores de los radiobuttons actuales
+                eliminaErroresRadioButtons(respuestas[index],index);
+                respuesta = parseFloat(respuestas[index].querySelector(`input[name="respuesta${index}"]:checked`).value);
+                break;
+            default:
+                respuesta = respuestas[index].querySelector('.respuestasTaj.preguntas').value;
+                break;
+        }
+        
 
         if(respuesta == preguntasJuego1[index][1]){
             aciertos++;
-            respuestas[index].classList.remove('class','is-invalid');
+
+            if(respuestas[index].querySelector('.respuestasTaj.preguntas') != null){
+                respuestas[index].querySelector('.respuestasTaj.preguntas').classList.remove('class','is-invalid');
+            }
         }else{
-            respuestas[index].classList.add('class','is-invalid');
+            if(index === 1 || index === 2 ||index === 4){
+                respuestas[index].querySelector(`input[name="respuesta${index}"]:checked`).classList.add('class','is-invalid');
+            }else{
+                respuestas[index].querySelector('.respuestasTaj.preguntas').classList.add('class','is-invalid');
+            }
+            
         }
     }
 
+   
+
     return aciertos;
+}
+
+function eliminaErroresRadioButtons(valor,index){
+    let errores = valor.querySelectorAll(`input[name="respuesta${index}"]`);
+
+    for (const item of errores) {
+        item.classList.remove('class','is-invalid')
+    }
 }
 
 });

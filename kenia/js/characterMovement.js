@@ -6,7 +6,7 @@ const PLAYER_HEIGHT = 26
 const PLAYER_VELOCITYJUMP = 8.3
 const barrelCreatedTiming = 3000
 let enemyVelocity = 2.9
-let player_velocity = 2.9
+let player_velocity = 3.2
 let timerInterval
 let timerBarrel
 let timerEnemy
