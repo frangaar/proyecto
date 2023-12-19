@@ -581,7 +581,7 @@ function showStory() {
     
 }
 function transitionlvl1_to_lvl2() {
-    clearInterval(timerInterval)
+    // clearInterval(timerInterval)
     clearInterval(timerBarrel)
     let containerLvl1_to2 = document.getElementById('lvl1_lvl2');
     containerLvl1_to2.style.display = 'block';
@@ -600,7 +600,7 @@ function transitionlvl1_to_lvl2() {
         drawMap();
         index_counting_barrels = 0
         startInterval()
-        startTimerIntervalFunc()
+        // startTimerIntervalFunc()
         spanlvl.removeEventListener('click', handleClick);
     }
     let spanlvl = document.getElementById('spanNext_lvl');

@@ -155,6 +155,7 @@ function iniciarTemporizador() {
             return;
         }
         const newCol = currentCol + 1;
+        console.log(newCol);
         if (!missio1) {
             handleMovement(currentRow, newCol);
         } else if(!missio2){
@@ -220,7 +221,7 @@ function iniciarTemporizador() {
             } else if (gameMap[newRow][newCol] === 4 || gameMap[newRow][newCol] === 6 || gameMap[newRow][newCol] === 9 || gameMap[newRow][newCol] === 11 || gameMap[newRow][newCol] === 12 || gameMap[newRow][newCol] === 13|| gameMap[newRow][newCol] === 14|| gameMap[newRow][newCol] === 15|| gameMap[newRow][newCol] === 16|| gameMap[newRow][newCol] === 17|| gameMap[newRow][newCol] === 18|| gameMap[newRow][newCol] === 19|| gameMap[newRow][newCol] === 20|| gameMap[newRow][newCol] === 21|| gameMap[newRow][newCol] === 22|| gameMap[newRow][newCol] === 23|| gameMap[newRow][newCol] === 24 || gameMap[newRow][newCol] === 25) {
                 if (hasBall) {
                     alert("No pots entregar la pilota a una persona incorrecte. Has perdut. :(");
-                    location.reload(); // Reload the page on an incorrect action
+                    // location.reload(); // Reload the page on an incorrect action
                 }
                 return; // Stop further movement
             } else if (gameMap[newRow][newCol] === 4 || gameMap[newRow][newCol] === 6 || gameMap[newRow][newCol] === 9 || gameMap[newRow][newCol] === 3 || gameMap[newRow][newCol] === 11 || gameMap[newRow][newCol] === 12 || gameMap[newRow][newCol] === 13|| gameMap[newRow][newCol] === 14|| gameMap[newRow][newCol] === 15|| gameMap[newRow][newCol] === 16|| gameMap[newRow][newCol] === 17|| gameMap[newRow][newCol] === 18|| gameMap[newRow][newCol] === 19|| gameMap[newRow][newCol] === 20|| gameMap[newRow][newCol] === 21|| gameMap[newRow][newCol] === 22|| gameMap[newRow][newCol] === 23|| gameMap[newRow][newCol] === 24 || gameMap[newRow][newCol] === 25) {
@@ -274,7 +275,7 @@ function iniciarTemporizador() {
             } else if (gameMap[newRow][newCol] === 4 || gameMap[newRow][newCol] === 6 || gameMap[newRow][newCol] === 9 || gameMap[newRow][newCol] === 11 || gameMap[newRow][newCol] === 12 || gameMap[newRow][newCol] === 13|| gameMap[newRow][newCol] === 14|| gameMap[newRow][newCol] === 15|| gameMap[newRow][newCol] === 16|| gameMap[newRow][newCol] === 17|| gameMap[newRow][newCol] === 18|| gameMap[newRow][newCol] === 19|| gameMap[newRow][newCol] === 20|| gameMap[newRow][newCol] === 21|| gameMap[newRow][newCol] === 22|| gameMap[newRow][newCol] === 23|| gameMap[newRow][newCol] === 24 || gameMap[newRow][newCol] === 25) {
                 if (hasReloj) {
                     alert("No pots entregar la pilota a una persona incorrecte. Has perdut. :(");
-                    location.reload(); // Reload the page on an incorrect action
+                    location.reload();
                 }
                 return; // Stop further movement
             } else if (gameMap[newRow][newCol] === 4 || gameMap[newRow][newCol] === 6 || gameMap[newRow][newCol] === 9 || gameMap[newRow][newCol] === 5 || gameMap[newRow][newCol] === 11 || gameMap[newRow][newCol] === 12 || gameMap[newRow][newCol] === 13|| gameMap[newRow][newCol] === 14|| gameMap[newRow][newCol] === 15|| gameMap[newRow][newCol] === 16|| gameMap[newRow][newCol] === 17|| gameMap[newRow][newCol] === 18|| gameMap[newRow][newCol] === 19|| gameMap[newRow][newCol] === 20|| gameMap[newRow][newCol] === 21|| gameMap[newRow][newCol] === 22|| gameMap[newRow][newCol] === 23|| gameMap[newRow][newCol] === 24 || gameMap[newRow][newCol] === 25) {
