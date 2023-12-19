@@ -183,7 +183,7 @@ function back_Menu() {
     let currentDate = new Date().toLocaleDateString('es-ES');
     
     // Fecha para las presentaciones públicas
-    const endDate = new Date('2023', '11', '19').toLocaleDateString('es-ES'); 
+    const endDate = new Date('2023', '11', '18').toLocaleDateString('es-ES'); 
     
     if (currentDate < endDate) {
         window.location.href = '../kenia/index.html'    
@@ -333,7 +333,7 @@ function selectDificult() {
                             skulls[i].src = '../kenia/img/skull-diff.png'
                           }
                     } else if (spans.id === 'diff2') {
-                        lvlDescription.innerHTML = "Per si vols disfrutar de l'historia amb una miqueta de dificultat, hi haurà tres barrils i es mouran a una velocitat més ràpida en comparació al nivell fàcil, tindràs dos vida."
+                        lvlDescription.innerHTML = "Per si vols disfrutar de l'historia amb una miqueta de dificultat, hi haurà tres barrils i es mouran a una velocitat més ràpida en comparació al nivell fàcil, tindràs dues vida."
                         dif1 = false
                         dif2 = true
                         dif3 = false
