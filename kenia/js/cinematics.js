@@ -323,7 +323,7 @@ function selectDificult() {
                 spans.addEventListener('mouseenter', function() {
                     lvlDescription.style.display = null
                     if (spans.id === 'diff1') {
-                        lvlDescription.innerHTML = 'Si vols jugar sense cap mena de dificultat, hi haurà tres barrils únicament, i es mouran a una velocitat lenta, tindràs dues vides.'
+                        lvlDescription.innerHTML = 'Si vols jugar sense cap mena de dificultat, hi haurà dos barrils únicament, i es mouran a una velocitat lenta, tindràs dues vides.'
                         dif1 = true
                         dif2 = false
                         dif3 = false
