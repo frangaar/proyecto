@@ -319,6 +319,7 @@ function drawMap()
         puContainer.style.display = 'block'
         puContainer.style.left = '951px'
         puContainer.style.top = '381px'
+        startInterval()
     }
 
     // DIBUJAR MAPA.
@@ -717,6 +718,8 @@ function animationPowerUp() {
             active_powerup = false
             pauseBlock = false
             audioBackground.play()
+            clearTimeout(timeoutP7)
+            clearTimeout(timeoutP3)  
         }, 3000);
-    }, 7000);    
+    }, 7000);  
 }

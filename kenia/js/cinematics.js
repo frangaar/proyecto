@@ -26,7 +26,6 @@ let twoLifes = false
 
 let focusPlayButton = document.getElementById('playButton')
 let spanExit = document.getElementById('idSpanExit')
-// let spanClass = document.querySelectorAll('.spans');
 
 let exitButton = document.getElementById('credits/exit')
 let exitMenuButton = document.getElementById('exitButton')
@@ -105,12 +104,10 @@ function buttonDeath() {
     focusPlayButton.style.display = 'none'
     spanExit.style.display = null
     spanExit.addEventListener('click', back_Menu)
-    // spanExit.setAttribute('onclick', 'back_Menu()')
     spanExit.style.backgroundImage = 'url(../kenia/img/home-boton.png)'
     spanExit.style.left = '920px'
     spanExit.style.top = '516px'
     spanExit.className = 'spansPause'
-    // spanExit.setAttribute('class', 'spansPause')
     exit.style.display = 'block'
 
     audioBackground.pause()
@@ -145,26 +142,21 @@ function pausePulsed() {
     botonAceptar.style.display = null
     focusPlayButton.style.display = null
     focusPlayButton.addEventListener('click', buttonAccept)
-    // focusPlayButton.setAttribute('onclick', 'buttonAccept()')
     focusPlayButton.style.backgroundImage = 'url(../kenia/img/returnGame-boton.png)'
     focusPlayButton.style.left = '832px'
     focusPlayButton.style.top = '516px'
     focusPlayButton.className = 'spansPause'
-    // focusPlayButton.setAttribute('class', 'spansPause')
 
     spanExit.style.display = null
     spanExit.addEventListener('click', back_Menu)
-    // spanExit.setAttribute('onclick', 'back_Menu()')
     spanExit.style.backgroundImage = 'url(../kenia/img/home-boton.png)'
     spanExit.style.left = '1008px'
     spanExit.style.top = '516px'
     spanExit.className = 'spansPause'
-    // spanExit.setAttribute('class', 'spansPause')
     exit.style.display = 'block'
 
     audioBackground.pause()
     level1_Map.style.filter = 'blur(2px)'
-    // title.innerHTML = 'Pause Mode'
     pause = true
     document.addEventListener("keyup", function(event) {
         if (event.code === 'Enter') {
@@ -271,7 +263,6 @@ function showControls() {
   let char3 = false
   let char4 = false
 function startGame() {
-    // storagePlayTimes = localStorage.setItem('Veces jugadas', playTimes)
     let playTimesRecupered = localStorage.getItem(stringS2); 
     selectDificult().then((difficult) => {
         if (difficult) {
@@ -361,7 +352,6 @@ function selectDificult() {
                         for (let i = 0; i < skulls.length; i++) {
                             skulls[i].style.display = 'block'
                             skulls[i].src = '../kenia/img/skull-diff-danger.png'
-                            // skulls[i].setAttribute('src', '../kenia/img/skull-diff-danger.png')
                           }
                     }
                   });
@@ -418,7 +408,6 @@ function selectCharacter() {
     c4.innerHTML = 'Mario Bross'
     let img = document.createElement('img')
     img.id = 'imgDescription'
-    // img.setAttribute('id', 'imgDescription')
     let containerLevelSelector = document.getElementById('containerLevelSelector')
     lvlDescription.remove()
     container2.appendChild(img)
@@ -445,7 +434,6 @@ function selectCharacter() {
                 if (spans.id === 'char1') 
                 {
                     img.src = '../img/laiaDerechaParada.png'
-                    // img.setAttribute('src', '../img/laiaDerechaParada.png')
                     char1 = true
                     char2 = false
                     char3 = false
@@ -453,7 +441,6 @@ function selectCharacter() {
                 } else if (spans.id === 'char2') 
                 {
                     img.src = '../img/personajes/malik.png'
-                    // img.setAttribute('src', '../img/personajes/malik.png')
                     char1 = false
                     char2 = true
                     char3 = false
@@ -461,7 +448,6 @@ function selectCharacter() {
                 } else if (spans.id === 'char3') 
                 {
                     img.src = '../img/personajes/laia.png'
-                    // img.setAttribute('src', '../img/personajes/laia.png')
                     char1 = false
                     char2 = false
                     char3 = true
@@ -469,7 +455,6 @@ function selectCharacter() {
                 } else if (spans.id === 'char4') 
                 {
                     img.src = '../kenia/img/char_stand.png'
-                    // img.setAttribute('src', '../kenia/img/char_stand.png')
                     char1 = false
                     char2 = false
                     char3 = false
@@ -530,13 +515,11 @@ function showStory() {
     exitMenuButton.style.display = 'block'
     exit.style.display = 'none'
     laia.src = '../img/laiaDerechaCaminando.gif'
-    // laia.setAttribute('src', '../img/laiaDerechaCaminando.gif')
     history.style.display = 'block'
     showCtrl.style.display = 'none'
     laia.style.animation = 'move 3s linear'
     laia.addEventListener('animationend', function() {
         laia.src = '../img/laiaDerechaParada.png'
-        // laia.setAttribute('src', '../img/laiaDerechaParada.png')
         mensajeHistoria.style.display = 'block'
         bocata.style.display = 'block'
         mensaje1.style.display = 'block'
@@ -550,7 +533,6 @@ function showStory() {
                 mensaje1.style.display = 'none'
                 mensajeHistoria.style.display = 'none'
                 laia.src = '../img/laiaDerechaCaminando.gif'
-                // laia.setAttribute('src', '../img/laiaDerechaCaminando.gif')
                 laia.style.animation = 'moveAway 4s linear'
                 laia.addEventListener('animationend', function() {
                     laia.style.display = 'none'
@@ -581,7 +563,6 @@ function showStory() {
     
 }
 function transitionlvl1_to_lvl2() {
-    // clearInterval(timerInterval)
     clearInterval(timerBarrel)
     let containerLvl1_to2 = document.getElementById('lvl1_lvl2');
     containerLvl1_to2.style.display = 'block';
@@ -599,8 +580,7 @@ function transitionlvl1_to_lvl2() {
         ARRAY_BARRELS.splice(0, ARRAY_BARRELS.length)
         drawMap();
         index_counting_barrels = 0
-        startInterval()
-        // startTimerIntervalFunc()
+        
         spanlvl.removeEventListener('click', handleClick);
     }
     let spanlvl = document.getElementById('spanNext_lvl');
@@ -615,13 +595,11 @@ function finishTheGame() {
     globalContainerFinishMode.style.display = 'block'
     laiaImgFinish.addEventListener('animationend', function() {
         laiaImgFinish.src = '../img/laiaDerechaParada.png'
-        // laiaImgFinish.setAttribute('src', '../img/laiaDerechaParada.png')
         finalMessage.style.display = 'block'
         containerFinalMessage.style.display = 'block'
         setTimeout(() => {
             containerFinalMessage.style.display = 'none'
             laiaImgFinish.src = '../img/laiaDerechaCaminando.gif'
-            // laiaImgFinish.setAttribute('src', '../img/laiaDerechaCaminando.gif')
             laiaImgFinish.style.animation = 'moveAwayFinish 4s linear'
             laiaImgFinish.addEventListener('animationend', function() {
                 laiaImgFinish.style.display = 'none'
