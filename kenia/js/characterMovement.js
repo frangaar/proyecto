@@ -1,8 +1,8 @@
 let body = document.getElementById('body')
+/** Atributos del personaje, del enemigo, barriles, ... */
 const BLOCK_SIZE = 36
 const PLAYER_WIDTH = 47
 const PLAYER_HEIGHT = 26
-// 8.3
 const PLAYER_VELOCITYJUMP = 8.3
 const barrelCreatedTiming = 3000
 let enemyVelocity = 2.9
@@ -14,7 +14,6 @@ let final_del_mapa
 let final_nivel_1
 let final_nivel_2   
 let colisionado = false
-// let play = false
 let index_counting_barrels = 0
 var timerCount = 1
 
@@ -34,6 +33,8 @@ let container = document.getElementById('character-Container')
 let enemy = document.getElementById('donkeyKongCharacter')
 let enemyContainer = document.getElementById('kongContainer')
 
+
+/** Caracteristicas del personaje, modo pausa y niveles */
 var pause = true
 let velocityX = 0
 let velocityY = 5
@@ -55,12 +56,12 @@ let level_1_finished = false
 let level_2_finished = false
 let bossAnimation1 = false
 let bossAnimation2 = false
-// Background size y width y animar el fondo.
+
+/** Background size y width y animar el fondo. */
 level1_Map.style.width = BLOCK_SIZE * PLAYER_WIDTH + 'px'
 level1_Map.style.height = (BLOCK_SIZE * PLAYER_HEIGHT) + 'px'
-// level1_Map.style.backgroundImage = 'url(../kenia/img/bc2.png)'
-// level1_Map.style.backgroundSize = 'cover'
-// Create enemy and barrel size.
+
+/** Create enemy and barrel size. */
 enemy.style.width = '160px'
 enemyContainer.style.left = '65px'
 enemyContainer.style.bottom = '755px'
@@ -71,12 +72,10 @@ const ARRAY_BARRELS = []
 let enemyPositionX = 65
 let imgCharacterRight
 let imgCharacterStand
-// Mostrar mapeado en pantalla con doble for.
+/** Mostrar mapeado en pantalla con doble for. */
 drawMap()
 
-// for (let index = 0; index < COLLIDABLE_ROWS.length; index++) {
-// }
-// Variables de la posicion del personaje.
+/** Variables de la posicion del personaje y barril. */
 let positionX = 0
 let positionY = 762 
 let barrelPositionX = 295
@@ -87,9 +86,13 @@ let barrelColisionLeft = false
 let barrelVelocityX = 10
 let barrelVelocityY = 0
 let numberOfBarrels = 0
+
+/** Creación de objetos. */
 let b1 = new Barrel()
 let f1 = new ColisionablesObjects()
 const elementosFila2 = document.querySelectorAll('.fila2');
+
+/** Función tiempo. */
 function timer () {
     if (play && !gameCompleted) {
         timerCount++
@@ -102,6 +105,8 @@ function startTimerIntervalFunc() {
     }, 1000);
 }
 startTimerIntervalFunc()
+
+/** Función dibujar las posiciones de los personajes y barriles. */
 function draw () 
 {
     container.style.left = positionX + 'px'
@@ -116,7 +121,7 @@ function draw ()
         }
     }
 }
-// Loop de update para la gravedad y todo el movimiento.
+/** Loop de update para la gravedad y todo el movimiento. */
 function update ()
 {
     draw()
@@ -138,12 +143,10 @@ function update ()
                 if (!ARRAY_BARRELS[index].barrelColisionRight) {
                     if (ARRAY_BARRELS[index].x + ARRAY_BARRELS[index].container.offsetWidth + ARRAY_BARRELS[index].vX < level1_Map.offsetWidth) {
                         ARRAY_BARRELS[index].vX = barrel_velocity
-                        // barrilesContainerArray[index].style.transform = 'scaleX(1)'
                     } else {ARRAY_BARRELS[index].vX = 0 ; ARRAY_BARRELS[index].barrelColisionRight = true;}  
                 } else if (ARRAY_BARRELS[index].barrelColisionRight) {
                     if (ARRAY_BARRELS[index].x > 0) {
                         ARRAY_BARRELS[index].vX = - (barrel_velocity)
-                        // barrilesContainerArray[index].style.transform = 'scaleX(-1)'
                     } else {ARRAY_BARRELS[index].vX = 0; ARRAY_BARRELS[index].barrelColisionRight = false}
                 }
             }
@@ -157,7 +160,6 @@ function update ()
             if (keyLeftPressed) {
                 if (imgLeft === 1) {
                     character.src = imgCharacterWalking
-                    // character.setAttribute('src', imgCharacterWalking)
                     imgLeft = 0
                 }
                 imgRight = 1
@@ -172,7 +174,6 @@ function update ()
             } else if (keyRightPressed){
                 if (imgRight === 1) {
                     character.src = imgCharacterWalking
-                    // character.setAttribute('src', imgCharacterWalking)
                     imgRight = 0
                 }
                 imgLeft = 1
@@ -187,9 +188,6 @@ function update ()
                 velocityX = 0
                 if (imgCrouch === 1 ) {
                     character.src = imgCharacter
-                    // character.setAttribute('src', imgCharacter)
-
-                    // character.setAttribute('src', '../kenia/img/char_stand.png')
                 }
                 imgLeft = 1
                 imgRight = 1
@@ -215,13 +213,16 @@ function update ()
         level1_FinishedAnimation()
     }
 }
+
+/** Función principal del juego. */
 function animate ()
 {
     requestAnimationFrame(animate)
     update()
 }
 animate()
-/** CREAR BARRILES CADA 3 SEGUNDOS */
+
+/** Crear barriles cada 3 segundos. */
 function startInterval() {
     timerBarrel = window.setInterval(function()
     {
@@ -255,11 +256,13 @@ function startInterval() {
 if (!level_1_finished) {
     startInterval()
 }
+
 /** Funcion para generar un nombre de la clase del barril con un prefijo numérico. */
 function generarNombreConNumero(prefijo, numero)
 {
     return `${prefijo}${numero}`;
 }
+
 /** Hacer el keyEvent del keydown y el keyup para que el personaje se mueva solo cuando tiene la tecla presionada.*/
 addEventListener('keydown', (event) => 
 {
@@ -283,7 +286,6 @@ addEventListener('keydown', (event) =>
                 buttonAccept()
                 play = true 
             } 
-            // app.style.display = 'none'
             break
     }
    
@@ -305,6 +307,7 @@ addEventListener('keyup', (event) =>
             break
     }
 })
+
 /** Funcion que crea el mapa y los divs, y los mete en las clases y en el array de colisionables. */
 function drawMap()
 {
@@ -343,33 +346,22 @@ function drawMap()
                
             } else if (map[fila][columna] === 2) {
                 const mapBlock2 = document.createElement('div');
-                let width = 38;
-                let height = 34;
-                // let fila1Container = document.querySelector('.fila1');
-                // fila1Container.style.position = 'absolute';
-                // fila1Container.style.top = fila * BLOCK_SIZE + 'px';
-                // fila1Container.style.left += columna * BLOCK_SIZE + 'px';
+
                 if (level_1_finished) {
                     document.querySelector('.filasNivel2').appendChild(mapBlock2);
                     document.querySelector('.fila1').style.display = 'none';
-                    // document.querySelector('.fila2').innerHTML = '';  // Limpiar elementos del nivel anterior
-
                 } else {
                     document.querySelector('.fila1').appendChild(mapBlock2);
                 }
     
                 mapBlock2.style.backgroundImage = 'url(../kenia/img/wood_plataform.png)';
-                // mapBlock2.style.backgroundColor = 'red'
                 mapBlock2.style.backgroundSize = 'cover';
-                // PONER URGENTENTEMENTE
                 mapBlock2.style.top = fila * BLOCK_SIZE + 'px';
                 mapBlock2.style.left = (columna * BLOCK_SIZE) + 'px';
                 mapBlock2.style.width = 38 + 'px';
                 mapBlock2.style.height = 34 + 'px';
                 mapBlock2.style.position = 'absolute';
                 COLLIDABLE.push(mapBlock2);
-                // Quitado de momento para la prueba técnica
-                // COLLIDABLE_ROWS.push(new ColisionablesObjects(fila * BLOCK_SIZE, columna * BLOCK_SIZE, width, height))
                 } else if (map[fila][columna] === 3) {
                 const mapBlock3 = document.createElement('div')
 
@@ -383,8 +375,6 @@ function drawMap()
                 mapBlock3.style.position = 'absolute'
                 COLLIDABLE_FINAL_LEVEL1.push(mapBlock3)
                 COLLIDABLE.push(mapBlock3)
-                // COLLIDABLE_ROWS.push(mapBlock3)
-                // colisionables.push(mapBlock3)
 
             } 
              else if (map[fila][columna] === 9) {
@@ -404,9 +394,9 @@ function drawMap()
 
         }
     }
-    // COLLIDABLE_ROWS.push(document.querySelector('.fila1'))
-    // COLLIDABLE.push(document.querySelector('.fila1'))
 }
+
+/** Función de la comprovación de que el nivel 1 se complete o no, y animación del mismo. */
 function finishLevel1()
 {
     let index = 0
@@ -415,7 +405,6 @@ function finishLevel1()
         && (positionX + container.offsetWidth + velocityX) >= (COLLIDABLE_FINAL_LEVEL1[index].offsetLeft)
         && (positionX) <= (COLLIDABLE_FINAL_LEVEL1[index].offsetLeft + COLLIDABLE_FINAL_LEVEL1[index].offsetWidth)  
             ){
-                // level_1_finished = true
                 bossAnimation1 = true
 
             }
@@ -430,7 +419,6 @@ function level1_FinishedAnimation()
     audioEnemy.play()
     audioBackground.pause()
     character.src = imgCharacter
-    // character.setAttribute('src', imgCharacter)
     imgLeft = 1
     imgRight = 1
     imgStand = 1
@@ -438,8 +426,9 @@ function level1_FinishedAnimation()
     imgCrouch = 1
     starTimeoutEnemy()
 }
+
+/** Función de encender timeout para el enemigo. */
 function starTimeoutEnemy() {
-    // timerEnemy = setTimeout(() => {
         if (enemyPositionX > 0) {
             enemyPositionX -=  enemyVelocity
         } else {
@@ -471,18 +460,11 @@ function displayDeathMenu()
         velocityY += gravity
     }
     buttonDeath()
-    // button_Death.style.display = 'block'
-    // menu_death.style.display = 'grid'
-    // menu_death.style.backgroundColor = 'transparent'
-    // level1_Map.style.filter = 'blur(2px)'
 }
 /** Función que contiene una condicion del personaje colisionando con diferentes objetos, como el barril, las filas del mapa, y las condiciones de salto y agacharse, junto con la condición de muerte. */
 function checkColisionBetweenCharacterHeadAndBlockBottom()
 {
-    // console.log(positionY + character.offsetHeight);
     let index = 0
-    let indexFila1 = 0
-    let iLateralColider = 0
     const PY_CONTAINER_HEIGHT = positionY + character.offsetHeight
     const PY_CONTAINER_HEIGHT_VELOCITY = positionY + character.offsetHeight + velocityY
     const PX_CONTAINER_WIDTH = positionX + container.offsetWidth
@@ -507,7 +489,6 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                     audioJump.play()
                     if (imgUp === 1 ) {
                         character.src = imgJump
-                        // character.setAttribute('src', imgJump)
                     }
                     setTimeout(() => {
                         imgLeft = 1
@@ -517,18 +498,6 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                         imgCrouch = 1
                     }, 540);  
                 }
-                /** Colision con el techo quitada por el momento */
-                // if ((positionY + container.offsetHeight) <= app.offsetTop) {
-                //     velocityY += (PLAYER_VELOCITYJUMP/2)
-                // }
-                
-                // if 
-                // (
-                //     (PY_CONTAINER_HEIGHT) <= COLLIDABLE[index].offsetTop
-                //     && (PY_CONTAINER_HEIGHT_VELOCITY) >= (COLLIDABLE[index].offsetTop)
-                // ) {
-                //     velocityY += (PLAYER_VELOCITYJUMP/2)
-                // }
             }
         }
 
@@ -537,7 +506,6 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
             for (let index2 = 0; index2 <= numberOfBarrels; index2++) {
                 if (ARRAY_BARRELS[numberOfBarrels] != null) {
                     if (
-                        // + character.offsetHeight
                         (PY_CONTAINER_HEIGHT) >= (ARRAY_BARRELS[index2].y) &&
                         (PY) <= (ARRAY_BARRELS[index2].y + ARRAY_BARRELS[index2].container.offsetHeight) &&
                         (PX_CONTAINER_WIDTH) >= (ARRAY_BARRELS[index2].x) &&
@@ -557,14 +525,12 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                                 heart1.style.animation = 'shake 0.5s linear'
                                 heart1.addEventListener('animationend', function() {
                                     heart1.src = '../kenia/img/heart_empty.png'
-                                    // heart1.setAttribute('src', '../kenia/img/heart_empty.png');  
                                 })
                             } else 
                             {
                                 heart2.style.animation = 'shake 0.5s linear'
                                 heart2.addEventListener('animationend', function() {
                                     heart2.src = '../kenia/img/heart_empty.png'
-                                    // heart2.setAttribute('src', '../kenia/img/heart_empty.png');  
                                 })
                             }
                             twoLifes = false
@@ -574,7 +540,6 @@ function checkColisionBetweenCharacterHeadAndBlockBottom()
                             if (isMario) {
                                 character.src = '../kenia/img/char_death.png'
                             } else character.src = imgCharacter
-                            // character.setAttribute('src', '../kenia/img/char_death.png')
                         }
                         if (character_is_dead) {
                             if (isMario) {
